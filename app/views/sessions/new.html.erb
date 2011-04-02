@@ -1,0 +1,28 @@
+<div class="content_bg" id="home_bg">
+ <div class="content">
+  <div class="left">
+   <p>
+    <h1><%= flash[:message] %></h1> 
+   </p>
+   <p>
+    <% form_tag login_path do %>
+      Username: <%= text_field_tag :username %>
+      Password: <%= password_field_tag :password %>
+      <input type="submit">
+    <% end %>
+   </p>
+   <br><br><br><br>
+   <h2>Service Status</h2>
+   <table width="60%" border="1">
+   <th>
+   <td>Current Status</td><td>Details</td>
+   </th>
+   <% if @service_status %>
+  <tr border="2"><td>OK</td><td>A photo has been uploaded recently</td></tr>
+   <% else %>
+   <tr border="2"><td>FAILURE</td><td>No photos have been uploaded recently</td></tr>
+   <% end %>
+   </table>
+  </div>
+ </div>
+</div>

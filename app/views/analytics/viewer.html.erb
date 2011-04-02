@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>Clixtr Analytics v1.0</title>
+<script src="/javascripts/swfobject.js" language="javascript"></script>
+<script src="/javascripts/rightClick.js" language="javascript"></script>
+
+
+<style>
+body { margin: 0px; overflow:hidden }
+</style>
+<script language="JavaScript" type="text/javascript">
+<!--
+// -----------------------------------------------------------------------------
+// Globals
+// Major version of Flash required
+var requiredMajorVersion = 9;
+// Minor version of Flash required
+var requiredMinorVersion = 0;
+// Minor version of Flash required
+var requiredRevision = 124;
+// -----------------------------------------------------------------------------
+// -->
+</script>
+</head>
+
+<body scroll="no" onload="RightClick.init('clixtrAnalytics');" >
+</script>
+<!--<noscript>
+    <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+            id="clixtrAnalytics" width="100%" height="100%"
+            codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab">
+            <param name="movie" value="clixtrAnalytics.swf" />
+            <param name="quality" value="high" />
+            <param name="bgcolor" value="#ffffff" />
+            <param name="allowScriptAccess" value="sameDomain" />
+            <embed src="clixtrAnalytics.swf" quality="high" bgcolor="#ffffff"
+                width="100%" height="100%" name="clixtrAnalytics" align="middle"
+                play="true"
+                loop="false"
+                quality="high"
+                allowScriptAccess="sameDomain"
+                type="application/x-shockwave-flash"
+                pluginspage="http://www.adobe.com/go/getflashplayer">
+            </embed>
+    </object>
+</noscript>-->
+<div id="flashcontent"width="100%" height="100%">&nbsp;</div>
+<script type="text/javascript">
+   var so = new SWFObject("/analytics/clixtrAnalytics.swf", "clixtrAnalytics", "100%", "100%", "9", "#CCCCCC");
+    so.addParam("quality", "high");
+    so.addParam("name", "clixtrAnalytics");
+    so.addParam("flashVars", "baseUrl=<%=root_url.chop%>");
+    so.addParam("id", "clixtrAnalytics");
+    so.addParam("AllowScriptAccess", "always");
+    so.addParam("wmode", "transparent");
+    so.addParam("menu", "false");
+    so.addVariable("variable1", "value1");
+    so.write("flashcontent");
+</script>
+
+</body>
+</html>

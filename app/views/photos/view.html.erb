@@ -1,0 +1,103 @@
+  <div class="content_bg" id="view_content_bg">
+    <div class="content">
+	    <% if admin? %>	
+		<div id="admin_panel">
+		<h2>Admin</h2>
+			<form method="post">
+				<label for="status">Status:</label>
+				<select name="status" id="status">
+					<option value="ok">OK</option>
+					<option value="Block" <% if @photo.block %>selected="true"<% end %>  >Block</option>
+					<option value="Delete">Delete</option>
+					<input type="submit" value="Update" class="submit" />
+				</select>
+			</form>
+			
+			<a href="/logout" class="button" id="logout">logout</a>
+			</div>
+	    <% end %>
+      <div class="left" id="view_left">	
+		
+	    <img src="<%= @photo.photo_url(:big) || @photo.photo_url %>" id="main_photo" alt="@photo.caption" name="photo" />
+  		
+		 <ul id="caption_list">
+		<li><p id="caption_label" class="bold">Caption:</p></li> 
+		 <li> <span id="caption">
+            <%=twitter_auto_link(@photo.caption) %>
+          </span></li>
+		  </ul>
+	  
+  		  <div class="share">
+
+  <div id="social_share">  
+
+<a name="fb_share" type="box_count" href="http://www.facebook.com/sharer.php">Share</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
+	
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="PicBounce">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+
+<span class="st_digg_custom"></span>
+
+<span class="st_reddit_custom"></span>
+
+<span class="st_email_custom" ></span>
+	        <!-- a href="#"> < span class="st_sharethis">     <img id="share_btn" src="images/share_this_photo.png" alt="Share This Photo" /></span></a -->
+</div>
+
+
+<% if @use_echo_comments %>
+	<div class="js-kit-comments" permalink=""></div><script src="http://cdn.js-kit.com/scripts/comments.js"></script>
+<% end %>
+<% if @use_disqus_comments %>
+
+            <script type="text/javascript">
+              var disqus_developer = 1;
+            </script>
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+              /**
+              * var disqus_identifier; [Optional but recommended: Define a unique identifier (e.g. post id or slug) for this thread]
+              */
+              (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://picbounce.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+               })();
+            </script>
+            <noscript></noscript>
+     
+<% end %>
+    
+          </div>  			
+  		</div>
+  		<div class="right">
+		
+		             
+                       <%= render 'partials/info_box' %> 
+                       
+                       <%= render 'partials/popular_box' %> 
+                       
+                       
+  		<div class="adbox">
+	          <a class="picbounce_promo" href="/download?adbox"></a>
+	        </div>
+                <div class="adbox">
+                   <%= render 'partials/adsense_banner_300x250' %>
+                </div>
+		<!-- div class="adbox">
+	              <a href="http://www.anrdoezrs.net/click-4088566-10769819" target="_blank"><img src="http://www.tqlkg.com/image-4088566-10769819" width="300" height="250" alt="" border="0"/></a>
+		</div -->
+  		</div>
+		
+  	</div>
+  </div>
+
+<script type="text/javascript">
+var disqus_shortname = 'picbounce';
+(function () {
+  var s = document.createElement('script'); s.async = true;
+  s.src = 'http://disqus.com/forums/picbounce/count.js';
+  (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+

@@ -1,0 +1,79 @@
+= acts_as_api
+
+acts_as_api makes creating XML/JSON responses in Rails 3 easy and fun.
+
+== Introduction
+
+acts_as_api enriches the models and controllers of your app in a rails-like way so you can easily determine how your API responses should look like:
+
+    class User < ActiveRecord::Base
+
+      acts_as_api
+
+      api_accessible :name_only do |template|
+        template.add :first_name
+        template.add :last_name
+      end
+
+    end
+
+
+A nice introduction about acts_as_api with examples can be found here:
+
+http://fabrik42.github.com/acts_as_api
+
+
+== Features:
+
+* DRY templates for your api responses
+* Easy but very flexible syntax for defining the templates
+* XML, JSON and JSON-P support out of the  box, easy to extend
+* Minimal dependecies (you can also use it without Rails)
+* Does not rely on ActiveRecord (can be used with other ORMs like Mongoid)
+* Supports multiple api rendering templates for a models. This is especially useful for API versioning or for example for private vs. public access points to a user’s profile.
+
+=== Requirements:
+
+* ActiveModel (>= 3.0.0)
+* ActiveSupport (>= 3.0.0)
+* Rack (>= 1.1.0)
+
+=== Links
+
+* Introduction: http://fabrik42.github.com/acts_as_api/
+
+* Docs: http://rdoc.info/projects/fabrik42/acts_as_api
+
+* Found a bug? http://github.com/fabrik42/acts_as_api/issues
+
+* Wiki: https://github.com/fabrik42/acts_as_api/wiki/
+
+=== Downwards Compatibility
+
+Note that upgrading to 0.3.0 will break code that worked with previous versions due to a complete overhaul of the lib.
+For a legacy version of this readme file look here: https://github.com/fabrik42/acts_as_api/wiki/legacy-acts_as_api-0.2-readme
+
+=== LICENSE:
+
+(The MIT License)
+
+Copyright (c) 2010 Christian Bäuerlein
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

@@ -1,0 +1,35 @@
+<% if (@next_photo || @previous_photo) %> <div class="info_box info_box_with_thumbs"> <% else %>	<div class="info_box"> <% end %>
+  <ul>
+    <li> 
+      <p id="name">
+        <% if @twitter_screen_name.length > 0 %>
+          <a id="name2" href="http://twitter.com/<%=@twitter_screen_name%>">
+            <strong>@<%= @twitter_screen_name %></strong>
+          </a>
+        <% end %>
+      </p>
+    </li>
+    <li>
+  	  <p id="time"><strong><%= @time %></strong> <%= @timezone %><span id="comma">,</span></p>
+			<p id="date"><strong><%= @date %></strong></p>
+		</li>		
+		<li><p id="view_label" ><strong><span class="bold">Views:</span></strong>
+      <%= @photo.view_count %></p>
+    </li>  				
+  </ul> 
+	<% if (@next_photo || @previous_photo) %>         
+    <div class="view_thumbs">    
+      <div class="wrapper">
+        <ul>  
+          <li> <% if @next_photo %><a href="/<%=@next_photo.code%>"><img class="view_tn left_tn" src="<%= @next_photo.photo_url(:thumb) %>" /> <% else %> <div class="view_tn left_tn no_border" ></div><% end %></li>
+          <li> <% if @previous_photo %><a href="/<%=@previous_photo.code%>"><img class="view_tn right_tn" src="<%= @previous_photo.photo_url(:thumb) %>" /><% end %></li>        
+        </ul>
+      </div>
+          
+      <ul id="arrow_box">
+        <% if @next_photo %><li><a class="arrows" href="/<%=@next_photo.code%>">&#x25C0; Newer</a></li><% end %>
+        <% if @previous_photo %><li class="arrow_next "><a class="arrow_back arrows" href="/<%=@previous_photo.code%>">Older &#x25B6;</a></li><% end %>
+      </ul>
+    </div>
+  <% end %>		                     
+</div>

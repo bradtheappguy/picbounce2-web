@@ -1,0 +1,26 @@
+xml.data do   
+ xml.dataset1 do 
+  for point in @ts.points
+    xml.point do
+      keys = point.keys
+      for key in keys
+        xml.tag!(key,point[key])
+      end
+     end
+   end
+  if @ts.query
+   xml.meta do 
+     xml.type "query" 
+     xml.data do
+       xml.cdata!(@ts.query)
+     end
+   end
+   xml.meta do 
+     xml.type "server"
+     xml.data ""  
+   end
+  end
+ end
+end
+
+

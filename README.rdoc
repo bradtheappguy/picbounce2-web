@@ -1,0 +1,17 @@
+= Paperclip + S3 on Heroku
+
+== Summary
+
+* Add a .gems file with the "right_aws" gem
+
+* Insert your S3 credentials in config/s3.yml
+
+* Provide S3 related options when calling has_attached_file
+
+== A few things to notice
+
+* Pay special attention when copying code from tutorials. Some text converting filters like Textile and SmartyPants will convert "100x100" to "100×100" (notice how the "x" character was converted to ASCII 215, which will be passed to ImageMagick and cause a failure).
+
+* Paperclip by default swallows STDERR when calling ImageMagick, making it hard to debug problems with its binaries. To avoid this behavior you might want to disable it with:
+
+  Paperclip.options[:swallow_stderr] = false

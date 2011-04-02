@@ -1,0 +1,5 @@
+<universe>
+	<universe label="flurry" code="flurry" dataSetId="flurry"/>
+	<universe label="google analytics" code="ga" dataSetId="ga"/>
+	<universe label="in house data" code="inhouse" dataSetId="inhouse"/>
+</universe>

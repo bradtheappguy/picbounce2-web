@@ -1,0 +1,48 @@
+<datasets>			
+	<flurry>		
+			<dataItem label="sessions" code="sessions" color="666666" axis="right"/>
+			<dataItem label="users" color="666666">	
+				<children label="new users" code="new_users" color="666666" axis="right"/>
+				<children label="retained users" code="retained_users" color="666666" axis="right"/>
+				<children label="active users" code="active_users" color="666666" axis="right"/>
+				<children label="cumulative users" code="cumulative_users" color="666666" axis="right"/>
+			</dataItem>	
+	</flurry>		
+	<ga>		
+		<dataItem label="visits" code="visits" axis="right" color="666666"/>
+		<dataItem label="cumulated visits" code="visits" cumulativeType="+" axis="right" color="666666"/>
+		
+			<dataItem label="visitors" code="visitors" color="666666" axis="right"/>
+			<dataItem label="new visits" code="newVisits" color="666666" axis="right"/>
+			<dataItem label="bounces" code="bounces" color="666666" axis="right"/>
+	</ga>	
+	<inhouse>	
+		<dataItem label="active posting users" color="666666">	
+			<children label="active users" displayType="bars" code="users" axis="right" color="666666"/>
+			<children label="fb users" displayType="bars" code="facebook_access_token" axis="right" color="666666"/>
+			<children label="twitter users" displayType="bars" code="twitter_screen_name" axis="right" color="666666"/>
+			<children label="fb users %" code="percent_fb" axis="left" color="666666"/>
+			<children label="twitter users %" code="percent_twitter" axis="left" color="666666"/>
+			<children label="total active users" report="cumulative" code="total_users" axis="right" color="666666"/>
+			<children label="total active fb users" report="cumulative" code="facebook_users" axis="right" color="666666"/>
+			<children label="total active twitter users" report="cumulative" code="twitter_users" axis="right" color="666666"/>
+		</dataItem>	
+		<dataItem label="posted photos" color="666666">	
+			<children label="posted photos" displayType="bars" code="photos" axis="right" color="666666"/>
+			<children label="twitter photos" displayType="bars" code="twitter_photos" axis="right" color="666666"/>
+			<children label="facebook photos" displayType="bars" code="facebook_photos" axis="right" color="666666"/>
+			<children label="cumulated posted photos" cumulativeType="+" code="photos" axis="right" color="666666"/>
+			<children label="cumulated twitter photos" cumulativeType="+" code="twitter_photos" axis="right" color="666666"/>
+			<children label="cumulated facebook photos" cumulativeType="+" code="facebook_photos" axis="right" color="666666"/>
+		</dataItem>	
+		<dataItem label="visited photos" color="666666">	
+			<children label="photo visits" displayType="bars" code="view_count" axis="right" color="666666"/>
+			<children label="twitter photos" displayType="bars" code="twitter_photos" axis="right" color="666666"/>
+			<children label="visited photos" displayType="bars" code="single_page_views" axis="right" color="666666"/>
+			<children label="cumulated photo visits" cumulativeType="+" code="view_count" axis="right" color="666666"/>
+			<children label="cumulated twitter photos" cumulativeType="+" code="twitter_photos" axis="right" color="666666"/>
+			<children label="cumulated visited photos" cumulativeType="+" code="single_page_views" axis="right" color="666666"/>
+			<children label="avg visits per photo" code="view_average" axis="left" color="666666"/>
+		</dataItem>	
+	</inhouse>			
+</datasets>
