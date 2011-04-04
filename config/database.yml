@@ -14,7 +14,7 @@ exp:
   username: brad
   password:
 
-evelopment:
+development:
   adapter: postgresql
   encoding: unicode
   database: picbounce_development

@@ -11,7 +11,7 @@
 
 == Getting the inital database
 
- % heroku pgbackups --app picbounce                                                                                                                                    
+% heroku pgbackups --app picbounce                                                                                                                                    
 	
 	ID   | Backup Time         | Size   | Database                   
 	-----+---------------------+--------+----------------------------
