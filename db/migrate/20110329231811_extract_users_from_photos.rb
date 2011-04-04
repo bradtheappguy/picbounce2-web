@@ -1,5 +1,5 @@
 ActiveRecord::Base.logger = Logger.new(STDOUT)
-class Dm < ActiveRecord::Migration
+class ExtractUsersFromPhotos < ActiveRecord::Migration
   def self.up
     execute <<ENDOFSQL
 delete from users;
