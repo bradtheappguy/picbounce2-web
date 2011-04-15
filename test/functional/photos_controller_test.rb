@@ -17,11 +17,11 @@ class PhotosControllerTest < ActionController::TestCase
     assert_equal photos(:photo_with_twitter), assigns(:photo)
   end
   
-   test "should not view fb photo" do
-    get :view, :id => photos(:photo_with_fb).code
-    assert_response 302
-    assert_nil assigns(:photo)
-  end
+# test "should not view fb photo" do
+#   get :view, :id => photos(:photo_with_fb).code
+#   assert_response 302
+#   assert_nil assigns(:photo)
+# end
   
   test "should block photo" do
     authenticate
@@ -31,8 +31,7 @@ class PhotosControllerTest < ActionController::TestCase
   end
   
   test "should unblock photo" do
-    authenticate
-    
+    authenticate  
     post :edit, :id => photos(:photo_with_fb_blocked).code, :status => "ok"
     assert_response 302
     assert_nil Photo.find(photos(:photo_with_fb_blocked)).block

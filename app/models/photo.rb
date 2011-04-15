@@ -13,13 +13,24 @@ require 'aws/s3'
 
 class Photo < ActiveRecord::Base  
 
- acts_as_api
+  acts_as_api
 
- has_many :likes 
- has_many :comments
- belongs_to :user
- default_scope :conditions => {:deleted => nil}
-  
+  has_many :likes 
+  has_many :comments
+  belongs_to :user
+  has_many :authentications
+
+ #default_scope :conditions => {:deleted => nil}
+ 
+  scope :public, lambda {
+    joins(:user).
+    where("users.twitter_screen_name IS NOT NULL")
+  }
+
+ 
+  scope :recent, public.limit(9).order("created_at desc")
+  #scope :popular, lambda {where("view_count > -1"). order("id desc"). limit(100)}
+  scope :popular, public.where('view_count > 1').order("created_at desc").limit(100)
 
   attr_accessor :photo
   
@@ -70,7 +81,11 @@ class Photo < ActiveRecord::Base
   
   # We generate a long uuid to be used as part of the secret url for the photo on S3
   def set_uuid
-    self.uuid = rand(2**128).to_s(16)
+    code = rand(1000 * 1000 * 10).to_s(36)
+    while Photo.find_by_code(code) 
+      code = rand(1000 * 1000 * 10).to_s(36)
+    end  
+    self.uuid = code
     true
   end
   
@@ -93,7 +108,7 @@ class Photo < ActiveRecord::Base
       raise "Image Resizing Failed" if !exit_status
       #TODO move the establish connection somewhere better, perhaps an initilizer
       AWS::S3::Base.establish_connection!(:access_key_id => 'AKIAIIZEL3OLHCBIZBBQ', :secret_access_key => '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')
-      AWS::S3::S3Object.store("/photos/#{self.uuid}/#{style}.jpg", open(photo_temp_path(style)), 'com.clixtr.picbounce', {:access => :public_read})
+      #AWS::S3::S3Object.store("/photos/#{self.uuid}/#{style}.jpg", open(photo_temp_path(style)), 'com.clixtr.picbounce', {:access => :public_read})
     end
   end    
   
@@ -382,7 +397,7 @@ end
   end
   
   def self.find_popular 
-    Photo.find_by_sql("Select * from (Select * From Photos WHERE twitter_screen_name is NOT NULL  AND view_count > 1 ORDER BY id DESC LIMIT 100) as FOO order by random() limit 25;")
+    Photo.popular.sort_by {rand}
   end
 
   def twitter_avatar_url

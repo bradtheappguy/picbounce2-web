@@ -26,5 +26,14 @@ class ViewLogTest < ActiveSupport::TestCase
     assert p.filter_version
   end
 
+  test "recent photos exist" do
+    assert Photo.recent
+  end
+  
+  test "recent photos are limited to 9" do
+    puts "OUTPUT:::: #{Photo.count}"
+    puts "OUTPUT:::: #{Photo.recent.length}"
+    assert Photo.recent.length == 9
+  end
 
 end

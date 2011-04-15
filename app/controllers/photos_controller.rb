@@ -3,6 +3,8 @@
 class PhotosController < ApplicationController
   
   before_filter :authorize, :only => :edit
+  before_filter :current_user
+
   layout :choose_layout
   
   
@@ -25,17 +27,10 @@ class PhotosController < ApplicationController
   
   
   def create
-    #We create a code for the shortned url, and double check that it has not allready been issued
-    code = rand(1000 * 1000 * 10).to_s(36)
-    while Photo.find_by_code(code) 
-      code = rand(1000 * 1000 * 10).to_s(36)
-    end  
-    
     @photo = Photo.create({:photo => params[:photo], 
-                          :code => code, 
-                          :twitter_oauth_token =>  params[:twitter_oauth_token],
-                          :twitter_oauth_secret => params[:twitter_oauth_secret],
-                          :facebook_access_token => (params[:facebook_access_token]?(params[:facebook_access_token].split('&')[0]):nil),  #this split is there to fix a big in iPhone Client version 1.2
+                          #:twitter_oauth_token =>  params[:twitter_oauth_token],
+                          #:twitter_oauth_secret => params[:twitter_oauth_secret],
+                          #:facebook_access_token => (params[:facebook_access_token]?(params[:facebook_access_token].split('&')[0]):nil),  #this split is there to fix a big in iPhone Client version 1.2
                           :caption => params[:caption],
                           :user_agent => request.user_agent,
                           :device_type => params[:system_model],
@@ -60,10 +55,7 @@ class PhotosController < ApplicationController
       @photo.facebook_access_token = (params[:facebook_access_token]?(params[:facebook_access_token].split('&')[0]):nil)  #this split is there to fix a big in iPhone Client version 1.2
       
     end
-    
     @photo.save
-    
-    
     render 'json_status',:status => @photo.general_status
   end
   
@@ -82,7 +74,7 @@ class PhotosController < ApplicationController
   
   #TODO timezone support
   def view
-    @photo = Photo.find_by_code(params[:id], :conditions => ["((twitter_screen_name is not null) OR created_at > ?)", Date.parse('Tue, 23 Nov 2010 23:39:10 UTC 00:00')]) 
+    @photo = Photo.find_by_code(params[:id]) 
     if @photo
       #log this view to our view logging table
       #log = ViewLog.new
@@ -91,15 +83,16 @@ class PhotosController < ApplicationController
       #log.ip_address = request.env['HTTP_X_REAL_IP']
       #log.save
       
-      @page_title = "Picbounce | #{@photo.caption} - Uploaded by @#{@photo.twitter_screen_name}" 
+      #@page_title = "Picbounce | #{@photo.caption} - Uploaded by @#{@photo.user.twitter_screen_name}" 
       @photo.view_count = (@photo.view_count || 0) + 1
       @photo.save
-      
-      if @photo.twitter_screen_name
-        @next_photo = Photo.find(:first, :conditions => ['twitter_screen_name = ? and created_at > ?',@photo.twitter_screen_name, @photo.created_at + 1], :limit => 1, :order => 'id')
-        @previous_photo = Photo.find(:last, :conditions => ['twitter_screen_name = ? and created_at < ?',@photo.twitter_screen_name, @photo.created_at - 1], :order => 'id')
+     
+      screen_name = @photo.user.twitter_screen_name if @photo.user
+      if screen_name
+        #@next_photo = 
+        #@previous_photo = 
       end
-      @twitter_screen_name = @photo.twitter_screen_name || ""
+      @twitter_screen_name = @photo.user.twitter_screen_name || "" if @photo.user
       local_timestamp = @photo.created_at.in_time_zone("Pacific Time (US & Canada)")
       @time = local_timestamp.strftime("%I:%M %p")
       @timezone = "(PST)"
@@ -117,7 +110,7 @@ class PhotosController < ApplicationController
   
   def index
     @hide_download_button = true
-    @recent_photos = Photo.find(:all, :limit => 9, :order => 'id DESC', :conditions => ["block IS NULL AND twitter_screen_name is not null"])
+    @recent_photos = Photo.recent
     if mobile_user_agent?
       render :template => 'photos/index-mobile.html.erb', :layout => false
     else

@@ -1,7 +1,24 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  name: MyString
+john:
+  name: 'George'
+  created_at: '2010-01-01'
+  updated_at: '2010-01-01'
+  twitter_screen_name: 'curiousgeorge'
+  twitter_oauth_token: '1'
+  twitter_oauth_secret: '1'
+  twitter_avatar_url: 'http://nullnull'
+  facebook_access_token: '1'
+  facebook_user_id: '1'
 
-two:
-  name: MyString
+george:
+  name: 'John Doe'
+  created_at: '2010-01-01'
+  updated_at: '2010-01-01'
+  twitter_screen_name: 'johndoe'
+  twitter_oauth_token: '1'
+  twitter_oauth_secret: '1'
+  twitter_avatar_url: 'http://nullnull'
+  facebook_access_token: '1'
+  facebook_user_id: '1'
+

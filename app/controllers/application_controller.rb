@@ -62,6 +62,15 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  #def current_user
+  #  current_user = User.find_by_twitter_oauth_token(params[:twitter_oauth_token]) if params[:twitter_oauth_token] || User.new
+  #  current_user.update_attributes({ 
+  #    :twitter_oauth_token =>  params[:twitter_oauth_token],
+  #    :twitter_oauth_secret => params[:twitter_oauth_secret],
+  #    :facebook_access_token => params[:facebook_access_token],
+  #  }) if current_user
+  #end
+
   def authorize
     unless admin?
     flash[:message] = 'Unautorized Access Attempt'

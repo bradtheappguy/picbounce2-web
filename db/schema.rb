@@ -10,7 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110329231811) do
+ActiveRecord::Schema.define(:version => 20110414220110) do
+
+  create_table "authentications", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", :force => true do |t|
     t.string   "text"
@@ -85,15 +93,12 @@ ActiveRecord::Schema.define(:version => 20110329231811) do
     t.datetime "updated_at"
   end
 
-  create_table "photos", :force => true do |t|
+  create_table "photos", :id => false, :force => true do |t|
+    t.integer  "id",                        :null => false
     t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "twitter_oauth_token"
-    t.string   "twitter_oauth_secret"
     t.string   "caption"
-    t.string   "facebook_access_token"
-    t.string   "twitter_screen_name"
     t.integer  "view_count"
     t.string   "user_agent"
     t.string   "uuid"
@@ -106,7 +111,6 @@ ActiveRecord::Schema.define(:version => 20110329231811) do
     t.string   "os_version"
     t.string   "device_id"
     t.string   "device_language"
-    t.string   "facebook_user_id"
     t.string   "ip_address"
     t.integer  "deleted"
     t.string   "twitter_post_id"
@@ -114,14 +118,11 @@ ActiveRecord::Schema.define(:version => 20110329231811) do
     t.text     "twitter_post_status_code"
     t.string   "filter_name"
     t.string   "filter_version"
-    t.string   "twitter_avatar_url"
     t.integer  "user_id"
     t.string   "migrated"
   end
 
   add_index "photos", ["code"], :name => "index_photos_on_code"
-  add_index "photos", ["facebook_user_id"], :name => "idx2"
-  add_index "photos", ["twitter_screen_name"], :name => "idx6"
 
   create_table "temp_latest_facebook_data", :id => false, :force => true do |t|
     t.string "facebook_user_id"
@@ -149,6 +150,15 @@ ActiveRecord::Schema.define(:version => 20110329231811) do
     t.string   "twitter_avatar_url"
     t.string   "facebook_access_token"
     t.string   "facebook_user_id"
+    t.string   "email",                                :default => "", :null => false
+    t.string   "encrypted_password",    :limit => 128, :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                        :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
 
   create_table "view_logs", :force => true do |t|

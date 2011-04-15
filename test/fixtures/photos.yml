@@ -1,335 +1,145 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 photo_with_fb_and_twitter:  
-    id : "54466"
-    code            :   "7bwv"
+    user: george
+    code            :   "zzz"
     created_at      :   "2010-10-09 22:03:32.117428+0000"
     updated_at      :   "2010-10-13 02:33:00"
-    twitter_oauth_token :   "15066929-8W2kPXNyh96seAY1J985edi8VKQC4QnEbigAvUU0W"
-    twitter_oauth_secret :  "EniGVu9PDgLCL7an6ieU5GE7fUViLMuWID4ayJlwLY"
-    caption :               "Blake in his bday suit"
-    facebook_access_token : "125208417509976|2.fFI6MXKmj0KlVAaDgho6Gg__.3600.1286326800-100000038722716|BVfX2LyDCti2nwT-SQ3R2kIZCEU&expires=4249"
-    twitter_screen_name :   "bradsmithinc"
+    caption :               "I AM NUMBER ONW"
     view_count :            "18"
     user_agent :            "PicBounce 1.2 (iPhone; iPhone OS 4.0.1; en_US)"
     uuid :                  "325d6e856bb0613c7cfa1fbd00770b45"
-    #rotation :              nil
-    #block :                 nil
     facebook_post_status_code :     "400"
     facebook_post_status_body :     '{"error":{"type":"OAuthException","message":"Invalid access token signature."}}'
-    #facebook_photo_id :     nil         
-    #app_version :     nil
-    #device_type :     nil
-    #os_version :     nil
-    #device_id :     nil
-    #device_language :     nil
-    facebook_user_id :      "100000038722716"
-    #ip_address :     nil
-    #deleted :     nil
-    
     
 photo_with_fb:  
-    id : "54467"
+    user: john
     code            :   "7bwx"
     created_at      :   "2010-10-09 22:03:33.117428+0000"
     updated_at      :   "2010-10-13 02:33:00"
-    #twitter_oauth_token :   
-    #twitter_oauth_secret :  
     caption :               "Blake in his bday suit"
-    facebook_access_token : "125208417509976|2.fFI6MXKmj0KlVAaDgho6Gg__.3600.1286326800-100000038722716|BVfX2LyDCti2nwT-SQ3R2kIZCEU&expires=4249"
-    #twitter_screen_name :   
     view_count :            "18"
     user_agent :            "PicBounce 1.2 (iPhone; iPhone OS 4.0.1; en_US)"
     uuid :                  "325d6e856bb0613c7cfa1fbd00770b45"
-    #rotation :              nil
-    #block :                 nil
     facebook_post_status_code :     "400"
     facebook_post_status_body :     '{"error":{"type":"OAuthException","message":"Invalid access token signature."}}'
-    #facebook_photo_id :     nil         
-    #app_version :     nil
-    #device_type :     nil
-    #os_version :     nil
-    #device_id :     nil
-    #device_language :     nil
-    facebook_user_id :      "100000038722716"
-    #ip_address :     nil
-    #deleted :     nil
     
-photo_with_twitter:  
-    id : "54468"
+photo_with_twitter:
+    user: george
     code            :   "7bwy"
     created_at      :   "2010-10-09 22:03:34.117428+0000"
     updated_at      :   "2010-10-13 02:33:00"
-    twitter_oauth_token :   "15066929-8W2kPXNyh96seAY1J985edi8VKQC4QnEbigAvUU0W"
-    twitter_oauth_secret :  "EniGVu9PDgLCL7an6ieU5GE7fUViLMuWID4ayJlwLY"
     caption :               "Blake in his bday suit"
-    #facebook_access_token : 
-    twitter_screen_name :   "bradsmithinc"
     view_count :            "18"
     user_agent :            "PicBounce 1.2 (iPhone; iPhone OS 4.0.1; en_US)"
     uuid :                  "325d6e856bb0613c7cfa1fbd00770b45"
-    #rotation :              nil
-    #block :                 nil
-    #facebook_post_status_code :     
-    #facebook_post_status_body :     
-    #facebook_photo_id :     nil         
-    #app_version :     nil
-    #device_type :     nil
-    #os_version :     nil
-    #device_id :     nil
-    #device_language :     nil
-    facebook_user_id :      "100000038722716"
-    #ip_address :     nil
-    #deleted :     nil
     
-photo_with_fb_and_twitter_blocked:  
-    id : "54469"
+photo_with_fb_and_twitter_blocked:
+    user: john
     code            :   "7bwz"
     created_at      :   "2010-10-09 22:03:35.117428+0000"
     updated_at      :   "2010-10-13 02:33:00"
-    twitter_oauth_token :   "15066929-8W2kPXNyh96seAY1J985edi8VKQC4QnEbigAvUU0W"
-    twitter_oauth_secret :  "EniGVu9PDgLCL7an6ieU5GE7fUViLMuWID4ayJlwLY"
     caption :               "Blake in his bday suit"
-    facebook_access_token : "125208417509976|2.fFI6MXKmj0KlVAaDgho6Gg__.3600.1286326800-100000038722716|BVfX2LyDCti2nwT-SQ3R2kIZCEU&expires=4249"
-    twitter_screen_name :   "bradsmithinc"
     view_count :            "18"
     user_agent :            "PicBounce 1.2 (iPhone; iPhone OS 4.0.1; en_US)"
     uuid :                  "325d6e856bb0613c7cfa1fbd00770b45"
-    #rotation :              nil
     block :                 "t"
     facebook_post_status_code :     "400"
     facebook_post_status_body :     '{"error":{"type":"OAuthException","message":"Invalid access token signature."}}'
-    #facebook_photo_id :     nil         
-    #app_version :     nil
-    #device_type :     nil
-    #os_version :     nil
-    #device_id :     nil
-    #device_language :     nil
-    facebook_user_id :      "100000038722716"
-    #ip_address :     nil
-    #deleted :     nil
     
 photo_with_fb_and_twitter_rotated:  
-    id : "54470"
+    user: john
     code            :   "7bwa"
     created_at      :   "2010-10-09 22:03:36.117428+0000"
     updated_at      :   "2010-10-13 02:33:00"
-    twitter_oauth_token :   "15066929-8W2kPXNyh96seAY1J985edi8VKQC4QnEbigAvUU0W"
-    twitter_oauth_secret :  "EniGVu9PDgLCL7an6ieU5GE7fUViLMuWID4ayJlwLY"
     caption :               "Blake in his bday suit"
-    facebook_access_token : "125208417509976|2.fFI6MXKmj0KlVAaDgho6Gg__.3600.1286326800-100000038722716|BVfX2LyDCti2nwT-SQ3R2kIZCEU&expires=4249"
-    twitter_screen_name :   "bradsmithinc"
     view_count :            "18"
     user_agent :            "PicBounce 1.2 (iPhone; iPhone OS 4.0.1; en_US)"
     uuid :                  "325d6e856bb0613c7cfa1fbd00770b45"
-    # rotation :              "t"
-    #block :                 nil
     facebook_post_status_code :     "400"
     facebook_post_status_body :     '{"error":{"type":"OAuthException","message":"Invalid access token signature."}}'
-    #facebook_photo_id :     nil         
-    #app_version :     nil
-    #device_type :     nil
-    #os_version :     nil
-    #device_id :     nil
-    #device_language :     nil
-    facebook_user_id :      "100000038722716"
-    #ip_address :     nil
-    #deleted :     nil
     
 photo_with_fb_and_twitter_no_caption:  
-    id : "54471"
+    user: john
     code            :   "7bwb"
     created_at      :   "2010-10-09 22:03:37.117428+0000"
     updated_at      :   "2010-10-13 02:33:00"
-    twitter_oauth_token :   "15066929-8W2kPXNyh96seAY1J985edi8VKQC4QnEbigAvUU0W"
-    twitter_oauth_secret :  "EniGVu9PDgLCL7an6ieU5GE7fUViLMuWID4ayJlwLY"
-    #caption :               "Blake in his bday suit"
-    facebook_access_token : "125208417509976|2.fFI6MXKmj0KlVAaDgho6Gg__.3600.1286326800-100000038722716|BVfX2LyDCti2nwT-SQ3R2kIZCEU&expires=4249"
-    twitter_screen_name :   "bradsmithinc"
     view_count :            "18"
     user_agent :            "PicBounce 1.2 (iPhone; iPhone OS 4.0.1; en_US)"
     uuid :                  "325d6e856bb0613c7cfa1fbd00770b45"
-    #rotation :              nil
-    #block :                 nil
     facebook_post_status_code :     "400"
     facebook_post_status_body :     '{"error":{"type":"OAuthException","message":"Invalid access token signature."}}'
-    #facebook_photo_id :     nil         
-    #app_version :     nil
-    #device_type :     nil
-    #os_version :     nil
-    #device_id :     nil
-    #device_language :     nil
-    facebook_user_id :      "100000038722716"
-    #ip_address :     nil
-    #deleted :     nil
     
-photo_with_fb_and_twitter7:  
-    id : "54472"
+photo_with_fb_and_twitter7:
+    user: john
     code            :   "7bwc"
     created_at      :   "2010-10-09 22:03:37.217428+0000"
     updated_at      :   "2010-10-13 02:33:00"
-    twitter_oauth_token :   "15066929-8W2kPXNyh96seAY1J985edi8VKQC4QnEbigAvUU0W"
-    twitter_oauth_secret :  "EniGVu9PDgLCL7an6ieU5GE7fUViLMuWID4ayJlwLY"
     caption :               "Blake in his bday suit"
-    facebook_access_token : "125208417509976|2.fFI6MXKmj0KlVAaDgho6Gg__.3600.1286326800-100000038722716|BVfX2LyDCti2nwT-SQ3R2kIZCEU&expires=4249"
-    twitter_screen_name :   "bradsmithinc"
     view_count :            "18"
     user_agent :            "PicBounce 1.2 (iPhone; iPhone OS 4.0.1; en_US)"
     uuid :                  "325d6e856bb0613c7cfa1fbd00770b45"
-    #rotation :              nil
-    #block :                 nil
     facebook_post_status_code :     "400"
     facebook_post_status_body :     '{"error":{"type":"OAuthException","message":"Invalid access token signature."}}'
-    #facebook_photo_id :     nil         
-    #app_version :     nil
-    #device_type :     nil
-    #os_version :     nil
-    #device_id :     nil
-    #device_language :     nil
-    facebook_user_id :      "100000038722716"
-    #ip_address :     nil
-    #deleted :     nil
     
-photo_with_fb_and_twitter_no_error:  
-    id : "54473"
+photo_with_fb_and_twitter_no_error:
+    user: john
     code            :   "7bwd"
     created_at      :   "2010-10-09 22:03:38.117428+0000"
     updated_at      :   "2010-10-13 02:33:00"
-    twitter_oauth_token :   "15066929-8W2kPXNyh96seAY1J985edi8VKQC4QnEbigAvUU0W"
-    twitter_oauth_secret :  "EniGVu9PDgLCL7an6ieU5GE7fUViLMuWID4ayJlwLY"
     caption :               "Blake in his bday suit"
-    facebook_access_token : "125208417509976|2.fFI6MXKmj0KlVAaDgho6Gg__.3600.1286326800-100000038722716|BVfX2LyDCti2nwT-SQ3R2kIZCEU&expires=4249"
-    twitter_screen_name :   "bradsmithinc"
     view_count :            "18"
     user_agent :            "PicBounce 1.2 (iPhone; iPhone OS 4.0.1; en_US)"
     uuid :                  "325d6e856bb0613c7cfa1fbd00770b45"
-    #rotation :              nil
-    #block :                 nil
     facebook_post_status_code :     "200"
     facebook_post_status_body :     '{"id":1513786079316}'
-    #facebook_photo_id :     nil         
-    #app_version :     nil
-    #device_type :     nil
-    #os_version :     nil
-    #device_id :     nil
-    #device_language :     nil
-    facebook_user_id :      "100000038722716"
-    #ip_address :     nil
-    #deleted :     nil
     
 photo_with_fb_and_twitter9:  
-    id : "54474"
+    user: george
     code            :   "7bwe"
     created_at      :   "2010-10-09 22:03:39.117428+0000"
     updated_at      :   "2010-10-13 02:33:00"
-    twitter_oauth_token :   "15066929-8W2kPXNyh96seAY1J985edi8VKQC4QnEbigAvUU0W"
-    twitter_oauth_secret :  "EniGVu9PDgLCL7an6ieU5GE7fUViLMuWID4ayJlwLY"
     caption :               "Blake in his bday suit"
-    facebook_access_token : "125208417509976|2.fFI6MXKmj0KlVAaDgho6Gg__.3600.1286326800-100000038722716|BVfX2LyDCti2nwT-SQ3R2kIZCEU&expires=4249"
-    twitter_screen_name :   "bradsmithinc"
     view_count :            "18"
     user_agent :            "PicBounce 1.2 (iPhone; iPhone OS 4.0.1; en_US)"
     uuid :                  "325d6e856bb0613c7cfa1fbd00770b45"
-    #rotation :              nil
-    #block :                 nil
     facebook_post_status_code :     "400"
     facebook_post_status_body :     '{"error":{"type":"OAuthException","message":"Invalid access token signature."}}'
-    #facebook_photo_id :     nil         
-    #app_version :     nil
-    #device_type :     nil
-    #os_version :     nil
-    #device_id :     nil
-    #device_language :     nil
-    facebook_user_id :      "100000038722716"
-    #ip_address :     nil
-    #deleted :     nil
     
 photo_with_fb_and_twitter10:  
-    id : "54475"
+    user: george
     code            :   "7bwf"
     created_at      :   "2010-10-09 22:03:40.117428+0000"
     updated_at      :   "2010-10-13 02:33:00"
-    twitter_oauth_token :   "15066929-8W2kPXNyh96seAY1J985edi8VKQC4QnEbigAvUU0W"
-    twitter_oauth_secret :  "EniGVu9PDgLCL7an6ieU5GE7fUViLMuWID4ayJlwLY"
     caption :               "Blake in his bday suit"
-    facebook_access_token : "125208417509976|2.fFI6MXKmj0KlVAaDgho6Gg__.3600.1286326800-100000038722716|BVfX2LyDCti2nwT-SQ3R2kIZCEU&expires=4249"
-    twitter_screen_name :   "bradsmithinc"
     view_count :            "18"
     user_agent :            "PicBounce 1.2 (iPhone; iPhone OS 4.0.1; en_US)"
     uuid :                  "325d6e856bb0613c7cfa1fbd00770b45"
-    #rotation :              nil
-    #block :                 nil
     facebook_post_status_code :     "400"
     facebook_post_status_body :     '{"error":{"type":"OAuthException","message":"Invalid access token signature."}}'
-    #facebook_photo_id :     nil         
-    #app_version :     nil
-    #device_type :     nil
-    #os_version :     nil
-    #device_id :     nil
-    #device_language :     nil
-    facebook_user_id :      "100000038722716"
-    #ip_address :     nil
-    #deleted :     nil
+    deleted :     nil
     
-photo_with_fb_and_twitter11:  
-    id : "54476"
+photo_with_fb_and_twitter11:
+    user: john
     code            :   "7bwg"
     created_at      :   "2010-10-09 22:03:41.117428+0000"
     updated_at      :   "2010-10-13 02:33:00"
-    twitter_oauth_token :   "15066929-8W2kPXNyh96seAY1J985edi8VKQC4QnEbigAvUU0W"
-    twitter_oauth_secret :  "EniGVu9PDgLCL7an6ieU5GE7fUViLMuWID4ayJlwLY"
     caption :               "Blake in his bday suit"
-    facebook_access_token : "125208417509976|2.fFI6MXKmj0KlVAaDgho6Gg__.3600.1286326800-100000038722716|BVfX2LyDCti2nwT-SQ3R2kIZCEU&expires=4249"
-    twitter_screen_name :   "bradsmithinc"
     view_count :            "18"
     user_agent :            "PicBounce 1.2 (iPhone; iPhone OS 4.0.1; en_US)"
     uuid :                  "325d6e856bb0613c7cfa1fbd00770b45"
-    #rotation :              nil
-    #block :                 nil
     facebook_post_status_code :     "400"
     facebook_post_status_body :     '{"error":{"type":"OAuthException","message":"Invalid access token signature."}}'
-    #facebook_photo_id :     nil         
-    #app_version :     nil
-    #device_type :     nil
-    #os_version :     nil
-    #device_id :     nil
-    #device_language :     nil
-    facebook_user_id :      "100000038722716"
-    #ip_address :     nil
-    #deleted :     nil
     
-
-photo_with_fb_blocked:  
-    id : "54477"
+photo_with_fb_blocked:
+    user: john
     code            :   "7bwh"
     created_at      :   "2010-10-09 22:03:35.117428+0000"
     updated_at      :   "2010-10-13 02:33:00"
-    #twitter_oauth_token :   
-    #twitter_oauth_secret :  
     caption :               "Blake in his bday suit"
-    facebook_access_token : "125208417509976|2.fFI6MXKmj0KlVAaDgho6Gg__.3600.1286326800-100000038722716|BVfX2LyDCti2nwT-SQ3R2kIZCEU&expires=4249"
-    #twitter_screen_name :   "bradsmithinc"
     view_count :            "18"
     user_agent :            "PicBounce 1.2 (iPhone; iPhone OS 4.0.1; en_US)"
     uuid :                  "325d6e856bb0613c7cfa1fbd00770b45"
-    #rotation :              nil
     block :                 "t"
     facebook_post_status_code :     "400"
     facebook_post_status_body :     '{"error":{"type":"OAuthException","message":"Invalid access token signature."}}'
-    #facebook_photo_id :     nil         
-    #app_version :     nil
-    #device_type :     nil
-    #os_version :     nil
-    #device_id :     nil
-    #device_language :     nil
-    facebook_user_id :      "100000038722716"
-    #ip_address :     nil
-    #deleted :     nil
-    
-
-
-
-
-
-
-

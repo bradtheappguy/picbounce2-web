@@ -1,5 +1,8 @@
 Trunk::Application.routes.draw do
 # The priority is based upon order of creation:
+  devise_for :users
+  resources :authentications
+
   match 'login' => 'sessions#new', :via => :get
   match 'login' => 'sessions#create', :via => :post
   match 'logout' => 'sessions#destory', :via => :get
@@ -20,7 +23,10 @@ Trunk::Application.routes.draw do
   match 'photos' => 'photos#destory', :via => :delete
   match 'tweetie' => 'photos#tweetie', :via => :post
   
-  
+
+#AUTH
+  match '/auth/:provider/callback' => 'authentications#create'
+
   match 'filters/test2' => 'filters#test2', :via => :get
 
 #API
@@ -31,7 +37,9 @@ Trunk::Application.routes.draw do
   match 'users/:user_id/feed' => 'api#feed', :via => :get
   match 'users/:user_id/profile' => 'api#profile', :via => :get
   match 'users/:user_id/followers' => 'api#followers', :via => :get
+ 
   match 'users/:user_id/following' => 'api#following', :via => :get
+  match 'users/:user_id/following' => 'api#destroy_following', :via => :delete
 
   match 'users/:user_id/followers' => 'api#create_following', :via => :post
 
