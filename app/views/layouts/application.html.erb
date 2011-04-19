@@ -94,11 +94,11 @@ document.getElementById('fb-root').appendChild(e);
 
 
 <!-- Home Page Animation -->
-<script type="text/javascript">
+<script type="text/javascript"> 
 var currentSlide = 1;
-
+ 
 function showSlide(index) {
-    if (index > 6)
+    if (index > 5)
 	  index = 1;	
 	if (index == currentSlide)
 	  return;
@@ -111,22 +111,22 @@ function showSlide(index) {
     var $next =  $('.slide-container img:nth-child('+index+')');
  
     $active.addClass('last-active');
-
+ 
     $next.css({opacity: 0.0})
         .addClass('active')
         .animate({opacity: 1.0}, 500, function() {
             $active.removeClass('active last-active');
         });
 }
-
-
+ 
+ 
 $(document).ready(function() {		
 		$(".feature_list li:nth-child(1)").mouseover(function() { showSlide(1); });
 		$(".feature_list li:nth-child(1)").addClass('active');
 		$(".feature_list li:nth-child(2)").mouseover(function() { showSlide(2); });
 		$(".feature_list li:nth-child(3)").mouseover(function() { showSlide(3); });
 		$(".feature_list li:nth-child(4)").mouseover(function() { showSlide(4); });
-		$(".feature_list li:nth-child(5)").mouseover(function() { showSlide(5); });
+		/* $(".feature_list li:nth-child(5)").mouseover(function() { showSlide(5); }); */
 		$(".slide-container img").click(function() { showSlide(currentSlide+1); });
 		showSlide(1);
  });
