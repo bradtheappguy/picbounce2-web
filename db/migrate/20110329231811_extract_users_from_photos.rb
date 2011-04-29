@@ -10,10 +10,10 @@ DROP TABLE IF EXISTS temp_latest_facebook_data;
 
 CREATE TABLE temp_users (
   "id" int4 DEFAULT NULL,
-    "name" varchar(255) DEFAULT NULL,
-      "created_at" timestamp(6) DEFAULT NULL,
-        "updated_at" timestamp(6) DEFAULT NULL,
-          "twitter_screen_name" varchar(255) DEFAULT NULL,
+   "name" varchar(255) DEFAULT NULL,
+   "created_at" timestamp(6) DEFAULT NULL,
+   "updated_at" timestamp(6) DEFAULT NULL,
+   "twitter_screen_name" varchar(255) DEFAULT NULL,
             "twitter_oauth_token" varchar(255) DEFAULT NULL,
               "twitter_oauth_secret" varchar(255) DEFAULT NULL,
                 "twitter_avatar_url" varchar(255) DEFAULT NULL,
