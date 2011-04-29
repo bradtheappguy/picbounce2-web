@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.4'
 gem 'pg'
-gem 'omniauth', '0.2.1'
+gem 'omniauth', '0.2.2'
 gem 'httpclient'
 gem 'aws-s3'
 gem 'twitter'

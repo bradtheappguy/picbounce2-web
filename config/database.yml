@@ -11,7 +11,7 @@ development:
   encoding: unicode
   database: picbounce_development
   pool: 5
-  username: postgres
+  username: 
   password:
 
 test:

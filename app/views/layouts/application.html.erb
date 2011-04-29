@@ -139,17 +139,16 @@ $(document).ready(function() {
       <div class="header">
         <a href="/" ><img src="images/logo.png" alt="Picbounce" name="Picbounce" id="logo" /></a>
         <a id="btn_download" href="/download?header"></a>
+      </div>
+    </div>
+    <div id="user_nav">
+      <% if user_signed_in? %>
+        Signed in as <%= current_user.email %>. Not you? <%= link_to "Sign out", destroy_user_session_path %>
+      <% else %>
+        <%= link_to "Sign In", authentications_path %>
+    <% end %>
 
-<div id="user_nav">
-        <% if user_signed_in? %>
-                  Signed in as <%= current_user.email %>.
-                            Not you? <%= link_to "Sign out", destroy_user_session_path %>
-                                    <% else %>
-                                              <%= link_to "Sign In", authentications_path %>
-                                                      <% end %>
 
-
-    </div></div>
     <%= yield %>
     <div class="footer">
       <ul class="nav">

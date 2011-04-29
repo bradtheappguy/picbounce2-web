@@ -15,6 +15,7 @@ class AuthenticationsController < ApplicationController
       redirect_to authentications_url
     else
       user = User.new
+      user.email = "unknown"
       user.apply_omniauth(omniauth)
       if user.save
         flash[:notice] = "Signed in successfully."
