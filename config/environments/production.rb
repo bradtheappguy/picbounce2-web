@@ -47,3 +47,10 @@ Trunk::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 end
+
+FACEBOOK_APP_ID          = "161007653957731"
+FACEBOOK_APP_SECRET      = "7a6210cb93220c5509f6ff8f8d872314"
+TWITTER_SECRET_KEY       = "L0LJGa5g4TWNUJfK9jmACNt3i2P2ykUw0TVbysQinIg"
+TWITTER_CONSUMER_KEY     = "D4sOenvRrSaI1GIGTTEeSQ"
+
+
