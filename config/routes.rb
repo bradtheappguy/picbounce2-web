@@ -59,7 +59,7 @@ Trunk::Application.routes.draw do
   match 'analytics/flurry' => 'analytics#flurry', :via => :get
   match 'analytics/inhouse' => 'analytics#inhouse', :via => :get
   
-  match '/profiles/:id' => 'profiles', :action => 'show', :as => 'profile', :via => :get
+  match 'profiles/:id' => 'profiles', :action => 'show', :as => 'profile', :via => :get
   
   match '/:id' => 'photos#view', :via => :get
   match '/:id' => 'photos#edit', :via => :post
