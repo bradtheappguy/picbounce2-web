@@ -1,28 +1,20 @@
-<div class="content_bg" id="home_bg">
- <div class="content">
-  <div class="left">
-   <p>
-    <h1><%= flash[:message] %></h1> 
-   </p>
-   <p>
-    <% form_tag login_path do %>
-      Username: <%= text_field_tag :username %>
-      Password: <%= password_field_tag :password %>
-      <input type="submit">
-    <% end %>
-   </p>
-   <br><br><br><br>
-   <h2>Service Status</h2>
-   <table width="60%" border="1">
-   <th>
-   <td>Current Status</td><td>Details</td>
-   </th>
-   <% if @service_status %>
-  <tr border="2"><td>OK</td><td>A photo has been uploaded recently</td></tr>
-   <% else %>
-   <tr border="2"><td>FAILURE</td><td>No photos have been uploaded recently</td></tr>
-   <% end %>
-   </table>
-  </div>
- </div>
-</div>
+<h2>Sign in</h2>
+
+<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+
+    <%= f.input :email, :label => "Email*" %>
+    <%= f.input :password, :label => "Password*" %>
+
+    <% if devise_mapping.rememberable? -%>
+      <%= f.input :remember_me, :label => "Always keep me logged in", :as => :boolean %>
+    <% end -%>
+
+    <p><%= f.submit "Sign in" %></p>
+
+<% end %>
+
+<h2>Sign in with</h2>
+<%= render :partial => "devise/shared/social" %>
+
+<%= render :partial => "devise/shared/forgot_password" %>
+

@@ -2,6 +2,20 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  include RedirectBack
+  
+  helper_method :resource_class
+  protect_from_forgery
+
+  def current_user
+    super || NilUser.new
+  end
+
+  def user_signed_in?
+    !current_user.nil?
+  end
+
+
   before_filter :configure_split_group
   
   helper :all # include all helpers, all the time

@@ -1,6 +1,9 @@
 Trunk::Application.routes.draw do
-# The priority is based upon order of creation:
-  devise_for :users
+# The priority is based upon order of creation
+  resources :sharings
+  match 'users/auth/picbounce' => 'users/picbounce_callback#picbounce_callback', :via => :get
+  devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks", :registrations => 'registrations'}
+ 
   resources :authentications
 
   match 'login' => 'sessions#new', :via => :get
@@ -56,10 +59,12 @@ Trunk::Application.routes.draw do
   match 'analytics/flurry' => 'analytics#flurry', :via => :get
   match 'analytics/inhouse' => 'analytics#inhouse', :via => :get
   
+  match '/profiles/:id' => 'profiles', :action => 'show', :as => 'profile', :via => :get
+  
   match '/:id' => 'photos#view', :via => :get
   match '/:id' => 'photos#edit', :via => :post
   match '/:id' => 'photos#destory', :via => :delete
-  
+
 
 # first created -> highest priority.
 

@@ -10,15 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110414220110) do
-
-  create_table "authentications", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "provider"
-    t.string   "uid"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(:version => 20110504013959) do
 
   create_table "comments", :force => true do |t|
     t.string   "text"
@@ -124,6 +116,13 @@ ActiveRecord::Schema.define(:version => 20110414220110) do
 
   add_index "photos", ["code"], :name => "index_photos_on_code"
 
+  create_table "sharings", :force => true do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "temp_latest_facebook_data", :id => false, :force => true do |t|
     t.string "facebook_user_id"
     t.string "facebook_access_token"
@@ -139,6 +138,17 @@ ActiveRecord::Schema.define(:version => 20110414220110) do
   end
 
   add_index "temp_latest_twitter_data", ["twitter_screen_name"], :name => "idx7"
+
+  create_table "user_tokens", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "token"
+    t.string   "secret"
+    t.string   "nickname"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"
@@ -159,6 +169,8 @@ ActiveRecord::Schema.define(:version => 20110414220110) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "slug"
+    t.string   "authentication_token"
   end
 
   create_table "view_logs", :force => true do |t|

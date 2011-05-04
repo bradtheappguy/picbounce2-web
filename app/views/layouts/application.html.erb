@@ -137,16 +137,26 @@ $(document).ready(function() {
   <div class="container">
     <div class="header_bg">
       <div class="header">
-        <a href="/" ><img src="images/logo.png" alt="Picbounce" name="Picbounce" id="logo" /></a>
+        <a href="/" ><img src="/images/logo.png" alt="Picbounce" name="Picbounce" id="logo" /></a>
         <a id="btn_download" href="/download?header"></a>
       </div>
     </div>
     <div id="user_nav">
-      <% if user_signed_in? %>
-        Signed in as <%= current_user.email %>. Not you? <%= link_to "Sign out", destroy_user_session_path %>
-      <% else %>
-        <%= link_to "Sign In", authentications_path %>
-    <% end %>
+        <%= link_to 'Home', '/' %>
+        <% if user_signed_in? %>
+          <%= link_to 'Profile', profile_path(current_user) %>
+          <%= link_to 'Edit Profile', edit_user_registration_path(current_user) %>
+          <%= link_to "Sign out", destroy_user_session_path %>
+        <% else %>
+          <%= link_to "Sign up", new_user_registration_path %>
+          <%= link_to "sign in", new_user_session_path %>
+        <% end %>
+
+    <br><br>
+    <%= raw notice_html %>
+    <%= raw alert_html %>
+    
+    <br><br>
 
 
     <%= yield %>
