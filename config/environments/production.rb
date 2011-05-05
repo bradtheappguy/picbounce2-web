@@ -48,9 +48,9 @@ Trunk::Application.configure do
   config.active_support.deprecation = :notify
 end
 
-FACEBOOK_APP_ID          = "161007653957731"
-FACEBOOK_APP_SECRET      = "7a6210cb93220c5509f6ff8f8d872314"
-TWITTER_SECRET_KEY       = "0rGIdddh2cwS8xn6ZmRpk2IFjBVsYvj2ov1onGVytc"
-TWITTER_CONSUMER_KEY     = "jVH9flMowPp9rb1qrJshYQ"
+FACEBOOK_APP_ID          = "125208417509976"
+FACEBOOK_APP_SECRET      = "253ba61dab1e6261f56f51cd4b6d2b2b"
+TWITTER_SECRET_KEY       = "IVAXfzLx6AbTeTAKyF2NA"
+TWITTER_CONSUMER_KEY     = "fEFil1sw8gupwTSIeZHbNqNBSZH3NOyJWzenH9ajHs"
 
 
