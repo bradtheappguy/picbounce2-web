@@ -26,9 +26,19 @@ Trunk::Application.configure do
   config.active_support.escape_html_entities_in_json = false
 end
 
+
+#Facebook
 FACEBOOK_APP_ID          = "161007653957731"
 FACEBOOK_APP_SECRET      = "7a6210cb93220c5509f6ff8f8d872314"
+
+#Twitter
 TWITTER_SECRET_KEY       = "L0LJGa5g4TWNUJfK9jmACNt3i2P2ykUw0TVbysQinIg"
 TWITTER_CONSUMER_KEY     = "D4sOenvRrSaI1GIGTTEeSQ"
 
+MYSPACE_OAUTH_KEY	= "129a778985934769a01e98c85f0496b1"
+MYSPACE_OATH_SECRET	= "3f0b59f73fc947868f403f5e025fba2d5d1efc14e6c64dac882f39e2688f6219"
+
+#Flixkr
+FLICKR_KEY		= "ffa00b627e93f748069131eb6fc1ca3f"
+FLICKR_SECRET		= "56ba4e8669deee83"
 
