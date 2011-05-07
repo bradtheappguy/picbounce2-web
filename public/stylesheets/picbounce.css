@@ -744,6 +744,7 @@ a.arrows:hover {
 
 #social_icons {
 	text-align:center;
+
 }
 
 #social_icons li {
@@ -808,4 +809,220 @@ div#admin_panel {
 .no_border {
 	border:0 none;
 	visibility:visible;
+}
+
+/*** LOGIN STUFF ***/
+
+#user_nav {
+	text-align: left;
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: bold;
+	background:#999;
+	padding-left:130px;
+	border-top: 2px solid #000;
+	border-bottom: 2px solid #000;
+}
+
+#user_nav a {
+	margin: 15px 15px 0 0;
+	display: inline-block;
+	background: #006D8E;
+	border-radius: 5px;
+	padding: 5px 8px;
+	color: #fff;
+	border: 1px solid #000;
+}
+
+#user_nav a:hover {
+	background: #E47300;
+}
+
+#user_form {
+	width: 600px;
+	margin: 10px auto 120px;
+	font-family: Helvetica, Arial, sans-serif;
+	min-height: 500px;
+	padding: 15px 15px 30px 15px;
+	border: 1px solid #000;
+	background: #eee;
+	border-radius: 15px;
+}
+
+#user_form a {
+	width: 280px;
+	float:right;
+	font-size: 16px;
+	font-weight: bold;
+	display: inline-block;
+	background: #006D8E;
+	border-radius: 5px;
+	padding: 5px 8px;
+	color: #fff;
+	text-align: center;
+}
+
+#user_form a:hover {
+	background: #E47300;
+}
+
+
+#login_form {
+	width: 500px;
+	margin: 0 auto;
+}
+
+#social-icons {
+	width:200px;
+	float: right;
+	display: block;
+	background: #ccc;
+	border-radius: 10px;
+	border: 1px solid #000;
+	padding: 5px;
+	margin: 15px 65px 15px 0;
+}
+
+#social-icons  li {
+	display: inline-block;
+}
+
+#user_form #social-icons a {
+	float:none;
+	clear:none;
+	width: auto;
+	padding: 0;
+	background: none;
+}
+
+
+form#user_new {
+	width: 300px;
+	float:left;
+	border-right: 1px solid;
+	display: block;
+}
+
+form#user_new label {
+	float: left;
+	clear:left;
+	line-height: 15px;
+}
+
+form#user_new input {
+	width: 200px;
+	float: left;
+	clear:both;
+}
+
+form#user_new  input#user_remember_me {
+	float:none;
+	width: auto;
+	margin-left: 15px;
+}
+
+div.input {
+	margin: 10px 0;
+	display:inline-block;
+	width: 100%;
+}
+
+form#user_new p {
+	margin: 20px;
+	padding: 10px 0;
+	display:block;
+}
+
+#user_submit {
+	margin: 20px auto;
+	clear:both;
+	display: block;
+	font-weight: bold;
+	font-size: 16px;
+	text-transform: uppercase;
+	text-align:center;
+	width: 100px;
+	height: 50px;
+	margin: 5px auto 15px 0;
+	display: inline-block;
+	background: #006D8E;
+	border-radius: 5px;
+	padding: 5px 8px;
+	color: #fff;
+}
+
+form#user_new #user_submit:hover {
+	background: #E47300;
+}
+
+#user_photo {
+	margin-bottom: 20px;
+}
+
+#user_form h2 {
+	font-size: 22px;
+	font-weight: bold;
+	width: 100%;
+	text-align: center;
+	display:inline-block;
+	border-bottom: 1px solid;
+	margin: 0 0 15px;
+	padding: 5px 0 10px 0;
+	color: #000;
+}
+
+#user_form h3 {
+	font-size: 18px;
+	font-weight: bold;
+	padding: 0;
+	color: #333;
+}
+
+
+
+/*** PROFILE ***/
+
+#user_edit {
+	margin-bottom: 40px;
+	display:block;
+}
+
+#user_edit h3 {
+	width: 100%;
+	text-align: center;
+	border-top:1px dotted;
+	border-bottom:1px dotted;
+	margin: 15px 0 15px;
+	padding: 10px 0 10px 0;
+	color: #000;
+}
+
+.social_connects {
+	clear:both;
+}
+
+.social_connects ul#social-icons {
+	float: none;
+	width: auto;
+	margin-right: 0;
+}
+
+form#user_edit label {
+	float: left;
+	clear:left;
+	line-height: 15px;
+}
+
+form#user_edit input {
+	width: 200px;
+	float: left;
+	clear:both;
+	margin: 5px 0;
+}
+
+.hint {
+	font-size: 80%;
+	font-weight: normal;
+	clear:both;
+	float:left;
+	color: #006D8E;
 }

@@ -1,4 +1,4 @@
-Us<div>
+Us<div id="social_box">
   <ul id="social-icons">
     <%- unconnected_providers_for(current_user).each do |provider| %>
         <li><%= link_to image_tag("social-icons/#{provider}_32.png", :alt => "Sign in with #{provider.to_s.titleize}"), omniauth_authorize_path("user", provider) %></li>
