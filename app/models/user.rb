@@ -230,5 +230,6 @@ class User < ActiveRecord::Base
     end
     share
   end
+  
 end
 
