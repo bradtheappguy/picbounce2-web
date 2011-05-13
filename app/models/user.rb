@@ -1,31 +1,23 @@
 class User < ActiveRecord::Base
   include Sluggable
-
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-    
-  before_save :ensure_authentication_token
-
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable, :token_authenticatable
-
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  
   acts_as_api
-
+  
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable, :token_authenticatable, :validatable
+  
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :slug
+  
   has_many :photos, :limit => 10, :order => 'created_at desc'
   has_many :all_photos, :class_name => 'Photo'
-
-#Followers
-  #Joins:
   has_many :followings 
   has_many :inverse_followings, :class_name => "Following", :foreign_key => "follower_id"
- 
-
   has_many :followers,  :through => :followings       
   has_many :followeds,  :through => :inverse_followings, :source => :user
+  
+  before_save :ensure_authentication_token
 
-#JSON TEmplates
+  
+  #JSON TEmplates
   api_accessible :base do |template|
    template.add :name
    template.add :twitter_screen_name
@@ -65,22 +57,27 @@ class User < ActiveRecord::Base
     self.all_photos.count
   end
 
-   def followers_count
+  
+  def followers_count
     66
   end
 
+   
   def following_count
     77
   end
 
+  
   def badges_count
     88
   end
 
+  
   def last_location
     "San Francsico"
   end
 
+  
   def photos_after(timestamp)
     Photo.find(:all, :conditions => ["user_id = ? and created_at < ?", self.id, Time.at(timestamp.to_i) ], :order => 'created_at asc', :limit => 10)
   end
@@ -90,17 +87,17 @@ class User < ActiveRecord::Base
   def photo
   end
 
+  
   def photo=(i)
   end
 
+  
   def password_required?
     false
     #(authentications.empty? || !password.blank?) && super
   end
 
-
-
- before_validation :generate_slug, :on => :create
+  before_validation :generate_slug, :on => :create
   
   validates_uniqueness_of :slug
   validates_length_of :slug, :minimum => 1
@@ -116,23 +113,6 @@ class User < ActiveRecord::Base
   end
 
   has_many :sharings
-
- # has_attached_file :photo,
- #                   :styles => {
- #                           :mini => "40x40#",
- #                           :thumb => "80x80#",
- #                           :small => "100x100#",
- #                           :big => "150x150#"
- #                   },
- #                   :default_url => "/images/user_photos/missing_:style.png"
-
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable, :lockable and :timeoutable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :omniauthable, :validatable #:flexible_devise_validatable
-
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :slug
 
   def self.new_with_session(params, session)
     super.tap do |user|
@@ -170,13 +150,13 @@ class User < ActiveRecord::Base
   end
 
 
-#allows for account creation from twitter & fb
-#allows saves w/o password
+  #allows for account creation from twitter & fb
+  #allows saves w/o password
   def password_required?
     (!persisted? && user_tokens.empty?) || password.present? || password_confirmation.present?
   end
 
-#allows for account creation from twitter
+  #allows for account creation from twitter
   def email_required?
     user_tokens.empty?
   end
