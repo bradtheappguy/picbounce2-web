@@ -13,6 +13,15 @@ class User < ActiveRecord::Base
   has_many :inverse_followings, :class_name => "Following", :foreign_key => "follower_id"
   has_many :followers,  :through => :followings       
   has_many :followeds,  :through => :inverse_followings, :source => :user
+  has_many :services do
+    def facebook
+      target.detect{|t| t.provider == 'facebook'}
+    end
+
+    def twitter
+      target.detect{|t| t.provider == 'twitter'}
+    end
+  end
   
   before_save :ensure_authentication_token
 
@@ -102,22 +111,12 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :slug
   validates_length_of :slug, :minimum => 1
 
-  has_many :user_tokens do
-    def facebook
-      target.detect{|t| t.provider == 'facebook'}
-    end
-
-    def twitter
-      target.detect{|t| t.provider == 'twitter'}
-    end
-  end
-
   has_many :sharings
 
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session[:omniauth]
-        user.user_tokens.build(:provider => data['provider'], :uid => data['uid'])
+        user.services.build(:provider => data['provider'], :uid => data['uid'])
       end
     end
   end
@@ -144,7 +143,7 @@ class User < ActiveRecord::Base
     self.name = omniauth['user_info']['name'] if self.name.blank?
     self.email = omniauth['user_info']['email'] if self.email.blank? && omniauth['user_info']['email']
     
-    user_tokens.build(:provider => omniauth['provider'], 
+    services.build(:provider => omniauth['provider'], 
                       :uid => omniauth['uid'], 
                       :omniauth => omniauth)
   end
@@ -153,12 +152,12 @@ class User < ActiveRecord::Base
   #allows for account creation from twitter & fb
   #allows saves w/o password
   def password_required?
-    (!persisted? && user_tokens.empty?) || password.present? || password_confirmation.present?
+    (!persisted? && servicesempty?) || password.present? || password_confirmation.present?
   end
 
   #allows for account creation from twitter
   def email_required?
-    user_tokens.empty?
+    services.empty?
   end
 
   def remember_me
@@ -172,7 +171,7 @@ class User < ActiveRecord::Base
   def fb_post!(message, name=DEFAULT_FB_POST_NAME,
           description="TODO", url=DEFAULT_SHARE_URL)
    
-    options = {'access_token' => user_tokens.facebook.token,
+    options = {'access_token' => services.facebook.token,
                'message' => message,
                'link' => url,
                #'picture' => img,
@@ -184,7 +183,7 @@ class User < ActiveRecord::Base
   end
 
   def connected_to?(provider)
-    user_tokens.detect{|t| t.provider == provider.to_s} != nil
+    services.detect{|t| t.provider == provider.to_s} != nil
   end
 
   def display_name
@@ -197,8 +196,8 @@ class User < ActiveRecord::Base
     client = TwitterOAuth::Client.new(
             :consumer_key => ::TWITTER_CONSUMER_KEY,
             :consumer_secret => ::TWITTER_SECRET_KEY,
-            :token => user_tokens.twitter.token,
-            :secret => user_tokens.twitter.secret
+            :token => services.twitter.token,
+            :secret => services.twitter.secret
     )
   end
 

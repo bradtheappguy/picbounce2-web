@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110507085459) do
+ActiveRecord::Schema.define(:version => 20110513220317) do
 
   create_table "comments", :force => true do |t|
     t.string   "text"
@@ -116,6 +116,26 @@ ActiveRecord::Schema.define(:version => 20110507085459) do
 
   add_index "photos", ["code"], :name => "index_photos_on_code"
 
+  create_table "services", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "token"
+    t.string   "secret"
+    t.string   "nickname"
+    t.string   "email"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "location"
+    t.string   "description"
+    t.string   "image"
+    t.string   "phone"
+    t.string   "urls"
+    t.string   "user_hash"
+  end
+
   create_table "sharings", :force => true do |t|
     t.string   "content"
     t.integer  "user_id"
@@ -138,26 +158,6 @@ ActiveRecord::Schema.define(:version => 20110507085459) do
   end
 
   add_index "temp_latest_twitter_data", ["twitter_screen_name"], :name => "idx7"
-
-  create_table "user_tokens", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "provider"
-    t.string   "uid"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "token"
-    t.string   "secret"
-    t.string   "nickname"
-    t.string   "email"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "location"
-    t.string   "description"
-    t.string   "image"
-    t.string   "phone"
-    t.string   "urls"
-    t.string   "user_hash"
-  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

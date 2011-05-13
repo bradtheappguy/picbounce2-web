@@ -75,7 +75,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     self.omniauth_data = env["omniauth.auth"]
     provider = omniauth_data['provider'];
     provider = 'facebook' if provider == 'facebooksso'
-    self.preexisting_authorization_token = UserToken.find_by_provider_and_uid(omniauth_data['provider'], omniauth_data['uid'])
+    self.preexisting_authorization_token = Service.find_by_provider_and_uid(omniauth_data['provider'], omniauth_data['uid'])
   end
 
 
