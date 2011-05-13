@@ -3,8 +3,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   attr_accessor :preexisting_authorization_token
 
   before_filter :set_omniauth_data
-
-   
+  
+  
   def method_missing(provider)
     return super unless valid_provider?(provider)
     omniauthorize_additional_account || omniauth_sign_in || omniauth_sign_up

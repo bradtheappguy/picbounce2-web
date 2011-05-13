@@ -2,8 +2,10 @@ Trunk::Application.routes.draw do
 # The priority is based upon order of creation
   resources :sharings
   match 'users/auth/picbounce' => 'users/picbounce_callback#picbounce_callback', :via => :get
-  devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks", :registrations => 'registrations'}
  
+  
+  devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks", :registrations => 'registrations'}
+  
   resources :authentications
 
   match 'login' => 'sessions#new', :via => :get
