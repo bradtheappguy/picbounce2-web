@@ -403,6 +403,11 @@ end
   def twitter_avatar_url
     "foo"
   end
+  
+  def to_param
+    code
+  end
+  
 end
 
 #EOF 

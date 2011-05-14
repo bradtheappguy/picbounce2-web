@@ -63,7 +63,7 @@ Trunk::Application.routes.draw do
   match 'profiles/:id' => 'profiles', :action => 'show', :as => 'user', :via => :get
   match 'profiles/:id' => 'profiles', :action => 'show', :as => 'profile', :via => :get
   
-  match '/:id' => 'photos#view', :via => :get
+  match '/:id' => 'photos#view', :via => :get, :as => 'photo'
   match '/:id' => 'photos#edit', :via => :post
   match '/:id' => 'photos#destory', :via => :delete
 
