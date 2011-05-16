@@ -1,19 +1,8 @@
 <div id="popular_photo_box">
-    <% if @popular_photos && (@popular_photos.count >=9) %>
-    <ul>
-        <h2>Trending Photos</h2>
-        <li><a href="/<%= @popular_photos[0].code %>"> <img src="<%= @popular_photos[0].photo_url(:thumb) %>" alt="<%= @popular_photos[0].caption %>"/> </a></li>
-        <li><a href="/<%= @popular_photos[1].code %>"> <img src="<%= @popular_photos[1].photo_url(:thumb) %>" alt="<%= @popular_photos[1].caption %>"/> </a></li>
-        <li><a href="/<%= @popular_photos[2].code %>"> <img src="<%= @popular_photos[2].photo_url(:thumb) %>" alt="<%= @popular_photos[2].caption %>"/> </a></li>
-        <li><a href="/<%= @popular_photos[3].code %>"> <img src="<%= @popular_photos[3].photo_url(:thumb) %>" alt="<%= @popular_photos[3].caption %>"/> </a></li>
-          <li><a href="/<%= @popular_photos[4].code %>"> <img src="<%= @popular_photos[4].photo_url(:thumb) %>" alt="<%= @popular_photos[4].caption %>"/> </a></li>
-          <li><a href="/<%= @popular_photos[5].code %>"> <img src="<%= @popular_photos[5].photo_url(:thumb) %>" alt="<%= @popular_photos[5].caption %>"/> </a></li>
-          <li><a href="/<%= @popular_photos[6].code %>"> <img src="<%= @popular_photos[6].photo_url(:thumb) %>" alt="<%= @popular_photos[6].caption %>"/> </a></li>
-          <li><a href="/<%= @popular_photos[7].code %>"> <img src="<%= @popular_photos[7].photo_url(:thumb) %>" alt="<%= @popular_photos[7].caption %>"/> </a></li>
-          <li><a href="/<%= @popular_photos[8].code %>"> <img src="<%= @popular_photos[8].photo_url(:thumb) %>" alt="<%= @popular_photos[8].caption %>"/> </a></li>
-    </ul>
-    <% else %>
-    An error has occured
+  <h2>Trending Photos</h2> 
+  <ul> 
+    <% @popular_photos[0..8].each do |photo| %>
+      <li> <%=  thumbnail_image(photo) %> </li>
     <% end %>
-    
+  </ul>
 </div>
