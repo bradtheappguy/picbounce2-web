@@ -8,11 +8,13 @@
   Number of Photos: <%= @user.photos.count %><br/>
 </div>
 <div>
-  <% if @user.following? current_user%>
-   You are following this user.      <%= button_to'Stop Following', {:controller => 'followings', :action => 'destroy', :user_id => @user.id } %>
-  <% else %>
-    You are not following this user. <%= button_to'Follow', {:controller => 'followings', :action => 'create', :user_id => @user.id } %>
-  <% end %>
+  <% if @user != current_user %>
+    <% if @user.following? current_user%>
+      <%= button_to'Stop Following', {:controller => 'followings', :action => 'destroy', :user_id => @user.id } %>
+    <% else %>
+      <%= button_to'Follow', {:controller => 'followings', :action => 'create', :user_id => @user.id } %>
+    <% end %>
+  <% end %>  
 </div>
 <% @user.photos.each do |photo| %>
   <%= thumbnail_image(photo) %>
