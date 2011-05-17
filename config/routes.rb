@@ -4,8 +4,11 @@ Trunk::Application.routes.draw do
  
   
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks", :registrations => 'registrations'}
-  
+
+  match 'profiles/:id/followers' => 'users/followers#index'
+   
   resources :authentications
+  resources :followings
 
   match 'login' => 'sessions#new', :via => :get
   match 'login' => 'sessions#create', :via => :post

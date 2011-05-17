@@ -3,9 +3,12 @@
     <li> 
       <p id="name">
         <% if @twitter_screen_name && @twitter_screen_name.length > 0 %>
-          <a id="name2" href="http://twitter.com/<%=@twitter_screen_name || ''%>">
-            <strong>@<%= @twitter_screen_name %></strong>
-          </a>
+          <!-- a id="name2" href="<user_path(@user) %>">
+            <strong>@<%= @twitter_screen_name  %></strong>
+          </a -->
+          <strong>
+            <%= link_to "@#{@twitter_screen_name}", user_path(@photo.user.id)%>
+          </strong>
         <% end %>
       </p>
     </li>

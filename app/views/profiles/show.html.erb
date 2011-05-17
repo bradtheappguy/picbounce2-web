@@ -2,5 +2,18 @@
 
 <div>
   Name: <%= @user.name   %><br/>
+  Twitter Name: <%= link_to_twitter @user.twitter_screen_name %><br/>  
   email: <%= @user.email %><br/>
+  <br/>
+  Number of Photos: <%= @user.photos.count %><br/>
 </div>
+<div>
+  <% if @user.following? current_user%>
+   You are following this user.      <%= button_to'Stop Following', {:controller => 'followings', :action => 'destroy', :user_id => @user.id } %>
+  <% else %>
+    You are not following this user. <%= button_to'Follow', {:controller => 'followings', :action => 'create', :user_id => @user.id } %>
+  <% end %>
+</div>
+<% @user.photos.each do |photo| %>
+  <%= thumbnail_image(photo) %>
+<% end %>

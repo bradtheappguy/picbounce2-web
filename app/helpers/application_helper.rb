@@ -32,4 +32,9 @@ module ApplicationHelper
   def thumbnail_image(photo)
     link_to image_tag(photo.photo_url(:thumb), {:title => photo.caption, :alt => photo.caption}), photo_path(photo)
   end
+  
+  def link_to_twitter(name)
+    link_to "@#{name}", "http://twitter.com/#{name}"
+  end
+
 end

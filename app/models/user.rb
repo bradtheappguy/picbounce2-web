@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :slug
   
-  has_many :photos, :limit => 10, :order => 'created_at desc'
+  has_many :photos, :limit => 1000, :order => 'created_at desc'
   has_many :all_photos, :class_name => 'Photo'
   has_many :followings 
   has_many :inverse_followings, :class_name => "Following", :foreign_key => "follower_id"
@@ -190,6 +190,14 @@ class User < ActiveRecord::Base
     name || email || 'no name'
   end
 
+  def following?(user)
+    followers.include? user
+  end
+
+  def followed_by?(user)
+    user.followers.include? self if user
+  end
+  
   private
 
   def twitter_client
