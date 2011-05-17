@@ -16,7 +16,7 @@ gem 'acts_as_api' , '0.3.0', :path => "vendor/gems/acts_as_api-0.3.0"
 gem 'binary_plist'
 gem 'plist','3.1.0'
 gem 'heroku_backup_task'
-
+gem 'jquery-rails'
 gem 'rake'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'devise', :git => 'git://github.com/plataformatec/devise', :branch => 'master'
