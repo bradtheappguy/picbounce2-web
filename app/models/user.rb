@@ -8,11 +8,16 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :slug
   
   has_many :photos, :limit => 1000, :order => 'created_at desc'
-  has_many :all_photos, :class_name => 'Photo'
+  has_many :all_photos, :class_name => 'Photo'  
   has_many :followings 
   has_many :inverse_followings, :class_name => "Following", :foreign_key => "follower_id"
   has_many :followers,  :through => :followings       
   has_many :followeds,  :through => :inverse_followings, :source => :user
+  
+  def feed
+    @photos = followeds.find(:all, :include => :photos).collect(&:photos).flatten
+  end
+  
   has_many :services do
     def facebook
       target.detect{|t| t.provider == 'facebook'}

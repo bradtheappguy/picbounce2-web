@@ -1,23 +1,25 @@
 Trunk::Application.routes.draw do
   resources :sharings
-  match 'users/auth/picbounce' => 'users/picbounce_callback#picbounce_callback', :via => :get
- 
+
   
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks", :registrations => 'registrations'}
+  match 'users/auth/picbounce' => 'users/picbounce_callback#picbounce_callback', :via => :get
+  
+  match 'users/:id/feed'      => 'users/feed#show', :as => 'user_feed'
 
-  match 'profiles/:id/followers' => 'users/followers#index'
-   
-  resources :authentications
+  match 'users/:id/followers' => 'users/followers#index', :as => 'user_following'
+  match 'users/:id/followees' => 'users/followees#index', :as => 'user_followees'
+  #resources :authentications
   resources :followings
 
-  match 'login' => 'sessions#new', :via => :get
-  match 'login' => 'sessions#create', :via => :post
-  match 'logout' => 'sessions#destory', :via => :get
-  match 'connect' => 'photos#connect', :via => :get
-  match '/:id/logout' => 'sessions#destory', :via => :get
+  #match 'login' => 'sessions#new', :via => :get
+  #match 'login' => 'sessions#create', :via => :post
+  #match 'logout' => 'sessions#destory', :via => :get
+  #match 'connect' => 'photos#connect', :via => :get
+  #match '/:id/logout' => 'sessions#destory', :via => :get
   
-  match 'fb/:id' => 'application#fb_post_authorize', :via => :get
-  match 'fb/:id' => 'application#fb_post_authorize', :via => :post
+  #match 'fb/:id' => 'application#fb_post_authorize', :via => :get
+  #match 'fb/:id' => 'application#fb_post_authorize', :via => :post
   
   match 'recent/:id' => 'photos#recent', :via => :get
   match 'admin' => 'admin#index', :via => :get
@@ -41,8 +43,8 @@ Trunk::Application.routes.draw do
   match 'api/nearby'  => 'api#nearby',  :via => :get
   match 'api/mentions' => 'api#mentions', :via => :get
 
-  match 'users/:user_id/feed' => 'api#feed', :via => :get
-  match 'users/:user_id/profile' => 'api#profile', :via => :get
+  match 'users/:user_id/feed'      => 'api#feed', :via => :get
+  match 'users/:user_id/profile'   => 'api#profile', :via => :get
   match 'users/:user_id/followers' => 'api#followers', :via => :get
  
   match 'users/:user_id/following' => 'api#following', :via => :get
@@ -54,17 +56,14 @@ Trunk::Application.routes.draw do
 
   match 'analytics' => 'analytics#viewer', :via => :get
   match 'analytics/refreshFlurry' => 'analytics#refreshFlurry', :via => :get
-  
   match 'analytics/clixtrAnalytics.swf' => 'analytics#analytics', :via => :get
   match 'data/analyticsUniverse.xml' => 'analytics#analyticsUniverse', :via => :get
   match 'data/dataItemListForAnalytics.xml' => 'analytics#analyticsMetrics', :via => :get
-  
   match 'analytics/ga' => 'analytics#ga', :via => :get
   match 'analytics/flurry' => 'analytics#flurry', :via => :get
   match 'analytics/inhouse' => 'analytics#inhouse', :via => :get
   
-  match 'profiles/:id' => 'profiles', :action => 'show', :as => 'user', :via => :get
-  match 'profiles/:id' => 'profiles', :action => 'show', :as => 'profile', :via => :get
+  match 'users/:id' => 'users', :action => 'show', :as => 'user', :via => :get
   
   match '/:id' => 'photos#view', :via => :get, :as => 'photo'
   match '/:id' => 'photos#edit', :via => :post
