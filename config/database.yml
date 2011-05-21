@@ -1,18 +1,15 @@
-exp:
+staging:
   adapter: postgresql
   encoding: unicode
-  database: pb_exp
+  database: picbounce_staging
   pool: 5
   username: brad
-  password:
-
+  
 development:
   adapter: postgresql
   encoding: unicode
   database: picbounce_development
   pool: 5
-  username: 
-  password:
 
 test:
   adapter: postgresql

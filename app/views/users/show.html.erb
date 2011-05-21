@@ -1,0 +1,26 @@
+<h1><%= @user.display_name %>'s Profile</h1>
+<ul>
+  <li><%= link_to 'Feed', user_feed_path(@user.id)  %></li>
+  <li><<%= link_to 'Following', user_following_path(@user.id)  %></li>
+  <li><<%= link_to 'Followers', user_followees_path(@user.id)  %></li>
+</ul>
+
+<div>
+  Name: <%= @user.name   %><br/>
+  Twitter Name: <%= link_to_twitter @user.twitter_screen_name %><br/>  
+  email: <%= @user.email %><br/>
+  <br/>
+  Number of Photos: <%= @user.photos.count %><br/>
+</div>
+<div>
+  <% if @user != current_user %>
+    <% if @user.following? current_user%>
+      <%= button_to'Stop Following', {:controller => 'followings', :action => 'destroy', :user_id => @user.id }, :method => :delete %>
+    <% else %>
+      <%= button_to'Follow', {:controller => 'followings', :action => 'create', :user_id => @user.id } %>
+    <% end %>
+  <% end %>  
+</div>
+<% @user.photos.each do |photo| %>
+  <%= thumbnail_image(photo) %>
+<% end %>

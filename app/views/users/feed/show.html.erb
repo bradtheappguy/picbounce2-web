@@ -1,0 +1,4 @@
+<h1><%= @user.display_name %>'s Feed</h1>
+<% @user.feed.each do |photo| %>
+  <%= thumbnail_image(photo) %>
+<% end %>

@@ -3,8 +3,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   attr_accessor :preexisting_authorization_token
 
   before_filter :set_omniauth_data
-
-   
+  
+  
   def method_missing(provider)
     return super unless valid_provider?(provider)
     omniauthorize_additional_account || omniauth_sign_in || omniauth_sign_up
@@ -75,7 +75,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     self.omniauth_data = env["omniauth.auth"]
     provider = omniauth_data['provider'];
     provider = 'facebook' if provider == 'facebooksso'
-    self.preexisting_authorization_token = UserToken.find_by_provider_and_uid(omniauth_data['provider'], omniauth_data['uid'])
+    self.preexisting_authorization_token = Service.find_by_provider_and_uid(provider, omniauth_data['uid'])
   end
 
 

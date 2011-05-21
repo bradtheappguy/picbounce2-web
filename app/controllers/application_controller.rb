@@ -7,13 +7,13 @@ class ApplicationController < ActionController::Base
   helper_method :resource_class
   protect_from_forgery
 
-  def current_user
-    super || NilUser.new
-  end
+  #def current_user
+  #  super || NilUser.new
+  #end
 
-  def user_signed_in?
-    !current_user.nil?
-  end
+  #def user_signed_in?
+  #  !current_user.nil?
+  #end
 
 
   before_filter :configure_split_group
@@ -76,15 +76,6 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  #def current_user
-  #  current_user = User.find_by_twitter_oauth_token(params[:twitter_oauth_token]) if params[:twitter_oauth_token] || User.new
-  #  current_user.update_attributes({ 
-  #    :twitter_oauth_token =>  params[:twitter_oauth_token],
-  #    :twitter_oauth_secret => params[:twitter_oauth_secret],
-  #    :facebook_access_token => params[:facebook_access_token],
-  #  }) if current_user
-  #end
-
   def authorize
     unless admin?
     flash[:message] = 'Unautorized Access Attempt'
@@ -107,5 +98,7 @@ class ApplicationController < ActionController::Base
    end 
 
    end
+
+
 
 end

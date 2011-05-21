@@ -9,29 +9,6 @@ class ApiController < ApplicationController
     #render :text => @photos.to_json
   end
 
-
-  def feed
-    conditions = ""
-    if (params[:after])
-      user = User.find_by_twitter_screen_name(params[:user_id])
-      result = Photo.find(:all, :conditions => ["user_id = ? and created_at < ?", user.id, Time.at(params[:after].to_i) ], :order => 'created_at', :limit => 10)
-    else
-      user =  User.find_by_twitter_screen_name(params[:user_id], :conditions => conditions) 
-      if (!user)
-        user = User.new(:twitter_screen_name => params[:user_id])
-        user.photos << Photo.find_all_by_twitter_screen_name(params[:user_id])
-        user.save
-      end
-    end
-#      result = User.find_by_twitter_screen_name('bradsmithinc') 
-    x = Responce.new
-    x.url = request.url
-#.env["REQUEST_URI"]
-    x.photos = user.photos
-    render_for_api :feed, :json => x
-  end
-
-
   def profile
     user =  User.find_by_twitter_screen_name(params[:user_id]) 
     if (!user)

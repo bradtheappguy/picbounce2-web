@@ -1,7 +1,7 @@
 
 require 'httpclient'
 class AdminController < ApplicationController
-  before_filter :authorize,:except => :sitemap_partial
+  before_filter :authenticate_user!, :except => :sitemap_partial
   
   layout nil
   
