@@ -142,6 +142,7 @@ Devise.setup do |config|
   config.omniauth :tumblr, TUMBLR_OAUTH_KEY, TUMBLR_OAUTH_SECRET
   config.omniauth :myspace, MYSPACE_OAUTH_KEY, MYSPACE_OAUTH_SECRET
   config.omniauth :facebook_sso
+  config.omniauth :posterous
   
   # config.warden do |manager|
   #   manager.oauth(:twitter) do |twitter|

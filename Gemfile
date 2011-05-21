@@ -18,7 +18,7 @@ gem 'plist','3.1.0'
 gem 'heroku_backup_task'
 
 gem 'rake'
-gem 'sqlite3-ruby', :require => 'sqlite3'
+#gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'devise', :git => 'git://github.com/plataformatec/devise', :branch => 'master'
 #gem 'omniauth'  #i #, '0.2.2'
 gem 'omniauth', :path => 'vendor/gems/omniauth-0.2.5'
