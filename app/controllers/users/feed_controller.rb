@@ -15,10 +15,7 @@ class Users::FeedController < ApplicationController
     respond_to do |format|
       format.html
       format.json {
-        x = Responce.new
-        x.url = request.url
-        x.photos = @user.feed
-        render_for_api :feed, :json => x
+        render_for_api :feed, :json => Responce.new(:url => request.url, :photos => @user.feed)
       }
     end
   end

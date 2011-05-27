@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110513220317) do
+ActiveRecord::Schema.define(:version => 20110526224746) do
 
   create_table "comments", :force => true do |t|
     t.string   "text"
@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(:version => 20110513220317) do
     t.string   "filter_version"
     t.integer  "user_id"
     t.string   "migrated"
+    t.string   "image"
   end
 
   add_index "photos", ["code"], :name => "index_photos_on_code"

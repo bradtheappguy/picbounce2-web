@@ -12,6 +12,13 @@ require 'json'
 require 'aws/s3'
 
 class Photo < ActiveRecord::Base  
+  
+  def created
+    created_at.to_i
+  end
+
+  
+ set_primary_key :id
 
   acts_as_api
 
@@ -42,14 +49,19 @@ class Photo < ActiveRecord::Base
   
   api_accessible :base do |template|  
     template.add :uuid
-    template.add :twitter_screen_name
+    template.add :likes_count
+    template.add :bounces_count
+    template.add :comments_count
+    template.add :tagged_people_count
+    template.add :tags_count
     template.add :twitter_avatar_url
     template.add :view_count
     template.add :caption
     template.add :created
+    template.add :user
   end
 
-   api_accessible :feed, :extend => :base do |template|
+  api_accessible :feed, :extend => :base do |template|
 
   end
 
@@ -57,10 +69,7 @@ class Photo < ActiveRecord::Base
 
   end
 
-  def created
-    created_at.to_i
-  end
-
+  
 
   def self.find_public(*args)
     args << 
@@ -68,7 +77,7 @@ class Photo < ActiveRecord::Base
   end
   
   def self.find_deleted_by_code(id)
-    photo=Photo.with_exclusive_scope {self.find_by_code(id)}
+    photo = Photo.with_exclusive_scope {self.find_by_code(id)}
     photo.uuid = nil
     photo
   end
@@ -98,6 +107,8 @@ class Photo < ActiveRecord::Base
   
   # Resize the uploaded photo using the ImageMagik command line and then upload to S3
   def process_photos
+   return
+    
     #These are the ImageMagik command line options
     styles = { :thumb => '-define jpeg:size=5000x5000 -resize "80x80^" -extent "80x80" -auto-orient -quality 90', 
                :big   => '-resize "600x600>" -auto-orient' }  
@@ -408,6 +419,29 @@ end
     code
   end
   
+  def likes_count
+    1
+  end
+  
+  def bounces_count
+    2
+  end
+  
+  def comments_count
+    3
+  end
+  
+  def tagged_people_count
+    4
+  end
+  
+  def tags_count
+    5
+  end
+
+
+
+  mount_uploader :image, ImageUploader
 end
 
 #EOF 
