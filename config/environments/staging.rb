@@ -26,8 +26,8 @@ Trunk::Application.configure do
   config.active_support.escape_html_entities_in_json = false
 end
 
-FACEBOOK_APP_ID          = "161007653957731"
-FACEBOOK_APP_SECRET      = "7a6210cb93220c5509f6ff8f8d872314"
+FACEBOOK_APP_ID          = "221310351230872"
+FACEBOOK_APP_SECRET      = "98db48a9fd117ab622ff3a500d24e1c6"
 
 TWITTER_SECRET_KEY       = "9fVkuQ55t8Z6wfvnuA0oL2HXd6y5ixhxDlQMxjKMm0M"
 TWITTER_CONSUMER_KEY     = "fWqlifbApc14jPJWErfQ"
