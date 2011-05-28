@@ -1,5 +1,5 @@
 # encoding: utf-8
-require 'Rmagick'
+#require 'Rmagick'
 
 class ImageUploader < CarrierWave::Uploader::Base
 
