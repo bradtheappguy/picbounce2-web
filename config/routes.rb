@@ -7,6 +7,7 @@ Trunk::Application.routes.draw do
   
   match 'users/:id/feed'      => 'users/feed#show', :as => 'user_feed'
 
+  match 'users/:id/filters' => 'users/filters#index',:via =>:get
   match 'users/:id/followers' => 'users/followers#index', :as => 'user_following'
   match 'users/:id/followees' => 'users/followees#index', :as => 'user_followees'
   #resources :authentications
@@ -36,8 +37,7 @@ Trunk::Application.routes.draw do
 #AUTH
  #match '/auth/:provider/callback' => 'authentications#create'
 
-  match 'filters/test2' => 'filters#test2', :via => :get
-
+  match 'filters/index' => 'filters#index', :via => :get
 #API
   match 'api/popular' => 'api#popular', :via => :get
   match 'api/nearby'  => 'api#nearby',  :via => :get
@@ -47,6 +47,8 @@ Trunk::Application.routes.draw do
   match 'users/:user_id/profile'   => 'api#profile', :via => :get
   match 'users/:user_id/followers' => 'api#followers', :via => :get
  
+ 
+  match 'users/:user_id/filters' => 'api#filters', :via => :get
   match 'users/:user_id/following' => 'api#following', :via => :get
   match 'users/:user_id/following' => 'api#destroy_following', :via => :delete
 

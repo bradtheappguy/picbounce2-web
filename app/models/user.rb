@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   has_many :inverse_followings, :class_name => "Following", :foreign_key => "follower_id"
   has_many :followers,  :through => :followings       
   has_many :followeds,  :through => :inverse_followings, :source => :user
+  has_many :user_filters
+  has_many :filters,  :through => :user_filters
   
   def feed
     @photos = followeds.find(:all, :include => :photos).collect(&:photos).flatten

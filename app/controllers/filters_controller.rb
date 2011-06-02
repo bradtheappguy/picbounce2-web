@@ -1,12 +1,7 @@
-require 'garb'
-require 'nokogiri'
-require 'mechanize'
-
-
 class FiltersController < ApplicationController
  
  
- def test2
+ def index
   f = Filter.find_all_by_release(params[:release])
   
   
@@ -18,8 +13,4 @@ class FiltersController < ApplicationController
     end
   end
   
-  private
-  def extract(format)
-    
-  end
 end
