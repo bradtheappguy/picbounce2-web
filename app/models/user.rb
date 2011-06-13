@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable, :token_authenticatable, :validatable
   
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :slug
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :slug, :is_current_user
   
   has_many :photos, :limit => 1000, :order => 'created_at desc'
   has_many :all_photos, :class_name => 'Photo'  
@@ -35,15 +35,18 @@ class User < ActiveRecord::Base
   
   #JSON TEmplates
   api_accessible :base do |template|
-   template.add :name
-   template.add :twitter_screen_name
-   template.add :twitter_avatar_url
+   template.add :display_name
+   template.add :avatar
+   template.add :id
   end
 
   api_accessible :feed, :extend => :base do |template|
+    template.add :last_location    
   end
 
   api_accessible :profile, :extend => :base do |template|
+    template.add :is_following?, :as => :following
+    template.add :follows_me?, :as => :follows_me
     template.add :last_location
     template.add :followers_count
     template.add :followers_url
@@ -58,8 +61,7 @@ class User < ActiveRecord::Base
 
   api_accessible :followers, :extend => :base do |template|
   end
-
-
+  
   def followers_url
     "http://localhost:3000/api/users/b2test/followers"
   end
@@ -91,6 +93,21 @@ class User < ActiveRecord::Base
   
   def last_location
     "San Francsico"
+  end
+  
+  def is_following?
+    true
+  end
+  
+  def follows_me?
+    true
+  end
+  
+  def avatar 
+    return twitter_avatar_url if twitter_avatar_url
+    #services.each do |service|  
+    #  return service.image if service.image
+    #end
   end
 
   
@@ -194,7 +211,10 @@ class User < ActiveRecord::Base
   end
 
   def display_name
-    name || email || 'no name'
+   if email.length < 1
+     email = nil
+   end
+   return name || twitter_screen_name || email || "test"
   end
 
   def following?(user)
@@ -223,6 +243,10 @@ class User < ActiveRecord::Base
       share = message + " " + url
     end
     share
+  end
+  
+  def servicesempty?
+    (services.count == 0)
   end
   
 end

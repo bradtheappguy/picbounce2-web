@@ -5,25 +5,26 @@ class UsersController < ApplicationController
     else
       @user = User.find_by_slug(params[:id])
     end
-    if @user.nil?
-      @user = User.find_by_id(params[:id])
-    end 
-    if @user.nil?
-     render :status => 404
-    end
+   
+    @user = User.find_by_id(params[:id]) if @user.nil? 
+    
+    
+    @photo = Photo.new
+    render :status => 404 if @user.nil?
 
+    
     respond_to do |format|
       format.html
       format.json {
-        x = Responce.new
-        x.url = request.fullpath
-        x.user = User.find_by_twitter_screen_name(params[:user_id])
-        if params[:after]
-          x.photos = user.photos_after params[:user_id]
-        else
-          x.photos = x.user.photos
-        end
-        render_for_api :profile, :json => x 
+        response = Responce.new
+        response.url = request.fullpath
+        response.user = @user
+        #if params[:after]
+        #  x.photos = user.photos_after params[:user_id]
+        #else
+          response.photos = @user.photos
+        #end
+        render_for_api :profile, :json => response 
       }
     end
   end
