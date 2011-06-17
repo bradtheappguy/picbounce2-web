@@ -30,7 +30,8 @@ gem "sluggable"
 gem "rmagick", "2.12.0", :require => 'RMagick'
 gem "carrierwave"
 
- #group :development, :test do
+group :analytics, :development, :test do
+   gem 'mysql'
    #gem 'wirble'
    #gem 'webrat'
- #end
+end
