@@ -18,3 +18,12 @@ test:
   pool: 5
   username: postgres
   password:
+
+analytics:
+  adapter: mysql
+  database: picbounce_analytics
+  encoding: utf8
+  username: picbounce
+  password: cadet4cognizance
+  host: svn.clxsrv.com
+

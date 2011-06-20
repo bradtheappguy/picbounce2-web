@@ -135,7 +135,8 @@ Devise.setup do |config|
   # allows you to setup OAuth, using http://github.com/roman/warden_oauth
   
   #config.omniauth :facebook, "APP_ID", "APP_SECRET"
-  config.omniauth :facebook, FACEBOOK_APP_ID, FACEBOOK_APP_SECRET, :scope => FACEBOOK_APP_PERMISSIONS 
+  config.omniauth :facebook, FACEBOOK_APP_ID, FACEBOOK_APP_SECRET, { :scope => FACEBOOK_APP_PERMISSIONS, :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}} 
+
   config.omniauth :twitter, TWITTER_CONSUMER_KEY, TWITTER_SECRET_KEY
   config.omniauth :google_apps, OpenID::Store::Filesystem.new('/tmp'), :domain => 'gmail.com'
   config.omniauth :flickr, FLICKR_KEY, FLICKR_SECRET
