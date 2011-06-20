@@ -1,8 +1,15 @@
 <div id="social_box">
+	<form>
   <ul id="social-icons">
     <%- connected_providers_for(current_user).each do |provider| %>
-        <li><%= image_tag("social-icons/#{provider}_32.png", :alt => "Sign in with #{provider.to_s.titleize}")%></li>
+<li class="social_icon"><%= image_tag("social-icons/#{provider}_32.png", :alt => "Sign in with #{provider.to_s.titleize}")%></li>
+
+<li><p>Twitter</p></li>
+<li><span class="profile_thumb"></span>
+	<p class="profile_image_cbx"><input type="radio" name="profile_images" value="#{provider}_img" />Profile Image</p></li>
+ <li><a href="#" class="btn_logout">Logout</a></li>
     <% end -%>
   </ul>
+</form>
   <div class="clear"></div>
 </div>

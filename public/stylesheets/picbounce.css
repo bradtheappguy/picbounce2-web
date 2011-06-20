@@ -884,6 +884,32 @@ div#admin_panel {
 
 #social-icons  li {
 	display: inline-block;
+	line-height:50px;
+	height: 50px;
+}
+
+#user_form #social-icons a.btn_logout {
+	line-height:30px;
+	display:inline-block;
+	color: #fff;
+	border-radius: 5px;
+	width: 80px;
+	height:30px;
+	background-color: #777;
+	text-align: center;
+}
+
+#social-icons  li p {
+	line-height: 50px;
+}
+
+.profile_image_cbx {
+	font-size: 11px;
+	height:20px;
+	line-height:20px;
+	margin:0;
+	padding:0;
+	display:block;
 }
 
 #user_form #social-icons a {
@@ -894,6 +920,22 @@ div#admin_panel {
 	background: none;
 }
 
+.profile_thumb {
+	display:block;
+	width: 50px;
+	height: 50px;
+	margin: 0 auto;
+	border:1px solid #333;
+	background: #777;
+}
+
+.social_icon {
+	width: 50px;
+}
+
+.social_icon img {
+	margin:0 auto;
+}
 
 form#user_new {
 	width: 300px;
