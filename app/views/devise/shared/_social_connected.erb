@@ -1,8 +1,23 @@
 <div id="social_box">
+	<form>
   <ul id="social-icons">
+	
     <%- connected_providers_for(current_user).each do |provider| %>
-        <li><%= image_tag("social-icons/#{provider}_32.png", :alt => "Sign in with #{provider.to_s.titleize}")%></li>
+<%- if !provider.to_s.eql? "facebook_sso" %>
+<li class="social_icon"><%= image_tag("social-icons/#{provider}_32.png", :alt => "Sign in with #{provider.to_s.titleize}")%></li
+	<% end -%>
+
+	<table class="social_connected" border="1">
+<tr>
+<td><p>Twitter</p></td>
+<td><span class="profile_thumb"></span></td>
+<td><p class="profile_image_cbx"><input type="radio" name="profile_images" value="#{provider}_img" />Profile Image</p></td>
+<td><a href="#" class="btn_logout">Logout</a></td>
+</tr>
+</table>
+
     <% end -%>
   </ul>
+</form>
   <div class="clear"></div>
 </div>

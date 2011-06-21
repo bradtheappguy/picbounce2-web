@@ -27,10 +27,11 @@ gem "simple_form", "~> 1.2.2"
 gem 'twitter_oauth', '0.4.3'
 gem "rest-client", "1.6.1", :require => "restclient"
 gem "sluggable"
-gem 'rmagick'
+gem "rmagick", "2.12.0", :require => 'RMagick'
 gem "carrierwave"
 
- #group :development, :test do
+group :analytics, :development, :test do
+   gem 'mysql'
    #gem 'wirble'
    #gem 'webrat'
- #end
+end
