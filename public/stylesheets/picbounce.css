@@ -742,12 +742,15 @@ a.arrows:hover {
 
 /*** Social ***/
 
-#social_icons {
-	text-align:center;
-
+#social-icons {
+/*	text-align:center; */
 }
 
-#social_icons li {
+#social-icons p {
+	width:auto;
+}
+
+#social-icons li {
 	list-style: none;
 	display:inline;
 }
@@ -872,8 +875,6 @@ div#admin_panel {
 }
 
 #social-icons {
-	width:200px;
-	float: right;
 	display: block;
 	background: #ccc;
 	border-radius: 10px;
@@ -886,6 +887,10 @@ div#admin_panel {
 	display: inline-block;
 	line-height:50px;
 	height: 50px;
+}
+
+#social-icons table  {
+	width:20px;
 }
 
 #user_form #social-icons a.btn_logout {
@@ -922,15 +927,16 @@ div#admin_panel {
 
 .profile_thumb {
 	display:block;
-	width: 50px;
-	height: 50px;
+	width: 40px;
+	height: 40px;
 	margin: 0 auto;
 	border:1px solid #333;
 	background: #777;
+	background-image:url("../images/user_photos/missing_mini.png");
 }
 
 .social_icon {
-	width: 50px;
+	width: 40px;
 }
 
 .social_icon img {
