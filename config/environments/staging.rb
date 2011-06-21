@@ -26,7 +26,7 @@ Trunk::Application.configure do
   config.active_support.escape_html_entities_in_json = false
 end
 
-FEATURE_LOGINS_ENABLED   = false
+FEATURE_LOGINS_ENABLED   = true
 
 FACEBOOK_APP_ID          = "221310351230872"
 FACEBOOK_APP_SECRET      = "98db48a9fd117ab622ff3a500d24e1c6"
