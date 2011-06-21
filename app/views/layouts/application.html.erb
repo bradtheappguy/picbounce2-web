@@ -141,21 +141,23 @@ $(document).ready(function() {
         <a id="btn_download" href="/download?header"></a>
       </div>
     </div>
+    
+    <% if defined?(FEATURE_LOGINS_ENABLED) && FEATURE_LOGINS_ENABLED %>
     <div id="user_nav">
-        <%= link_to 'Home', '/' %>
-        <% if user_signed_in? %>
-          <%= link_to 'Profile', user_path(current_user) %>
-          <%= link_to 'Edit Profile', edit_user_registration_path(current_user) %>
-          <%= link_to "Sign out", destroy_user_session_path %>
-        <% else %>
-          <%= link_to "Sign up", new_user_registration_path %>
-          <%= link_to "sign in", new_user_session_path %>
-        <% end %>
-
-    <br><br>
-    <%= raw notice_html %>
-    <%= raw alert_html %>
+      <%= link_to 'Home', '/' %>
+      <% if user_signed_in? %>
+        <%= link_to 'Profile', user_path(current_user) %>
+        <%= link_to 'Edit Profile', edit_user_registration_path(current_user) %>
+        <%= link_to "Sign out", destroy_user_session_path %>
+      <% else %>
+        <%= link_to "Sign up", new_user_registration_path %>
+        <%= link_to "sign in", new_user_session_path %>
+      <% end %>
+      <br><br>
+      <%= raw notice_html %>
+      <%= raw alert_html %>
     </div>
+    <% end %>
 
 
     <%= yield %>

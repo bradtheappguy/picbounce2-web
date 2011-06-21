@@ -48,6 +48,8 @@ Trunk::Application.configure do
   config.active_support.deprecation = :notify
 end
 
+FEATURE_LOGINS_ENABLED   = false
+
 FACEBOOK_APP_ID          = "125208417509976"
 FACEBOOK_APP_SECRET      = "253ba61dab1e6261f56f51cd4b6d2b2b"
 TWITTER_SECRET_KEY       = "IVAXfzLx6AbTeTAKyF2NA"
