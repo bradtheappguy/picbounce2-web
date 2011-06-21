@@ -10,7 +10,7 @@
             <% if defined?(FEATURE_LOGINS_ENABLED) && FEATURE_LOGINS_ENABLED %>
               <%= link_to "@#{@twitter_screen_name}", user_path(@photo.user.id)%>
             <% else %>
-              <%= link_to "@#{@twitter_screen_name}", "http://twitter.com/{@twitter_screen_name}"%>
+              <%= link_to "@#{@twitter_screen_name}", "http://twitter.com/#{@twitter_screen_name}"%>
             <% end %>
           </strong>
         <% end %>
