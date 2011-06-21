@@ -7,7 +7,11 @@
             <strong>@<%= @twitter_screen_name  %></strong>
           </a -->
           <strong>
-            <%= link_to "@#{@twitter_screen_name}", user_path(@photo.user.id)%>
+            <% if defined?(FEATURE_LOGINS_ENABLED) && FEATURE_LOGINS_ENABLED %>
+              <%= link_to "@#{@twitter_screen_name}", user_path(@photo.user.id)%>
+            <% else %>
+              <%= link_to "@#{@twitter_screen_name}", "http://twitter.com/{@twitter_screen_name}%>
+            <% end %>
           </strong>
         <% end %>
       </p>
