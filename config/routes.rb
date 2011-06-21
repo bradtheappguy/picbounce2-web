@@ -38,6 +38,7 @@ Trunk::Application.routes.draw do
  #match '/auth/:provider/callback' => 'authentications#create'
 
   match 'filters/index' => 'filters#index', :via => :get
+  match 'filters/current_version' => 'filters#current_version', :via => :get
 #API
   match 'api/popular' => 'api#popular', :via => :get
   match 'api/nearby'  => 'api#nearby',  :via => :get

@@ -2,7 +2,7 @@ class FiltersController < ApplicationController
  
  
  def index
-  f = Filter.find_all_by_release(params[:release])
+  f = Filter.find_all_by_release_and_version(params[:release],params[:version])
   
   
     respond_to do |format|
@@ -13,4 +13,10 @@ class FiltersController < ApplicationController
     end
   end
   
+  def current_version
+    v = Filter.where(:release => params[:release]).maximum("version")
+    
+    render :profile, :json => {:version => v}
+
+  end
 end

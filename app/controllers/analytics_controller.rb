@@ -4,7 +4,7 @@ require 'mechanize'
 
 class AnalyticsController < ApplicationController
   layout        :determine_layout
-  before_filter :authorize
+  #before_filter :authorize
  
  
   def analytics

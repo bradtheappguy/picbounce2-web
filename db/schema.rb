@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110513220317) do
+ActiveRecord::Schema.define(:version => 20110526224746) do
 
   create_table "comments", :force => true do |t|
     t.string   "text"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20110513220317) do
     t.float    "release"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "filter_type"
   end
 
   create_table "flurry_events", :force => true do |t|
@@ -112,6 +113,7 @@ ActiveRecord::Schema.define(:version => 20110513220317) do
     t.string   "filter_version"
     t.integer  "user_id"
     t.string   "migrated"
+    t.string   "image"
   end
 
   add_index "photos", ["code"], :name => "index_photos_on_code"
@@ -158,6 +160,15 @@ ActiveRecord::Schema.define(:version => 20110513220317) do
   end
 
   add_index "temp_latest_twitter_data", ["twitter_screen_name"], :name => "idx7"
+
+  create_table "user_filters", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "filter_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_filters", ["user_id", "filter_id"], :name => "index_user_filters_on_user_id_and_filter_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"
