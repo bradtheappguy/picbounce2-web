@@ -27,10 +27,17 @@ class PhotosController < ApplicationController
   
   
   def create
+     code = rand(1000 * 1000 * 10).to_s(36)
+    while Photo.find_by_code(code) 
+      code = rand(1000 * 1000 * 10).to_s(36)
+    end  
+
+    
     @photo = Photo.create({:photo => params[:photo], 
-                          #:twitter_oauth_token =>  params[:twitter_oauth_token],
-                          #:twitter_oauth_secret => params[:twitter_oauth_secret],
-                          #:facebook_access_token => (params[:facebook_access_token]?(params[:facebook_access_token].split('&')[0]):nil),  #this split is there to fix a big in iPhone Client version 1.2
+                          :code => code,
+                          :twitter_oauth_token =>  params[:twitter_oauth_token],
+                          :twitter_oauth_secret => params[:twitter_oauth_secret],
+                          :facebook_access_token => (params[:facebook_access_token]?(params[:facebook_access_token].split('&')[0]):nil),  #this split is there to fix a big in iPhone Client version 1.2
                           :caption => params[:caption],
                           :user_agent => request.user_agent,
                           :device_type => params[:system_model],
@@ -41,7 +48,8 @@ class PhotosController < ApplicationController
                           :filter_name => params[:filter_name]
     })
     @photo.save #TODO is this save necessacarry?
-    render 'json_status',:status => @photo.general_status
+    logger.debug @photo.code
+    render 'json_status', :status => @photo.general_status
   end
   
   

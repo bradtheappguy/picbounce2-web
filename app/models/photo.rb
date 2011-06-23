@@ -41,6 +41,9 @@ class Photo < ActiveRecord::Base
 
   attr_accessor :photo
   
+  attr_accessor :twitter_oauth_token
+  attr_accessor :twitter_oauth_secret
+  attr_accessor :facebook_access_token
   
   before_create :set_uuid, :process_photos
   after_create :trigger_uploads
@@ -88,17 +91,12 @@ class Photo < ActiveRecord::Base
   end
   
   
-  # We generate a long uuid to be used as part of the secret url for the photo on S3
   def set_uuid
-    code = rand(1000 * 1000 * 10).to_s(36)
-    while Photo.find_by_code(code) 
-      code = rand(1000 * 1000 * 10).to_s(36)
-    end  
-    self.uuid = code
+    self.uuid = rand(2**128).to_s(16)
     true
   end
   
-  
+    
   # Generates the publicly avaiale URLs where the image is available after being saved to S3  
   def photo_url(style)
     "http://s3.amazonaws.com/com.clixtr.picbounce/photos/#{self.uuid}/#{style}.jpg"
@@ -107,19 +105,17 @@ class Photo < ActiveRecord::Base
   
   # Resize the uploaded photo using the ImageMagik command line and then upload to S3
   def process_photos
-   return
-    
     #These are the ImageMagik command line options
     styles = { :thumb => '-define jpeg:size=5000x5000 -resize "80x80^" -extent "80x80" -auto-orient -quality 90', 
                :big   => '-resize "600x600>" -auto-orient' }  
     
     styles.each_pair do |style, options|
-      cmd = "convert #{self.photo.path} #{options} #{photo_temp_path(style)}"
+      cmd = "/usr/local/bin/convert #{self.photo.path} #{options} #{photo_temp_path(style)}"
       exit_status = system(cmd)
-      raise "Image Resizing Failed" if !exit_status
+      raise "Image Resizing Failed #{exit_status} #{cmd}" if !exit_status
       #TODO move the establish connection somewhere better, perhaps an initilizer
       AWS::S3::Base.establish_connection!(:access_key_id => 'AKIAIIZEL3OLHCBIZBBQ', :secret_access_key => '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')
-      #AWS::S3::S3Object.store("/photos/#{self.uuid}/#{style}.jpg", open(photo_temp_path(style)), 'com.clixtr.picbounce', {:access => :public_read})
+      AWS::S3::S3Object.store("/photos/#{self.uuid}/#{style}.jpg", open(photo_temp_path(style)), 'com.clixtr.picbounce', {:access => :public_read})
     end
   end    
   
@@ -199,9 +195,13 @@ class Photo < ActiveRecord::Base
     if twitter_oauth_token && twitter_oauth_secret
       logger.debug "** TW ** "+"Uploading To Twitter"
       begin
-        oauth = Twitter::OAuth.new(TWITTER_API_KEY, TWITTER_API_SECRET)
-        oauth.authorize_from_access(twitter_oauth_token, twitter_oauth_secret)
-        client = Twitter::Base.new(oauth)
+        Twitter.configure do |config|
+          config.consumer_key = TWITTER_API_KEY
+          config.consumer_secret = TWITTER_API_SECRET
+          config.oauth_token = twitter_oauth_token
+          config.oauth_token_secret = twitter_oauth_secret
+        end
+        client = Twitter::Client.new
         responce = client.update(self.twitter_caption)
         pp responce
         user = responce['user']
@@ -216,6 +216,7 @@ class Photo < ActiveRecord::Base
 
         block_from_homepage_if_banned
         
+     
         self.twitter_post_status_code = 200
         self.twitter_post_status_body = responce.id
       rescue Exception => exc
@@ -296,11 +297,11 @@ class Photo < ActiveRecord::Base
       
       a = self.facebook_access_token.split('-')[1] if self.facebook_access_token
       b = a.split('|')[0] if a
-      self.facebook_user_id = b
+      #self.facebook_user_id = b
       
       resp = self.facebook_http_delete
       self.facebook_post_status_code = resp.status
-      self.facebook_post_status_body = resp.body.dump   
+      self.facebook_post_status_body = resp.body 
       puts self.facebook_post_status_body
       
     else  
@@ -314,13 +315,14 @@ class Photo < ActiveRecord::Base
       
       a = self.facebook_access_token.split('-')[1] if self.facebook_access_token
       b = a.split('|')[0] if a
-      self.facebook_user_id = b
+      #self.facebook_user_id = b
       
       resp = self.facebook_http_post
       self.facebook_post_status_code = resp.status
-      self.facebook_post_status_body = resp.body.dump    
+      self.facebook_post_status_body = resp.body  
+      logger.debug resp.body
       if resp.status == 200
-        json = JSON.parse(resp.body.dump)
+        json = JSON.parse(resp.body)
         self.facebook_photo_id = json['id'] 
       end
     else  
@@ -397,6 +399,7 @@ end
   end
   
   def translate_twitter_error(tw_code,tw_message)
+    logger.debug tw_message
     if tw_code != 200
       if tw_message == "(401): Unauthorized - Incorrect signature" 
         return "Your Twitter connection is screwed up! Try again later or in Settings: logout and back into Twitter. "

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110526224746) do
+ActiveRecord::Schema.define(:version => 20110620231811) do
 
   create_table "comments", :force => true do |t|
     t.string   "text"
@@ -86,12 +86,12 @@ ActiveRecord::Schema.define(:version => 20110526224746) do
     t.datetime "updated_at"
   end
 
-  create_table "photos", :id => false, :force => true do |t|
-    t.integer  "id",                        :null => false
+  create_table "photos", :force => true do |t|
     t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "caption"
+    t.string   "twitter_screen_name"
     t.integer  "view_count"
     t.string   "user_agent"
     t.string   "uuid"
@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(:version => 20110526224746) do
   end
 
   add_index "photos", ["code"], :name => "index_photos_on_code"
+  add_index "photos", ["id"], :name => "idx_photos_id"
 
   create_table "services", :force => true do |t|
     t.integer  "user_id"

@@ -1,13 +1,8 @@
-<%=
-	[{
-
-		:facebook_post_status_code => @photo.facebook_post_status_code.to_s,
-		:facebook_post_status_body => @photo.facebook_post_status_msg,
-		:twitter_post_status_code => @photo.twitter_post_status_code.to_s,
-		:twitter_post_status_body => @photo.twitter_post_status_msg,
-		}.merge((@photo.code!=nil)?{:code => @photo.code}:{}
-		).merge((@photo.facebook_photo_id!=nil)?{:fbid => @photo.facebook_photo_id}:{}
-		)
-	
-	].to_json
-%>
+[{
+  "facebook_post_status_code": "<%=  @photo.facebook_post_status_code %>",
+	"facebook_post_status_body": "<%=  @photo.facebook_post_status_msg %>",
+	"twitter_post_status_code":  "<%  @photo.twitter_post_status_code %>",
+	"twitter_post_status_body":  "<%=  @photo.twitter_post_status_msg %>",
+  "code":                       "<%= @photo.code %>",
+  "facebook_photo_id":           "<%= @photo.facebook_photo_id %>"
+}]

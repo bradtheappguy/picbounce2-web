@@ -4,7 +4,6 @@ execute <<ENDSQL
 
 drop table if exists temp_photos;
 create table temp_photos (like photos);
-alter table temp_photos drop column twitter_screen_name;
 alter table temp_photos drop column twitter_oauth_token; 
 alter table temp_photos drop column twitter_oauth_secret; 
 alter table temp_photos drop column twitter_avatar_url; 
@@ -67,8 +66,27 @@ photos.filter_version,
 users.id 
 FROM photos INNER JOIN users on (photos.facebook_user_id = users.facebook_user_id) OR (photos.twitter_screen_name = users.twitter_screen_name);
 
+alter sequence photos_id_seq OWNED BY NONE;
 drop table photos;
 alter table temp_photos rename to photos;
+
+
+create index idx_photos_id on photos (id);
+
+delete
+from photos as outer_photos
+where exists(
+select inner_photos.id from photos as inner_photos
+where inner_photos.id = outer_photos.id
+group by id 
+having count(id) > 1
+);
+
+
+ALTER TABLE photos alter column id set default nextval('photos_id_seq'::regclass);
+ALTER TABLE photos ADD PRIMARY KEY (id);
+
+
 
 
 ENDSQL
