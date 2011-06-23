@@ -69,7 +69,7 @@ FROM photos INNER JOIN users on (photos.facebook_user_id = users.facebook_user_i
 alter sequence photos_id_seq OWNED BY NONE;
 drop table photos;
 alter table temp_photos rename to photos;
-
+alter sequence photos_id_seq OWNED BY photos.id;
 
 create index idx_photos_id on photos (id);
 
