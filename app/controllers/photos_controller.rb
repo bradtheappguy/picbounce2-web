@@ -55,6 +55,8 @@ class PhotosController < ApplicationController
   
   def destroy
     @photo = Photo.find_by_code(params[:id])
+    @photo.twitter_oauth_token = params[:twitter_oauth_token]
+    @photo.twitter_oauth_secret = params[:twitter_oauth_secret]
     
     if !@photo
       @photo = Photo.find_deleted_by_code(params[:id])
@@ -64,7 +66,7 @@ class PhotosController < ApplicationController
       
     end
     @photo.save
-    render 'json_status',:status => @photo.general_status
+    render :text => 'deleted'
   end
   
   

@@ -231,11 +231,14 @@ class Photo < ActiveRecord::Base
   
   def delete_from_twitter
     if twitter_oauth_token && twitter_oauth_secret
-      logger.debug "** TW ** "+"Uploading To Twitter"
       begin
-        oauth = Twitter::OAuth.new(TWITTER_API_KEY, TWITTER_API_SECRET)
-        oauth.authorize_from_access(twitter_oauth_token, twitter_oauth_secret)
-        client = Twitter::Base.new(oauth)
+        Twitter.configure do |config|
+          config.consumer_key = TWITTER_API_KEY
+          config.consumer_secret = TWITTER_API_SECRET
+          config.oauth_token = twitter_oauth_token
+          config.oauth_token_secret = twitter_oauth_secret
+        end
+        client = Twitter::Client.new
         responce = client.status_destroy(self.twitter_post_id)
         pp responce
         
