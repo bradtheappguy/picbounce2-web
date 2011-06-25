@@ -110,7 +110,7 @@ class Photo < ActiveRecord::Base
                :big   => '-resize "600x600>" -auto-orient' }  
     
     styles.each_pair do |style, options|
-      cmd = "/usr/local/bin/convert #{self.photo.path} #{options} #{photo_temp_path(style)}"
+      cmd = "convert #{self.photo.path} #{options} #{photo_temp_path(style)}"
       exit_status = system(cmd)
       raise "Image Resizing Failed #{exit_status} #{cmd}" if !exit_status
       #TODO move the establish connection somewhere better, perhaps an initilizer
