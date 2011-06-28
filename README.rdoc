@@ -4,7 +4,7 @@
 
 * OSX 10.6.7
 * Xcode 4.0 Build 4A304a  (For underlying system libraries)
-* MacPorts 1.9.2  http://distfiles.macports.org/MacPorts/MacPorts-1.9.2-10.6-SnowLeopard.dmg
+* HomeBrew  OR  MacPorts 1.9.2  http://distfiles.macports.org/MacPorts/MacPorts-1.9.2-10.6-SnowLeopard.dmg
 * ImageMagick @6.6.8-1_0+q16 (active)
 * Postgres 8.4.6
 
@@ -20,6 +20,11 @@
 * cd picbounce-web
 * sudo env ARCHFLAGS='-arch i386' gem isntall pg
 * sudo bundle install
+
+
+== Installing homebrew
+
+ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
 
 
 == Getting the inital database
