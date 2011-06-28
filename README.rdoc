@@ -25,32 +25,13 @@
 == Getting the inital database
 
 % heroku pgbackups --app picbounce                                                                                                                                    
-	
-	ID   | Backup Time         | Size   | Database                   
-	-----+---------------------+--------+----------------------------
-	b008 | 2011/03/21 15:56.13 | 90.5MB | HEROKU_POSTGRESQL_RONIN_URL
-	b009 | 2011/03/23 18:54.24 | 91.0MB | HEROKU_POSTGRESQL_RONIN_URL
 
 % heroku pgbackups:destroy b008 --app picbounce
 
-	Backup b008 deleted.
-
 % heroku pgbackups:capture --app picbounce
 
-	DATABASE_URL  ----backup--->  b010
-	Capturing... done
-	Storing... donev
-
 % heroku pgbackups --app picbounce
-	ID   | Backup Time         | Size   | Database                   
-	-----+---------------------+--------+----------------------------
-	b009 | 2011/03/23 18:54.24 | 91.0MB | HEROKU_POSTGRESQL_RONIN_URL
-	b010 | 2011/04/04 12:48.22 | 94.9MB | HEROKU_POSTGRESQL_RONIN_URL
 
 % heroku pgbackups:url b010 --app picbounce
-	http://s3.amazonaws.com/hkpgbackups/app203099@heroku.com/b010.dump?AWSAccessKeyId=AKIAJYEDAEBRU6KYW6QA&Expires=1301947167&Signature=F0652TZ1iiGkXfLYzSQq%2BjheU3M%3D
 
-% curl "http://s3.amazonaws.com/hkpgbackups/app203099@heroku.com/b010.dump?AWSAccessKeyId=AKIAJYEDAEBRU6KYW6QA&Expires=1301947167&Signature=F0652TZ1iiGkXfLYzSQq%2BjheU3M%3D" > b010.dump
-	  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-		Dload  Upload   Total   Spent    Left  Speed
-		100 94.8M  100 94.8M    0     0   430k      0  0:03:45  0:03:45 --:--:--  372k
+% curl "http://s3.amazonaws.com/hkpgbackups/app203099@heroku.com/b010.dump > dump.sql
