@@ -28,7 +28,7 @@ Trunk::Application.routes.draw do
   
 
 #AUTH
-  match '/auth/:provider/callback' => 'authentications#create'
+ #match '/auth/:provider/callback' => 'authentications#create'
 
   match 'filters/test2' => 'filters#test2', :via => :get
 

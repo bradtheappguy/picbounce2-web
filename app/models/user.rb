@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
-  include OmniAuthPopulator
   include Sluggable
 
+  attr_accessible :email, :password, :password_confirmation, :remember_me
+    
   before_save :ensure_authentication_token
 
   # Include default devise modules. Others available are:
@@ -11,8 +12,6 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   acts_as_api
-
-  has_many :authentications
 
   has_many :photos, :limit => 10, :order => 'created_at desc'
   has_many :all_photos, :class_name => 'Photo'
@@ -86,12 +85,7 @@ class User < ActiveRecord::Base
     Photo.find(:all, :conditions => ["user_id = ? and created_at < ?", self.id, Time.at(timestamp.to_i) ], :order => 'created_at asc', :limit => 10)
   end
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-  
-  def apply_omniauth(omniauth)
-    self.email = omniauth['user_info']['email'] if email.blank?
-    authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
-  end
+
       
   def photo
   end
@@ -163,28 +157,18 @@ class User < ActiveRecord::Base
   end
 
   def to_param
-    slug
+    slug || id
   end
 
   def apply_omniauth(omniauth)
-    self.omniauth = omniauth
-    user_tokens.build(:provider => omniauth['provider'], :uid => omniauth['uid'], :omniauth => omniauth)
-
-    #populate_photo_from_url(omniauth['user_info']['image']) unless photo.exists? || omniauth['user_info']['image'].blank?
+    self.name = omniauth['user_info']['name'] if self.name.blank?
+    self.email = omniauth['user_info']['email'] if self.email.blank? && omniauth['user_info']['email']
+    
+    user_tokens.build(:provider => omniauth['provider'], 
+                      :uid => omniauth['uid'], 
+                      :omniauth => omniauth)
   end
 
-  def populate_from_twitter(omni)
-    self.name = omni['user_info']['name'] if self.name.blank?
-  end
-
-  def populate_from_google_apps(omni)
-    self.name = omni['user_info']['name'] if self.name.blank?
-  end
-
-  def populate_from_facebook(omni)
-    self.name = omni['user_info']['name'] if self.name.blank?
-    self.email = omni['user_info']['email'] if self.email.blank?
-  end
 
 #allows for account creation from twitter & fb
 #allows saves w/o password
@@ -206,11 +190,12 @@ class User < ActiveRecord::Base
   end
 
   def fb_post!(message, name=DEFAULT_FB_POST_NAME,
-          description="TODO", url=DEFAULT_SHARE_URL, img=DEFAULT_FB_SHARE_IMAGE)
+          description="TODO", url=DEFAULT_SHARE_URL)
+   
     options = {'access_token' => user_tokens.facebook.token,
                'message' => message,
                'link' => url,
-               'picture' => img,
+               #'picture' => img,
                'name' => name,
                'caption' => url,
                'description' => description
@@ -223,22 +208,10 @@ class User < ActiveRecord::Base
   end
 
   def display_name
-    name || email
+    name || email || 'no name'
   end
 
   private
-
-  def populate_photo_from_url(image_url)
-    require 'open-uri'
-    io = open(URI.parse(image_url))
-
-    def io.original_filename;
-      base_uri.path.split('/').last;
-    end
-
-    self.photo = io.original_filename.blank? ? nil : io
-    #todo for now throw, not sire the error cases
-  end
 
   def twitter_client
     client = TwitterOAuth::Client.new(

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110504013959) do
+ActiveRecord::Schema.define(:version => 20110507085459) do
 
   create_table "comments", :force => true do |t|
     t.string   "text"
@@ -148,6 +148,15 @@ ActiveRecord::Schema.define(:version => 20110504013959) do
     t.string   "token"
     t.string   "secret"
     t.string   "nickname"
+    t.string   "email"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "location"
+    t.string   "description"
+    t.string   "image"
+    t.string   "phone"
+    t.string   "urls"
+    t.string   "user_hash"
   end
 
   create_table "users", :force => true do |t|

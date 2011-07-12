@@ -1,16 +1,14 @@
 class UserToken < ActiveRecord::Base
-  include OmniAuthPopulator
-
   belongs_to :user
 
-  def populate_from_twitter(omni)
-    self.secret = omni['credentials']['secret']
-    self.token  = omni['credentials']['token']
-    self.nickname  = omni['user_info']['nickname']
+  def omniauth=(omni)
+    if omni['credentials']
+      self.secret = omni['credentials']['secret'] if omni['credentials']['secret']
+      self.token  = omni['credentials']['token'] if omni['credentials']['token']
+    end
+    if omni['user_info']
+      self.nickname  = omni['user_info']['nickname'] if omni['user_info']['nickname']
+    end
   end
 
-  def populate_from_facebook(omni)
-    self.token  = omni['credentials']['token']
-    self.nickname  = omni['user_info']['nickname']
-  end
 end

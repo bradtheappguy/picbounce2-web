@@ -4,6 +4,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   before_filter :set_omniauth_data
 
+   
   def method_missing(provider)
     return super unless valid_provider?(provider)
     omniauthorize_additional_account || omniauth_sign_in || omniauth_sign_up
@@ -11,6 +12,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
 
   def signin_and_redirect_for_access_token
+    puts "signing IN"
     sign_in(:user, preexisting_authorization_token.user)
     redirect_to "/users/auth/picbounce?auth_token=#{current_user.authentication_token}" 
   end
@@ -20,6 +22,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     #todo merge by email if signing in with a new account for which we already have a user (match on email)
     return false unless preexisting_authorization_token
     flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => omniauth_data['provider']
+    puts flash[:notice]
     signin_and_redirect_for_access_token
     true
   end
@@ -35,7 +38,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     user.apply_omniauth(omniauth_data)
 
     if user.save
+      
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => omniauth_data['provider']
+      puts flash[:notice]
       sign_in_and_redirect('aaa', user)
     else
       session[:omniauth] = omniauth_data.except('extra')
@@ -55,15 +60,21 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
       current_user.apply_omniauth(omniauth_data)
       current_user.save
-
-      flash[:notice] = "Account connected"
-      signin_and_redirect_for_access_token
+      msg = "Account connected"
+      puts msg
+      flash[:notice] = msg
+      redirect_to "/users/auth/picbounce?auth_token=#{current_user.authentication_token}"
     end
   end
 
 
   def set_omniauth_data
+    puts env["omniauth.auth"]
+    puts "HELLO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    puts env["omniauth.auth"]
     self.omniauth_data = env["omniauth.auth"]
+    provider = omniauth_data['provider'];
+    provider = 'facebook' if provider == 'facebooksso'
     self.preexisting_authorization_token = UserToken.find_by_provider_and_uid(omniauth_data['provider'], omniauth_data['uid'])
   end
 

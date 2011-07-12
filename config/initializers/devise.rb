@@ -139,8 +139,10 @@ Devise.setup do |config|
   config.omniauth :twitter, TWITTER_CONSUMER_KEY, TWITTER_SECRET_KEY
   config.omniauth :google_apps, OpenID::Store::Filesystem.new('/tmp'), :domain => 'gmail.com'
   config.omniauth :flickr, FLICKR_KEY, FLICKR_SECRET
-
-
+  config.omniauth :tumblr, TUMBLR_OAUTH_KEY, TUMBLR_OAUTH_SECRET
+  config.omniauth :myspace, MYSPACE_OAUTH_KEY, MYSPACE_OAUTH_SECRET
+  config.omniauth :facebook_sso
+  
   # config.warden do |manager|
   #   manager.oauth(:twitter) do |twitter|
   #     twitter.consumer_secret = <YOUR CONSUMER SECRET>

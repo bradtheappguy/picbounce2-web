@@ -21,7 +21,7 @@
 
 <% @sharings.each do |sharing| %>
     <div class="sharing" style="clear:both;">
-      <%= link_to image_tag(sharing.user.photo.url(:mini), :class => 'share_image'), profile_path(sharing.user) %>
+      <!-- %= link_to image_tag(sharing.user.photo.url(:mini), :class => 'share_image'), profile_path(sharing.user) % -->
       <div class="share_text">
         <%= sharing.content %>
         <br/>
