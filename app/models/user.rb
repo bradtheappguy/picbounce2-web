@@ -125,10 +125,9 @@ class User < ActiveRecord::Base
   end
 
   
-  def password_required?
-    false
-    #(authentications.empty? || !password.blank?) && super
-  end
+  #def password_required?
+  #  (authentications.empty? || !password.blank?) && super
+  #end
 
   before_validation :generate_slug, :on => :create
   
@@ -176,7 +175,8 @@ class User < ActiveRecord::Base
   #allows for account creation from twitter & fb
   #allows saves w/o password
   def password_required?
-    (!persisted? && servicesempty?) || password.present? || password_confirmation.present?
+    return false
+    #(!persisted? && servicesempty?) || password.present? || password_confirmation.present?
   end
 
   #allows for account creation from twitter
