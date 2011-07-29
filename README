@@ -1,0 +1,18 @@
+== Welcome to PicBounce
+== Environment Requirements
+
+PicBounce's Cannonical devleopment environment is Mac OSX Snow Leopard (10.6.4), although it should not be hard to get up and runing elsewhere, we have made no effort at making sure things work.
+
+We use ruby 1.8.7 (2009-06-12 patchlevel 174) [universal-darwin10.0] that is included with snow leopard
+
+ImageMagick via the PaperClip Gem is also used.  We use MacPorts to install.
+
+sudo port install ImageMagick
+
+A Few Dependicies:
+  Xcode - (We use the current iOS SDK version)
+  OSX Java Developer Package
+  Git
+
+nd of, course all the gems, except for pg (only used in production) in the .gems file
+
