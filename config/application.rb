@@ -7,7 +7,6 @@ require 'rails/all'
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 
- 
 module Trunk
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -38,8 +37,6 @@ module Trunk
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
     
-#    config.gem "rmagick", lib => "RMagick" 
-
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
   end

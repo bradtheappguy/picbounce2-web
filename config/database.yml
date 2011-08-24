@@ -1,9 +1,14 @@
+# Note: the production environment is given to us automatically when we deploy to heroku
+#  
+#
+#
+#
+
 staging:
   adapter: postgresql
   encoding: unicode
   database: picbounce_staging
   pool: 5
-  username: brad
   
 development:
   adapter: postgresql
@@ -16,8 +21,6 @@ test:
   encoding: unicode
   database: picbounce_test
   pool: 5
-  username: postgres
-  password:
 
 analytics:
   adapter: mysql
@@ -26,4 +29,4 @@ analytics:
   username: picbounce
   password: cadet4cognizance
   host: svn.clxsrv.com
-
+  

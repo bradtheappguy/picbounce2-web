@@ -1,27 +1,18 @@
 Trunk::Application.routes.draw do
-  resources :sharings
-
   
+  #Authentication
+  resources :sharings
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks", :registrations => 'registrations'}
   match 'users/auth/picbounce' => 'users/picbounce_callback#picbounce_callback', :via => :get
   
+  
   match 'users/:id/feed'      => 'users/feed#show', :as => 'user_feed'
-
   match 'users/:id/filters' => 'users/filters#index',:via =>:get
   match 'users/:id/followers' => 'users/followers#index', :as => 'user_following'
   match 'users/:id/followees' => 'users/followees#index', :as => 'user_followees'
-  #resources :authentications
   resources :followings
 
-  #match 'login' => 'sessions#new', :via => :get
-  #match 'login' => 'sessions#create', :via => :post
-  #match 'logout' => 'sessions#destory', :via => :get
-  #match 'connect' => 'photos#connect', :via => :get
-  #match '/:id/logout' => 'sessions#destory', :via => :get
-  
-  #match 'fb/:id' => 'application#fb_post_authorize', :via => :get
-  #match 'fb/:id' => 'application#fb_post_authorize', :via => :post
-  
+ 
   match 'recent/:id' => 'photos#recent', :via => :get
   match 'admin' => 'admin#index', :via => :get
   match 'admin/generateSitemap' => 'admin#generateSitemap', :via => :get
@@ -29,14 +20,11 @@ Trunk::Application.routes.draw do
   match 'download' => 'application#download', :via => :get
   match 'Download' => 'application#download', :via => :get
   match 'appstore' => 'application#appstore', :via => :get
+  
   match 'photos' => 'photos#create', :via => :post
   match 'photos' => 'photos#destory', :via => :delete
   match 'tweetie' => 'photos#tweetie', :via => :post
   
-
-#AUTH
- #match '/auth/:provider/callback' => 'authentications#create'
-
   match 'filters/index' => 'filters#index', :via => :get
   match 'filters/current_version' => 'filters#current_version', :via => :get
 #API
@@ -54,9 +42,9 @@ Trunk::Application.routes.draw do
   match 'users/:user_id/following' => 'api#destroy_following', :via => :delete
 
   match 'users/:user_id/followers' => 'api#create_following', :via => :post
+  match 'users/:id' => 'users', :action => 'show', :as => 'user', :via => :get
 
-
-
+#Analytics
   match 'analytics' => 'analytics#viewer', :via => :get
   match 'analytics/refreshFlurry' => 'analytics#refreshFlurry', :via => :get
   match 'analytics/clixtrAnalytics.swf' => 'analytics#analytics', :via => :get
@@ -66,8 +54,8 @@ Trunk::Application.routes.draw do
   match 'analytics/flurry' => 'analytics#flurry', :via => :get
   match 'analytics/inhouse' => 'analytics#inhouse', :via => :get
   
-  match 'users/:id' => 'users', :action => 'show', :as => 'user', :via => :get
-  
+
+#Default is assuemed to be a shorterned url  
   match '/:id' => 'photos#view', :via => :get, :as => 'photo'
   match '/:id' => 'photos#edit', :via => :post 
   match '/:id' => 'photos#destroy', :via => :delete

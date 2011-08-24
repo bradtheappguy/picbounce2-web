@@ -45,7 +45,7 @@ class Photo < ActiveRecord::Base
   attr_accessor :twitter_oauth_secret
   attr_accessor :facebook_access_token
   
-  before_create :set_uuid, :process_photos
+  before_create :load_from_aws, :set_uuid, :process_photos
   after_create :trigger_uploads
   
   before_update :trigger_deletes
@@ -111,8 +111,9 @@ class Photo < ActiveRecord::Base
     
     styles.each_pair do |style, options|
       cmd = "convert #{self.photo.path} #{options} #{photo_temp_path(style)}"
+      puts cmd
       exit_status = system(cmd)
-      raise "Image Resizing Failed #{exit_status} #{cmd}" if !exit_status
+      #raise "Image Resizing Failed #{exit_status} #{cmd}" if !exit_status
       #TODO move the establish connection somewhere better, perhaps an initilizer
       AWS::S3::Base.establish_connection!(:access_key_id => 'AKIAIIZEL3OLHCBIZBBQ', :secret_access_key => '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')
       AWS::S3::S3Object.store("/photos/#{self.uuid}/#{style}.jpg", open(photo_temp_path(style)), 'com.clixtr.picbounce', {:access => :public_read})
@@ -446,6 +447,13 @@ end
   end
 
 
+  def load_from_aws
+    open("tmp/foo.jpg", 'wb') do |file|
+      file << open('http://t1.gstatic.com/images?q=tbn:ANd9GcTmLaNuBh3xNbAaLS7bPQO-2t4hFGTeHh4ohcd3kYZ5hAudE_Su').read
+      puts file.path
+      self.photo = file
+    end
+  end
 
   mount_uploader :image, ImageUploader
 end

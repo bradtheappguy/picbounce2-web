@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
   #JSON TEmplates
   api_accessible :base do |template|
    template.add :display_name
+   template.add :slug, :as => :screen_name
    template.add :avatar
    template.add :id
   end
