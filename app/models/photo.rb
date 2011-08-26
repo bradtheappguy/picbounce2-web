@@ -40,7 +40,7 @@ class Photo < ActiveRecord::Base
   scope :popular, public.where('view_count > 1').order("created_at desc").limit(100)
 
   attr_accessor :photo
-  
+  attr_accessor :key
   attr_accessor :twitter_oauth_token
   attr_accessor :twitter_oauth_secret
   attr_accessor :facebook_access_token
@@ -448,8 +448,9 @@ end
 
 
   def load_from_aws
-    open("tmp/foo.jpg", 'wb') do |file|
-      file << open('http://t1.gstatic.com/images?q=tbn:ANd9GcTmLaNuBh3xNbAaLS7bPQO-2t4hFGTeHh4ohcd3kYZ5hAudE_Su').read
+    puts key
+    open("tmp/#{code}.jpg", 'wb') do |file|
+      file << open("http://s3.amazonaws.com/com.picbounce.incoming/#{key}").read
       puts file.path
       self.photo = file
     end

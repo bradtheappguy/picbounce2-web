@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
     @photos = followeds.find(:all, :include => :photos).collect(&:photos).flatten
   end
   
-  has_many :services do
+  has_many :services, :dependent => :destroy do
     def facebook
       target.detect{|t| t.provider == 'facebook'}
     end

@@ -2,7 +2,7 @@
 
 class PhotosController < ApplicationController
   
-  before_filter :authorize, :only => :edit
+  before_filter :authorize, :only => {:edit, :create}
   before_filter :current_user
 
   layout :choose_layout
@@ -33,7 +33,10 @@ class PhotosController < ApplicationController
     end  
 
     
-    @photo = Photo.create({:photo => params[:photo], 
+    puts current_user
+    
+    @photo = Photo.create({:photo => params[:photo],
+                          :key => params[:key],
                           :code => code,
                           :twitter_oauth_token =>  params[:twitter_oauth_token],
                           :twitter_oauth_secret => params[:twitter_oauth_secret],
@@ -45,7 +48,8 @@ class PhotosController < ApplicationController
                           :device_id => params[:device_id],
                           :ip_address => request.env['HTTP_X_REAL_IP'],
                           :filter_version => params[:filter_version],
-                          :filter_name => params[:filter_name]
+                          :filter_name => params[:filter_name],
+                          :user => current_user
     })
     @photo.save #TODO is this save necessacarry?
     logger.debug @photo.code

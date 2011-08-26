@@ -13,6 +13,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def signin_and_redirect_for_access_token
     puts "signing IN"
+    return false unless preexisting_authorization_token.user
     sign_in(:user, preexisting_authorization_token.user)
     redirect_to "/users/auth/picbounce?auth_token=#{current_user.authentication_token}" 
   end
@@ -40,10 +41,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if user.save 
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => omniauth_data['provider']
       puts flash[:notice]
-      sign_in_and_redirect('aaa', user)
+      sign_in(:user, user)
+      redirect_to "/users/auth/picbounce?auth_token=#{user.authentication_token}"
     else
       session[:omniauth] = omniauth_data.except('extra')
-      redirect_to new_user_registration_url
+      signin_and_redirect_for_access_token
+      #redirect_to new_user_registration_url
     end
   end
 
@@ -73,8 +76,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     puts env["omniauth.auth"]
     self.omniauth_data = env["omniauth.auth"]
     provider = omniauth_data['provider'];
-    provider = 'facebook' if provider == 'facebooksso'
     self.preexisting_authorization_token = Service.find_by_provider_and_uid(provider, omniauth_data['uid'])
+    #if provider == 'facebooksso' && !self.preexisting_authorization_token
+    #  self.preexisting_authorization_token = Service.find_by_provider_and_uid('facebook', omniauth_data['uid'])
+    #end
   end
 
 
