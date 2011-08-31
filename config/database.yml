@@ -11,6 +11,8 @@ staging:
   pool: 5
   
 development:
+  host: localhost
+  user: brad
   adapter: postgresql
   encoding: unicode
   database: picbounce_development

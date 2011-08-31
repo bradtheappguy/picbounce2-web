@@ -29,9 +29,10 @@ gem "rest-client", "1.6.1", :require => "restclient"
 gem "sluggable"
 gem "rmagick", "2.12.0", :require => 'RMagick'
 gem "carrierwave"
+gem 'apn_on_rails', :git => 'https://github.com/natescherer/apn_on_rails.git', :branch => 'rails3'
 
 group :analytics, :development, :test do
-   gem 'mysql'
+   #gem 'mysql'
    #gem 'wirble'
    #gem 'webrat'
 end

@@ -8,6 +8,14 @@ GIT
       orm_adapter (~> 0.0.3)
       warden (~> 1.0.3)
 
+GIT
+  remote: https://github.com/natescherer/apn_on_rails.git
+  revision: 18f5d37397e3f003152c51b257d9da939b70438f
+  branch: rails3
+  specs:
+    apn_on_rails (0.3.1rails3)
+      configatron
+
 PATH
   remote: vendor/gems/acts_as_api-0.3.0
   specs:
@@ -95,6 +103,8 @@ GEM
     builder (2.1.2)
     carrierwave (0.5.7)
       activesupport (~> 3.0)
+    configatron (2.8.2)
+      yamler (>= 0.1.0)
     crack (0.1.8)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -134,7 +144,6 @@ GEM
     multi_json (1.0.3)
     multi_xml (0.2.2)
     multipart-post (1.1.3)
-    mysql (2.8.1)
     net-ldap (0.2.2)
     nokogiri (1.4.7)
     oauth (0.4.5)
@@ -201,12 +210,14 @@ GEM
     warden (1.0.5)
       rack (>= 1.0)
     xml-simple (1.1.0)
+    yamler (0.1.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   acts_as_api (= 0.3.0)!
+  apn_on_rails!
   aws-s3
   binary_plist
   carrierwave
@@ -218,7 +229,6 @@ DEPENDENCIES
   jquery-rails
   json (= 1.2.2)
   mechanize (= 1.0.0)
-  mysql
   omniauth!
   pg
   plist (= 3.1.0)
