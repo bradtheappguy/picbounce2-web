@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable, :token_authenticatable, :validatable
   
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :slug, :is_current_user
-  
+  has_many :devices, :class_name => 'APN::Device'
   has_many :photos, :limit => 1000, :order => 'created_at desc'
   has_many :all_photos, :class_name => 'Photo'  
   has_many :followings 

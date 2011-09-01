@@ -10,13 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110830211237) do
+ActiveRecord::Schema.define(:version => 20110831015706) do
 
   create_table "apn_devices", :force => true do |t|
     t.string   "token",              :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "last_registered_at"
+    t.integer  "user_id"
   end
 
   add_index "apn_devices", ["token"], :name => "index_apn_devices_on_token", :unique => true

@@ -10,6 +10,8 @@ Trunk::Application.routes.draw do
   match 'users/:id/filters' => 'users/filters#index',:via =>:get
   match 'users/:id/followers' => 'users/followers#index', :as => 'user_following'
   match 'users/:id/followees' => 'users/followees#index', :as => 'user_followees'
+  match 'users/:id/device' => 'users/device#create', :via => :post
+
   resources :followings
 
  

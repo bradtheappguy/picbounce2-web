@@ -33,6 +33,6 @@ gem 'apn_on_rails', :git => 'https://github.com/natescherer/apn_on_rails.git', :
 
 group :analytics, :development, :test do
    #gem 'mysql'
-   #gem 'wirble'
+   gem 'wirble'
    #gem 'webrat'
 end
