@@ -32,6 +32,9 @@ gem "carrierwave"
 gem 'apn_on_rails', :git => 'https://github.com/natescherer/apn_on_rails.git', :branch => 'rails3'
 
 group :analytics, :development, :test do
+   gem 'ruby-debug-ide'
+   gem 'ruby-debug-base'
+   gem 'taps'
    #gem 'mysql'
    gem 'wirble'
    #gem 'webrat'

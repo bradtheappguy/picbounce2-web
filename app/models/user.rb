@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
   #JSON TEmplates
   api_accessible :base do |template|
    template.add :display_name
-   template.add :slug, :as => :screen_name
+   template.add :raw_slug_text, :as => :screen_name
    template.add :avatar
    template.add :id
   end
@@ -249,6 +249,7 @@ class User < ActiveRecord::Base
   def servicesempty?
     (services.count == 0)
   end
+  
   
 end
 

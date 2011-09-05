@@ -1,12 +1,10 @@
 class ApiController < ApplicationController
 
   def popular
-    if params['twitter']
-      @photos = Photo.find_all_by_twitter_screen_name(params['twitter'])
-    else
-      render_for_api :feed, :json => Photo.find_popular
-    end
-    #render :text => @photos.to_json
+    response = Responce.new
+    response.url = request.fullpath
+    response.photos = Photo.find_popular
+    render_for_api :feed, :json => response 
   end
 
   def profile
