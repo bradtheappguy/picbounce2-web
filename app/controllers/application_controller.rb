@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
 
 
   before_filter :configure_split_group
+  before_filter :configure_default_url
   
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
@@ -25,6 +26,10 @@ class ApplicationController < ActionController::Base
   def appstore
     redirect_to 'http://click.linksynergy.com/fs-bin/stat?id=AMGhxDPIbSM&offerid=146261&type=3&subid=0&tmpid=1826&RD_PARM1=http%253A%252F%252Fitunes.apple.com%252Fus%252Fapp%252Fpicbounce%252Fid378022697%253Fmt%253D8%2526uo%253D4%2526partnerId%253D30'
   end
+
+def configure_default_url
+  Rails.application.routes.default_url_options[:host]= request.host_with_port
+end
 
   def sitemap 
 

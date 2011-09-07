@@ -27,12 +27,12 @@ class Responce < ActiveRecord::Base
     template.add :next
   end
 
-  api_accessible :followers do |template|
+  api_accessible :follows do |template|
     template.add :url
     template.add :people
   end
 
-  api_accessible :followeds do |template|
+  api_accessible :followed_by do |template|
    template.add :url
    template.add :people
   end

@@ -1,0 +1,8 @@
+<h1>Following <%= @follows.count %> People</h1>
+<br />
+<br />
+<div>
+  <%  @follows.each do |person| %>
+    <%= link_to person.name, user_path(person.id)  %><br />
+  <% end %>
+</div>
