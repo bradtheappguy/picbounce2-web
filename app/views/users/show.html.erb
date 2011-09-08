@@ -1,8 +1,8 @@
 <h1><%= @user.display_name %>'s Profile</h1>
 <ul>
   <li><%= link_to 'Feed', user_feed_path(@user.id)  %></li>
-  <li><<%= link_to 'Following', user_following_path(@user.id)  %></li>
-  <li><<%= link_to 'Followers', user_followees_path(@user.id)  %></li>
+  <li><<%= link_to 'Following', user_follows_path(@user.id)  %></li>
+  <li><<%= link_to 'Followers', user_followedby_path(@user.id)  %></li>
 </ul>
 
 <div>

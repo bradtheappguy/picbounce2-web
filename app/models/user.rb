@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include Sluggable
+  include Rails.application.routes.url_helpers
   
   acts_as_api
   
@@ -51,45 +52,48 @@ class User < ActiveRecord::Base
     template.add :follows_me?, :as => :follows_me
     template.add :last_location
     template.add :followers_count
-    template.add :followers_url
+    template.add :follows_url
     template.add :following_count
-    template.add :following_url
+    template.add :followed_by_url
     template.add :badges_count
     template.add :photo_count 
   end
 
-  api_accessible :followeds, :extend => :base do |template|
+  api_accessible :followed_by, :extend => :base do |template|
   end
 
-  api_accessible :followers, :extend => :base do |template|
+  api_accessible :follows, :extend => :base do |template|
   end
   
-  def followers_url
-    "http://localhost:3000/api/users/b2test/followers"
+  def follows_url
+    user_follows_url(self)
   end
 
-  def following_url
-    "http://localhost:3000/api/users/b2test/following"
+  def followed_by_url
+    user_followedby_url(self)
   end
    
-
+  def self.find_by_slug_or_id(slug_or_id)
+    User.find_by_slug(slug_or_id.to_s) || User.find_by_id(slug_or_id)
+  end
+  
   def photo_count
     self.all_photos.count
   end
 
   
   def followers_count
-    66
+    self.followings.count
   end
 
    
   def following_count
-    77
+    self.inverse_followings.count
   end
 
   
   def badges_count
-    88
+    0
   end
 
   
@@ -284,6 +288,8 @@ class User < ActiveRecord::Base
   def servicesempty?
     (services.count == 0)
   end
+  
+  
   
   
 end
