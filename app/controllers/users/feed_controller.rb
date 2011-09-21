@@ -35,6 +35,9 @@ class Users::FeedController < ApplicationController
     end
   
     respond_to do |format|
+      
+      
+      
       format.html
       format.json {
         response = Responce.new

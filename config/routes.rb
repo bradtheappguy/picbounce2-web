@@ -1,11 +1,16 @@
 Trunk::Application.routes.draw do
   
-  #Authentication
+  resources :photos do
+    match '/like' => 'photos/likes#index', :via => :post
+    match '/like' => 'photos/likes#destroy', :via => :destory
+  end
+  
   resources :sharings
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks", :registrations => 'registrations'}
   match 'users/auth/picbounce' => 'users/picbounce_callback#picbounce_callback', :via => :get
   
-  
+ 
+  match 'users/:id/feed/:service_id' => 'users/feed#external', :as => 'user_external_feed'
   match 'users/:id/feed'      => 'users/feed#show', :as => 'user_feed'
   match 'users/:id/filters' => 'users/filters#index',:via =>:get
   match 'users/:id/follows' => 'users/follows#index', :as => 'user_follows'
@@ -29,6 +34,7 @@ Trunk::Application.routes.draw do
   
   match 'filters/index' => 'filters#index', :via => :get
   match 'filters/current_version' => 'filters#current_version', :via => :get
+
 #API
   match 'api/popular' => 'api#popular', :via => :get
   match 'api/nearby'  => 'api#nearby',  :via => :get

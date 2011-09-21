@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   has_many :filters,  :through => :user_filters
   
   def feed
-    @photos = followeds.find(:all, :include => :photos).collect(&:photos).flatten
+    @photos = followeds.find(:all, :include => :photos).collect(&:photos).flatten.reverse
   end
   
   has_many :services, :dependent => :destroy do
@@ -166,7 +166,7 @@ class User < ActiveRecord::Base
   end
 
   def to_param
-    slug || id
+    slug || id.to_s
   end
 
   def apply_omniauth(omniauth)
@@ -214,7 +214,11 @@ class User < ActiveRecord::Base
   end
   
   def external_photos(service_name,after=nil)
+    puts "/n/n/n/n/n"
+    puts service_name
+    puts "/n/n/n/n/n"
     if service_name == 'facebook'
+      puts "/n/n/n/n/nFACEBOOK/n/n/n/n/n"
       for service in services
         if service.provider == service_name
           token = service.token
@@ -224,14 +228,17 @@ class User < ActiveRecord::Base
       url += "&access_token="+ token
       url += "&format=json"
       url += "&query=select src,created,pid from photo where aid in (SELECT aid FROM album WHERE owner IN (SELECT uid2 FROM friend WHERE uid1 = me())) " 
-      if (after!=nil)
-        url += " and created < "+ after.to_s
+      if (after != nil)
+        url += " and created < " + after.to_s
       end
       url += " order by created desc limit 25"
        
       puts url
       resp = RestClient.get(URI.escape(url),{})
-      jsonObj =   JSON.parse(resp.body)
+      puts resp
+      
+      
+      jsonObj = JSON.parse(resp.body)
       list = []
       for jp in  jsonObj
         p = ExternalPhoto.new
@@ -289,9 +296,6 @@ class User < ActiveRecord::Base
   def servicesempty?
     (services.count == 0)
   end
-  
-  
-  
   
 end
 
