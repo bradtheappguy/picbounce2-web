@@ -40,6 +40,8 @@ class User < ActiveRecord::Base
    template.add :raw_slug_text, :as => :screen_name
    template.add :avatar
    template.add :id
+   template.add :is_following?, :as => :following
+   template.add :follows_me?, :as => :follows_me
   end
 
   api_accessible :feed, :extend => :base do |template|
@@ -47,8 +49,7 @@ class User < ActiveRecord::Base
   end
 
   api_accessible :profile, :extend => :base do |template|
-    template.add :is_following?, :as => :following
-    template.add :follows_me?, :as => :follows_me
+ 
     template.add :last_location
     template.add :followers_count
     template.add :follows_url

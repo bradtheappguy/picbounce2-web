@@ -8,8 +8,8 @@ Trunk::Application.routes.draw do
   
   match 'users/:id/feed'      => 'users/feed#show', :as => 'user_feed'
   match 'users/:id/filters' => 'users/filters#index',:via =>:get
-  match 'users/:id/followers' => 'users/followers#index', :as => 'user_following'
-  match 'users/:id/followees' => 'users/followees#index', :as => 'user_followees'
+  match 'users/:id/follows' => 'users/follows#index', :as => 'user_follows'
+  match 'users/:id/followed-by' => 'users/followedby#index', :as => 'user_followedby'
   match 'users/:id/device' => 'users/device#create', :via => :post
 
   resources :followings
@@ -40,9 +40,8 @@ Trunk::Application.routes.draw do
  
  
   match 'users/:user_id/filters' => 'api#filters', :via => :get
-  match 'users/:user_id/following' => 'api#following', :via => :get
-  match 'users/:user_id/following' => 'api#destroy_following', :via => :delete
 
+  match 'users/:user_id/following' => 'api#destroy_following', :via => :delete
   match 'users/:user_id/followers' => 'api#create_following', :via => :post
   match 'users/:user_id/following' => 'api#create_following', :via => :post
   
