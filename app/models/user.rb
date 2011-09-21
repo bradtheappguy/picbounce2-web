@@ -31,6 +31,7 @@ class User < ActiveRecord::Base
     end
   end
   
+  
   before_save :ensure_authentication_token
 
   
@@ -210,6 +211,40 @@ class User < ActiveRecord::Base
                'description' => description
     }
     RestClient.post(URI.escape("https://graph.facebook.com/me/feed/"), options)
+  end
+  
+  def external_photos(service_name,after=nil)
+    if service_name == 'facebook'
+      for service in services
+        if service.provider == service_name
+          token = service.token
+        end
+      end    
+      url = "https://api.facebook.com/method/fql.query?"
+      url += "&access_token="+ token
+      url += "&format=json"
+      url += "&query=select src,created,pid from photo where aid in (SELECT aid FROM album WHERE owner IN (SELECT uid2 FROM friend WHERE uid1 = me())) " 
+      if (after!=nil)
+        url += " and created < "+ after.to_s
+      end
+      url += " order by created desc limit 25"
+       
+      puts url
+      resp = RestClient.get(URI.escape(url),{})
+      jsonObj =   JSON.parse(resp.body)
+      list = []
+      for jp in  jsonObj
+        p = ExternalPhoto.new
+        p.id = jp['pid']
+        p.provider = 'facebook'
+        p.photo_url = jp['src']
+        p.created = jp['created']
+        list << p
+      end
+    else
+      list = []
+    end
+    list
   end
 
   def connected_to?(provider)
