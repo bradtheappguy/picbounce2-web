@@ -38,7 +38,7 @@ class Photo < ActiveRecord::Base
   scope :recent, public.limit(9).order("created_at desc")
   #scope :popular, lambda {where("view_count > -1"). order("id desc"). limit(100)}
   scope :popular, public.where('view_count > 1').order("created_at desc").limit(100)
-
+  
   attr_accessor :photo
   attr_accessor :key
   attr_accessor :twitter_oauth_token

@@ -22,12 +22,12 @@
   <% end %>  
 </div>
 <% @user.photos.each do |photo| %>
-  <%= thumbnail_image(photo) %>
+  <%= thumbnail_image(photo) %><br />
 <% end %>
 
 <% if @user == current_user %>
 <%= form_for @photo, :html => {:multipart => true} do |f| %>
-  <%= f.error_messages %>
+  
   <p>
     <%= f.file_field :image %>
   </p>

@@ -132,6 +132,10 @@ GEM
       railties (~> 3.0)
       thor (~> 0.14)
     json (1.2.2)
+    json_builder (2.0.6)
+      actionpack (~> 3.0.0)
+      activesupport (~> 3.0.0)
+      json
     launchy (2.0.3)
     linecache (0.46)
       rbx-require-relative (> 0.0.4)
@@ -248,6 +252,7 @@ DEPENDENCIES
   httpclient
   jquery-rails
   json (= 1.2.2)
+  json_builder
   mechanize (= 1.0.0)
   omniauth!
   pg

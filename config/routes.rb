@@ -1,7 +1,7 @@
 Trunk::Application.routes.draw do
   
   resources :photos do
-    match '/like' => 'photos/likes#index', :via => :post
+    match '/like' => 'photos/likes#create', :via => :post
     match '/like' => 'photos/likes#destroy', :via => :destory
   end
   
