@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   has_many :filters,  :through => :user_filters
   
   def feed
-    @photos = followeds.find(:all, :include => :photos).collect(&:photos).flatten.reverse
+    @photos = followeds.find(:all, :include => :photos).collect(&:photos).flatten #.reverse
   end
   
   has_many :services, :dependent => :destroy do
