@@ -1,8 +1,12 @@
 # Filters added to this controller apply to all controllers in the application.
 # Likewise, all the methods added will be available for all controllers.
 
+class FourOhFour < StandardError; end
+
 class ApplicationController < ActionController::Base
   include RedirectBack
+  
+  rescue_from FourOhFour, :with => :render_404
   
   helper_method :resource_class
   protect_from_forgery
@@ -27,6 +31,10 @@ class ApplicationController < ActionController::Base
     redirect_to 'http://click.linksynergy.com/fs-bin/stat?id=AMGhxDPIbSM&offerid=146261&type=3&subid=0&tmpid=1826&RD_PARM1=http%253A%252F%252Fitunes.apple.com%252Fus%252Fapp%252Fpicbounce%252Fid378022697%253Fmt%253D8%2526uo%253D4%2526partnerId%253D30'
   end
 
+   def render_404
+     render :text => '<h1>404</h1>', :status => 404
+   end
+   
 def configure_default_url
   Rails.application.routes.default_url_options[:host]= request.host_with_port
 end
@@ -105,5 +113,13 @@ end
    end
 
 
+   def render_api_response(args)
+     @photos = args[:photos]
+     @people = args[:people]
+     @user = args[:user]
+     
+     render 'api/response.rabl'
+   end
 
-end
+  
+ end

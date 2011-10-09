@@ -51,7 +51,7 @@ Trunk::Application.routes.draw do
   match 'users/:user_id/followers' => 'api#create_following', :via => :post
   match 'users/:user_id/following' => 'api#create_following', :via => :post
   
-  match 'users/:id' => 'users', :action => 'show', :as => 'user', :via => :get
+  match 'users/:id' => 'profiles', :action => 'show', :as => 'profile', :via => :get
 
 #Analytics
   match 'analytics' => 'analytics#viewer', :via => :get

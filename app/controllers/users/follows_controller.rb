@@ -6,7 +6,7 @@ class Users::FollowsController < ApplicationController
     respond_to do |format|
       format.html
       format.json {
-        render_for_api :follows, :json => Responce.new(:url => request.url, :people => @follows)
+        render_api_response :people => @follows
       }
     end
   end

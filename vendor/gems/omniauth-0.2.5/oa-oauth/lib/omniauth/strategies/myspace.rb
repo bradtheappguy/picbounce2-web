@@ -42,8 +42,8 @@ module OmniAuth
 
       def user_hash
         url = "http://api.myspace.com/v2/people/@me/@self?format=json"
-        responce = @access_token.get(url)
-        body = responce.body
+        response = @access_token.get(url)
+        body = response.body
         @user_hash ||= Hash.from_xml(body)        
       end
       

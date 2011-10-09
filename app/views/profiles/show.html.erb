@@ -25,16 +25,16 @@
   <%= thumbnail_image(photo) %><br />
 <% end %>
 
+  <% @photo = Photo.new %>
 <% if @user == current_user %>
-<%= form_for @photo, :html => {:multipart => true} do |f| %>
-  
-  <p>
-    <%= f.file_field :image %>
-  </p>
-  <p>
-    <%= f.label :remote_image_url, "or image URL" %><br />
-    <%= f.text_field :remote_image_url %>
-  </p>
-  <p><%= f.submit %></p>
-<% end %>
+  <%= form_for @photo, :html => {:multipart => true} do |f| %>
+    <p>
+      <%= f.file_field :image %>
+    </p>
+    <p>
+      <%= f.label :remote_image_url, "or image URL" %><br />
+      <%= f.text_field :remote_image_url %>
+    </p>
+    <p><%= f.submit %></p>
   <% end %>
+<% end %>

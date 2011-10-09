@@ -11,16 +11,13 @@ class Users::FeedController < ApplicationController
     if @user.nil?
      render :status => 404
     end
-
+    
+    @photos = @user.feed
+    @api_response = Response.new(:url => request.url, :photos => @user.feed, :user => @user)
+    
     respond_to do |format|
       format.html
-      format.json {
-       render_for_api :feed, :json => Responce.new(:url => request.url, :photos => @user.feed)  
-      }
-      #{
-      #  render :template => "api/response.json_builder"
-      #  #Responce.new(:url => request.url, :photos => @user.feed)
-      #}
+      format.json { render_api_response :photos => @photos }
     end
   end
   
@@ -39,20 +36,10 @@ class Users::FeedController < ApplicationController
     end
   
     respond_to do |format|
-      
-      
-      
+
       format.html
       format.json {
-        response = Responce.new
-        response.url = request.fullpath
-        response.user = @user
-        #if params[:after]
-        #  x.photos = user.photos_after params[:user_id]
-        #else
-          response.photos = photos
-        #end
-        render_for_api :profile, :json => response 
+        render_api_response :user => @user, @photos => @photos
       }
     end
   end

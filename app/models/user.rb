@@ -18,7 +18,8 @@ class User < ActiveRecord::Base
   has_many :filters,  :through => :user_filters
   
   def feed
-    @photos = followeds.find(:all, :include => :photos).collect(&:photos).flatten.reverse
+    #This needs optimization
+    @photos = followeds.includes(:photos).collect(&:photos).flatten.reverse
   end
   
   has_many :services, :dependent => :destroy do
@@ -41,41 +42,17 @@ class User < ActiveRecord::Base
    template.add :raw_slug_text, :as => :screen_name
    template.add :avatar
    template.add :id
-   template.add :is_following?, :as => :following
-   template.add :follows_me?, :as => :follows_me
-  end
-
-  api_accessible :feed, :extend => :base do |template|
-    template.add :last_location    
-  end
-
-  api_accessible :profile, :extend => :base do |template|
- 
-    template.add :last_location
-    template.add :followers_count
-    template.add :follows_url
-    template.add :following_count
-    template.add :followed_by_url
-    template.add :badges_count
-    template.add :photo_count 
-  end
-
-  api_accessible :followed_by, :extend => :base do |template|
-  end
-
-  api_accessible :follows, :extend => :base do |template|
-  end
-  
-  def follows_url
-    user_follows_url(self)
-  end
-
-  def followed_by_url
-    user_followedby_url(self)
+   #template.add :is_following?, :as => :following
+   #template.add :follows_me?, :as => :follows_me
   end
    
   def self.find_by_slug_or_id(slug_or_id)
-    User.find_by_slug(slug_or_id.to_s) || User.find_by_id(slug_or_id)
+    numeric = (slug_or_id.to_i.to_s == slug_or_id)
+    user = User.find_by_slug(slug_or_id.to_s)
+    if user.nil? && numeric
+      user = User.find_by_id(slug_or_id.to_i)
+    end
+    return user
   end
   
   def photo_count
@@ -83,7 +60,7 @@ class User < ActiveRecord::Base
   end
 
   
-  def followers_count
+  def followed_by_count
     self.followings.count
   end
 
@@ -102,11 +79,11 @@ class User < ActiveRecord::Base
     "San Francsico"
   end
   
-  def is_following?
+  def is_following?(user)
     true
   end
   
-  def follows_me?
+  def follows?(user)
     true
   end
   
