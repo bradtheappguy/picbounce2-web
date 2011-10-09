@@ -9,8 +9,14 @@
 * Postgres 8.4.6
 
 == Installing the Development Environment
-* System Update
-* install MAcports
+* Install Mac OSX Lion (10.7)
+* System Update for all security patches
+* Install Xcode from http://developer.apple.com/ios
+
+* ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
+
+
+
 * sudo port install postgresql84
 * port install postgresql84-serve
 * sudo port load postgresql84-server
@@ -20,11 +26,6 @@
 * cd picbounce-web
 * sudo env ARCHFLAGS='-arch i386' gem isntall pg
 * sudo bundle install
-
-
-== Installing homebrew
-
-ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
 
 
 == Getting the inital database
