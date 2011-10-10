@@ -34,7 +34,8 @@ class Photo < ActiveRecord::Base
     where("users.twitter_screen_name IS NOT NULL")
   }
 
- 
+  
+  default_scope limit(25)
   scope :recent, public.limit(9).order("created_at desc")
   #scope :popular, lambda {where("view_count > -1"). order("id desc"). limit(100)}
   scope :popular, public.where('view_count > 1').order("created_at desc").limit(100)
@@ -49,29 +50,6 @@ class Photo < ActiveRecord::Base
   after_create :trigger_uploads
   
   before_update :trigger_deletes
-  
-  api_accessible :base do |template|  
-    template.add :uuid
-    template.add :likes_count
-    template.add :bounces_count
-    template.add :comments_count
-    template.add :tagged_people_count
-    template.add :tags_count
-    template.add :twitter_avatar_url
-    template.add :view_count
-    template.add :caption
-    template.add :created
-    template.add :user
-  end
-
-  api_accessible :feed, :extend => :base do |template|
-
-  end
-
-  api_accessible :profile, :extend => :base do |template|
-
-  end
-
   
 
   def self.find_public(*args)
@@ -203,23 +181,23 @@ class Photo < ActiveRecord::Base
           config.oauth_token_secret = twitter_oauth_secret
         end
         client = Twitter::Client.new
-        responce = client.update(self.twitter_caption)
-        pp responce
-        user = responce['user']
+        response = client.update(self.twitter_caption)
+        pp response
+        user = response['user']
         self.block = 1 if user['protected']
         
         #TODO add a migration so we can save these
-        #Twitter user id = responce.user.id
-        #tweet_id = responce.id
-        self.twitter_post_id = responce.id
-        self.twitter_screen_name = responce.user.screen_name
-        logger.debug responce.user
+        #Twitter user id = response.user.id
+        #tweet_id = response.id
+        self.twitter_post_id = response.id
+        self.twitter_screen_name = response.user.screen_name
+        logger.debug response.user
 
         block_from_homepage_if_banned
         
      
         self.twitter_post_status_code = 200
-        self.twitter_post_status_body = responce.id
+        self.twitter_post_status_body = response.id
       rescue Exception => exc
         self.twitter_post_status_code = 500
         self.twitter_post_status_body = exc.message
@@ -240,11 +218,11 @@ class Photo < ActiveRecord::Base
           config.oauth_token_secret = twitter_oauth_secret
         end
         client = Twitter::Client.new
-        responce = client.status_destroy(self.twitter_post_id)
-        pp responce
+        response = client.status_destroy(self.twitter_post_id)
+        pp response
         
         self.twitter_post_status_code = 200
-        self.twitter_post_status_body = responce.id
+        self.twitter_post_status_body = response.id
       rescue Exception => exc
         self.twitter_post_status_code = 500
         self.twitter_post_status_body = exc.message

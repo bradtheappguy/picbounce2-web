@@ -18,6 +18,8 @@ development:
   pool: 5
 
 test:
+  host: localhost
+  user: brad
   adapter: postgresql
   encoding: unicode
   database: picbounce_test

@@ -3,7 +3,9 @@ require 'test_helper'
 class ViewLogTest < ActiveSupport::TestCase
   # Replace this with your real tests.
   test "Photos has index on code column" do
-    assert ActiveRecord::Base.connection.indexes('photos')[0]['columns'].index('code')
+    test = false
+    ActiveRecord::Base.connection.indexes('photos').collect{|index| test = true if index.columns[0] == "code"}
+    assert test
   end
 
   test "uuid can be assigned to photo" do

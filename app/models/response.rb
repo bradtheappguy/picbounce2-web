@@ -1,4 +1,4 @@
-class Responce < ActiveRecord::Base
+class Response < ActiveRecord::Base
   acts_as_api
 
   attr_accessor :url

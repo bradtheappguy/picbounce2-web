@@ -1,4 +1,0 @@
-json.posts do
-json.array! do
-end
-end

@@ -25,7 +25,7 @@ gem "sluggable"
 gem "rmagick", "2.12.0", :require => 'RMagick'
 gem "carrierwave"
 gem 'apn_on_rails', :git => 'https://github.com/natescherer/apn_on_rails.git', :branch => 'rails3'
-gem 'json_builder'
+gem 'rabl'
 
 group :analytics, :development, :test do
    gem 'ruby-debug-ide'

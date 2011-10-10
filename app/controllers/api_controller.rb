@@ -1,7 +1,7 @@
 class ApiController < ApplicationController
 
   def popular
-    response = Responce.new
+    response = Response.new
     response.url = request.fullpath
     response.photos = Photo.find_popular
     render_for_api :feed, :json => response 
@@ -15,7 +15,7 @@ class ApiController < ApplicationController
       user.save
     end
 
-      x = Responce.new
+      x = Response.new
       x.url = request.fullpath
       x.user = User.find_by_twitter_screen_name(params[:user_id])
       if params[:after]
@@ -46,18 +46,18 @@ class ApiController < ApplicationController
 
   def followers
     user = User.find_by_twitter_screen_name(params[:user_id])
-    responce = Responce.new
-    responce.url = request.fullpath
-    responce.people = user.followers
-    render_for_api :followers, :json => responce
+    response = Response.new
+    response.url = request.fullpath
+    response.people = user.followers
+    render_for_api :followers, :json => response
   end
 
   def following
     user = User.find_by_twitter_screen_name(params[:user_id])
-    responce = Responce.new
-    responce.url = request.fullpath
-    responce.people = user.followeds
-    render_for_api :followeds, :json => responce
+    response = Response.new
+    response.url = request.fullpath
+    response.people = user.followeds
+    render_for_api :followeds, :json => response
   end
 
   def create_following
