@@ -1,10 +1,10 @@
 class ApiController < ApplicationController
 
   def popular
-    response = Response.new
-    response.url = request.fullpath
-    response.photos = Photo.find_popular
-    render_for_api :feed, :json => response 
+    @photos = Photo.find_popular
+    respond_to do |format|
+      format.json { render_api_response :photos => @photos }
+    end
   end
 
   def profile

@@ -1,4 +1,4 @@
-#app/views/posts/index.rabl
+
 
 object false => :response
 
@@ -23,10 +23,10 @@ end
 
 
 child(@photos) {
-  attributes :uuid, :bounces_count, :comments_count, :tagged_people_count, :tags_count, :twitter_avatar_url, :view_count, :caption, :created
+  attributes :uuid, :bounces_count, :comments_count, :tagged_people_count, :tags_count, :view_count, :caption, :created
   node(:likes_count) {|photo| photo.likes_count}
   child(:user) {
-    attributes :id, :display_name
+    attributes :id, :display_name, :avatar
     attribute :raw_slug_text => :screen_name
   }
 }
