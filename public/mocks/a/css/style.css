@@ -1,0 +1,552 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	margin:0px auto;
+	text-align:center;
+	font-family:'MuseoSans_500-webfont.TTF';
+
+}
+@font-face
+{
+font-family: myFirstFont;
+src: url('fonts/MuseoSans_500-webfont.TTF');
+}
+#main_cont{
+	width:1003px;
+	height:958px;
+	margin:0px auto;
+	text-align:left;
+
+}
+.header{
+	width:1003px;
+	height:60px;
+	background:url(../images/header_bg.png) no-repeat;
+	margin-left:0px;
+	margin-top:0px;
+	float:left;
+	position:relative;
+
+}
+	.logo{
+		width:149px;
+		height:60px;
+		background:url(../images/logo.png) no-repeat;
+		position:absolute;
+		left:23px;
+		top:0px;
+	
+	}
+	.search_field{
+		width:202px;
+		height:32px;
+		background:url(../images/search_field.png) no-repeat;
+		position:absolute;
+		left:618px;
+		top:20px;
+	
+	}
+		.search_button{
+			width:29px;
+			height:32px;
+			position:absolute;
+			left:0px;
+			top:0px;
+		
+		}
+		.input_field{
+			width:173px;
+			height:32px;
+			position:absolute;
+			left:29px;
+			top:0px;
+		
+		}
+			.input_field_main{
+				width:161px;
+				height:24px;
+				position:absolute;
+				left:0px;
+				top:4px;
+			
+			}
+				.field_{
+					width:161px;
+					height:18px;
+					position:absolute;
+					left:0px;
+					top:0px;
+					line-height:18px;
+					font-size:15px;
+
+				
+				}
+	.man_pic{
+		width:23px;
+		height:32px;
+		background:url(../images/man_pic.png) no-repeat;
+		position:absolute;
+		left:835px;
+		top:20px;
+	
+	}
+.mid_cont{
+	width:1003px;
+	height:855px;
+	background:#FFF;
+	margin-left:0px;
+	margin-top:0px;
+	float:left;
+
+}
+ #LoggedIn{
+		position:relative;
+		top:22px;
+		float:right;
+		right:29px;
+	}
+	 #arrow{
+		position:relative;
+		top:-4px;
+		left:8px;
+	}
+	#name{
+		position:relative;
+		top:3px;
+		left:8px;
+	}
+	.mid_cont_left{
+		width:162px;
+		height:444px;
+		margin-left:12px;
+		margin-top:0px;
+		float:left;
+	
+	}
+		.mid_cont_left_top{
+			width:162px;
+			height:198px;
+			background:url(../images/lady_pic-1.png) no-repeat;
+			margin-left:0px;
+			margin-top:0px;
+			float:left;
+		
+		}
+			.mid_cont_left_top_pic_1{
+				width:162px;
+				height:146px;
+				background:url(../images/pic_1.png) no-repeat;
+				margin-left:0px;
+				margin-top:0px;
+				float:left;
+			
+			}
+			.mid_cont_left_top_follow_on{
+				width:162px;
+				height:52px;
+				margin-left:0px;
+				margin-top:0px;
+				float:left;
+			
+			}
+		.mid_cont_left_bottom{
+			width:162px;
+			height:191px;
+			background:url(../images/left_bottom.png) no-repeat;
+			margin-left:0px;
+			margin-top:0px;
+			float:left;
+		
+		}
+			.mid_cont_left_bottom_title{
+				width:162px;
+				height:38px;
+				background:url(../images/title-01.png) no-repeat;
+				margin-left:0px;
+				margin-top:0px;
+				float:left;
+			
+			}
+			.mid_cont_left_bottom_rest{
+				width:162px;
+				height:153px;
+				margin-left:0px;
+				margin-top:0px;
+				float:left;
+				position:relative;
+			
+			}
+				.mid_cont_left_bottom_like{
+					width:51px;
+					height:23px;
+					background:url(../images/like.png) no-repeat;
+					position:absolute;
+					left:11px;
+					top:6px;
+					
+				
+				}
+				.mid_cont_left_bottom_follow{
+					width:62px;
+					height:52px;
+					background:url(../images/twitter.png) no-repeat;
+					position:absolute;
+					left:11px;
+					top:41px;
+					
+				
+				}
+				.mid_cont_left_bottom_8{
+					width:52px;
+					height:22px;
+					background:url(../images/8+.png) no-repeat;
+					position:absolute;
+					left:11px;
+					top:76px;
+					
+				
+				}
+				.mid_cont_left_bottom_linked_in{
+					width:24px;
+					height:25px;
+					background:url(../images/linked_in.png) no-repeat;
+					position:absolute;
+					left:11px;
+					top:115px;
+					
+				
+				}
+				.mid_cont_left_bottom_star{
+					width:48px;
+					height:50px;
+					background:url(../images/star.png) no-repeat;
+					position:absolute;
+					left:58px;
+					top:4px;
+					
+				
+				}
+	.mid_cont_middle{
+		width:484px;
+		height:847px;
+		margin-left:13px;
+		margin-top:0px;
+		float:left;
+	
+	}
+		.mid_cont_middle_title{
+			width:484px;
+			height:51px;
+			margin-left:0px;
+			margin-top:0px;
+			float:left;
+			line-height:51px;
+			font-family:MuseoSans 500;
+			color:#242D42;
+			font-size:30px;
+			text-transform:uppercase;
+		
+		}
+		.mid_cont_middle_post_comt{
+			width:484px;
+			height:102px;
+			background:url(../images/post_cont.png) no-repeat;
+			margin-left:0px;
+			margin-top:0px;
+			float:left;
+			position:relative;
+		}
+			.mid_cont_middle_post_comt1{
+				width:484px;
+				height:44px;
+				margin-left:0px;
+				margin-top:0px;
+				float:left;
+				position:relative;
+		
+			}
+				.mid_cont_middle_post_add{
+					width:115px;
+					height:23px;
+					position:absolute;
+					left:7px;
+					top:60px;
+				}
+				.mid_cont_middle_post_post{
+					width:73px;
+					height:23px;
+					position:absolute;
+					left:392px;
+					top:60px;
+				}
+		.mid_cont_middle_post_comt_1{
+			width:484px;
+			height:328px;
+			margin-left:0px;
+			margin-top:0px;
+			float:left;
+			position:relative;
+		}
+			.post_comt_1_img_1{
+				width:63px;
+				height:61px;
+				background:url(../images/img_1.png) no-repeat;
+				position:absolute;
+				left:12px;
+				top:9px;
+			}
+			.post_comt_1_text_1{
+				width:197px;
+				height:38px;
+				position:absolute;
+				left:87px;
+				top:7px;
+				line-height:20px;
+			}
+			.post_comt_1_img_2{
+				width:119px;
+				height:116px;
+				background:url(../images/img_2.png) no-repeat;
+				position:absolute;
+				left:84px;
+				top:63px;
+			}
+			.post_comt_1_bg_comments{
+				width:467px;
+				height:138px;
+				background:url(../images/bg_comments.png) no-repeat;
+				position:absolute;
+				left:16px;
+				top:190px;
+			}
+				.post_comt_1_bg_commentor_1{
+					width:467px;
+					height:138px;
+					background:url(../images/commentor_1.png) no-repeat;
+					position:absolute;
+					left:8px;
+					top:4px;
+				}
+				.post_comt_1_bg_commentor_2{
+					width:467px;
+					height:138px;
+					background:url(../images/commentor_2.png) no-repeat;
+					position:absolute;
+					left:8px;
+					top:74px;
+				}
+				.post_comt_1_bg_comments_1{
+					width:341px;
+					height:40px;
+					position:absolute;
+					left:78px;
+					top:8px;
+				}
+				.post_comt_1_bg_comments_2{
+					width:341px;
+					height:40px;
+					position:absolute;
+					left:78px;
+					top:78px;
+				}
+					.comments_top{
+						width:341px;
+						height:20px;
+						position:absolute;
+						left:0px;
+						top:0px;
+						line-height:20px;
+					}
+					.comments_bottom{
+						width:341px;
+						height:20px;
+						position:absolute;
+						left:0px;
+						top:20px;
+						line-height:20px;
+					}
+					#textarea_1{
+		border:none;border-bottom:#e3e2e4 solid thin;padding:0px 0px; font-family:myFirstFont; font-size:14px; font-weight:bold; color:#6a7c7d; margin-left:8px; height:44px; margin-top:9px;  
+	}
+		.mid_cont_middle_post_comt_2{
+			width:484px;
+			height:196px;
+			margin-left:0px;
+			margin-top:0px;
+			float:left;
+			position:relative;
+			border-bottom:1px solid #CCC;
+		}
+			.post_comt_2_img_02{
+				width:72px;
+				height:76px;
+				background:url(../images/img_02.png) no-repeat;
+				position:absolute;
+				left:12px;
+				top:12px;
+			}
+			.post_comt_2_bg_comments_1{
+					width:341px;
+					height:40px;
+					position:absolute;
+					left:86px;
+					top:18px;
+				}
+			.post_comt_2_bg_video{
+					width:121px;
+					height:119px;
+					background:url(../images/video.png) no-repeat;
+					position:absolute;
+					left:84px;
+					top:59px;
+				}
+			.post_comt_2_bg_favorate{
+					width:59px;
+					height:15px;
+
+					position:absolute;
+					left:84px;
+					top:178px;
+				}
+			.post_comt_2_bg_twitter{
+					width:54px;
+					height:15px;
+					position:absolute;
+					left:150px;
+					top:178px;
+				}
+		.mid_cont_middle_post_comt_3{
+			width:484px;
+			height:170px;
+			margin-left:0px;
+			margin-top:0px;
+			float:left;
+			position:relative;
+			
+		}
+			.post_comt_3_img_1{
+				width:65px;
+				height:64px;
+				background:url(../images/img_3.png) no-repeat;
+				position:absolute;
+				left:12px;
+				top:15px;
+			}
+			.post_comt_3_bg_comments_1{
+					width:341px;
+					height:40px;
+					position:absolute;
+					left:84px;
+					top:16px;
+				}
+			.post_comt_3_bg_play{
+					width:390px;
+					height:79px;
+					background:url(../images/play.png) no-repeat;
+					position:absolute;
+					left:76px;
+					top:70px;
+				}
+			.post_comt_3_bg_favorate{
+					width:59px;
+					height:15px;
+
+					position:absolute;
+					left:90px;
+					top:152px;
+				}
+			.post_comt_3_bg_twitter{
+					width:54px;
+					height:15px;
+					position:absolute;
+					left:152px;
+					top:152px;
+				}
+				
+	
+	
+    .mid_cont_right{
+		width:319px;
+		height:100%;
+		background:#FFF;
+		margin-left:13px;
+		margin-top:0px;
+		float:left;
+		position:relative;
+	
+	}	
+	
+		.blank_image{
+			width:295px;
+			height:278px;
+			background:url(../images/blank.png) no-repeat;
+			position:absolute;
+			left:0px;
+			top:577px;
+		
+		}	
+		.popular{
+			width:268px;
+			height:28px;
+			position:absolute;
+			left:15px;
+			top:549px;
+			color:#231F20;
+			font-size:18px;
+			line-height:28px;
+		
+		}	
+		.d_1{
+			width:268px;
+			height:28px;
+			background:url(../images/d_1.png) no-repeat;
+			position:absolute;
+			left:0px;
+			top:485px;
+		
+		}	
+		.red_car{
+			width:306px;
+			height:256px;
+			position:absolute;
+			left:0px;
+			top:177px;
+		
+		}	
+		.lady_gaga{
+			width:189px;
+			height:112px;
+			background:url(../images/Lady_gaga_support.png) no-repeat;
+			position:absolute;
+			left:60px;
+			top:46px;
+		
+		}	
+		.follow_{
+			width:87px;
+			height:43px;
+			background:url(../images/Lady_gaga_support.png) no-repeat;
+			position:absolute;
+			left:202px;
+			top:25px;
+		
+		}	
+		.jquery_{
+			width:293px;
+			height:75px;
+			background:url(../images/jquery_.png) no-repeat;
+			position:absolute;
+			left:1px;
+			top:74px;
+		
+		}	
+
+.footer{
+	width:1003px;
+	height:43px;
+	background:url(../images/Footer.png) no-repeat;
+	margin-left:0px;
+	margin-top:0px;
+	float:left;
+
+}
