@@ -39,7 +39,7 @@ class Users::FeedController < ApplicationController
 
       format.html
       format.json {
-        render_api_response :user => @user, @photos => @photos
+        render_api_response :user => @user, :photos => @photos
       }
     end
   end
