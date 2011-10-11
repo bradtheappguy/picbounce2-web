@@ -69,7 +69,12 @@ Trunk::Application.routes.draw do
   match '/:id' => 'photos#edit', :via => :post 
   match '/:id' => 'photos#destroy', :via => :delete
 
-
+  #mocks
+  match '/mocks/page_0' => 'mocks#page_0'
+  match '/mocks/page_2' => 'mocks#page_2'
+  match '/mocks/page_3' => 'mocks#page_3'
+  
+  
   root :to => "photos#index"
 
 end
