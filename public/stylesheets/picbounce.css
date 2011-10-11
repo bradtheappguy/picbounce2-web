@@ -21,7 +21,7 @@ kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dd, dl, dt, li, ol, u
 	font-weight: inherit;
 	font-style: inherit;
 	font-size: 100%;
-	line-height: 1;
+	line-height: 1.2 em;
  	font-family: inherit;
 	text-align: left;
 	vertical-align: baseline;
@@ -564,6 +564,7 @@ a.arrows:hover {
 	font-size: 18pt;
 	padding-top: 20px;
 	border:0px solid;
+	line-height:1.2em;
 }
 
 .feature_list a, .feature_list a:visited { 
@@ -742,15 +743,11 @@ a.arrows:hover {
 
 /*** Social ***/
 
-#social-icons {
-/*	text-align:center; */
+#social_icons {
+	text-align:center;
 }
 
-#social-icons p {
-	width:auto;
-}
-
-#social-icons li {
+#social_icons li {
 	list-style: none;
 	display:inline;
 }
@@ -812,265 +809,4 @@ div#admin_panel {
 .no_border {
 	border:0 none;
 	visibility:visible;
-}
-
-/*** LOGIN STUFF ***/
-
-#user_nav {
-	text-align: left;
-	font-family: Helvetica, Arial, sans-serif;
-	font-weight: bold;
-	background:#999;
-	padding-left:130px;
-	border-top: 2px solid #000;
-	border-bottom: 2px solid #000;
-}
-
-#user_nav a {
-	margin: 15px 15px 0 0;
-	display: inline-block;
-	background: #006D8E;
-	border-radius: 5px;
-	padding: 5px 8px;
-	color: #fff;
-	border: 1px solid #000;
-}
-
-#user_nav a:hover {
-	background: #E47300;
-}
-
-#user_form {
-	width: 600px;
-	margin: 10px auto 120px;
-	font-family: Helvetica, Arial, sans-serif;
-	min-height: 500px;
-	padding: 15px 15px 30px 15px;
-	border: 1px solid #000;
-	background: #eee;
-	border-radius: 15px;
-}
-
-#user_form a {
-	width: 280px;
-	float:right;
-	font-size: 16px;
-	font-weight: bold;
-	display: inline-block;
-	background: #006D8E;
-	border-radius: 5px;
-	padding: 5px 8px;
-	color: #fff;
-	text-align: center;
-}
-
-#user_form a:hover {
-	background: #E47300;
-}
-
-
-#login_form {
-	width: 500px;
-	margin: 0 auto;
-}
-
-#social-icons {
-	display: block;
-	background: #ccc;
-	border-radius: 10px;
-	border: 1px solid #000;
-	padding: 5px;
-	margin: 15px 65px 15px 0;
-}
-
-#social-icons  li {
-	display: inline-block;
-	line-height:50px;
-	height: 50px;
-}
-
-#social-icons table  {
-	width:20px;
-}
-
-#user_form #social-icons a.btn_logout {
-	line-height:30px;
-	display:inline-block;
-	color: #fff;
-	border-radius: 5px;
-	width: 80px;
-	height:30px;
-	background-color: #777;
-	text-align: center;
-}
-
-#social-icons  li p {
-	line-height: 50px;
-}
-
-.profile_image_cbx {
-	font-size: 11px;
-	height:20px;
-	line-height:20px;
-	margin:0;
-	padding:0;
-	display:block;
-}
-
-#user_form #social-icons a {
-	float:none;
-	clear:none;
-	width: auto;
-	padding: 0;
-	background: none;
-}
-
-.profile_thumb {
-	display:block;
-	width: 40px;
-	height: 40px;
-	margin: 0 auto;
-	border:1px solid #333;
-	background: #777;
-	background-image:url("../images/user_photos/missing_mini.png");
-}
-
-.social_icon {
-	width: 40px;
-}
-
-.social_icon img {
-	margin:0 auto;
-}
-
-form#user_new {
-	width: 300px;
-	float:left;
-	border-right: 1px solid;
-	display: block;
-}
-
-form#user_new label {
-	float: left;
-	clear:left;
-	line-height: 15px;
-}
-
-form#user_new input {
-	width: 200px;
-	float: left;
-	clear:both;
-}
-
-form#user_new  input#user_remember_me {
-	float:none;
-	width: auto;
-	margin-left: 15px;
-}
-
-div.input {
-	margin: 10px 0;
-	display:inline-block;
-	width: 100%;
-}
-
-form#user_new p {
-	margin: 20px;
-	padding: 10px 0;
-	display:block;
-}
-
-#user_submit {
-	margin: 20px auto;
-	clear:both;
-	display: block;
-	font-weight: bold;
-	font-size: 16px;
-	text-transform: uppercase;
-	text-align:center;
-	width: 100px;
-	height: 50px;
-	margin: 5px auto 15px 0;
-	display: inline-block;
-	background: #006D8E;
-	border-radius: 5px;
-	padding: 5px 8px;
-	color: #fff;
-}
-
-form#user_new #user_submit:hover {
-	background: #E47300;
-}
-
-#user_photo {
-	margin-bottom: 20px;
-}
-
-#user_form h2 {
-	font-size: 22px;
-	font-weight: bold;
-	width: 100%;
-	text-align: center;
-	display:inline-block;
-	border-bottom: 1px solid;
-	margin: 0 0 15px;
-	padding: 5px 0 10px 0;
-	color: #000;
-}
-
-#user_form h3 {
-	font-size: 18px;
-	font-weight: bold;
-	padding: 0;
-	color: #333;
-}
-
-
-
-/*** PROFILE ***/
-
-#user_edit {
-	margin-bottom: 40px;
-	display:block;
-}
-
-#user_edit h3 {
-	width: 100%;
-	text-align: center;
-	border-top:1px dotted;
-	border-bottom:1px dotted;
-	margin: 15px 0 15px;
-	padding: 10px 0 10px 0;
-	color: #000;
-}
-
-.social_connects {
-	clear:both;
-}
-
-.social_connects ul#social-icons {
-	float: none;
-	width: auto;
-	margin-right: 0;
-}
-
-form#user_edit label {
-	float: left;
-	clear:left;
-	line-height: 15px;
-}
-
-form#user_edit input {
-	width: 200px;
-	float: left;
-	clear:both;
-	margin: 5px 0;
-}
-
-.hint {
-	font-size: 80%;
-	font-weight: normal;
-	clear:both;
-	float:left;
-	color: #006D8E;
 }
