@@ -8,9 +8,7 @@ class Users::FeedController < ApplicationController
     if @user.nil?
       @user = User.find_by_id(params[:id])
     end 
-    if @user.nil?
-     render :status => 404
-    end
+    raise FourOhFour if @user.nil?
     
     @photos = @user.feed
     @api_response = Response.new(:url => request.url, :photos => @user.feed, :user => @user)

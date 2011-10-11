@@ -5,7 +5,7 @@ class Photos::LikesController < ApplicationController
     
     @photo = Photo.find_by_uuid(params[:photo_id])
     @photo = Photo.find(params[:photo_id]) if @photo.nil?
-    render :status => 404, :nothing => true if @photo.nil?
+    raise FourOhFour if @photo.nil?
     
     if Like.find_or_create_by_photo_id_and_user_id(@photo.id, current_user.id)
       render :status => 201, :nothing => true
@@ -19,10 +19,10 @@ class Photos::LikesController < ApplicationController
     
     @photo = Photo.find_by_uuid(params[:photo_id])
     @photo = Photo.find(params[:photo_id]) if @photo.nil?
-    render :status => 404, :nothing => true if @photo.nil?
+    raise FourOhFour if @photo.nil?
      
     @like = Like.find_by_photo_id_and_user_id(@photo.id, current_user.id)
-    render :status => 404, :nothing => true if @like.nil?
+    raise FourOhFour if @like.nil?
 
     @like.destroy
 
