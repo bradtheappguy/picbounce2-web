@@ -1,5 +1,21 @@
-<div style="padding-left:10px">
-  this is a photo
-  <%= render "shared/feed/post_comment"  %>
-  <%= render "shared/feed/post_comment"  %>
+<div class="profile_pic left"><img with="50" height="50" src="<%=photo.user.avatar%>"/></div>
+<div class="right details">
+  <h3 class="left"><%=photo.user.display_name%></h3>
+  <small class="left"><span class="timestamp"><%=photo.created_at%></span></small>
+  <br class="clear"/>
+  <p><%=photo.caption%></p>
+  <img width="110" height="110" src="<%=photo.photo_url(:big)%>"/>
+  
+</div>
+<br class="clear"/>
+<div id="comments">
+  <ul>
+    <% for comment in photo.comments %>
+      <li>
+        <%= render :partial => "/shared/feed/post_comment",:locals => { :comment => comment } %>
+        <br class="clear"/>
+      </li>
+     <%end%>
+  </ul>
+  <br class="clear"/>
 </div>

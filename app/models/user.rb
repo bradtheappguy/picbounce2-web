@@ -88,7 +88,11 @@ class User < ActiveRecord::Base
   end
   
   def avatar 
-    return twitter_avatar_url if twitter_avatar_url
+    if twitter_avatar_url
+      return twitter_avatar_url
+    else
+      return "/images/empty_avatar_large.png"
+    end
     #services.each do |service|  
     #  return service.image if service.image
     #end

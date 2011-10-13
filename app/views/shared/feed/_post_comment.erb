@@ -1,3 +1,7 @@
-<div style="padding-left:10px">
-  this is a comment
+<div class="profile_pic left"><img with="50" height="50" src="<%=comment.user.avatar%>"/></div>
+<div class="right post_details">
+  <h3 class="left"><%=comment.user.display_name%></h3>
+  <small class="left">5 minutes ago</small>
+  <br class="clear"/>
+  <p><%=comment.text%></p>
 </div>
