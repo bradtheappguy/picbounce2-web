@@ -4,10 +4,13 @@ class Users::PicbounceCallbackController < ApplicationController
     if !params[:auth_token]
       redirect_to "/users/auth/picbounce?auth_token=#{current_user.authentication_token}" 
     else
-      redirect_to current_user
+      redirect_to profile_path(current_user)
     end
   end
   
+  def user_url
+    "http://yahooo.com"
+  end
  #def apply_facebook_sso
  #   puts "redirecting to /"
  #   redirect_to '/', :params => nil
