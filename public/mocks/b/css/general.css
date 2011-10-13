@@ -28,7 +28,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
-ol, ul, li, p {
+ol, ul, p {/*li*/
 	list-style: none; overflow:hidden;
 }
 blockquote, q {

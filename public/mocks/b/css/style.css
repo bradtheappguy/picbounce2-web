@@ -3,7 +3,7 @@
 .cyan{color:#687a7b;}
 h2{ font-size:16pt; font-family:'Museo';}
 #header{background:url(../images/top_pattern.png) repeat-x center center; height:62px;}
-.aligned_center{width:960px; margin:0 auto; overflow:hidden;}
+.aligned_center{width:960px; margin:0 auto; overflow:auto;}
 #header .aligned_center a{padding-top:9px; display:block}
 .two_columns{margin-top:23px}
 .two_columns>.left{width:625px}
@@ -15,23 +15,23 @@ h2{ font-size:16pt; font-family:'Museo';}
 .main_pic_container div{background-color:#fff;-webkit-border-radius: 2px;-moz-border-radius: 2px;border-radius: 2px; padding:10px 12px 10px;}
 .main_pic_container img{-webkit-box-shadow: 0px 0px 3px 3px #bad0ce;-moz-box-shadow: 0px 0px 3px 3px #bad0ce;box-shadow: 0px 0px 3px 3px #bad0ce;}
 .profile_pic{border:#cbcbcb 1px solid; padding:4px; width:49px; background-color:#fff}
-.post_details{width:555px; font-family:'Museo'; }
+.post_details{margin-left:10px; width:400px; font-family:'Museo'; }
 .post_details h3.left{color:#000; margin-right:10px; font-size:13pt}
 .post_details h3.right{font-size:12pt}
-.post_details h3.right,.post_details small{color:#687a7b;}
-.post_details small{font-size:10pt;font-size:10pt; margin-top:5px}
-.post_details p{color:#333333; font-size:10pt}
+.post_details h3.right,.post_details small{color:#687a7b; margin-left:20px; line-height:19px;}
+.post_details small{font-size:10pt;font-size:10pt; margin-top:4px}
+.post_details p, p{color:#333333; font-size:10pt}
 .three_columns>.left #comment_container{width:485px}
 .three_columns>.left #comment_container textarea{width:471px}
-.comment_container{border:1px solid #bebebe; height:86px; width:465px; margin-top:20px; overflow:hidden;}
-.comment_container textarea{height:40px; font-size:12pt; color:#687a7b; height:47px; width:465px; border:none; border-bottom:1px solid #e3e2e4; resize:none; padding:4px 7px; font-family:'Museo';}
+.comment_container{border:1px solid #bebebe; height:86px; width:445px; margin:20px 0 0 15px; overflow:hidden;}
+.comment_container textarea{height:40px; font-size:12pt; color:#687a7b; height:47px; width:445px; border:none; border-bottom:1px solid #e3e2e4; resize:none; padding:4px 7px; font-family:'Museo';}
 .comment_container textarea:focus{outline:none}
 #footer_comment{background:url(../images/comment_bg.png) repeat-x; height:23px; padding:4px 7px 0;}
 .cyan_curve{background-color:#c9d3d5; padding:2px 9px;-webkit-border-radius: 2px;-moz-border-radius: 2px;border-radius: 2px; font-size:12pt; font-weight:bold; font-family:'Museo'}
-.comments li,.three_columns>.left:first-child ul li{background-color:#f4f2f2; border-bottom:1px solid #d8d8d8; padding:7px 11px; border-top:1px solid #fff; }
+.comments li,.three_columns>.left:first-child ul li{width:425px; background-color:#f4f2f2; border-bottom:1px solid #d8d8d8; padding:7px 11px; border-top:1px solid #fff; }
 .three_columns>.left:first-child ul li:first-child,#comments li:first-child{border-top:none; }
 .comments li h3.left{margin-right:20px}
-.comments li .post_details{width:535px; padding-top:10px;}
+.comments li .post_details{width:350px; margin-top:0px;}
 .social_links{-webkit-box-shadow:inset 0px 0px 7x 3px #d0d1d2;-moz-box-shadow:inset 0px 0px 7px 3px #d0d1d2;box-shadow:inset 0px 0px 7px 3px #d0d1d2;height:34px; -webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px; background:#f2f3f5}
 .follow_right{-webkit-box-shadow:0px 0px 3px 2px #d0d1d2;-moz-box-shadow:0px 0px 3px 2px #d0d1d2;box-shadow:0px 0px 3px 2px #d0d1d2;height:188px; -webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px; background:#f2f3f5; padding:15px}
 .follow_right h1,.follow_right h2{color:#687a7b; font-family:'Museo'; padding:0 15px 12px 0}
@@ -56,19 +56,20 @@ h2{ font-size:16pt; font-family:'Museo';}
 .three_columns>.left:first-child ul{width:148px}
 {background-color:#f4f2f2; border-bottom:1px solid #d8d8d8; padding:7px 11px; border-top:1px solid #fff;}
 .three_columns>.left:first-child ul li{height:16px}
-#posts .details{width:420px; font-family:'Museo'; padding-top:13px;}
-.two_columns>.left:first-child #posts .details{width:555px}
+#posts .details{width:400px; font-family:'Museo'; padding-top:13px; margin-left:10px;}
+.two_columns>.left:first-child #posts .details{width:500px}
 .details h3{color:#212b40; margin-right:12px;}
-#posts{margin-top:40px; overflow:hidden; }
+#posts{margin:40px 0 0 15px; overflow:hidden; }
 #posts #comments li h3{font-size:12pt; color:#212b40;}
 #posts #comments li small{font-size:9pt;}
 #posts #comments li p{color:#333333; font-size:9pt;}
-.details small{color:#666666; font-size:9pt; margin-top:4px}
+.details small, .post_details small{color:#666666; font-size:9pt; margin-top:1px;}
 .details p{color:#687a7b}
 .details img{border:1px solid #dbdbdb; display:block; margin-bottom:8px}
-#posts #comments{width:470px}
+#posts #comments{width:470px;}
+#posts li:second-child {margin:10px 0 0 10px;}
 .two_columns>.left:first-child #posts #comments{width:620px}
-#posts #comments li .post_details{width:370px; padding-left:10px}
+#posts #comments li .post_details{width:370px; padding:10px 0 0 10px}
 .two_columns>.left:first-child #posts #comments li .post_details{width:520px}
 .play_container{position:relative; display:block; float:left}
 .play_container img:first-child{position:absolute; left: 20%;top: 18%; border:none}
