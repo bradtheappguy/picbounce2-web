@@ -1,44 +1,66 @@
-  <div class="content_bg" id="home_bg">
-    <div class="content">
-      <div class="left">
-	  <div id="info-text">
-        <h2>PicBounce is the easiest and fastest way to upload a photo from your iPhone to Facebook or Twitter.</h2>
-        <ul class="feature_list">
-          <li class="active"><a>Step 1: Take a<!-- a fun --> photo</a></li>
-            <!-- <li>        <a>Step 2: Add optional caption</a></li> -->
-            <li>             <a>Step 2: Choose a cool filter <!-- to take your photo from 'so-so' to SWEET! --></a></li>
-            <li>             <a>Step 3: Share instantly</a></li>
-            <li>             <a>See upload history</a></li>
-        </ul>
+<div class="aligned_center two_columns" style="margin-top:0">
+  <div class="left">
+    <ul id="posts">
+      <% for photo in @recent_photos %>
+      <li>
+        <%= render :partial => "/shared/feed/photo",:locals => { :photo => photo } %>
+      </li>
+      <%end%>
+      <li>
+        <div class="profile_pic left"><img src="/images/skin/latoya.png"/></div>
+        <div class="right details">
+          <h3 class="left">Latoya Jackson</h3>
+          <small class="left">30 minutes ago</small>
+          <br class="clear"/>
+          <p class="black">Jo Calderone presenting at the VMA <a href="#" class="cyan">awesomeurl.com</a></p>
+          <div class="play_container">
+            <img src="/images/skin/play.png"/>
+            <img src="/images/skin/byMeWebStreamPage_10.png"/></div>
+          <br class="clear"/>
         </div>
-	     <a href="/download?home" id="big_download_button"> </a>
-        </div>	
-        <div class="right">
-          <div id="iphone">	
-		    <div class="slide-container">
-              <img class="active" src="images/demo00.jpg" alt="Take a photo" />
-              <img src="images/demo01.jpg" alt="Add optional caption" />
-              <img src="images/demo02.jpg" alt="Add optional filter" />
-              <img src="images/demo04.jpg" alt="Upload Photo" />
-             <!--  <img src="images/demo06.jpg" alt="Repeat" /> -->
-		  	</div>
-			<img src="images/iPhone4.png" width="300" alt="PicBounce" />
-		  </div>
-	    <div id="facebook_iframe">
-          <fb:like href="http://www.facebook.com/apps/application.php?id=125208417509976" show_faces="false" width="240px" colorscheme="dark" font="arial"></fb:like>
-	    </div>
-      </div>
-	  <div id="upload_thumbs">
-        <h2>Recently Uploaded Photos:</h2>
-		<a href="/<%= @recent_photos[0].code %>"> <img src="<%= @recent_photos[0].photo_url(:thumb) %>" alt="<%= @recent_photos[0].caption %>"/> </a>
-		<a href="/<%= @recent_photos[1].code %>"> <img src="<%= @recent_photos[1].photo_url(:thumb) %>" alt="<%= @recent_photos[0].caption %>"/> </a>
-		<a href="/<%= @recent_photos[2].code %>"> <img src="<%= @recent_photos[2].photo_url(:thumb) %>" alt="<%= @recent_photos[0].caption %>"/> </a>
-		<a href="/<%= @recent_photos[3].code %>"> <img src="<%= @recent_photos[3].photo_url(:thumb) %>" alt="<%= @recent_photos[0].caption %>"/> </a>
-		<a href="/<%= @recent_photos[4].code %>"> <img src="<%= @recent_photos[4].photo_url(:thumb) %>" alt="<%= @recent_photos[0].caption %>"/> </a>
-		<a href="/<%= @recent_photos[5].code %>"> <img src="<%= @recent_photos[5].photo_url(:thumb) %>" alt="<%= @recent_photos[0].caption %>"/> </a>
-		<a href="/<%= @recent_photos[6].code %>"> <img src="<%= @recent_photos[6].photo_url(:thumb) %>" alt="<%= @recent_photos[0].caption %>"/> </a>
-		<a href="/<%= @recent_photos[7].code %>"> <img src="<%= @recent_photos[7].photo_url(:thumb) %>" alt="<%= @recent_photos[0].caption %>"/> </a>
-		<a href="/<%= @recent_photos[8].code %>"> <img src="<%= @recent_photos[8].photo_url(:thumb) %>" alt="<%= @recent_photos[0].caption %>"/> </a>
-      </div>	
-    </div>
-  </div> 
+        <br class="clear"/>
+        <div id="comments">
+          <ul>
+            <li>
+
+              <div class="profile_pic left"><img src="/images/skin/latoya.png"/></div>
+              <div class="right post_details">
+                <h3 class="left">Latoya Jackson</h3>
+                <small class="left">30 minutes ago</small>
+                <br class="clear"/>
+                <p>You are beautiful, mama! Thanks for making such amazing music!</p>
+              </div>
+              <br class="clear"/>
+            </li>
+            <li>
+
+              <div class="profile_pic left"><img src="/images/skin/wahlberg.png"/></div>
+              <div class="right post_details">
+                <h3 class="left">Mark Wahlberg</h3>
+                <small class="left">5 minutes ago</small>
+                <br class="clear"/>
+                <p>Nice makeup, too...</p>
+              </div>
+              <br class="clear"/>
+            </li>
+          </ul>
+          <br class="clear"/>
+        </div>
+      </li>
+      <li>
+
+        <div class="profile_pic left"><img src="/images/skin/byMeWebStreamPage_13.png"/></div>
+        <div class="right details">
+          <h3 class="left">President Obama</h3>
+          <small class="left">posted a message</small>
+          <br class="clear"/>
+          <p class="black">A good compromise, a good piece of legislation, is like a good sentence; or a good piece of music. Everybody can recognize it. They say, 'Huh. It works. It makes sense.'</p>
+          <br class="clear"/>
+      </li>
+    </ul>
+
+  </div>
+  <div class="right">
+        <%= render "/shared/sidebar/square_ad" %>
+  </div>
+</div>
