@@ -28,8 +28,8 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
-ol, ul {
-	list-style: none;
+ol, ul, li, p {
+	list-style: none; overflow:hidden;
 }
 blockquote, q {
 	quotes: none;
@@ -45,8 +45,8 @@ table {
 }
 /* General Commands */
 .clear{clear:both;}
-.left{float:left;}
-.right{float:right;}
+.left{float:left; overflow:hidden;}
+.right{float:right; overflow:hidden;}
 .twtr-ft,.hidden,.twtr-hd{display:none;}
 .block{display:block;}
 .inline{display:inline}
