@@ -125,11 +125,15 @@ class PhotosController < ApplicationController
   def index
     @hide_download_button = true
     @recent_photos = Photo.recent
+   
+    
+    
     if mobile_user_agent?
       render :template => 'photos/index-mobile.html.erb', :layout => false
     else
       render :template => 'photos/index.html.erb', :layout => true
     end
+    
   end
   
   
