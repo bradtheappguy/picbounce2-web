@@ -59,6 +59,7 @@ url('../fonts/MuseoSans_500-webfont.woff') format('woff'),
 url('../fonts/MuseoSans_500-webfont.ttf') format('truetype');
 }
 /* General Types */
+body{font-family:'Museo';}
 a{text-decoration:none; outline:none; cursor:pointer;color:#757575; font-size:11pt;}
 a:hover{text-decoration:none}
 p{color:#757575; font-size:10pt; line-height:20px;}

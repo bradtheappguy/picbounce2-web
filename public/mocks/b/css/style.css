@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 .cyan{color:#687a7b;}
-h2{ font-size:16pt; font-family:'Museo';}
+h2{ font-family:'Museo';}
 #header{background:url(../images/top_pattern.png) repeat-x center center; height:44px;}
 .logo{margin:2px 0 0 10px;}
 .aligned_center{width:960px; margin:0 auto; overflow:auto;}
@@ -34,7 +34,7 @@ h2{ font-size:16pt; font-family:'Museo';}
 .comment_container textarea:focus{outline:none}
 #footer_comment{background:url(../images/comment_bg.png) repeat-x; height:23px; padding:4px 7px 0;}
 .cyan_curve{background-color:#c9d3d5; padding:2px 9px;-webkit-border-radius: 2px;-moz-border-radius: 2px;border-radius: 2px; font-size:12pt; font-weight:bold; font-family:'Museo'}
-.comments li,.three_columns>.left:first-child ul li{width:400px; margin-left:25px; background-color:#f4f2f2; border-bottom:1px solid #d8d8d8; padding:7px 7px; border-top:1px solid #fff; }
+.comments li,.three_columns>.left:first-child ul li{ width:408px; margin-left:25px; background-color:#f4f2f2; border-bottom:1px solid #d8d8d8; padding:7px 7px; border-top:1px solid #fff; }
 .three_columns>.left:first-child ul li:first-child,#comments li:first-child{border-top:none; }
 .comments li h3.left{margin-right:20px}
 .comments li .post_details{width:330px; margin-top:0px;}
@@ -42,7 +42,7 @@ h2{ font-size:16pt; font-family:'Museo';}
 .follow_right{-webkit-box-shadow:0px 0px 3px 2px #d0d1d2;-moz-box-shadow:0px 0px 3px 2px #d0d1d2;box-shadow:0px 0px 3px 2px #d0d1d2;height:188px; -webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px; background:#f2f3f5; padding:15px}
 .follow_right h1,.follow_right h2{color:#687a7b; font-family:'Museo'; padding:0 15px 12px 0}
 .follow_right h1{font-size:22pt}
-.follow_right h2{font-size:16pt}
+.follow_right h2{font-size:12pt}
 .follow_btn{background:url(../images/follow_btn.png) no-repeat; width:120px; height:40px; display:block}
 #slider{height:58px; margin:5px 0}
 #slider li{float:left; margin:0 15px 0 0;}
@@ -52,9 +52,9 @@ h2{ font-size:16pt; font-family:'Museo';}
 #footer{height:30px; margin-top:44px; padding-top:15px;/*position:absolute; bottom:0; left:0; right:0*/}
 #footer p{color:#666; font-family:'Museo'}
 .follow_btn:hover/*,.open_arrow:hover,.person_icon:hover*/{background-position:bottom}
-.avatar{background-color:#f8f7f7; border:1px solid #c8c8c8; padding:13px; width:128px; margin-top:-1px;-webkit-box-shadow:0px 2px 3px 1px #d0d1d2;-moz-box-shadow:0px 2px 3px 1px #d0d1d2;box-shadow:0px 2px 3px 1px #d0d1d2;}
+.avatar{padding:20px;/*background-color:#f8f7f7; border:1px solid #c8c8c8; width:128px; margin-top:-1px;-webkit-box-shadow:0px 2px 3px 1px #d0d1d2;-moz-box-shadow:0px 2px 3px 1px #d0d1d2;box-shadow:0px 2px 3px 1px #d0d1d2;*/}
 .avatar img{margin-bottom:10px}
-.three_columns>.left:first-child h2.cyan{margin:15px 0 8px 6px}
+.three_columns>.left:first-child h2.cyan{margin:5px 0 8px 25px}
 .three_columns>.left:first-child ul{width:148px}
 /*{background-color:#f4f2f2; border-bottom:1px solid #d8d8d8; padding:7px 11px; border-top:1px solid #fff;}*/
 .three_columns>.left:first-child ul li{height:16px}
@@ -67,7 +67,7 @@ h2{ font-size:16pt; font-family:'Museo';}
 #posts #comments li p{color:#333333; font-size:9pt;}
 .details small, .post_details small{color:#666666; font-size:9pt; margin-top:1px;}
 .details p{font-size:12px;}
-.details img{border:1px solid #dbdbdb; display:block; margin-bottom:8px}
+.details img{border:1px solid #dbdbdb; display:block; margin:8px 0 8px}
 #posts #comments{width:470px;}
 #posts li:second-child {margin:10px 0 0 10px;}
 .two_columns>.left:first-child #posts #comments{width:620px}
