@@ -1,7 +1,17 @@
 <div style="padding:3px;" id="comment_container">
   <textarea style="width:100%;"></textarea>
-  <div id="footer_comment">
-    <a href="#" class="cyan_curve block left">+ add media</a>
-    <a href="#" class="cyan_curve block right">Post</a>
+  <div id="footer_comment">  
+  <%=raw s3_http_upload_tag    :key => 'uploads', 
+                                 :content_type => 'image/jpeg', 
+                                 :redirect => request.url,
+                                 :acl => 'public-read',
+                                 :max_filesize => 5.megabytes,
+                                 :submit_button => '<input type="submit" value="Upload" class="cyan_curve block right" id="upload-button">',
+                                 :form => {:style => 'display: inline;'} %>
+  
+  
+  
+    <!-- a onclick="$('.select_file').hide();" class="cyan_curve block left">+ add media</a>
+    <a href="#" class="cyan_curve block right">Post</a -->
   </div>
 </div>
