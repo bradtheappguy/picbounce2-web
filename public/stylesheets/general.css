@@ -28,7 +28,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
-ol, ul, li, p {
+ol, ul, p {/*li*/
 	list-style: none; overflow:hidden;
 }
 blockquote, q {
@@ -54,14 +54,15 @@ table {
 /* End General Commands */
 @font-face {
 font-family: 'Museo';
-src: url('/fonts/MuseoSans_500-webfont.eot') format('eot'),
+src: url('/fonts/MuseoSans_500-webfont.eot?') format('eot'),
 url('/fonts/MuseoSans_500-webfont.woff') format('woff'),
 url('/fonts/MuseoSans_500-webfont.ttf') format('truetype');
 }
 /* General Types */
+body{font-family:'Museo';}
 a{text-decoration:none; outline:none; cursor:pointer;color:#757575; font-size:11pt;}
 a:hover{text-decoration:none}
-p{color:#757575; font-size:10pt; line-height:22px;}
+p{color:#757575; font-size:10pt; line-height:20px;}
 br{height:0px;}
 input{outline:none;}
 select{outline:none;}
@@ -69,8 +70,8 @@ img{outline:none;}
 h1{font-size:24px;}
 h1 a{font-size:24px;}
 h2{font-size:11.4pt; color:#1c6e23}
-h3{font-size:11pt}
-h4{font-size:13px; line-height:20px;}
+h3{font-size:11pt; }
+h4{font-size:13px; }
 h5{font-size:12px;}
 h6{font-size:11px;}
 /* End General Types */
