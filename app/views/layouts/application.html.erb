@@ -140,13 +140,8 @@
       });
     </script>
 
-
-
-
-  <!-- p style="color: green"><%= flash[:notice] %></p -->
-    <div class="container">
       <div id="header">
-        <div class="aligned_center">
+          <div class="aligned_center">
           <a href="/" class="left"><img src="/images/skin/logo.png"/></a>
           <span class="right">
             <% if user_signed_in? %>
@@ -164,6 +159,9 @@
           </span>
         </div>
       </div>
+    
+    
+    
       <% if notice_html or alert_html %>
         <br/>   
         <div class="aligned_center three_columns">
@@ -173,26 +171,13 @@
         <br/>    
       <% end  %>
 
-
-
       <div id="main">
         <%= yield %>
-        <!--
-        <div class="footer">
-          <ul class="nav">
-            <li><a href="http://www.clixtr.com/about">&copy;2010 Clixtr, Inc.</a></li>
-            <li><a href="mailto:contact@picbounce.com">Contact Us</a></li>
-            <li><a href="/Picbounce-Legal.pdf">Terms of Service</a></li>
-          </ul>
-        </div>
-        -->
-
       </div>
-      <br class="clear"/>
+        
       <div id="footer">
-        <div class="aligned_center"><p align="center"></p></div>
+        <div class="aligned_center"><p align="center">&copy; Focal Labs/Clixtr, Inc.</p></div>
       </div>
-    </div>
   </body>
   <script type="text/javascript">
     $('#caption').emoji();

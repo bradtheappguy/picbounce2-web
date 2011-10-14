@@ -1,7 +1,7 @@
-<div class="profile_pic left">
+<div class="profile_pic_post left">
   <%= link_to image_tag(photo.user.avatar, :size => "50x50"), photo.user %>
 </div>
-<div class="right details">
+<div class="left details">
   <h3 class="left">
     <%= link_to photo.user.display_name, photo.user %>   
   </h3>
@@ -11,10 +11,10 @@
   <%= link_to image_tag(photo.photo_url(:big), :size => "100x100"), photo %>
 </div>
 <br class="clear"/>
-<div id="comments">
-  <ul>
+<div class="comments">
+  <ul class="left">
     <% for comment in photo.comments %>
-      <li>
+      <li class="left">
         <%= render :partial => "/shared/feed/post_comment", :locals => { :comment => comment } %>
         <br class="clear"/>
       </li>
