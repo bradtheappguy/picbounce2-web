@@ -3,4 +3,10 @@
 
 APP_PATH = File.expand_path('../../config/application',  __FILE__)
 require File.expand_path('../../config/boot',  __FILE__)
+
+#added this line as a workaround for the bug desribed here: https://github.com/rails/rails/issues/1866
+#This allows rails plugin install to work
+#This should be removed once we update rails and/or rake
+module Commands; end
+
 require 'rails/commands'
