@@ -1,5 +1,11 @@
 class Users::FeedController < ApplicationController
   def show
+    if !user_signed_in?
+      @hide_download_button = true
+      @recent_photos = Photo.recent
+      render 'photos/index'
+    else
+    
     if params[:id] == "me"
       @user = current_user
     else
@@ -16,6 +22,7 @@ class Users::FeedController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render_api_response :photos => @photos }
+    end
     end
   end
   

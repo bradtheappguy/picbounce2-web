@@ -52,7 +52,8 @@ Trunk::Application.routes.draw do
   match 'users/:user_id/following' => 'api#create_following', :via => :post
   
   match 'users/:id' => 'profiles', :action => 'show', :as => 'profile', :via => :get
-
+  match 'users/:id' => 'profiles', :action => 'show', :as => 'user', :via => :get
+  
 #Analytics
   match 'analytics' => 'analytics#viewer', :via => :get
   match 'analytics/refreshFlurry' => 'analytics#refreshFlurry', :via => :get
@@ -75,7 +76,7 @@ Trunk::Application.routes.draw do
   match '/mocks/page_3' => 'mocks#page_3'
   
   
-  root :to => "photos#index"
+  root :to => "users/feed#show"
 
 end
 

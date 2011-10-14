@@ -43,7 +43,7 @@ h2{ font-size:16pt; font-family:'Museo';}
 #slider li .arrow{margin-top:22px}
 .support_link{margin:22px 50px 10px 50px}
 .ad{border:1px solid #cccccc}
-#footer{background:url(/images/skin/footer.png) repeat-x center center; height:30px; margin-top:44px; padding-top:15px;/*position:absolute; bottom:0; left:0; right:0*/}
+/* #footer{background:url(/images/skin/footer.png) repeat-x center center; height:30px; margin-top:44px; padding-top:15px;} */
 #footer p{color:#fff; font-family:'Museo'}
 .person_icon{background:url(/images/skin/person_icon.png) no-repeat top left; display:block; width:22px; height:19px; margin-right:4px; cursor:pointer}
 .follow_btn:hover,.open_arrow:hover,.person_icon:hover{background-position:bottom}
@@ -54,7 +54,7 @@ h2{ font-size:16pt; font-family:'Museo';}
 .avatar img{margin-bottom:10px}
 .three_columns>.left:first-child h2.cyan{margin:15px 0 8px 6px}
 .three_columns>.left:first-child ul{width:148px}
-{background-color:#f4f2f2; border-bottom:1px solid #d8d8d8; padding:7px 11px; border-top:1px solid #fff;}
+/* {background-color:#f4f2f2; border-bottom:1px solid #d8d8d8; padding:7px 11px; border-top:1px solid #fff;} */
 .three_columns>.left:first-child ul li{height:16px}
 #posts .details{width:420px; font-family:'Museo'; padding-top:13px;}
 .two_columns>.left:first-child #posts .details{width:555px}
