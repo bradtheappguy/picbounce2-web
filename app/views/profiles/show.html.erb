@@ -8,7 +8,12 @@
     <ul id="posts">
       <%  for photo in @user.photos_offset(0,25) %>
         <li class="left">
-          <%= render :partial => "/shared/feed/photo",:locals => { :photo => photo } %>
+          <% case photo.ptype %>
+          <%  when "photo" %>
+            <%= render :partial => "/shared/feed/photo",:locals => { :photo => photo } %>
+          <%  when "message" %>
+            <%= render :partial => "/shared/feed/message",:locals => { :photo => photo } %>
+          <%  end %>
         </li>
       <%  end %>
     </ul><!--posts-->
