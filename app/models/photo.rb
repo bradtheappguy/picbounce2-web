@@ -51,6 +51,11 @@ class Photo < ActiveRecord::Base
   
   before_update :trigger_deletes
   
+  
+  after_initialize :default_values
+
+ 
+
 
   def self.find_public(*args)
     args << 
@@ -83,43 +88,48 @@ class Photo < ActiveRecord::Base
   
   # Resize the uploaded photo using the ImageMagik command line and then upload to S3
   def process_photos
-    #These are the ImageMagik command line options
-    styles = { :thumb => '-define jpeg:size=5000x5000 -resize "80x80^" -extent "80x80" -auto-orient -quality 90', 
-               :big   => '-resize "600x600>" -auto-orient' }  
-    
-    styles.each_pair do |style, options|
-      cmd = "convert #{self.photo.path} #{options} #{photo_temp_path(style)}"
-      puts cmd
-      exit_status = system(cmd)
-      #raise "Image Resizing Failed #{exit_status} #{cmd}" if !exit_status
-      #TODO move the establish connection somewhere better, perhaps an initilizer
-      AWS::S3::Base.establish_connection!(:access_key_id => 'AKIAIIZEL3OLHCBIZBBQ', :secret_access_key => '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')
-      AWS::S3::S3Object.store("/photos/#{self.uuid}/#{style}.jpg", open(photo_temp_path(style)), 'com.clixtr.picbounce', {:access => :public_read})
+    if (ptype == "photo")
+      #These are the ImageMagik command line options
+      styles = { :thumb => '-define jpeg:size=5000x5000 -resize "80x80^" -extent "80x80" -auto-orient -quality 90', 
+                 :big   => '-resize "600x600>" -auto-orient' }  
+
+      styles.each_pair do |style, options|
+        cmd = "convert #{self.photo.path} #{options} #{photo_temp_path(style)}"
+        puts cmd
+        exit_status = system(cmd)
+        #raise "Image Resizing Failed #{exit_status} #{cmd}" if !exit_status
+        #TODO move the establish connection somewhere better, perhaps an initilizer
+        AWS::S3::Base.establish_connection!(:access_key_id => 'AKIAIIZEL3OLHCBIZBBQ', :secret_access_key => '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')
+        AWS::S3::S3Object.store("/photos/#{self.uuid}/#{style}.jpg", open(photo_temp_path(style)), 'com.clixtr.picbounce', {:access => :public_read})
+      end
     end
   end    
+  
   
   # Trigger the upoads to facebook to twitter in parallel threads, but wait until both are don
   # before continuing
   def trigger_uploads
-    logger.debug "trigger uploads"
-    threads = []
-    
-    threads << Thread.new {
-      fb_timer = Time.now
-      upload_to_facebook
-      logger.debug '** FB ** ' + ((Time.now - fb_timer)  ).to_s + ' sec'
-    }
-    threads << Thread.new {
-      tw_timer = Time.now
-      upload_to_twitter
-      logger.debug '** TW ** ' + ((Time.now - tw_timer)  ).to_s + ' sec'
-    }
-    threads.each do |t|
-      t.join
+    if (ptype == "photo")
+      logger.debug "trigger uploads"
+      threads = []
+
+      threads << Thread.new {
+        fb_timer = Time.now
+        upload_to_facebook
+        logger.debug '** FB ** ' + ((Time.now - fb_timer)  ).to_s + ' sec'
+      }
+      threads << Thread.new {
+        tw_timer = Time.now
+        upload_to_twitter
+        logger.debug '** TW ** ' + ((Time.now - tw_timer)  ).to_s + ' sec'
+      }
+      threads.each do |t|
+        t.join
+      end
+      save_timer = Time.now
+      self.save
+      logger.debug 'save ' + ((Time.now - save_timer)  ).to_s + ' sec'
     end
-    save_timer = Time.now
-    self.save
-    logger.debug 'save ' + ((Time.now - save_timer)  ).to_s + ' sec'
   end
   
   
@@ -426,15 +436,23 @@ end
 
 
   def load_from_aws
-    puts key
-    open("tmp/#{code}.jpg", 'wb') do |file|
-      file << open("http://s3.amazonaws.com/com.picbounce.incoming/#{key}").read
-      puts file.path
-      self.photo = file
+    if (ptype == "photo")
+      puts key
+      open("tmp/#{code}.jpg", 'wb') do |file|
+        file << open("http://s3.amazonaws.com/com.picbounce.incoming/#{key}").read
+        puts file.path
+        self.photo = file
+      end
     end
   end
 
   mount_uploader :image, ImageUploader
+  
+  
+   private
+    def default_values
+      self.ptype ||= "photo"
+    end
 end
 
 #EOF 

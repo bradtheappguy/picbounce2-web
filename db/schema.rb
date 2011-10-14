@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111012015706) do
+ActiveRecord::Schema.define(:version => 20111014015706) do
 
   create_table "apn_devices", :force => true do |t|
     t.string   "token",              :null => false
@@ -139,7 +139,7 @@ ActiveRecord::Schema.define(:version => 20111012015706) do
     t.integer  "user_id"
     t.string   "migrated"
     t.string   "image"
-    t.integer  "type"
+    t.string   "ptype"
   end
 
   add_index "photos", ["code"], :name => "index_photos_on_code"
