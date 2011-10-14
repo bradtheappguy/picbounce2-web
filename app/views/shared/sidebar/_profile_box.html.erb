@@ -1,3 +1,14 @@
-<div style="padding-left:10px">
-    this is a profile box
-</div> 
+<h1 class="left"><%=user.display_name%></h1>
+<a href="#" class="follow_btn right"></a>
+<br class="clear"/>
+<ul id="slider">
+  <li><a href="#"><img class="arrow" src="/images/skin/left_arrow.png"/></a></li>
+  <% for p in user.photos_offset(0,3)  %>
+    <li>
+  <%= link_to image_tag(p.photo_url(:thumb), :size => "50x50",:class => "profile_pic"), p %></li>
+  <% end %>
+  <li><a href="#"><img class="arrow" src="/images/skin/right_arrow.png"/></a></li>
+</ul>
+<br class="clear"/>
+<h2>Follow Me</h2>
+<div class="social_links"></div>

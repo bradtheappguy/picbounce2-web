@@ -1,197 +1,200 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml">
 
-<head>
-  <title><%= @page_title or 'Via.me' %></title>
- 
- <!-- TODO set this in controller -->
-  <meta name="google-site-verification" content="d3xDQ8ZZhXOZTCnqiarSXuiaLgxUoQrv5RChtanANkc" />
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="keywords" content="<%= @page_title %> Via.me" />
-  <meta name="description" content="<%= @page_title or "Via.me is a social networking app that lets you easily upload photos on twitter and facebook.  Uploading pictures on twitter and facebook is fast and easy with PicBounce!" %>" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	
-  
-  <% if @photo %>
-   <meta property="og:title" content="Via.me photo by <%=@twitter_screen_name%>" />
-   <meta property="og:description" content="<%= @photo.caption %>" />
-   <meta property="og:image" content="<%= @photo.photo_url(:big) || @photo.photo_url %>" />
-  <% end %>
-  
-  <%if @photo && @photo.user %>
-  <% if !@photo.user.twitter_screen_name %>
-    <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW" />
-  <% end %>
-  <% end %>
-  
-  <!--<link rel="stylesheet" type="text/css" href="/stylesheets/picbounce.css" />-->
-  <link rel="stylesheet" type="text/css" href="/stylesheets/general.css" />
-  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
-  
-	<%if @hide_download_button %> 
-	 <style type="text/css">
-			 #btn_download {
-				 display: none;	
-			 }
-	 </style> 
-	<% end -%> 
-	 
-  <link rel="shortcut icon" href="images/Icon32.png" />
-  <link rel="apple-touch-icon-precomposed" href="/images/Icon114.png" />
+  <head>
+    <title><%= @page_title or 'Via.me' %></title>
 
-  <!-- JQuery -->   
-  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js", "jquery_ujs.js" %>
-  <script type="text/javascript" src="/javascripts/jquery.cuteTime.js"></script>
+    <!-- TODO set this in controller -->
+    <meta name="google-site-verification" content="d3xDQ8ZZhXOZTCnqiarSXuiaLgxUoQrv5RChtanANkc" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="keywords" content="<%= @page_title %> Via.me" />
+    <meta name="description" content="<%= @page_title or "Via.me is a social networking app that lets you easily upload photos on twitter and facebook.  Uploading pictures on twitter and facebook is fast and easy with PicBounce!" %>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-5862637-7']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-  </script>
 
-<script type="text/javascript">
-$.fn.emoji = function() {
-    return this.each(function(){
+    <% if @photo %>
+      <meta property="og:title" content="Via.me photo by <%=@twitter_screen_name%>" />
+      <meta property="og:description" content="<%= @photo.caption %>" />
+      <meta property="og:image" content="<%= @photo.photo_url(:big) || @photo.photo_url %>" />
+    <% end %>
+
+    <%if @photo && @photo.user %>
+      <% if !@photo.user.twitter_screen_name %>
+        <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW" />
+      <% end %>
+    <% end %>
+
+    <!--<link rel="stylesheet" type="text/css" href="/stylesheets/picbounce.css" />-->
+    <link rel="stylesheet" type="text/css" href="/stylesheets/general.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+
+    <%if @hide_download_button %> 
+      <style type="text/css">
+        #btn_download {
+          display: none;	
+        }
+      </style> 
+    <% end -%> 
+
+    <link rel="shortcut icon" href="images/Icon32.png" />
+    <link rel="apple-touch-icon-precomposed" href="/images/Icon114.png" />
+
+    <!-- JQuery -->   
+    <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js", "jquery_ujs.js" %>
+    <script type="text/javascript" src="/javascripts/jquery.cuteTime.js"></script>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-5862637-7']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script type="text/javascript">
+      $.fn.emoji = function() {
+        return this.each(function(){
           $(this).html(
-                $(this).html().replace(/([\ue001-\ue537])/g, $.fn.emoji.replacer)
-                    );
-            });
-};
+          $(this).html().replace(/([\ue001-\ue537])/g, $.fn.emoji.replacer)
+        );
+        });
+      };
 
-$.fn.emoji.replacer = function (str, p1) {
-    return p1.charCodeAt(0).toString(16).toUpperCase().replace(
+      $.fn.emoji.replacer = function (str, p1) {
+        return p1.charCodeAt(0).toString(16).toUpperCase().replace(
         /^([\da-f]+)$/i,
-            '<img src="/images/emoji/emoji-$1.png" alt="emoji" />'
-              );
-}
-</script>
+        '<img src="/images/emoji/emoji-$1.png" alt="emoji" />'
+      );
+      }
+    </script>
 
-<script>
-$(document).ready(function () {
-    $('.timestamp').cuteTime();
-});
-</script>
-  
-<!-- Share This Button Script -->
-<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">
-  stLight.options({publisher:'d7c4078e-5c93-4f41-9421-dbe661fc2e83'});
-</script>
+    <script>
+      $(document).ready(function () {
+        $('.timestamp').cuteTime();
+      });
+    </script>
 
-
-<script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
-  
-</head>
-<body>
-<!-- Facebook Like Button -->
-<div id="fb-root"></div>
-<script type="text/javascript">
-window.fbAsyncInit = function() {
-FB.init({appId: '125208417509976', status: true, cookie: true, xfbml: true});};
-(function() {
-var e = document.createElement('script'); e.async = true;
-e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
-document.getElementById('fb-root').appendChild(e);
-}());
-</script>
+    <!-- Share This Button Script -->
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+      stLight.options({publisher:'d7c4078e-5c93-4f41-9421-dbe661fc2e83'});
+    </script>
 
 
-<!-- Home Page Animation -->
-<script type="text/javascript"> 
-var currentSlide = 1;
+    <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
+
+  </head>
+  <body>
+    <!-- Facebook Like Button -->
+    <div id="fb-root"></div>
+    <script type="text/javascript">
+      window.fbAsyncInit = function() {
+        FB.init({appId: '125208417509976', status: true, cookie: true, xfbml: true});};
+      (function() {
+        var e = document.createElement('script'); e.async = true;
+        e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+        document.getElementById('fb-root').appendChild(e);
+      }());
+    </script>
+
+
+    <!-- Home Page Animation -->
+    <script type="text/javascript"> 
+      var currentSlide = 1;
  
-function showSlide(index) {
-    if (index > 5)
-	  index = 1;	
-	if (index == currentSlide)
-	  return;
-	currentSlide = index;
+      function showSlide(index) {
+        if (index > 5)
+          index = 1;	
+        if (index == currentSlide)
+          return;
+        currentSlide = index;
 	 
-    $('.slide-container img').stop(true,true);
-    $('.feature_list li').removeClass('active');
-    $('.feature_list li:nth-child('+index+')').addClass('active');
-	var $active = $('.slide-container img.active');
-    var $next =  $('.slide-container img:nth-child('+index+')');
+        $('.slide-container img').stop(true,true);
+        $('.feature_list li').removeClass('active');
+        $('.feature_list li:nth-child('+index+')').addClass('active');
+        var $active = $('.slide-container img.active');
+        var $next =  $('.slide-container img:nth-child('+index+')');
  
-    $active.addClass('last-active');
+        $active.addClass('last-active');
  
-    $next.css({opacity: 0.0})
+        $next.css({opacity: 0.0})
         .addClass('active')
         .animate({opacity: 1.0}, 500, function() {
-            $active.removeClass('active last-active');
+          $active.removeClass('active last-active');
         });
-}
+      }
  
  
-$(document).ready(function() {		
-		$(".feature_list li:nth-child(1)").mouseover(function() { showSlide(1); });
-		$(".feature_list li:nth-child(1)").addClass('active');
-		$(".feature_list li:nth-child(2)").mouseover(function() { showSlide(2); });
-		$(".feature_list li:nth-child(3)").mouseover(function() { showSlide(3); });
-		$(".feature_list li:nth-child(4)").mouseover(function() { showSlide(4); });
-		/* $(".feature_list li:nth-child(5)").mouseover(function() { showSlide(5); }); */
-		$(".slide-container img").click(function() { showSlide(currentSlide+1); });
-		showSlide(1);
- });
-</script>
+      $(document).ready(function() {		
+        $(".feature_list li:nth-child(1)").mouseover(function() { showSlide(1); });
+        $(".feature_list li:nth-child(1)").addClass('active');
+        $(".feature_list li:nth-child(2)").mouseover(function() { showSlide(2); });
+        $(".feature_list li:nth-child(3)").mouseover(function() { showSlide(3); });
+        $(".feature_list li:nth-child(4)").mouseover(function() { showSlide(4); });
+        /* $(".feature_list li:nth-child(5)").mouseover(function() { showSlide(5); }); */
+        $(".slide-container img").click(function() { showSlide(currentSlide+1); });
+        showSlide(1);
+      });
+    </script>
 
 
 
 
   <!-- p style="color: green"><%= flash[:notice] %></p -->
-  <div class="container">
-    <div id="header">
-      <div class="aligned_center">
-        <a href="/" class="left"><img src="/images/skin/logo.png"/></a>
-      <% if user_signed_in? %>
-        <span class="right">
-          <%= link_to 'Profile', profile_path(current_user) %>
-          <%= link_to 'Edit Profile', edit_user_registration_path(current_user) %>
-          <%= link_to "Sign out", destroy_user_session_path %>
-        </span>
-      <% else %>
-        <span class="right">
-          <a href="/users/auth/twitter" class="twitter"></a>
+    <div class="container">
+      <div id="header">
+        <div class="aligned_center">
+          <a href="/" class="left"><img src="/images/skin/logo.png"/></a>
+          <span class="right">
+            <% if user_signed_in? %>
+              <span class="left person_icon"></span>
+              <span class="left person_name"><%=current_user.display_name%></span>
+              <span class="left open_arrow"></span>
+              <div style="background-color:white;z-index:200;margin-top:25px;background: white 0.5 no-repeat " >
+                  <%= link_to 'Profile', profile_path(current_user) %>
+                  <%= link_to 'Edit Profile', edit_user_registration_path(current_user) %>
+                  <%= link_to "Sign out", destroy_user_session_path %>
+              </div>
+            <% else %>
+              <a href="/users/auth/twitter" class="twitter"></a>
+            <% end %>
+          </span>
+        </div>
+      </div>
+      <% if notice_html or alert_html %>
+        <br/>   
+        <div class="aligned_center three_columns">
+          <%= raw notice_html %>
+          <%= raw alert_html %>
+        </div>
+        <br/>    
+      <% end  %>
 
-        </span>
-      <% end %>
-        
+
+
+      <div id="main">
+        <%= yield %>
+        <!--
+        <div class="footer">
+          <ul class="nav">
+            <li><a href="http://www.clixtr.com/about">&copy;2010 Clixtr, Inc.</a></li>
+            <li><a href="mailto:contact@picbounce.com">Contact Us</a></li>
+            <li><a href="/Picbounce-Legal.pdf">Terms of Service</a></li>
+          </ul>
+        </div>
+        -->
+
+      </div>
+      <br class="clear"/>
+      <div id="footer">
+        <div class="aligned_center"><p align="center"></p></div>
       </div>
     </div>
-    <% if notice_html or alert_html %>
-    <br/>    
-      <%= raw notice_html %>
-      <%= raw alert_html %>
-    <br/>    
-    <% end  %>
-        
-    
-
-<div id="main">
-    <%= yield %>
-    <!--
-    <div class="footer">
-      <ul class="nav">
-        <li><a href="http://www.clixtr.com/about">&copy;2010 Clixtr, Inc.</a></li>
-        <li><a href="mailto:contact@picbounce.com">Contact Us</a></li>
-        <li><a href="/Picbounce-Legal.pdf">Terms of Service</a></li>
-      </ul>
-    </div>
-    -->
-    
-  </div>
-    <br class="clear"/>
-    <div id="footer">
-    <div class="aligned_center"><p align="center"></p></div>
-    </div>
-  </div>
-</body>
-<script type="text/javascript">
-     $('#caption').emoji();
-</script>
+  </body>
+  <script type="text/javascript">
+    $('#caption').emoji();
+  </script>
 </html>

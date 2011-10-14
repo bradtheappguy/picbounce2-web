@@ -1,40 +1,23 @@
-<h1><%= @user.display_name %>'s Profile</h1>
-<ul>
-  <li><%= link_to 'Feed', user_feed_path(@user.id)  %></li>
-  <li><<%= link_to 'Following', user_follows_path(@user.id)  %></li>
-  <li><<%= link_to 'Followers', user_followedby_path(@user.id)  %></li>
-</ul>
+<div class="aligned_center three_columns">
+  <div class="left">
+    <%= render :partial => "/shared/sidebar/profile_box_small",:locals => { :user => @user } %>
+  </div>
 
-<div>
-  Name: <%= @user.name   %><br/>
-  Twitter Name: <%= link_to_twitter @user.twitter_screen_name %><br/>  
-  email: <%= @user.email %><br/>
-  <br/>
-  Number of Photos: <%= @user.photos.count %><br/>
-</div>
-<div>
-  <% if @user != current_user %>
-    <% if @user.following? current_user%>
-      <%= button_to'Stop Following', {:controller => 'followings', :action => 'destroy', :user_id => @user.id }, :method => :delete %>
-    <% else %>
-      <%= button_to'Follow', {:controller => 'followings', :action => 'create', :user_id => @user.id } %>
-    <% end %>
-  <% end %>  
-</div>
-<% @user.photos.each do |photo| %>
-  <%= thumbnail_image(photo) %><br />
-<% end %>
+  <div class="left">
+    <%= render :partial => "/shared/feed/comment_input"%>
+    <ul id="posts">
+      <%  for photo in @user.photos_offset(0,25) %>
+        <li class="left">
+          <%= render :partial => "/shared/feed/photo",:locals => { :photo => photo } %>
+        </li>
+      <%  end %>
+    </ul><!--posts-->
+  </div><!--left-->
 
-  <% @photo = Photo.new %>
-<% if @user == current_user %>
-  <%= form_for @photo, :html => {:multipart => true} do |f| %>
-    <p>
-      <%= f.file_field :image %>
-    </p>
-    <p>
-      <%= f.label :remote_image_url, "or image URL" %><br />
-      <%= f.text_field :remote_image_url %>
-    </p>
-    <p><%= f.submit %></p>
-  <% end %>
-<% end %>
+  <div class="right">
+    <%= render :partial => "/shared/sidebar/charity_badge", :locals => {:user => @user} %>
+    <br/>
+    <%= render "/shared/sidebar/square_ad" %>
+  </div><!--right-->
+
+</div>

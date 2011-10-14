@@ -103,6 +103,10 @@ class User < ActiveRecord::Base
     Photo.find(:all, :conditions => ["user_id = ? and created_at < ?", self.id, Time.at(timestamp.to_i) ], :order => 'created_at asc', :limit => 10)
   end
 
+  def photos_offset(skip,limit)
+    Photo.find(:all, :conditions => ["user_id = ?", self.id ], :order => 'created_at desc', :offset => skip,  :limit => limit)
+  end
+
 
       
   def photo
