@@ -8,6 +8,6 @@ end
 def self.down
     add_column :photos,:type, :integer
     remove_column :photos, :ptype
-end
+end 
 
 end
