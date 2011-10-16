@@ -19,7 +19,7 @@ development:
 
 test:
   host: localhost
-  user: brad
+  user: braadd
   adapter: postgresql
   encoding: unicode
   database: picbounce_test
