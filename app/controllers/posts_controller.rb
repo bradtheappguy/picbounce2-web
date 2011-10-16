@@ -89,7 +89,11 @@ class PostsController < ApplicationController
   
   #TODO timezone support
   def show
+<<<<<<< Updated upstream
     @photo = Post.find_by_code(params[:id]) 
+=======
+    @photo = Photo.find_by_code(params[:id]) 
+>>>>>>> Stashed changes
     if @photo
       #log this view to our view logging table
       #log = ViewLog.new

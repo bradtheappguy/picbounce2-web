@@ -1,13 +1,30 @@
 <div style="padding:3px;" id="comment_container">
   <textarea id="comment_input"" style="width:100%;"></textarea>
   <div id="footer_comment">  
-  <%=raw s3_http_upload_tag    :key => 'uploads', 
+    <div id="fileupload">
+    <form action="upload.php" method="POST" enctype="multipart/form-data">
+        <div class="fileupload-buttonbar">
+            <label class="fileinput-button">
+                <span>Add files...</span>
+                <input type="file" name="files[]" multiple>
+            </label>
+            <button type="submit" class="start">Start upload</button>
+            <button type="reset" class="cancel">Cancel upload</button>
+            <button type="button" class="delete">Delete files</button>
+        </div>
+    </form>
+    <div class="fileupload-content">
+        <table class="files"></table>
+        <div class="fileupload-progressbar"></div>
+    </div>
+</div>
+  <!--%=raw s3_http_upload_tag    :key => 'uploads', 
                                  :content_type => 'image/jpeg', 
                                  :redirect => request.url,
                                  :acl => 'public-read',
                                  :max_filesize => 5.megabytes,
                                  :submit_button => '<input type="submit" value="Upload" class="cyan_curve block right" id="upload-button">',
-                                 :form => {:style => 'display: inline;'} %>
+                                 :form => {:style => 'display: inline;'} %-->
   
   
   
