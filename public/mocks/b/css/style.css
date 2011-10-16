@@ -4,6 +4,8 @@
 h2{ font-size:16pt; font-family:'Museo';}
 #header{background:url(../images/top_pattern.png) repeat-x center center; height:62px;}
 .aligned_center{width:960px; margin:0 auto;}
+#header .aligned_center{position:relative}
+#header .aligned_center>span.right:hover #dropdown{display:block!important}
 #header .aligned_center a{padding-top:9px; display:block}
 .two_columns{margin-top:23px}
 .two_columns>.left{width:625px}
@@ -48,7 +50,7 @@ h2{ font-size:16pt; font-family:'Museo';}
 #slider li .arrow{margin-top:22px}
 .support_link{margin:22px 50px 10px 50px}
 .ad{border:1px solid #cccccc}
-#footer{background:url(../images/footer.png) repeat-x center center; height:30px; margin-top:44px; padding-top:15px;/*position:absolute; bottom:0; left:0; right:0*/}
+#footer{background:url(../images/footer.png) repeat-x center center; height:29px; margin-top:44px; padding-top:15px;/*position:absolute; bottom:0; left:0; right:0*/}
 #footer p{color:#fff; font-family:'Museo'}
 .person_icon{background:url(../images/person_icon.png) no-repeat top left; display:block; width:22px; height:19px; margin-right:4px; cursor:pointer}
 .avatar_btn:hover{background-position:0 -38px}
@@ -112,3 +114,8 @@ h2{ font-size:16pt; font-family:'Museo';}
 .general li input[type^=text]{margin-right:20px; width:165px}
 .password_title h2{display:block; margin-bottom:13px}
 .password_inputs *{margin-bottom:5px}
+#dropdown{width:110px; padding-top:15px; position:absolute}
+#dropdown ul{background-color:#fff;border:1px solid #c0c0c0;}
+#dropdown li{height:30px;}
+#dropdown li a{margin:1px; color:#242d42; padding:7px 10px!important; font-family:'Museo'}
+#dropdown li a:hover{background-color:#e9e9ea;color:#6a7b7c}
