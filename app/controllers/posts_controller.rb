@@ -1,6 +1,6 @@
 #TODO i[p address loggging
 
-class PhotosController < ApplicationController
+class PostsController < ApplicationController
   
   before_filter :authorize, :only => {:edit, :create}
   before_filter :current_user
@@ -10,7 +10,7 @@ class PhotosController < ApplicationController
   
   def edit
     puts "inside edit method"
-    @photo = Photo.find_by_code(params[:id])
+    @photo = Post.find_by_code(params[:id])
     @photo.block = 1 if params[:status] == 'Block'
     @photo.block = nil if params[:status] == 'ok'
     @photo.save
@@ -21,21 +21,21 @@ class PhotosController < ApplicationController
   #This is used for the facebok fan page to show the most recent photos
   #TODO limit this to < 25 to prevent data leakage
   def recent
-    @photo = Photo.find(:all, :limit => 1, :offset => params[:id].to_i,  :order => 'id DESC', :conditions => 'block is NULL AND twitter_screen_name IS NOT NULL')[0]
-    redirect_to @photo.photo_url(:thumb)
+    @photo = Post.find(:all, :limit => 1, :offset => params[:id].to_i,  :order => 'id DESC', :conditions => 'block is NULL AND twitter_screen_name IS NOT NULL')[0]
+    redirect_to @photo.post_url(:thumb)
   end
   
   
   def create
      code = rand(1000 * 1000 * 10).to_s(36)
-    while Photo.find_by_code(code) 
+    while Post.find_by_code(code) 
       code = rand(1000 * 1000 * 10).to_s(36)
     end  
 
     
     puts current_user
     
-    @photo = Photo.create({:photo => params[:photo],
+    @photo = Post.create({:photo => params[:photo],
                           :key => params[:key],
                           :code => code,
                           :ptype => params[:ptype],
@@ -59,12 +59,12 @@ class PhotosController < ApplicationController
   
   
   def destroy
-    @photo = Photo.find_by_code(params[:id])
+    @photo = Post.find_by_code(params[:id])
     @photo.twitter_oauth_token = params[:twitter_oauth_token]
     @photo.twitter_oauth_secret = params[:twitter_oauth_secret]
     
     if !@photo
-      @photo = Photo.find_deleted_by_code(params[:id])
+      @photo = Post.find_deleted_by_code(params[:id])
     else
       @photo.deleted = true 
       @photo.facebook_access_token = (params[:facebook_access_token]?(params[:facebook_access_token].split('&')[0]):nil)  #this split is there to fix a big in iPhone Client version 1.2
@@ -79,7 +79,7 @@ class PhotosController < ApplicationController
   # This is used to post directly from the Tweetie iPhone App
   def tweetie
     code = rand(1000 * 1000 * 10).to_s(36)
-    @photo = Photo.create({ :photo => params[:media],
+    @photo = Post.create({ :photo => params[:media],
                            :code => code,
 	                         :twitter_screen_name => "Picbounce",
 	                         :caption => params[:message]
@@ -88,8 +88,8 @@ class PhotosController < ApplicationController
   end
   
   #TODO timezone support
-  def view
-    @photo = Photo.find_by_code(params[:id]) 
+  def show
+    @photo = Post.find_by_code(params[:id]) 
     if @photo
       #log this view to our view logging table
       #log = ViewLog.new
@@ -112,11 +112,11 @@ class PhotosController < ApplicationController
       @time = local_timestamp.strftime("%I:%M %p")
       @timezone = "(PST)"
       @date = local_timestamp.strftime("%A %b %e, %Y")
-      @popular_photos = Photo.find_popular
+      @popular_photos = Post.find_popular
       if mobile_user_agent?
-        render :template => 'photos/view-mobile.html.erb', :layout => false
+        render :template => 'posts/show-mobile.html.erb', :layout => false
       else
-        render :template => 'photos/view.html.erb', :layout => true
+        render :template => 'posts/show.html.erb', :layout => true
       end
     else
       redirect_to "/"
@@ -125,14 +125,14 @@ class PhotosController < ApplicationController
   
   def index
     @hide_download_button = true
-    @recent_photos = Photo.recent
+    @recent_photos = Post.recent
    
     
     
     if mobile_user_agent?
-      render :template => 'photos/index-mobile.html.erb', :layout => false
+      render :template => 'posts/index-mobile.html.erb', :layout => false
     else
-      render :template => 'photos/index.html.erb', :layout => true
+      render :template => 'posts/index.html.erb', :layout => true
     end
     
   end

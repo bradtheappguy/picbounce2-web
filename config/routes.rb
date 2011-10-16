@@ -1,8 +1,8 @@
 Trunk::Application.routes.draw do
   
-  resources :photos do
-    match '/like' => 'photos/likes#create', :via => :post
-    match '/like' => 'photos/likes#destroy', :via => :destory
+  resources :posts do
+    match '/like' => 'posts/likes#create', :via => :post
+    match '/like' => 'posts/likes#destroy', :via => :destory
   end
   
   resources :sharings
@@ -20,7 +20,7 @@ Trunk::Application.routes.draw do
   resources :followings
 
  
-  match 'recent/:id' => 'photos#recent', :via => :get
+  match 'recent/:id' => 'posts#recent', :via => :get
   match 'admin' => 'admin#index', :via => :get
   match 'admin/generateSitemap' => 'admin#generateSitemap', :via => :get
   
@@ -28,9 +28,9 @@ Trunk::Application.routes.draw do
   match 'Download' => 'application#download', :via => :get
   match 'appstore' => 'application#appstore', :via => :get
   
-  match 'photos' => 'photos#create', :via => :post
-  match 'photos' => 'photos#destory', :via => :delete
-  match 'tweetie' => 'photos#tweetie', :via => :post
+  match 'posts' => 'posts#create', :via => :post
+  match 'posts' => 'posts#destory', :via => :delete
+  match 'tweetie' => 'posts#tweetie', :via => :post
   
   match 'filters/index' => 'filters#index', :via => :get
   match 'filters/current_version' => 'filters#current_version', :via => :get
@@ -66,9 +66,9 @@ Trunk::Application.routes.draw do
   
 
 #Default is assuemed to be a shorterned url  
-  match '/:id' => 'photos#view', :via => :get, :as => 'photo'
-  match '/:id' => 'photos#edit', :via => :post 
-  match '/:id' => 'photos#destroy', :via => :delete
+  match '/:id' => 'posts#show', :via => :get, :as => 'photo'
+  match '/:id' => 'posts#edit', :via => :post 
+  match '/:id' => 'posts#destroy', :via => :delete
 
   #mocks
   match '/mocks/page_0' => 'mocks#page_0'

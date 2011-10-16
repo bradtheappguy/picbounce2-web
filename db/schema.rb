@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111014015706) do
+ActiveRecord::Schema.define(:version => 20111016015706) do
 
   create_table "apn_devices", :force => true do |t|
     t.string   "token",              :null => false
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20111014015706) do
   create_table "comments", :force => true do |t|
     t.string   "text"
     t.integer  "user_id"
-    t.integer  "photo_id"
+    t.integer  "post_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(:version => 20111014015706) do
     t.datetime "updated_at"
   end
 
-  create_table "photos", :force => true do |t|
+  create_table "posts", :force => true do |t|
     t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -142,8 +142,8 @@ ActiveRecord::Schema.define(:version => 20111014015706) do
     t.string   "ptype"
   end
 
-  add_index "photos", ["code"], :name => "index_photos_on_code"
-  add_index "photos", ["id"], :name => "idx_photos_id"
+  add_index "posts", ["code"], :name => "index_photos_on_code"
+  add_index "posts", ["id"], :name => "idx_photos_id"
 
   create_table "services", :force => true do |t|
     t.integer  "user_id"

@@ -1,5 +1,5 @@
-class PhotoObserver < ActiveRecord::Observer
-  observe :photo
+class PostObserver < ActiveRecord::Observer
+  observe :post
   
   def after_create(photo)
      message = "#{photo.user.name} posted a "+photo.ptype+"."

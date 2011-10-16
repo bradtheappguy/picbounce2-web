@@ -11,7 +11,7 @@ require 'httpclient'
 require 'json'
 require 'aws/s3'
 
-class Photo < ActiveRecord::Base  
+class Post < ActiveRecord::Base  
   
   def created
     created_at.to_i
@@ -63,7 +63,7 @@ class Photo < ActiveRecord::Base
   end
   
   def self.find_deleted_by_code(id)
-    photo = Photo.with_exclusive_scope {self.find_by_code(id)}
+    photo = Post.with_exclusive_scope {self.find_by_code(id)}
     photo.uuid = nil
     photo
   end
@@ -81,7 +81,7 @@ class Photo < ActiveRecord::Base
   
     
   # Generates the publicly avaiale URLs where the image is available after being saved to S3  
-  def photo_url(style)
+  def post_url(style)
     "http://s3.amazonaws.com/com.clixtr.picbounce/photos/#{self.uuid}/#{style}.jpg"
   end
   
@@ -250,7 +250,7 @@ class Photo < ActiveRecord::Base
   ## future photos to a photo album.  For new users, we make the photo visiable on picbounce.com and post a status
   ## update that points to the picbounce url. 
   def facebook_http_post
-      p = Photo.find(:first, :order => :id, :conditions => ['device_id = ?', device_id])
+      p = Post.find(:first, :order => :id, :conditions => ['device_id = ?', device_id])
       logger.debug "Checking for legacy Facebook Support"
      if (p && device_id != 'baa0e2136a3cfa101fd8440f2a4df0ca56e76797') #Special case for customer
       if (p && device_id != '048b2136b4023f50d23c0309d7a49bf3af2266ef')  #The device id is a Special Case for Ted Vicky (See https://www.pivotaltracker.com/story/show/6850999)
@@ -262,7 +262,7 @@ class Photo < ActiveRecord::Base
       end
      end 
     #upload the photo to the a facebook photo album called 'PicBounce For iPhone Photos'.  Let facebook automatically update the users stream                                                                                                                                                                                       
-    thumb_url = self.photo_url(:thumb)
+    thumb_url = self.post_url(:thumb)
     logger.debug "Saving to PicBounce and updating feed for code: #{code} thumburl: #{thumb_url}"
     return HTTPClient.post 'https://graph.facebook.com/me/feed', {:access_token => facebook_access_token,
                                                                       :message => caption,
@@ -403,7 +403,7 @@ end
   end
   
   def self.find_popular 
-    Photo.popular.sort_by {rand}
+    Post.popular.sort_by {rand}
   end
 
   def twitter_avatar_url

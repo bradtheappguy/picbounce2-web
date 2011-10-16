@@ -3,9 +3,9 @@
 <br class="clear"/>
 <ul id="slider">
   <li><a href="#"><img class="arrow" src="/images/skin/left_arrow.png"/></a></li>
-  <% for p in user.photos_offset(0,3)  %>
+  <% for p in user.posts_with_offset(0,3)  %>
     <li>
-  <%= link_to image_tag(p.photo_url(:thumb), :size => "50x50",:class => "profile_pic"), photo_path(p.code) %></li>
+  <%= link_to image_tag(p.post_url(:thumb), :size => "50x50",:class => "profile_pic"), post_path(p.code) %></li>
   <% end %>
   <li><a href="#"><img class="arrow" src="/images/skin/right_arrow.png"/></a></li>
 </ul>

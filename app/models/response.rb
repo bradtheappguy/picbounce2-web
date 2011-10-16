@@ -39,8 +39,8 @@ class Response < ActiveRecord::Base
 
 
   def next
-    if self.photos.last
-      timestamp = self.photos.last.created
+    if self.posts.last
+      timestamp = self.posts.last.created
     end
     nextURL =  self.url.gsub(/[?&]after=\d+/,"")
     if (nextURL.include?('?') == false)

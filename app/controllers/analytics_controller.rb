@@ -151,7 +151,7 @@ class AnalyticsController < ApplicationController
     @ts.query = sql
     
     @ts.points = []
-    Photo.find_by_sql(sql).each do |row|
+    Post.find_by_sql(sql).each do |row|
        point = {:date => row.date}
        for col in columns
          point[col] = row.read_attribute(col)
@@ -172,7 +172,7 @@ class AnalyticsController < ApplicationController
     @ts.query = params[:sql]
     
     @ts.points = []
-    Photo.find_by_sql(params[:sql]).each do |row|
+    Post.find_by_sql(params[:sql]).each do |row|
        point = {params[:date_field] => row.read_attribute(params[:date_field])}
        for col in columns
          point[col] = row.read_attribute(col)
@@ -211,7 +211,7 @@ class AnalyticsController < ApplicationController
     @ts.query = sql
     @ts.points = []
     
-    Photo.find_by_sql(sql).each do |row|
+    Post.find_by_sql(sql).each do |row|
        point = {:date => row.date, 
                 :sessions => row.sessions,
                 :new_users => row.new_users,

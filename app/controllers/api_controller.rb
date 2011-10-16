@@ -1,7 +1,7 @@
 class ApiController < ApplicationController
 
   def popular
-    @photos = Photo.find_popular
+    @photos = Post.find_popular
     respond_to do |format|
       format.json { render_api_response :photos => @photos }
     end
@@ -11,7 +11,7 @@ class ApiController < ApplicationController
     user =  User.find_by_twitter_screen_name(params[:user_id]) 
     if (!user)
       user = User.new(:twitter_screen_name => params[:user_id])
-      user.photos << Photo.find_all_by_twitter_screen_name(params[:user_id])
+      user.posts << Post.find_all_by_twitter_screen_name(params[:user_id])
       user.save
     end
 
@@ -19,9 +19,9 @@ class ApiController < ApplicationController
       x.url = request.fullpath
       x.user = User.find_by_twitter_screen_name(params[:user_id])
       if params[:after]
-        x.photos = user.photos_after params[:user_id]
+        x.posts = user.posts_after params[:user_id]
       else
-        x.photos = x.user.photos
+        x.posts = x.user.posts
       end
       render_for_api :profile, :json => x
 
@@ -29,17 +29,17 @@ class ApiController < ApplicationController
   end 
   
   def nearby
-     @photos = Photo.find_all_by_twitter_screen_name('bradsmithinc')
+     @photos = Post.find_all_by_twitter_screen_name('bradsmithinc')
      render :text => @photos.to_json
   end
 
   def latest
-     @photos = Photo.find(:all, :limit => 10)
+     @photos = Post.find(:all, :limit => 10)
      render :text => @photos.to_json
   end
 
   def mentions
-     @photos = Photo.find_all_by_twitter_screen_name('b2test')
+     @photos = Post.find_all_by_twitter_screen_name('b2test')
      render :text => @photos.to_json
   end
 

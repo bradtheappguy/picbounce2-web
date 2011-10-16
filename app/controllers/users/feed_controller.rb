@@ -2,8 +2,8 @@ class Users::FeedController < ApplicationController
   def show
     if !user_signed_in?
       @hide_download_button = true
-      @recent_photos = Photo.recent
-      render 'photos/index'
+      @recent_photos = Post.recent
+      render 'posts/index'
     else
     
     if params[:id] == "me"
@@ -29,13 +29,13 @@ class Users::FeedController < ApplicationController
   def external
     @user = current_user
    
-    @photo = Photo.new
+    @photo = Post.new
     render :status => 404 if @user.nil?
 
     photos = []
     
     if params[:service_id] == nil
-      photos=@user.photos
+      photos=@user.posts
     else
       photos=@user.external_photos(params[:service_id],params[:after])
     end

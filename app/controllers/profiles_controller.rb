@@ -9,8 +9,8 @@ class ProfilesController < ApplicationController
     end
     raise FourOhFour if @user.nil?
       
-     @photo = Photo.new
-     @photos = @user.photos
+     @photo = Post.new
+     @photos = @user.posts
      
     respond_to do |format|
       format.html

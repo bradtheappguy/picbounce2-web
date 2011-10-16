@@ -55,7 +55,7 @@
       <div class="left" id="view_left"> 
         <a id="mobile_dl" href="/download?mobile" ></a>
         
-        <img src="<%= @photo.photo_url(:big) || @photo.photo_url %>" id="main_photo" alt="@photo.caption" name="photo" />
+        <img src="<%= @photo.post_url(:big) || @photo.post_url %>" id="main_photo" alt="@photo.caption" name="photo" />
         
               
         </div>

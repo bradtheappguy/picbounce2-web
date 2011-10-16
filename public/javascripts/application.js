@@ -2,7 +2,7 @@
 // This file is automatically included by javascript_include_tag :defaults
 function postComment(caption){
   var request = $.ajax({
-    url: "/photos",
+    url: "/posts",
     type: "POST",
     data: {caption : caption,
            ptype: "message"},
