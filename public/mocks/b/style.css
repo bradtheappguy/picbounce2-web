@@ -48,7 +48,7 @@ h2{ font-size:16pt; font-family:'Museo';}
 #slider li .arrow{margin-top:22px}
 .support_link{margin:22px 50px 10px 50px}
 .ad{border:1px solid #cccccc}
-#footer{background:url(../images/footer.png) repeat-x center center; height:30px; margin-top:44px; padding-top:15px;/*position:absolute; bottom:0; left:0; right:0*/}
+#footer{background:url(../images/footer.png) repeat-x center center; height:29px; margin-top:44px; padding-top:15px;/*position:absolute; bottom:0; left:0; right:0*/}
 #footer p{color:#fff; font-family:'Museo'}
 .person_icon{background:url(../images/person_icon.png) no-repeat top left; display:block; width:22px; height:19px; margin-right:4px; cursor:pointer}
 .avatar_btn:hover{background-position:0 -38px}
