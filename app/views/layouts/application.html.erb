@@ -10,7 +10,7 @@
     <meta name="keywords" content="<%= @page_title %> Via.me" />
     <meta name="description" content="<%= @page_title or "Via.me is a social networking app that lets you easily upload photos on twitter and facebook.  Uploading pictures on twitter and facebook is fast and easy with PicBounce!" %>" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
+    <%= csrf_meta_tag %> 
 
     <% if @photo %>
       <meta property="og:title" content="Via.me photo by <%=@twitter_screen_name%>" />
@@ -42,6 +42,7 @@
     <!-- JQuery -->   
     <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js", "jquery_ujs.js" %>
     <script type="text/javascript" src="/javascripts/jquery.cuteTime.js"></script>
+    <script type="text/javascript" src="/javascripts/application.js"></script>
 
     <script type="text/javascript">
       var _gaq = _gaq || [];
@@ -140,44 +141,44 @@
       });
     </script>
 
-      <div id="header">
-          <div class="aligned_center">
-          <a href="/" class="left"><img src="/images/skin/logo.png"/></a>
-          <span class="right">
-            <% if user_signed_in? %>
-              <span class="left person_icon"></span>
-              <span class="left person_name"><%=current_user.display_name%></span>
-              <span class="left open_arrow"></span>
-              <!--<div style="background-color:white;z-index:200;margin-top:25px;background: white 0.5 no-repeat " >
-                  <%= link_to 'Profile', profile_path(current_user) %>
-                  <%= link_to 'Edit Profile', edit_user_registration_path(current_user) %>
-                  <%= link_to "Sign out", destroy_user_session_path %>
-              </div>-->
-            <% else %>
-              <a href="/users/auth/twitter" class="twitter"></a>
-            <% end %>
-          </span>
-        </div>
+    <div id="header">
+      <div class="aligned_center">
+        <a href="/" class="left"><img src="/images/skin/logo.png"/></a>
+        <span class="right">
+          <% if user_signed_in? %>
+            <span class="left person_icon"></span>
+            <span class="left person_name"><%=current_user.display_name%></span>
+            <span class="left open_arrow"></span>
+            <!--<div style="background-color:white;z-index:200;margin-top:25px;background: white 0.5 no-repeat " >
+            <%= link_to 'Profile', profile_path(current_user) %>
+            <%= link_to 'Edit Profile', edit_user_registration_path(current_user) %>
+            <%= link_to "Sign out", destroy_user_session_path %>
+            </div>-->
+          <% else %>
+            <a href="/users/auth/twitter" class="twitter"></a>
+          <% end %>
+        </span>
       </div>
-    
-    
-    
-      <% if notice_html or alert_html %>
-        <br/>   
-        <div class="aligned_center three_columns">
-          <%= raw notice_html %>
-          <%= raw alert_html %>
-        </div>
-        <br/>    
-      <% end  %>
+    </div>
 
-      <div id="main">
-        <%= yield %>
+
+
+    <% if notice_html or alert_html %>
+      <br/>   
+      <div class="aligned_center three_columns">
+        <%= raw notice_html %>
+        <%= raw alert_html %>
       </div>
-        
-      <div id="footer">
-        <div class="aligned_center"><p align="center">&copy; Focal Labs/Clixtr, Inc.</p></div>
-      </div>
+      <br/>    
+    <% end  %>
+
+    <div id="main">
+      <%= yield %>
+    </div>
+
+    <div id="footer">
+      <div class="aligned_center"><p align="center">&copy; Focal Labs/Clixtr, Inc.</p></div>
+    </div>
   </body>
   <script type="text/javascript">
     $('#caption').emoji();

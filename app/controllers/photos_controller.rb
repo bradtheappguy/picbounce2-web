@@ -38,6 +38,7 @@ class PhotosController < ApplicationController
     @photo = Photo.create({:photo => params[:photo],
                           :key => params[:key],
                           :code => code,
+                          :ptype => params[:ptype],
                           :twitter_oauth_token =>  params[:twitter_oauth_token],
                           :twitter_oauth_secret => params[:twitter_oauth_secret],
                           :facebook_access_token => (params[:facebook_access_token]?(params[:facebook_access_token].split('&')[0]):nil),  #this split is there to fix a big in iPhone Client version 1.2

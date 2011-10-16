@@ -1,5 +1,5 @@
 <div style="padding:3px;" id="comment_container">
-  <textarea style="width:100%;"></textarea>
+  <textarea id="comment_input"" style="width:100%;"></textarea>
   <div id="footer_comment">  
   <%=raw s3_http_upload_tag    :key => 'uploads', 
                                  :content_type => 'image/jpeg', 
@@ -13,5 +13,6 @@
   
     <!-- a onclick="$('.select_file').hide();" class="cyan_curve block left">+ add media</a>
     <a href="#" class="cyan_curve block right">Post</a -->
+    <a href="javascript:postComment($('#comment_input').val())">post comment</a>
   </div>
 </div>
