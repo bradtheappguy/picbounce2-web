@@ -3,7 +3,6 @@ class RegistrationsController < Devise::RegistrationsController
 
   def edit
     super
-    puts current_user.avatar
   end
   
   def update
