@@ -13,14 +13,14 @@ h2{ font-family:'Museo';}
 .two_columns{margin-top:23px}
 .two_columns>.left{width:625px}
 .two_columns>.right{width:305px}
-.three_columns>.left{width:485px}
+.three_columns>.left{width:486px}
 .three_columns>.left:first-child{width:170px}
-.three_columns>.right{width:295px; margin-left:10px}
+.three_columns>.right{width:290px; margin-left:10px}
 .main_pic_container{background-color:#cbcbcb;-webkit-border-radius: 2px;-moz-border-radius: 2px;border-radius: 2px; padding:1px 1px; margin-bottom:30px;}
 .main_pic_container div{background-color:#fff;-webkit-border-radius: 2px;-moz-border-radius: 2px;border-radius: 2px; padding:10px 12px 10px;}
 .main_pic_container img{-webkit-box-shadow: 0px 0px 3px 3px #bad0ce;-moz-box-shadow: 0px 0px 3px 3px #bad0ce;box-shadow: 0px 0px 3px 3px #bad0ce;}
-.profile_pic, .profile_pic_post  {border:#cbcbcb 1px solid; padding:4px; width:49px; height:49px; background-color:#fff} 
-.profile_pic_post {margin-top:10px;}
+.profile_pic, .profile_pic_post  {border:#cbcbcb 1px solid; padding:5px; width:49px; height:49px; background-color:#fff} 
+.profile_pic_post {margin-top:20px;}
 .post_details{margin-left:10px; width:400px; font-family:'Museo'; }
 .post_details h3.left{color:#000; margin-right:10px; font-size:13pt}
 .post_details h3.right{font-size:12pt}
@@ -30,20 +30,21 @@ h2{ font-family:'Museo';}
 .three_columns>.left #comment_container{width:485px}
 .three_columns>.left #comment_container textarea{width:471px}
 .comment_container{border:1px solid #bebebe; height:85px; width:445px; margin:20px 0 0 15px; overflow:hidden;}
-.comment_container textarea{height:40px; font-size:12pt; color:#687a7b; height:47px; width:445px; border:none; border-bottom:1px solid #e3e2e4; resize:none; padding:4px 7px; font-family:'Museo';}
+.comment_container textarea{height:40px; font-size:10pt; color:#666; height:47px; width:445px; border:none; border-bottom:1px solid #e3e2e4; resize:none; padding:4px 7px; font-family:'Museo'; overflow:visible;}
 .comment_container textarea:focus{outline:none}
-#footer_comment{background:url(../images/comment_bg.png) repeat-x; height:23px; padding:4px 7px 0;}
-.cyan_curve{background-color:#c9d3d5; padding:2px 9px;-webkit-border-radius: 2px;-moz-border-radius: 2px;border-radius: 2px; font-size:12pt; font-weight:bold; font-family:'Museo'}
+#footer_comment{background:#F3F3F3; height:23px; padding:4px 7px 0;}
+.cyan_curve{background-color:#E0F0F3; border:1px solid #CFCFCF; padding:2px 9px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px; font-size:9pt; font-family:'Museo'}
 .comments li,.three_columns>.left:first-child ul li{ width:408px; margin-left:25px; background-color:#f4f2f2; border-bottom:1px solid #d8d8d8; padding:7px 7px; border-top:1px solid #fff; }
 .three_columns>.left:first-child ul li:first-child,#comments li:first-child{border-top:none; }
 .comments li h3.left{margin-right:20px}
+.post_titles {width:370px; float:left;}
 .comments li .post_details{width:330px; margin-top:0px;}
 .social_links{-webkit-box-shadow:inset 0px 0px 7x 3px #d0d1d2;-moz-box-shadow:inset 0px 0px 7px 3px #d0d1d2;box-shadow:inset 0px 0px 7px 3px #d0d1d2;height:34px; -webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px; background:#f2f3f5}
 .follow_right{-webkit-box-shadow:0px 0px 3px 2px #d0d1d2;-moz-box-shadow:0px 0px 3px 2px #d0d1d2;box-shadow:0px 0px 3px 2px #d0d1d2;height:188px; -webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px; background:#f2f3f5; padding:15px}
 .follow_right h1,.follow_right h2{color:#687a7b; font-family:'Museo'; padding:0 15px 12px 0}
 .follow_right h1{font-size:22pt}
 .follow_right h2{font-size:12pt}
-.follow_btn{background:url(../images/follow_btn.png) no-repeat; width:120px; height:40px; display:block}
+.follow_btn{background:url(../images/follow_btn.png) no-repeat; margin-left:-2px; width:130px; height:40px; display:block}
 #slider{height:58px; margin:5px 0}
 #slider li{float:left; margin:0 15px 0 0;}
 #slider li .arrow{margin-top:22px}
@@ -51,14 +52,14 @@ h2{ font-family:'Museo';}
 .ad{border:1px solid #cccccc}
 #footer{height:30px; margin-top:44px; padding-top:15px;/*position:absolute; bottom:0; left:0; right:0*/}
 #footer p{color:#666; font-family:'Museo'}
-.follow_btn:hover/*,.open_arrow:hover,.person_icon:hover*/{background-position:bottom}
+/*.follow_btn:hover,.open_arrow:hover,.person_icon:hover{background-position:bottom}*/
 .avatar{padding:20px;/*background-color:#f8f7f7; border:1px solid #c8c8c8; width:128px; margin-top:-1px;-webkit-box-shadow:0px 2px 3px 1px #d0d1d2;-moz-box-shadow:0px 2px 3px 1px #d0d1d2;box-shadow:0px 2px 3px 1px #d0d1d2;*/}
 .avatar img{margin-bottom:10px}
 .three_columns>.left:first-child h2.cyan{margin:5px 0 8px 25px}
-.three_columns>.left:first-child ul{width:148px}
+.three_columns>.left:first-child ul{width:140px; margin-left:-3px;}
 /*{background-color:#f4f2f2; border-bottom:1px solid #d8d8d8; padding:7px 11px; border-top:1px solid #fff;}*/
-.three_columns>.left:first-child ul li{height:16px}
-#posts .details{width:400px; font-family:'Museo'; padding-top:13px; margin-left:10px;}
+.three_columns>.left:first-child ul li{background:#fff; height:16px; width:inherit;}
+#posts .details{width:379px; font-family:'Museo'; padding-top:20px; margin-left:10px;}
 .two_columns>.left:first-child #posts .details{width:500px}
 .details h3{color:#212b40; margin-right:12px;}
 #posts{margin:10px 0 0 15px; overflow:hidden; }
@@ -66,7 +67,7 @@ h2{ font-family:'Museo';}
 #posts #comments li small{font-size:9pt;}
 #posts #comments li p{color:#333333; font-size:9pt;}
 .details small, .post_details small{color:#666666; font-size:9pt; margin-top:1px;}
-.details p{font-size:12px;}
+.details p{font-size:12px; padding-top:5px;}
 .details img{border:1px solid #dbdbdb; display:block; margin:8px 0 8px}
 #posts #comments{width:470px;}
 #posts li:second-child {margin:10px 0 0 10px;}

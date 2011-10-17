@@ -45,7 +45,7 @@ table {
 }
 /* General Commands */
 .clear{clear:both;}
-.left{float:left; overflow:hidden;}
+.left{float:left; overflow:visible;}
 .right{float:right; overflow:hidden;}
 .twtr-ft,.hidden,.twtr-hd{display:none;}
 .block{display:block;}
@@ -60,7 +60,7 @@ url('../fonts/MuseoSans_500-webfont.ttf') format('truetype');
 }
 /* General Types */
 body{font-family:'Museo';}
-a{text-decoration:none; outline:none; cursor:pointer;color:#757575; font-size:11pt;}
+a{text-decoration:none; outline:none; cursor:pointer;color:#2C3F58; font-size:10pt;}
 a:hover{text-decoration:none}
 p{color:#757575; font-size:10pt; line-height:20px;}
 br{height:0px;}
