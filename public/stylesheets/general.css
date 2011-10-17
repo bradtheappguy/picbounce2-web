@@ -44,9 +44,10 @@ table {
 	border-spacing: 0;
 }
 /* General Commands */
+.visible{overflow: visible;}
 .clear{clear:both;}
 .left{float:left; overflow:hidden;}
-.right{float:right; overflow:hidden;}
+.right{float:right;}
 .twtr-ft,.hidden,.twtr-hd{display:none;}
 .block{display:block;}
 .inline{display:inline}
@@ -70,7 +71,7 @@ img{outline:none;}
 h1{font-size:24px;}
 h1 a{font-size:24px;}
 h2{font-size:11.4pt; color:#1c6e23}
-h3{font-size:11pt; }
+h3{font-size:11pt; color:;}
 h4{font-size:13px; }
 h5{font-size:12px;}
 h6{font-size:11px;}
