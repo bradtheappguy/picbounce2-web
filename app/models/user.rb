@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   
   def feed
     #This needs optimization
-    @photos = followeds.includes(:photos).collect(&:photos).flatten.reverse
+    @photos = followeds.includes(:posts).collect(&:posts).flatten.reverse
   end
   
   has_many :services, :dependent => :destroy do

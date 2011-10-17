@@ -140,8 +140,6 @@
         showSlide(1);
       });
     </script>
-
-<<<<<<< HEAD
       <div id="header">
           <div class="aligned_center">
           <a href="/" class="left logo"><img src="/images/skin/logo.png"/></a>
@@ -162,41 +160,6 @@
         </div>
       </div>
     
-    
-    
-      <% if notice_html or alert_html %>
-        <br/>   
-        <div class="aligned_center three_columns">
-          <%= raw notice_html %>
-          <%= raw alert_html %>
-        </div>
-        <br/>    
-      <% end  %>
-
-      <div id="main">
-        <%= yield %>
-=======
-    <div id="header">
-      <div class="aligned_center">
-        <a href="/" class="left"><img src="/images/skin/logo.png"/></a>
-        <span class="right">
-          <% if user_signed_in? %>
-            <span class="left person_icon"></span>
-            <span class="left person_name"><%=current_user.display_name%></span>
-            <span class="left open_arrow"></span>
-            <!--<div style="background-color:white;z-index:200;margin-top:25px;background: white 0.5 no-repeat " >
-            <%= link_to 'Profile', profile_path(current_user) %>
-            <%= link_to 'Edit Profile', edit_user_registration_path(current_user) %>
-            <%= link_to "Sign out", destroy_user_session_path %>
-            </div>-->
-          <% else %>
-            <a href="/users/auth/twitter" class="twitter"></a>
-          <% end %>
-        </span>
->>>>>>> f61d4e3cf3e32cbf7561b50ec731104e1b50ad7c
-      </div>
-    </div>
-
 
 
     <% if notice_html or alert_html %>
