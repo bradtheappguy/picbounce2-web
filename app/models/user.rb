@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
   
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :slug, :is_current_user
   has_many :devices, :class_name => 'APN::Device'
-  has_many :photos, :limit => 1000, :order => 'created_at desc'
-  has_many :all_photos, :class_name => 'Photo'  
+  has_many :posts, :limit => 1000, :order => 'created_at desc'
+  has_many :all_posts, :class_name => 'Post'  
   has_many :followings 
   has_many :inverse_followings, :class_name => "Following", :foreign_key => "follower_id"
   has_many :followers,  :through => :followings       
@@ -55,8 +55,8 @@ class User < ActiveRecord::Base
     return user
   end
   
-  def photo_count
-    self.all_photos.count
+  def post_count
+    self.all_posts.count
   end
 
   
@@ -99,12 +99,12 @@ class User < ActiveRecord::Base
   end
 
   
-  def photos_after(timestamp)
-    Photo.find(:all, :conditions => ["user_id = ? and created_at < ?", self.id, Time.at(timestamp.to_i) ], :order => 'created_at asc', :limit => 10)
+  def posts_after(timestamp)
+    Post.find(:all, :conditions => ["user_id = ? and created_at < ?", self.id, Time.at(timestamp.to_i) ], :order => 'created_at asc', :limit => 10)
   end
 
-  def photos_offset(skip,limit)
-    Photo.find(:all, :conditions => ["user_id = ?", self.id ], :order => 'created_at desc', :offset => skip,  :limit => limit)
+  def posts_with_offset(skip,limit)
+    Post.find(:all, :conditions => ["user_id = ?", self.id ], :order => 'created_at desc', :offset => skip,  :limit => limit)
   end
 
 

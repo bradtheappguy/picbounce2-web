@@ -28,8 +28,8 @@
     <div class="view_thumbs">    
       <div class="wrapper">
         <ul>  
-          <li> <% if @next_photo %><a href="/<%=@next_photo.code%>"><img class="view_tn left_tn" src="<%= @next_photo.photo_url(:thumb) %>" /> <% else %> <div class="view_tn left_tn no_border" ></div><% end %></li>
-          <li> <% if @previous_photo %><a href="/<%=@previous_photo.code%>"><img class="view_tn right_tn" src="<%= @previous_photo.photo_url(:thumb) %>" /><% end %></li>        
+          <li> <% if @next_photo %><a href="/<%=@next_photo.code%>"><img class="view_tn left_tn" src="<%= @next_photo.post_url(:thumb) %>" /> <% else %> <div class="view_tn left_tn no_border" ></div><% end %></li>
+          <li> <% if @previous_photo %><a href="/<%=@previous_photo.code%>"><img class="view_tn right_tn" src="<%= @previous_photo.post_url(:thumb) %>" /><% end %></li>        
         </ul>
       </div>
           

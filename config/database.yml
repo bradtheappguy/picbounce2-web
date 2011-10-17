@@ -20,7 +20,7 @@ development:
 
 test:
   host: localhost
-  user: brad
+  user: prostgres
   adapter: postgresql
   encoding: unicode
   database: picbounce_test

@@ -27,14 +27,14 @@ class PhotosControllerTest < ActionController::TestCase
     authenticate
     post :edit, :id => photos(:photo_with_fb_and_twitter).code, :status => "Block"
     assert_response 302
-    assert_equal true, Photo.find(photos(:photo_with_fb_and_twitter)).block
+    assert_equal true, Post.find(photos(:photo_with_fb_and_twitter)).block
   end
   
   test "should unblock photo" do
     authenticate  
     post :edit, :id => photos(:photo_with_fb_blocked).code, :status => "ok"
     assert_response 302
-    assert_nil Photo.find(photos(:photo_with_fb_blocked)).block
+    assert_nil Post.find(photos(:photo_with_fb_blocked)).block
   end
 
   test "should not block photo" do
@@ -53,7 +53,7 @@ class PhotosControllerTest < ActionController::TestCase
 
 # NOTE: This works now, if you replace the tokens with valid ones
   test "create a photo" do
-    old_count = Photo.count
+    old_count = Post.count
     post :create, 
       :photo => fixture_file_upload("photo_sample.jpg", "image/jpeg"), 
       :twitter_oauth_token => '155714570-7nqyILm4Wx5zz3cdFE0W0rHFHRdHh9hS0n708csO', 
@@ -61,7 +61,7 @@ class PhotosControllerTest < ActionController::TestCase
       :facebook_access_token => '12&&&&&&5208417509976|9817ca3e6a2e8bd55c0f153a-1024064802|t1nfLPlbnBfewv6S5fhX8VntyLE', 
       :caption => 'functional test ' + Time.now().to_s,
       :device_id => '8da5a36ff265ad5d8d8d5036a91e2a363485211f'
-    assert_equal old_count+1, Photo.count
+    assert_equal old_count+1, Post.count
   end
 
   def authenticate

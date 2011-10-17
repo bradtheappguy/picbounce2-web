@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @photo = Photo.new
+    @photo = Post.new
     respond_to do |format|
       format.xml  { render_for_api params[:api_template].to_sym, :xml => @user }
       format.json { render_for_api params[:api_template].to_sym, :json => @user }

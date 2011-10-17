@@ -1,0 +1,150 @@
+#TODO i[p address loggging
+
+class PostsController < ApplicationController
+  
+  before_filter :authorize, :only => {:edit, :create}
+  before_filter :current_user
+
+  layout :choose_layout
+  
+  
+  def edit
+    puts "inside edit method"
+    @photo = Post.find_by_code(params[:id])
+    @photo.block = 1 if params[:status] == 'Block'
+    @photo.block = nil if params[:status] == 'ok'
+    @photo.save
+    
+    redirect_to "/#{params[:id]}"
+  end
+  
+  #This is used for the facebok fan page to show the most recent photos
+  #TODO limit this to < 25 to prevent data leakage
+  def recent
+    @photo = Post.find(:all, :limit => 1, :offset => params[:id].to_i,  :order => 'id DESC', :conditions => 'block is NULL AND twitter_screen_name IS NOT NULL')[0]
+    redirect_to @photo.post_url(:thumb)
+  end
+  
+  
+  def create
+     code = rand(1000 * 1000 * 10).to_s(36)
+    while Post.find_by_code(code) 
+      code = rand(1000 * 1000 * 10).to_s(36)
+    end  
+
+    
+    puts current_user
+    
+    @photo = Post.create({:photo => params[:photo],
+                          :key => params[:key],
+                          :code => code,
+                          :ptype => params[:ptype],
+                          :twitter_oauth_token =>  params[:twitter_oauth_token],
+                          :twitter_oauth_secret => params[:twitter_oauth_secret],
+                          :facebook_access_token => (params[:facebook_access_token]?(params[:facebook_access_token].split('&')[0]):nil),  #this split is there to fix a big in iPhone Client version 1.2
+                          :caption => params[:caption],
+                          :user_agent => request.user_agent,
+                          :device_type => params[:system_model],
+                          :os_version =>  params[:system_version],
+                          :device_id => params[:device_id],
+                          :ip_address => request.env['HTTP_X_REAL_IP'],
+                          :filter_version => params[:filter_version],
+                          :filter_name => params[:filter_name],
+                          :user => current_user
+    })
+    @photo.save #TODO is this save necessacarry?
+    logger.debug @photo.code
+    render 'json_status', :status => @photo.general_status
+  end
+  
+  
+  def destroy
+    @photo = Post.find_by_code(params[:id])
+    @photo.twitter_oauth_token = params[:twitter_oauth_token]
+    @photo.twitter_oauth_secret = params[:twitter_oauth_secret]
+    
+    if !@photo
+      @photo = Post.find_deleted_by_code(params[:id])
+    else
+      @photo.deleted = true 
+      @photo.facebook_access_token = (params[:facebook_access_token]?(params[:facebook_access_token].split('&')[0]):nil)  #this split is there to fix a big in iPhone Client version 1.2
+      
+    end
+    @photo.save
+    render :text => 'deleted'
+  end
+  
+  
+  
+  # This is used to post directly from the Tweetie iPhone App
+  def tweetie
+    code = rand(1000 * 1000 * 10).to_s(36)
+    @photo = Post.create({ :photo => params[:media],
+                           :code => code,
+	                         :twitter_screen_name => "Picbounce",
+	                         :caption => params[:message]
+    })
+    render :text => "<mediaurl>http://picbounce.com/#{code}</mediaurl>"
+  end
+  
+  #TODO timezone support
+  def show
+    @photo = Post.find_by_code(params[:id]) 
+    if @photo
+      #log this view to our view logging table
+      #log = ViewLog.new
+      #log.code = params[:id]
+      #log.user_agent = request.user_agent
+      #log.ip_address = request.env['HTTP_X_REAL_IP']
+      #log.save
+      
+      #@page_title = "Picbounce | #{@photo.caption} - Uploaded by @#{@photo.user.twitter_screen_name}" 
+      @photo.view_count = (@photo.view_count || 0) + 1
+      @photo.save
+     
+      screen_name = @photo.user.twitter_screen_name if @photo.user
+      if screen_name
+        #@next_photo = 
+        #@previous_photo = 
+      end
+      @twitter_screen_name = @photo.user.twitter_screen_name || "" if @photo.user
+      local_timestamp = @photo.created_at.in_time_zone("Pacific Time (US & Canada)")
+      @time = local_timestamp.strftime("%I:%M %p")
+      @timezone = "(PST)"
+      @date = local_timestamp.strftime("%A %b %e, %Y")
+      @popular_photos = Post.find_popular
+      if mobile_user_agent?
+        render :template => 'posts/show-mobile.html.erb', :layout => false
+      else
+        render :template => 'posts/show.html.erb', :layout => true
+      end
+    else
+      redirect_to "/"
+    end
+  end
+  
+  def index
+    @hide_download_button = true
+    @recent_photos = Post.recent
+   
+    
+    
+    if mobile_user_agent?
+      render :template => 'posts/index-mobile.html.erb', :layout => false
+    else
+      render :template => 'posts/index.html.erb', :layout => true
+    end
+    
+  end
+  
+  
+  private 
+  def choose_layout    
+    if [ 'create', 'destroy' ].include? action_name
+      nil
+    else
+      'application'
+    end
+  end
+  
+end

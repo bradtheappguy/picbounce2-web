@@ -26,6 +26,7 @@ gem "rmagick", "2.12.0", :require => 'RMagick'
 gem "carrierwave"
 gem 'apn_on_rails', :git => 'https://github.com/natescherer/apn_on_rails.git', :branch => 'rails3'
 gem 'rabl'
+gem "silent-postgres"
 
 group :analytics, :development, :test do
    gem 'ruby-debug-ide'

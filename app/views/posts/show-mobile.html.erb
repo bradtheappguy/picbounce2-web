@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+  <title><%= @page_title or 'PicBounce' %></title>
+ 
+ 
+ <!-- TODO set this in controller -->
+ 
+<%if @hide_download_button %> 
+ <style type="text/css">
+   #header_download_button {
+     display: none; 
+   }
+ </style> 
+<% end -%> 
+ 
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="keywords" content="<%= @page_title %> PicBounce" />
+  <meta name="description" content="<%= @page_title or "PicBounce is the easiest way to share photos on Twitter and Facebook." %>" />
+	<meta name="viewport" content="width=640, initial-scale=0.5, maximum-scale=1">
+
+<!--  <meta name='viewport' content='width=640;initial-scale=1.0;maximum-scale=1.0;user-scalable=0;'> -->
+  <link rel="stylesheet" type="text/css" href="/stylesheets/picbounce-mobile.css" />
+
+
+  <link rel="shortcut icon" href="images/Icon32.png" />
+  <link rel="apple-touch-icon-precomposed" href="/images/Icon114.png" />
+  
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5862637-7']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+
+  
+</head>
+<body>
+
+  <!-- p style="color: green"><%= flash[:notice] %></p -->
+  <div class="container">
+    <div class="header_bg">
+      <div class="header">
+        <a href="/" ><img src="images/logo.png" alt="Picbounce" name="Picbounce" id="logo" /></a>
+      </div>
+    </div>
+ 
+  <div class="content_bg" id="view_content_bg">
+    <div class="content">
+      <div class="left" id="view_left"> 
+        <a id="mobile_dl" href="/download?mobile" ></a>
+        
+        <img src="<%= @photo.post_url(:big) || @photo.post_url %>" id="main_photo" alt="@photo.caption" name="photo" />
+        
+              
+        </div>
+		
+        <div class="right">
+        <ul id="caption_list">
+         <li> 
+	<span id="caption">"<%=twitter_auto_link(@photo.caption) %>"</span>
+		 </li>
+		<li> 
+            <p id="name">
+              <% if @twitter_screen_name.length > 0 %>
+                <a id="name2" href="http://twitter.com/<%=@twitter_screen_name%>">
+                  <strong>@<%= @twitter_screen_name %></strong>
+                </a>
+              <% end %>  
+              </p>
+			</li>
+          </ul>    
+          <ul class="info">
+          
+            
+            <li>
+                <p id="time"><%= @time %>,</p>
+                <p id="date"><%= @date %></p>
+                </li>
+                <li><p id="view_label" >Views:
+                <%= @photo.view_count %></p>
+                </li>               
+            </ul>
+        </div>
+        
+    </div>
+  </div>
+
+
+
+    <div class="footer">
+      <ul class="nav">
+        <li><a href="http://www.clixtr.com/about">&copy;2010 Clixtr, Inc.</a></li>
+        <li><a href="mailto:contact@picbounce.com">Contact Us</a></li>
+        <li><a href="/Picbounce-Legal.pdf">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
