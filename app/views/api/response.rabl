@@ -43,7 +43,7 @@ child(@user) {
   node(:followed_by_url) { |user| user_followedby_url(user) }
   
   node(:followers_count) { |user| user.followed_by_count }
-  node(:photo_count ) { |user| user.photo_count }
+  node(:post_count ) { |user| user.post_count }
 }
 
 

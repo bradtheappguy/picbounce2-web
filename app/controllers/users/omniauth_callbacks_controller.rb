@@ -71,9 +71,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
 
   def set_omniauth_data
-    puts env["omniauth.auth"]
-    puts "HELLO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-    puts env["omniauth.auth"]
     self.omniauth_data = env["omniauth.auth"]
     provider = omniauth_data['provider'];
     self.preexisting_authorization_token = Service.find_by_provider_and_uid(provider, omniauth_data['uid'])
