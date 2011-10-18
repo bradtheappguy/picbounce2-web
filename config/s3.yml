@@ -7,5 +7,9 @@ test:
   secret_access_key: ylmKXiQObm8CS9OdnhV2Wq9mbrnm0m5LfdeJKvKY
 
 production:
+  access_key_id: AKIAIIZEL3OLHCBIZBBQ 
+  secret_access_key: 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
+
+staging:
   access_key_id: AKIAIIZEL3OLHCBIZBBQ
   secret_access_key: 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

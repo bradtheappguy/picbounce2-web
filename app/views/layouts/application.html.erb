@@ -40,9 +40,11 @@
     <link rel="apple-touch-icon-precomposed" href="/images/Icon114.png" />
 
     <!-- JQuery -->   
-    <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js", "jquery_ujs.js" %>
-    <script type="text/javascript" src="/javascripts/jquery.cuteTime.js"></script>
-    <script type="text/javascript" src="/javascripts/application.js"></script>
+<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" %>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+<script src="//ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+<%= javascript_include_tag :all, :cache => true %>
+    
 
     <script type="text/javascript">
       var _gaq = _gaq || [];

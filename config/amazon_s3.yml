@@ -8,6 +8,11 @@ test:
   access_key_id: AKIAIIZEL3OLHCBIZBBQ
   secret_access_key: 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
 
+staging:
+  bucket_name: "com.picbounce.incoming"
+  access_key_id: AKIAIIZEL3OLHCBIZBBQ
+  secret_access_key: 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
+  
 production:
   bucket_name: "com.picbounce.incoming"
   access_key_id: AKIAIIZEL3OLHCBIZBBQ

@@ -32,12 +32,18 @@ function postComment(caption){
 /*jslint nomen: true */
 /*global $ */
 
-$(function () {
+
+
+
+
+
+
+   $(function () {
     'use strict';
 
     // Initialize the jQuery File Upload widget:
     $('#fileupload').fileupload();
-    alert('hi');
+
     // Load existing files:
     $.getJSON($('#fileupload form').prop('action'), function (files) {
         var fu = $('#fileupload').data('fileupload');
@@ -59,5 +65,5 @@ $(function () {
             .appendTo('body');
     });
 
-});
+  });
 
