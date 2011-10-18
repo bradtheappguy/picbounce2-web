@@ -1,4 +1,20 @@
-<h1><%= @user.display_name %>'s Feed</h1>
-<% @user.feed.each do |photo| %>
-  <%= thumbnail_image(photo) %>
-<% end %>
+<div class="aligned_center two_columns" style="margin-top:0">
+  <div class="left">
+    <ul id="posts">
+      <% for post in @user.feed %>
+        <li class="left">
+          <% case post.ptype %>
+          <%  when "photo" %>
+            <%= render :partial => "/shared/feed/photo",:locals => { :photo => post } %>
+          <%  when "message" %>
+            <%= render :partial => "/shared/feed/message",:locals => { :photo => post } %>
+          <%  end %>
+        </li>
+      <%end%>
+    </ul>
+  </div>
+  <div class="right">
+    <br/><br/><br/><br/>
+    <%= render "/shared/sidebar/square_ad" %>
+  </div>
+</div>

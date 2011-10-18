@@ -4,7 +4,7 @@ class Users::PicbounceCallbackController < ApplicationController
     if !params[:auth_token]
       redirect_to "/users/auth/picbounce?auth_token=#{current_user.authentication_token}" 
     else
-      redirect_to profile_path(current_user)
+      redirect_to "/"
     end
   end
   

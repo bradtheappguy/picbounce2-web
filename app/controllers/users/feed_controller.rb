@@ -5,8 +5,7 @@ class Users::FeedController < ApplicationController
       @recent_photos = Post.recent
       render 'posts/index'
     else
-    
-    if params[:id] == "me"
+    if params[:id] == nil || params[:id] == "me" 
       @user = current_user
     else
       @user = User.find_by_slug(params[:id])

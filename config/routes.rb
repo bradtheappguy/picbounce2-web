@@ -20,6 +20,7 @@ Trunk::Application.routes.draw do
   resources :followings
 
  
+  
   match 'recent/:id' => 'posts#recent', :via => :get
   match 'admin' => 'admin#index', :via => :get
   match 'admin/generateSitemap' => 'admin#generateSitemap', :via => :get
@@ -79,7 +80,3 @@ Trunk::Application.routes.draw do
   root :to => "users/feed#show"
 
 end
-
-
-
-
