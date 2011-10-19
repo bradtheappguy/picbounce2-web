@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111016015706) do
+ActiveRecord::Schema.define(:version => 20111019203916) do
 
   create_table "apn_devices", :force => true do |t|
     t.string   "token",              :null => false
@@ -144,6 +144,9 @@ ActiveRecord::Schema.define(:version => 20111016015706) do
 
   add_index "posts", ["code"], :name => "index_photos_on_code"
   add_index "posts", ["id"], :name => "idx_photos_id"
+
+  create_table "responses", :force => true do |t|
+  end
 
   create_table "services", :force => true do |t|
     t.integer  "user_id"
