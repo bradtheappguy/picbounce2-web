@@ -5,20 +5,20 @@ module D2S3
     cattr_reader :access_key_id, :secret_access_key, :bucket
 
     def self.load_config
-      filename = "#{RAILS_ROOT}/config/amazon_s3.yml"
+      filename = "#{Rails.root}/config/amazon_s3.yml"
       config = YAML.load_file(filename)
       
       unless config
         raise "Config object from #{filename} is nil"
       end
       
-      unless config[RAILS_ENV]
-        raise "No environment #{RAILS_ENV} found in #{filename}"
+      unless config[Rails.env]
+        raise "No environment #{Rails.env} found in #{filename}"
       end
 
-      @@access_key_id     = config[RAILS_ENV]['access_key_id']
-      @@secret_access_key = config[RAILS_ENV]['secret_access_key']
-      @@bucket            = config[RAILS_ENV]['bucket_name']
+      @@access_key_id     = config[Rails.env]['access_key_id']
+      @@secret_access_key = config[Rails.env]['secret_access_key']
+      @@bucket            = config[Rails.env]['bucket_name']
       
       unless @@access_key_id && @@secret_access_key && @@bucket
         raise "Please configure your S3 settings in #{filename}."

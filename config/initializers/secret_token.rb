@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Trunk::Application.config.secret_token = 'f1d865796620c35779ecfa4c9791fb568af10d4948dac86adada448bc175f06b3c18e12fbeb3d142d39492b93aefb19c45400080d515180f107402cbd5f17410'
+Trunk::Application.config.secret_token = '1c0c3e08b2b8029c97e22b0e19fc9c7ccf440cbdfa6570b8c95d970c3476b6c10a38e3802141d204e825d11715f0ac33839d3e280e37151168bf915125ed787f'
