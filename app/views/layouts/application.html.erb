@@ -24,9 +24,7 @@
       <% end %>
     <% end %>
 
-    <!--<link rel="stylesheet" type="text/css" href="/stylesheets/picbounce.css" />-->
-    <link rel="stylesheet" type="text/css" href="/stylesheets/general.css" />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+    <%= stylesheet_link_tag "application" %>
 
     <%if @hide_download_button %> 
       <style type="text/css">
@@ -39,11 +37,7 @@
     <link rel="shortcut icon" href="images/Icon32.png" />
     <link rel="apple-touch-icon-precomposed" href="/images/Icon114.png" />
 
-    <!-- JQuery -->   
-<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" %>
-    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-<script src="//ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
-<%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "application" %>
     
 
     <script type="text/javascript">
@@ -76,6 +70,7 @@
 
     <script>
       $(document).ready(function () {
+        alert('JQ works');
         $('.timestamp').cuteTime();
       });
     </script>

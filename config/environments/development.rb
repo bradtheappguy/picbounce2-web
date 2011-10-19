@@ -23,6 +23,12 @@ Trunk::Application.configure do
   config.action_dispatch.best_standards_support = :builtin
 
   config.active_support.escape_html_entities_in_json = false
+
+  # Do not compress assets
+  config.assets.compress = false
+  
+  # # Expands the lines which load the assets
+  config.assets.debug = true
 end
 
 FEATURE_LOGINS_ENABLED   = true
