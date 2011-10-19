@@ -40,6 +40,7 @@ Trunk::Application.routes.draw do
   match 'api/popular' => 'api#popular', :via => :get
   match 'api/nearby'  => 'api#nearby',  :via => :get
   match 'api/mentions' => 'api#mentions', :via => :get
+  match 'api/feed' => 'api#feed', :via => :get
 
   match 'users/:user_id/feed'      => 'api#feed', :via => :get
   match 'users/:user_id/profile'   => 'api#profile', :via => :get
