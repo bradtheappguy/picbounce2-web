@@ -1,5 +1,4 @@
 
-
 object false => :response
 
 code :url do
@@ -8,8 +7,8 @@ end
 
 
 code :next do
-  if @photos && @photos.last
-    timestamp = @photos.last.created
+  if @posts && @posts.last
+    timestamp = @posts.last.created
   end
   
   nextURL = request.url.gsub(/[?&]after=\d+/,"")
@@ -22,9 +21,17 @@ code :next do
 end
 
 
-child(@photos) {
-  attributes :uuid, :bounces_count, :comments_count, :tagged_people_count, :tags_count, :view_count, :caption, :created
-  node(:likes_count) {|photo| photo.likes_count}
+child(@posts) {
+  attributes :ptype, :uuid, :bounces_count, :comments_count, :tagged_people_count, :view_count, :caption, :created
+  node(:likes_count) {|post| post.likes_count}
+  node(:post_url) {|post| post.post_url(:big)}
+  child(:comments) {
+    attributes :text
+    child(:user) {
+      attributes :id, :display_name, :avatar
+      attribute :raw_slug_text => :screen_name
+    }
+  }
   child(:user) {
     attributes :id, :display_name, :avatar
     attribute :raw_slug_text => :screen_name

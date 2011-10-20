@@ -1,11 +1,26 @@
-//= require underscore
+// Place your application-specific JavaScript functions and classes here
+// This file is automatically included by javascript_include_tag :defaults
+////= require underscore
 //= require templates
 //= require jquery
+//= require jquery.cuteTime
 //= require jquery_ujs
 //= require_self
 
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+
+$(document).ready(function () {
+  postProcessFeeds();
+  //getFeedAfter("Domix23","2010-09-26T07:06:41Z","posts");
+  //getFeed("Domix23","posts");
+});
+
+function postProcessFeeds(){
+  if ($('.timestamp') != null){
+    $('.timestamp').cuteTime();
+  }
+}
+
+
 function postComment(caption){
   var request = $.ajax({
     url: "/posts",
@@ -22,21 +37,20 @@ function postComment(caption){
   });
 
 }
-/*
-function postsAfter(user_id,after){
+function getFeed(user_id,divId){
   var request = $.ajax({
     url: "/api/feed",
     type: "GET",
-    data: {user_id:user_id,
-            after:after},
+    data: {user_id: user_id},
     dataType: "json",
+    beforeSending: function(){
+      $("#"+divId).html(_loading({id:"loading_box"}));
+      
+    },
     success: function( data ) {
-      for (i in data){
-        alert(JSON.stringify(data[i]));
-        if (data[i].ptype == "photo")
-          $("#posts").html += "--------------<BR/><BR/><BR/><BR/><BR/><BR/>"
-          $("#posts").html += _photo({photo: data[i]});
-      }
+      
+      $("#"+divId).html(_post_list({posts:data.response.posts}));
+      postProcessFeeds();
     },
     error: function(jqXHR, textStatus, errorThrown){
       alert("somesthing went terribly wrong.")
@@ -45,13 +59,28 @@ function postsAfter(user_id,after){
 
 }
 
+function getFeedAfter(user_id,after,divId){
+  var request = $.ajax({
+    url: "/api/feed",
+    type: "GET",
+    data: {user_id: user_id
+             },
+    dataType: "json",
+    success: function( data ) {
+      
+      $("#"+divId).append(_post_list({posts:data.response.posts}));
+      postProcessFeeds();
+    },
+    error: function(jqXHR, textStatus, errorThrown){
+      alert("somesthing went terribly wrong.")
+    }
+  });
+}
 
-$(document).ready( function(){
-  
-    postsAfter("b2test","2010-09-26T07:06:41Z");
-  
-})
-*/
+
+
+
+
 
 
 /*
@@ -69,7 +98,7 @@ $(document).ready( function(){
 /*global $ */
 
 
-
+/*
    $(function () {
     'use strict';
 
@@ -99,3 +128,4 @@ $(document).ready( function(){
 
   });
 
+*/

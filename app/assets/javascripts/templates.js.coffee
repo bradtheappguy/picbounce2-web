@@ -10,7 +10,7 @@ window._photo = _.template('
       <h3 class="left">
         <a href="/users/<%= photo.user.id %>"><%= photo.user.display_name  %></a>
       </h3>
-      <small class="left"><span class="timestamp"><%=photo.created_at%></span></small>
+      <small class="left"><span class="timestamp"><%=photo.created%></span></small>
     </div>
 
     <p class="left post_titles"><%=photo.caption%></p>
@@ -20,8 +20,8 @@ window._photo = _.template('
   <div class="comments">
     <ul class="left">
       <% for (i in photo.comments) {%>
-        <li class="left">      
-          <%= _post_comment({ comment: photo.comments[i] }) %>
+        <li class="left">   
+          <%= _post_comment({ comment: photo.comments[i].comment }) %>
         </li>
        <%}%>
     </ul>
@@ -29,6 +29,37 @@ window._photo = _.template('
   </div>
 
 ')
+
+window._message = _.template('
+  
+  <div class="profile_pic_post left">
+    <a href="/users/<%= message.user.id %>" ><img src="<%= message.user.avatar %>" with="50" height="50" /></a>
+  </div>
+  <div class="left details">
+      <h3 class="left">
+        <a href="/users/<%= message.user.id %>"><%= message.user.display_name  %></a>
+      </h3>
+      <small class="left"><span class="timestamp"><%=message.created%></span></small>
+      <br class="clear"/>
+      <p><%=message.caption%></p>
+
+    
+  </div>
+
+  <div class="comments">
+    <ul class="left">
+      <% for (i in message.comments) {%>
+        <li class="left">      
+          <%= _post_comment({ comment: message.comments[i].comment }) %>
+        </li>
+       <%}%>
+    </ul>
+
+  </div>
+
+')
+
+
 
 window._post_comment = _.template('
 
@@ -46,4 +77,21 @@ window._post_comment = _.template('
 
 ')
 
+window._post_list = _.template('
+    <% for (i in posts) { %>
+        <li class="left">
+         <% if (posts[i].post.ptype == "photo"){ %>
+            <%= _photo({ photo: posts[i].post}) %>
+        <%}else{%>
+            <%= _message({ message: posts[i].post}) %>
+        <%}%>
+        <li>
+   <%}%>
+  
+');
 
+
+window._loading = _.template('
+    
+  <span id="<%=id%>">loading...</span>
+');

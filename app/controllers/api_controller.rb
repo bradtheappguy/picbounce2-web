@@ -68,7 +68,7 @@ class ApiController < ApplicationController
   end
 
   def feed
-    limit = 100
+    limit = 10
     user = User.find_by_twitter_screen_name(params[:user_id])
     if params[:after]
       after = Time.zone.parse(params[:after])
@@ -78,8 +78,10 @@ class ApiController < ApplicationController
       before = Time.zone.parse(params[:before])
       @posts = user.posts_before(before,limit)
     else
-      @posts = user.posts.limit(limit)
+      @posts = user.posts.limit(limit).all
+      
     end
-    render :text => @posts.to_json
+    
+    render '/api/response'
   end
 end
