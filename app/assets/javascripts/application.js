@@ -1,7 +1,8 @@
+//= require underscore
+//= require templates
 //= require jquery
 //= require jquery_ujs
 //= require_self
-//= require_tree .
 
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
@@ -21,6 +22,36 @@ function postComment(caption){
   });
 
 }
+/*
+function postsAfter(user_id,after){
+  var request = $.ajax({
+    url: "/api/feed",
+    type: "GET",
+    data: {user_id:user_id,
+            after:after},
+    dataType: "json",
+    success: function( data ) {
+      for (i in data){
+        alert(JSON.stringify(data[i]));
+        if (data[i].ptype == "photo")
+          $("#posts").html += "--------------<BR/><BR/><BR/><BR/><BR/><BR/>"
+          $("#posts").html += _photo({photo: data[i]});
+      }
+    },
+    error: function(jqXHR, textStatus, errorThrown){
+      alert("somesthing went terribly wrong.")
+    }
+  });
+
+}
+
+
+$(document).ready( function(){
+  
+    postsAfter("b2test","2010-09-26T07:06:41Z");
+  
+})
+*/
 
 
 /*
@@ -36,10 +67,6 @@ function postComment(caption){
 
 /*jslint nomen: true */
 /*global $ */
-
-
-
-
 
 
 

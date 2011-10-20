@@ -1,0 +1,49 @@
+//= require underscore
+
+window._photo = _.template('
+  
+  <div class="profile_pic_post left">
+    <a href="/users/<%= photo.user.id %>" ><img src="<%= photo.user.avatar %>" with="50" height="50" /></a>
+  </div>
+  <div class="left details">
+    <div class="post_titles">
+      <h3 class="left">
+        <a href="/users/<%= photo.user.id %>"><%= photo.user.display_name  %></a>
+      </h3>
+      <small class="left"><span class="timestamp"><%=photo.created_at%></span></small>
+    </div>
+
+    <p class="left post_titles"><%=photo.caption%></p>
+    <a href="/posts/<%= photo.id %>" ><img src="<%= photo.post_url %>" with="100" height="100" /></a>
+  </div>
+
+  <div class="comments">
+    <ul class="left">
+      <% for (i in photo.comments) {%>
+        <li class="left">      
+          <%= _post_comment({ comment: photo.comments[i] }) %>
+        </li>
+       <%}%>
+    </ul>
+
+  </div>
+
+')
+
+window._post_comment = _.template('
+
+  <div class="profile_pic left">
+    <a href="/users/<%= comment.user.id %>" ><img src="<%= comment.user.avatar %>" with="50" height="50" /></a>
+  </div>
+  <div class="left post_details">
+    <h3 class="left">
+      <a href="/users/<%= comment.user.id %>"><%= comment.user.display_name  %></a>
+    </h3>
+    <small class="left"><span class="timestamp"><%=comment.created_at%></span></small>
+    <br class="clear"/>
+    <p ><%=comment.text%></p>
+  </div>
+
+')
+
+

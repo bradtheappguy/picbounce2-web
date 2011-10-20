@@ -7,3 +7,5 @@ tmp/
 *.dump
 nbproject
 .sass-cache/
+
+/nbproject/private/config.properties
