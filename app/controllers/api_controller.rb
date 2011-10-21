@@ -69,7 +69,7 @@ class ApiController < ApplicationController
 
   def feed
     limit = 10
-    user = User.find_by_twitter_screen_name(params[:user_id])
+    user = User.find_by_twitter_screen_name(params[:id])
     if params[:after]
       after = Time.zone.parse(params[:after])
       @posts = user.posts_after(after,limit)
@@ -82,6 +82,6 @@ class ApiController < ApplicationController
       
     end
     
-    render '/api/response'
+    render '/api/list'
   end
 end

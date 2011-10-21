@@ -8,7 +8,7 @@ window._photo = _.template('
   <div class="left details">
     <div class="post_titles">
       <h3 class="left">
-        <a href="/users/<%= photo.user.id %>"><%= photo.user.display_name  %></a>
+        <a href="/users/<%= photo.user.id %>"><%= photo.user.screen_name  %></a>
       </h3>
       <small class="left"><span class="timestamp"><%=photo.created%></span></small>
     </div>
@@ -37,7 +37,7 @@ window._message = _.template('
   </div>
   <div class="left details">
       <h3 class="left">
-        <a href="/users/<%= message.user.id %>"><%= message.user.display_name  %></a>
+        <a href="/users/<%= message.user.id %>"><%= message.user.screen_name  %></a>
       </h3>
       <small class="left"><span class="timestamp"><%=message.created%></span></small>
       <br class="clear"/>
@@ -68,7 +68,7 @@ window._post_comment = _.template('
   </div>
   <div class="left post_details">
     <h3 class="left">
-      <a href="/users/<%= comment.user.id %>"><%= comment.user.display_name  %></a>
+      <a href="/users/<%= comment.user.id %>"><%= comment.user.screen_name  %></a>
     </h3>
     <small class="left"><span class="timestamp"><%=comment.created_at%></span></small>
     <br class="clear"/>
@@ -92,6 +92,5 @@ window._post_list = _.template('
 
 
 window._loading = _.template('
-    
   <span id="<%=id%>">loading...</span>
 ');

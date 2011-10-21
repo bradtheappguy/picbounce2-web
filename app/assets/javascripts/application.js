@@ -1,6 +1,6 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
-////= require underscore
+//= require underscore
 //= require templates
 //= require jquery
 //= require jquery.cuteTime
@@ -39,9 +39,8 @@ function postComment(caption){
 }
 function getFeed(user_id,divId){
   var request = $.ajax({
-    url: "/api/feed",
+    url: "/api/users/"+user_id+"/feed",
     type: "GET",
-    data: {user_id: user_id},
     dataType: "json",
     beforeSending: function(){
       $("#"+divId).html(_loading({id:"loading_box"}));
