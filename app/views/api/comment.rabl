@@ -1,4 +1,1 @@
-attributes :text
-child :user => :user do
-  extends 'api/user'
-end
+child (     @comment      ) { extends 'api/comment_attr'}

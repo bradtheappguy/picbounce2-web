@@ -5,13 +5,12 @@
 //= require jquery
 //= require jquery.cuteTime
 //= require jquery_ujs
-//= require_self
 
 
 $(document).ready(function () {
   postProcessFeeds();
   //getFeedAfter("Domix23","2010-09-26T07:06:41Z","posts");
-  //getFeed("Domix23","posts");
+  getFeed("Domix23","posts");
 });
 
 function postProcessFeeds(){
@@ -47,7 +46,6 @@ function getFeed(user_id,divId){
       
     },
     success: function( data ) {
-      
       $("#"+divId).html(_post_list({posts:data.response.posts}));
       postProcessFeeds();
     },

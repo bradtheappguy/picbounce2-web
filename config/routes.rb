@@ -36,13 +36,25 @@ Trunk::Application.routes.draw do
   match 'filters/index' => 'filters#index', :via => :get
   match 'filters/current_version' => 'filters#current_version', :via => :get
 
-#API
-  match 'api/popular' => 'api#popular', :via => :get
-  match 'api/nearby'  => 'api#nearby',  :via => :get
-  match 'api/mentions' => 'api#mentions', :via => :get
+#API  
+  match 'api/users/:id'             => 'api#user',                  :via => :get
+  match 'api/users/:id/feed'        => 'api#user_feed',             :via => :get
+  match 'api/users/:id/posts'       => 'api#user_posts',            :via => :get
+  match 'api/posts/:id'             => 'api#post',                  :via => :get
+  match 'api/posts/:id/comments'    => 'api#post_comments',         :via => :get
   
-  match 'api/users/:id/feed' => 'api#feed', :via => :get
-
+  match 'api/users'                 => 'api#edit_user',             :via => :post
+  match 'api/users/:id/follows'     => 'api#create_user_follow',    :via => :post
+  match 'api/posts'                 => 'api#create_post',           :via => :post
+  match 'api/posts/:id/comments'    => 'api#create_post_comment',   :via => :post
+  match 'api/posts/:id/flags'       => 'api#create_post_flag',      :via => :post
+  
+  match 'api/users/:id/follows'     => 'api#destroy_user_follow',   :via => :delete
+  match 'api/posts/:id'             => 'api#destroy_post',          :via => :delete
+  match 'api/posts/:id/flags'       => 'api#destroy_post_flag',    :via => :delete
+  
+  
+ #USER 
   match 'users/:user_id/feed'      => 'api#feed', :via => :get
   match 'users/:user_id/profile'   => 'api#profile', :via => :get
   match 'users/:user_id/followers' => 'api#followers', :via => :get

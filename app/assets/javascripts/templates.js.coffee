@@ -14,7 +14,7 @@ window._photo = _.template('
     </div>
 
     <p class="left post_titles"><%=photo.caption%></p>
-    <a href="/posts/<%= photo.id %>" ><img src="<%= photo.post_url %>" with="100" height="100" /></a>
+    <a href="/posts/<%= photo.id %>" ><img src="<%= photo.media_url %>" with="100" height="100" /></a>
   </div>
 
   <div class="comments">
@@ -72,7 +72,7 @@ window._post_comment = _.template('
     </h3>
     <small class="left"><span class="timestamp"><%=comment.created_at%></span></small>
     <br class="clear"/>
-    <p ><%=comment.text%></p>
+    <p ><%=comment.caption%></p>
   </div>
 
 ')

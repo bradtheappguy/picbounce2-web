@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111019203916) do
+ActiveRecord::Schema.define(:version => 20111022012853) do
 
   create_table "apn_devices", :force => true do |t|
     t.string   "token",              :null => false
@@ -140,6 +140,8 @@ ActiveRecord::Schema.define(:version => 20111019203916) do
     t.string   "migrated"
     t.string   "image"
     t.string   "ptype"
+    t.boolean  "twitter_cross_post"
+    t.string   "facebook_cross_post_pages"
   end
 
   add_index "posts", ["code"], :name => "index_photos_on_code"
@@ -210,18 +212,25 @@ ActiveRecord::Schema.define(:version => 20111019203916) do
     t.string   "twitter_avatar_url"
     t.string   "facebook_access_token"
     t.string   "facebook_user_id"
-    t.string   "email",                                :default => "", :null => false
-    t.string   "encrypted_password",    :limit => 128, :default => "", :null => false
+    t.string   "email",                                    :default => "", :null => false
+    t.string   "encrypted_password",        :limit => 128, :default => "", :null => false
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                        :default => 0
+    t.integer  "sign_in_count",                            :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "slug"
     t.string   "authentication_token"
+    t.string   "charity_name"
+    t.string   "charity_link"
+    t.string   "charity_pic"
+    t.boolean  "twitter_cross_post"
+    t.string   "facebook_cross_post_pages"
+    t.string   "facebook_like_target"
+    t.boolean  "verified"
   end
 
   create_table "view_logs", :force => true do |t|

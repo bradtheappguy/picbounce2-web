@@ -1,5 +1,101 @@
 class ApiController < ApplicationController
-
+  
+  #GET
+  def user
+    @user = User.find_by_twitter_screen_name(params[:id]) 
+    render '/api/user'
+  end
+  
+  def user_feed
+    user = User.find_by_twitter_screen_name(params[:id])
+    if params[:after]
+      @posts = user.feed
+    elsif
+      @posts = user.feed
+    else
+      @posts = user.feed
+    end
+    
+    render '/api/list'
+  end
+  
+  def user_posts
+    limit = 10
+    user = User.find_by_twitter_screen_name(params[:id]) 
+    if params[:after]
+      after = Time.zone.parse(params[:after])
+      @posts = user.posts_after(after,limit)
+    elsif
+      params[:before]
+      before = Time.zone.parse(params[:before])
+      @posts = user.posts_before(before,limit)
+    else
+      @posts = user.posts.limit(limit).all
+    end
+    
+    render '/api/list'
+  end
+  
+ 
+  def post
+    @post = Post.find_by_code(params[:id]) 
+    render '/api/post'
+  end
+  
+   def post_comments
+    @comments = Post.find_by_code(params[:id]).comments 
+    render '/api/list'
+  end
+  
+  #POST
+  def edit_user
+    @user = User.first
+    render 'api/user'
+  end
+  
+  def create_user_follow
+    @user = User.first
+    render 'api/user'
+  end
+  
+  def create_post
+    @post = Post.first
+    render 'api/post'
+  end
+  
+  def create_post_comment
+    @post = Post.first
+    render 'api/post'
+  end
+  
+  def create_post_flag
+    @post = Post.first
+    render 'api/post'
+  end
+  
+  
+  #DELETE
+  def destroy_user_follow
+    @user = User.first
+    render 'api/user'
+  end
+  
+  def destroy_post
+    @post = Post.first
+    render 'api/post'
+  end
+  
+  def destroy_post_flag
+    @post = Post.first
+    render 'api/post'
+  end
+  
+  
+  
+  
+  
+  
+  #old api
   def popular
     @photos = Post.find_popular
     respond_to do |format|
@@ -66,22 +162,12 @@ class ApiController < ApplicationController
     user.following << user2
     render :text => 'ok'
   end
-
-  def feed
-    limit = 10
-    user = User.find_by_twitter_screen_name(params[:id])
-    if params[:after]
-      after = Time.zone.parse(params[:after])
-      @posts = user.posts_after(after,limit)
-    elsif
-      params[:before]
-      before = Time.zone.parse(params[:before])
-      @posts = user.posts_before(before,limit)
-    else
-      @posts = user.posts.limit(limit).all
-      
-    end
-    
-    render '/api/list'
-  end
+  
+  
+  
+  
+  
+  
+  
+  
 end
