@@ -18,11 +18,11 @@ class Post < ActiveRecord::Base
   end
 
   
- set_primary_key :id
+  set_primary_key :id
 
   acts_as_api
 
-  has_many :likes 
+  has_many :flags 
   has_many :comments
   belongs_to :user
   has_many :authentications
@@ -79,6 +79,17 @@ class Post < ActiveRecord::Base
     true
   end
   
+  def flagged?(user)
+    return false unless user
+    found = false
+    self.flags.each{|f| 
+       if f.user == user
+          found = true 
+       end
+       
+    }
+    return found
+  end
     
   # Generates the publicly avaiale URLs where the image is available after being saved to S3  
   def post_url(style)
@@ -414,7 +425,7 @@ end
     code
   end
   
-  def likes_count
+  def flags_count
     1
   end
   

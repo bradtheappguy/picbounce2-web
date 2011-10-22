@@ -1,16 +1,7 @@
 <div class="aligned_center two_columns" style="margin-top:0">
   <div class="left">
     <ul id="posts">
-      <% for post in @user.feed %>
-        <li class="left">
-          <% case post.ptype %>
-          <%  when "photo" %>
-            <%= render :partial => "/shared/feed/photo",:locals => { :photo => post } %>
-          <%  when "message" %>
-            <%= render :partial => "/shared/feed/message",:locals => { :photo => post } %>
-          <%  end %>
-        </li>
-      <%end%>
+      loading...
     </ul>
   </div>
   <div class="right">
@@ -18,3 +9,7 @@
     <%= render "/shared/sidebar/square_ad" %>
   </div>
 </div>
+
+<script>
+  getUserFeed("b2test","posts");
+</script>

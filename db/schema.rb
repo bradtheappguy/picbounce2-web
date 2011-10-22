@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111022012853) do
+ActiveRecord::Schema.define(:version => 20111022223417) do
 
   create_table "apn_devices", :force => true do |t|
     t.string   "token",              :null => false
@@ -73,6 +73,13 @@ ActiveRecord::Schema.define(:version => 20111022012853) do
     t.string   "filter_type"
   end
 
+  create_table "flags", :force => true do |t|
+    t.integer  "post_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "flurry_events", :force => true do |t|
     t.date     "date"
     t.integer  "session_index"
@@ -100,13 +107,6 @@ ActiveRecord::Schema.define(:version => 20111022012853) do
   create_table "followings", :force => true do |t|
     t.integer  "user_id"
     t.integer  "follower_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "likes", :force => true do |t|
-    t.integer  "photo_id"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -6,16 +6,7 @@
   <div class="left">
     <%= render :partial => "/shared/feed/comment_input"%>
     <ul id="posts">
-      <%  for photo in @user.posts_with_offset(0,25) %>
-        <li class="left">
-          <% case photo.ptype %>
-          <%  when "photo" %>
-            <%= render :partial => "/shared/feed/photo",:locals => { :photo => photo } %>
-          <%  when "message" %>
-            <%= render :partial => "/shared/feed/message",:locals => { :photo => photo } %>
-          <%  end %>
-        </li>
-      <%  end %>
+      loading...
     </ul><!--posts-->
   </div><!--left-->
 
@@ -26,3 +17,7 @@
   </div><!--right-->
 
 </div>
+
+<script>
+  getUserPosts("<%=@user.display_name%>","posts");
+</script>

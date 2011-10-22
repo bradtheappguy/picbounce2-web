@@ -1,13 +1,12 @@
-class Posts::LikesController < ApplicationController
+class Posts::FlagsController < ApplicationController
 
   def create
     render :status => 401 if current_user.nil?
     
-    @post = Post.find_by_uuid(params[:photo_id])
-    @post = Post.find(params[:photo_id]) if @post.nil?
+    @post = Post.find_by_code(params[:id]) if @post.nil?
     raise FourOhFour if @post.nil?
     
-    if Like.find_or_create_by_photo_id_and_user_id(@post.id, current_user.id)
+    if Flag.find_or_create_by_photo_id_and_user_id(@post.id, current_user.id)
       render :status => 201, :nothing => true
     else
       render :status => 500, :nothing => true
@@ -21,7 +20,7 @@ class Posts::LikesController < ApplicationController
     @post = Post.find(params[:photo_id]) if @post.nil?
     raise FourOhFour if @post.nil?
      
-    @like = Like.find_by_photo_id_and_user_id(@post.id, current_user.id)
+    @like = Flag.find_by_photo_id_and_user_id(@post.id, current_user.id)
     raise FourOhFour if @like.nil?
 
     @like.destroy

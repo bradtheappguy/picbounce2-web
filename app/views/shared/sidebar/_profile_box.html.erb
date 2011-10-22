@@ -1,5 +1,5 @@
 <h1 class="left"><%= link_to user.display_name, user %></h1>
-<a href="#" class="follow_btn right"></a>
+<a href="javascript:postUserFollower('<%=user.display_name%>')" class="follow_btn right"></a>
 <br class="clear"/>
 <ul id="slider">
   <li><a href="#"><img class="arrow" src="/images/skin/left_arrow.png"/></a></li>

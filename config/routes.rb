@@ -44,12 +44,12 @@ Trunk::Application.routes.draw do
   match 'api/posts/:id/comments'    => 'api#post_comments',         :via => :get
   
   match 'api/users'                 => 'api#edit_user',             :via => :post
-  match 'api/users/:id/follows'     => 'api#create_user_follow',    :via => :post
+  match 'api/users/:id/followers'   => 'api#create_user_follower',    :via => :post
   match 'api/posts'                 => 'api#create_post',           :via => :post
   match 'api/posts/:id/comments'    => 'api#create_post_comment',   :via => :post
   match 'api/posts/:id/flags'       => 'api#create_post_flag',      :via => :post
   
-  match 'api/users/:id/follows'     => 'api#destroy_user_follow',   :via => :delete
+  match 'api/users/:id/followers/:follower_id'     => 'api#destroy_user_follower',   :via => :delete
   match 'api/posts/:id'             => 'api#destroy_post',          :via => :delete
   match 'api/posts/:id/flags'       => 'api#destroy_post_flag',    :via => :delete
   
