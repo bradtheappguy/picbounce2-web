@@ -29,7 +29,7 @@ Trunk::Application.configure do
   config.assets.debug = false
   config.assets.compress = true
   config.assets.js_compressor  = :uglifier
-  config.assets.css_compressor = :scss
+  #config.assets.css_compressor = :scss
 end
 
 FEATURE_LOGINS_ENABLED   = true
