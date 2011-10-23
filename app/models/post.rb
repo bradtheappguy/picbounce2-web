@@ -78,7 +78,6 @@ class Post < ActiveRecord::Base
     self.uuid = rand(2**128).to_s(16)
     true
   end
-  
   def flagged?(user)
     return false unless user
     found = false

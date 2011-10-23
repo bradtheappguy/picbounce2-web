@@ -3,7 +3,8 @@ class Posts::FlagsController < ApplicationController
   def create
     render :status => 401 if current_user.nil?
     
-    @post = Post.find_by_code(params[:id]) if @post.nil?
+    @post = Post.find_by_uuid(params[:photo_id])
+    @post = Post.find(params[:photo_id]) if @post.nil?
     raise FourOhFour if @post.nil?
     
     if Flag.find_or_create_by_photo_id_and_user_id(@post.id, current_user.id)

@@ -16,6 +16,12 @@
     </div>
 
     <div id="post_details_container">
+      <%if @photo.flagged?(current_user)%>
+        <a href="javascript:deleteFlag('<%=@photo.code%>')">unflag</a>
+      <%else%>
+        <a href="javascript:postFlag('<%=@photo.code%>')">flag</a>
+      <%end%>
+           
       <div class="profile_pic left">
         <%= link_to image_tag(@photo.user.avatar, :size => "50x50"), @photo.user %>
       </div>
@@ -28,7 +34,7 @@
       </div>
     </div>
     <br class="clear"/>	
-    <%= render :partial => "/shared/feed/comment_input"%>
+    <%= render :partial => "/shared/feed/comment_input", :locals => {:post => @photo }%>
 
     <br class="clear"/><br class="clear"/>
     <div id="comments">

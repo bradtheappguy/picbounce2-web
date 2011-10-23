@@ -1,6 +1,6 @@
 class ApiController < ApplicationController
   
-  before_filter :authenticate_user!, :except => [:user,:user_feed,:user_post,:post,:post_comment]
+  before_filter :authenticate_user!, :except => [:user,:user_feed,:user_posts,:post,:post_comments]
   
   
   #GET
@@ -93,9 +93,9 @@ class ApiController < ApplicationController
     @comment = Comment.new
     @comment.text = params[:caption]
     @comment.user = current_user
-    @comment.
     post = Post.find_by_code(params[:id])
-    render 'api/post'
+    post.comments << @comment
+    render 'api/comment'
   end
   
   def create_post_flag
@@ -104,7 +104,7 @@ class ApiController < ApplicationController
     @post = Post.find_by_code(params[:id]) if @post.nil?
     raise FourOhFour if @post.nil?
     
-    if Flag.find_or_create_by_photo_id_and_user_id(@post.id, current_user.id)
+    if Flag.find_or_create_by_post_id_and_user_id(@post.id, current_user.id)
       render 'api/post'
     else
       render :status => 500, :nothing => true
@@ -138,11 +138,10 @@ class ApiController < ApplicationController
   def destroy_post_flag
      render :status => 401, :nothing => true if current_user.nil?
     
-    @post = Post.find_by_uuid(params[:photo_id])
-    @post = Post.find(params[:photo_id]) if @post.nil?
+    @post = Post.find_by_code(params[:id])
     raise FourOhFour if @post.nil?
      
-    @like = Flag.find_by_photo_id_and_user_id(@post.id, current_user.id)
+    @like = Flag.find_by_post_id_and_user_id(@post.id, current_user.id)
     raise FourOhFour if @like.nil?
 
     @like.destroy

@@ -13,6 +13,8 @@ $(document).ready(function () {
   //getFeed("Domix23","posts");
 });
 
+
+
 function postProcessFeeds(){
   if ($('.timestamp') != null){
     $('.timestamp').cuteTime();
@@ -53,14 +55,43 @@ function postMessage(caption){
 
 }
 
-
-function deletePost(postId){
+function postComment(postId,caption){
   var request = $.ajax({
-    url: "/api/posts/"+postId,
+    url: "/api/posts/"+postId+"/comments",
+    type: "POST",
+    data: {caption : caption},
+    dataType: "json",
+    success: function( data ) {
+      alert("worked!");
+    },
+    error: function(jqXHR, textStatus, errorThrown){
+      alert("somesthing went terribly wrong.")
+    }
+  });
+
+}
+function postFlag(postId){
+  var request = $.ajax({
+    url: "/api/posts/"+postId+"/flags",
+    type: "POST",
+    dataType: "json",
+    success: function( data ) {
+      alert(postId+" flagged");
+    },
+    error: function(jqXHR, textStatus, errorThrown){
+      alert("somesthing went terribly wrong.")
+    }
+  });
+
+}
+
+function deleteFlag(postId){
+  var request = $.ajax({
+    url: "/api/posts/"+postId+"/flags",
     type: "DELETE",
     dataType: "json",
     success: function( data ) {
-      alert(postId+" deleted");
+      alert(postId+" unflagged");
     },
     error: function(jqXHR, textStatus, errorThrown){
       alert("somesthing went terribly wrong.")
