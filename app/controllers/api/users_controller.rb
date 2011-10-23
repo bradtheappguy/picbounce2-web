@@ -26,11 +26,11 @@ class Api::UsersController < ApplicationController
     limit = 10
     user = User.find_by_twitter_screen_name(params[:id]) 
     if params[:after]
-      after = Time.zone.parse(params[:after])
+      after = params[:after].to_f
       @posts = user.posts_after(after,limit)
     elsif
       params[:before]
-      before = Time.zone.parse(params[:before])
+      before = params[:before].to_f
       @posts = user.posts_before(before,limit)
     else
       @posts = user.posts.limit(limit).all

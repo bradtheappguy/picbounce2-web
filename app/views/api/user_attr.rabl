@@ -1,7 +1,7 @@
+extends 'api/base'
 attributes(
           :id, 
           :avatar,
-          :created,
           :verified,
           :facebook_cross_post_pages,
           :twitter_cross_post,
