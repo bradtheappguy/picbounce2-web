@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :slug, :is_current_user
   has_many :devices, :class_name => 'APN::Device'
-  has_many :posts, :limit => 1000, :order => 'created_at desc'
+  has_many :posts, :limit => 100, :order => 'created_at desc'
   has_many :all_posts, :class_name => 'Post'  
   has_many :followings 
   has_many :inverse_followings, :class_name => "Following", :foreign_key => "follower_id"
@@ -18,8 +18,8 @@ class User < ActiveRecord::Base
   has_many :filters,  :through => :user_filters
   
   def feed
-    #This needs optimization
-    @photos = followeds.includes(:posts).collect(&:posts).flatten.reverse
+    #TODO:optimize
+    @photos = followeds.includes(:posts).collect(&:posts).flatten.reverse[0..50]
   end
   
   has_many :services, :dependent => :destroy do

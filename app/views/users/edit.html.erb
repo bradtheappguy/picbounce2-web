@@ -1,0 +1,152 @@
+<div class="aligned_center three_columns">
+  <div class="left">
+    <div class="avatar">
+      <%= link_to image_tag(current_user.avatar, :size => "125x125"), @user %>
+      <a class="avatar_btn"></a>
+    </div>
+    <ul class="no_bg" id="right_navigation">
+      <li class="current"><a rel="graph">Earnings</a></li>
+      <li><a rel="general">General</a></li>
+      <li><a rel="sharing">Sharing</a></li>
+    </ul>
+  </div>
+  <div class="left"><br/>
+    <h1 class="page_title">Earnings Graph</h1>
+    <br/>
+    <ul class="sharing_options" id="sharing" style="display:none">
+      <li>
+        <label class="label_check" for="checkbox-01"><input id="checkbox-01" value="1" type="checkbox" checked /><span class="inline"><h2>Twitter</h2></label>
+        <a href="#">Signout</a>
+        <span class="right_arrow"></span>
+        </span>
+      </li>
+      <li class="no_chkbox">
+        <span class="inline"><h2>Facebook</h2>
+          <a href="#">Signout</a>
+          <span class="right_arrow"></span>
+        </span>
+      </li>
+      <li>
+        <label class="label_check" for="checkbox-03"><input id="checkbox-03" value="1" type="checkbox" checked /><span class="inline"><h2>Wall</h2></label>
+        </span>
+      </li>
+      <li class="no_chkbox">
+        <span class="inline"><h2>Pages</h2>
+        </span>
+      </li>
+      <li>
+        <label class="label_check" for="checkbox-04"><input id="checkbox-04" value="1" type="checkbox" checked /><span class="inline"><h2>Jo Calderone    </h2></label>
+        <a class="green add_page">Add a Page</a>
+        <span class="bottom_arrow"></span>
+        </span>
+      </li>
+    </ul>
+    <div id="graph">
+      <img src="/mocks/b/images/graph.png"/>
+      <ul class="earning_graph">
+        <li><h1 class="left">Next Payment: <h2 class="left">$15,000 on Friday, November 4th, 2011</h2></h1><br class="clear"/></li>
+        <li><h1 class="left">Last Payment: <h2 class="left">$30,000 on Friday, October 7th, 2011</h2></h1></li>
+      </ul>
+    </div>
+    <ul class="general" id="general" style="display:none">
+      <li>
+        <h2 class="left">User Name</h2>
+        <input type="text" class="hideme left" value="<%=current_user.display_name%>"/>
+        <h3 class="showme left"><%=current_user.display_name%></h3>
+        <a href="#" class="right hideme cancel">Cancel</a>
+        <a href="#" class="right green hideme">Save</a>
+        <a href="#" class="right showme edit">Edit</a>
+        <br class="clear"/>
+      </li>
+      <li>
+        <h2 class="left">First Name</h2>
+        <input type="text" class="hideme left" value="<%=current_user.display_name%>"/>
+        <h3 class="showme left"><%=current_user.display_name%></h3>
+        <a href="#" class="hideme right cancel">Cancel</a>
+        <a href="#" class="green right hideme">Save</a>
+        <a href="#" class="showme edit right">Edit</a>
+        <br class="clear"/>
+      </li>
+      <li>
+        <h2 class="left">Last Name</h2>
+        <input type="text" class="hideme left" value="<%=current_user.display_name%>"/>
+        <h3 class="showme left"><%=current_user.display_name%></h3>
+        <a href="#" class="hideme right cancel">Cancel</a>
+        <a href="#" class="green right hideme">Save</a>
+        <a href="#" class="showme edit right">Edit</a>
+        <br class="clear"/>
+      </li>
+      <li>
+        <span class="left password_title">
+          <h2>Password</h2>
+          <h2 class="hideme">New</h2>
+          <h2 class="hideme">Confirm New</h2>
+        </span>
+        <h3 class="showme right"></h3>
+        <span class="left hideme password_inputs">
+          <input type="password" class="block"/>
+          <input type="password" class="block"/>
+          <input type="password" class="block"/>
+        </span>
+        <a href="#" class="hideme cancel right">Cancel</a>
+        <a href="#" class="green right hideme">Save</a>
+        <a href="#" class="showme edit right">Edit</a>
+        <br class="clear"/>
+      </li>
+    </ul>
+  </div>
+  <div class="right">
+    <%= render :partial => "/shared/sidebar/charity_badge", :locals => {:user => current_user} %>
+    <br/>
+    <%= render "/shared/sidebar/square_ad" %>
+  </div><!--right-->
+</div>
+
+<script type="text/javascript">
+$('.hideme').hide();
+$(".edit").click(function() {
+  $(this).siblings('.showme').hide();
+      $(this).siblings().children('.showme').css('display','none');
+  $(this).hide();
+  $(this).siblings('.hideme').fadeIn();
+  $(this).siblings().children('.hideme').css('display','block');
+});
+$(".cancel").click(function() {
+  $(this).siblings('.hideme').hide();
+    $(this).siblings().children('.hideme').css('display','none');
+  $(this).hide();
+  $(this).siblings('.showme').fadeIn();
+  $(this).siblings().children('.showme').css('display','block');
+});
+$("#right_navigation li a").click(function() {
+$(this).parent().addClass('current');
+$(this).parent().siblings().removeClass('current');
+if($(this).html()=='Earnings')
+	$('.page_title').html('Earnings Graph');
+else
+	$('.page_title').html($(this).html());
+	var rel=$(this).attr('rel');
+	$('#general').hide();
+		$('#sharing').hide();
+			$('#graph').hide();
+			$('#'+rel).show();
+});
+
+</script>
+<script type="text/javascript">
+var i=0;
+$('.add_page').click(function() {i++;
+	$('.sharing_options').append('<li id="appended_'+i+'" style="display:none" class="no_chkbox appended"><span class="inline"><input type="text" name="input_'+i+'"/><a id="save_'+i+'" class="green">Save</a><a id="cancel_'+i+'" class="red" onclick="remove('+i+')">Cancel</a></span></li>');
+	$("#appended_"+i).fadeIn();
+});
+function remove(rel){
+	$("#save_"+rel).closest('li').fadeOut(200).remove();
+}
+</script>
+
+<!--<div id="user_form">
+  
+  <h2>Edit Profile</h2>
+
+
+</div>-->

@@ -1,4 +1,4 @@
-attributes (  :ptype, 
+attributes(  :ptype, 
               :code, 
               :comments_count, 
               :view_count, 
