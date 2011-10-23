@@ -37,35 +37,24 @@ Trunk::Application.routes.draw do
   match 'filters/current_version' => 'filters#current_version', :via => :get
 
 #API  
-  match 'api/users/:id'             => 'api#user',                  :via => :get
-  match 'api/users/:id/feed'        => 'api#user_feed',             :via => :get
-  match 'api/users/:id/posts'       => 'api#user_posts',            :via => :get
-  match 'api/posts/:id'             => 'api#post',                  :via => :get
-  match 'api/posts/:id/comments'    => 'api#post_comments',         :via => :get
+  match 'api/users/:id'             => 'api/users#show',             :via => :get
+  match 'api/users/:id/feed'        => 'api/users#feed',             :via => :get
+  match 'api/users/:id/posts'       => 'api/users#posts',            :via => :get
+  match 'api/posts/:id'             => 'api/posts#show',             :via => :get
+  match 'api/posts/:id/comments'    => 'api/posts#comments',         :via => :get
   
-  match 'api/users'                 => 'api#edit_user',             :via => :post
-  match 'api/users/:id/followers'   => 'api#create_user_follower',    :via => :post
-  match 'api/posts'                 => 'api#create_post',           :via => :post
-  match 'api/posts/:id/comments'    => 'api#create_post_comment',   :via => :post
-  match 'api/posts/:id/flags'       => 'api#create_post_flag',      :via => :post
+  match 'api/users'                 => 'api/users#edit',             :via => :post
+  match 'api/users/:id/followers'   => 'api/users#create_follower',  :via => :post
+  match 'api/posts'                 => 'api/posts#create',           :via => :post
+  match 'api/posts/:id/comments'    => 'api/posts#create_comment',   :via => :post
+  match 'api/posts/:id/flags'       => 'api/posts#create_flag',      :via => :post
   
-  match 'api/users/:id/followers/:follower_id'     => 'api#destroy_user_follower',   :via => :delete
-  match 'api/posts/:id'             => 'api#destroy_post',          :via => :delete
-  match 'api/posts/:id/flags'       => 'api#destroy_post_flag',    :via => :delete
+  match 'api/users/:id/followers/:follower_id'     => 'api/users#destroy_follower',   :via => :delete
+  match 'api/posts/:id'                            => 'api/posts#destroy',            :via => :delete
+  match 'api/posts/:id/flags'                      => 'api/posts#destroy_flag',       :via => :delete
   
   
- #USER 
-  match 'users/:user_id/feed'      => 'api#feed', :via => :get
-  match 'users/:user_id/profile'   => 'api#profile', :via => :get
-  match 'users/:user_id/followers' => 'api#followers', :via => :get
- 
- 
-  match 'users/:user_id/filters' => 'api#filters', :via => :get
-
-  match 'users/:user_id/following' => 'api#destroy_following', :via => :delete
-  match 'users/:user_id/followers' => 'api#create_following', :via => :post
-  match 'users/:user_id/following' => 'api#create_following', :via => :post
-  
+ #USER
   match 'users/:id' => 'profiles', :action => 'show', :as => 'profile', :via => :get
   match 'users/:id' => 'profiles', :action => 'show', :as => 'user', :via => :get
   
