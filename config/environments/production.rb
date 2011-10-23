@@ -47,13 +47,12 @@ Trunk::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  # Do not compress assets
-  config.assets.compress = false
-
-  # Expands the lines which load the assets
-  config.assets.debug = true
-
-  config.assets.digest = true
+  # Asset Settings
+  config.assets.compress = true
+  config.assets.debug = false
+  config.assets.compress = true
+  config.assets.js_compressor  = :uglifier
+  config.assets.css_compressor = :scss
 end
 
 FEATURE_LOGINS_ENABLED   = false

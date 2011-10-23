@@ -24,11 +24,12 @@ Trunk::Application.configure do
 
   config.active_support.escape_html_entities_in_json = false
 
-  # Do not compress assets
-  config.assets.compress = false
-
-  # Expands the lines which load the assets
-  config.assets.debug = true
+  # Asset Settings
+  config.assets.compress = true
+  config.assets.debug = false
+  config.assets.compress = true
+  config.assets.js_compressor  = :uglifier
+  config.assets.css_compressor = :scss
 end
 
 FEATURE_LOGINS_ENABLED   = true
