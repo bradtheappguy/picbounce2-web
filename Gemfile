@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1'
+gem 'execjs'
 gem 'pg'
 gem 'httpclient'
 gem 'aws-s3'
