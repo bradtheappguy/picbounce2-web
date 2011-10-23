@@ -1,1 +1,0 @@
-child ( @post ) { extends 'api/post_attr'}

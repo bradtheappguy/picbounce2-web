@@ -1,1 +1,0 @@
-child ( @user ) { extends 'api/user_attr'}

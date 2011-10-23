@@ -4,12 +4,17 @@ class Api::PostsController < ApplicationController
   #GET
   def show
     @post = Post.find_by_code(params[:id]) 
-    render '/api/post'
+    raise FourOhFour if @post.nil?
+    
+    render '/api/response'
   end
   
    def comments
-    @comments = Post.find_by_code(params[:id]).comments 
-    render '/api/list'
+    @post = Post.find_by_code(params[:id])
+    @comments = @post.comments 
+    raise FourOhFour if @post.nil?
+    
+    render '/api/response'
   end
   
    

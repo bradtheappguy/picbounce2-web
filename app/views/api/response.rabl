@@ -4,6 +4,8 @@ code :url do
 end
 
 code :next do
+
+
   list = @posts || @users || @comments 
 
   nextURL = request.url.gsub(/[?&]after=\d+\.\d+/,"")
@@ -22,7 +24,11 @@ code :next do
     else
       nextURL = nextURL + "&before=#{timestamp}"
     end
-    nextURL
+    if @posts || @users || @comments 
+      nextURL  
+    else
+      nil
+    end
 end
 
 code :previous do
@@ -44,7 +50,11 @@ code :previous do
     else
       prevURL = prevURL + "&after=#{timestamp}"
     end
-    prevURL
+    if @posts || @users || @comments 
+      prevURL  
+    else
+      nil
+    end
 end
 
 child(@posts) {
@@ -56,5 +66,17 @@ child(@users) {
 }
 
 child(@comments) {
+  extends 'api/comment_attr'
+}
+
+child(@post) {
+  extends 'api/post_attr'
+}
+
+child(@user) {
+  extends 'api/user_attr'
+}
+
+child (@comment) { 
   extends 'api/comment_attr'
 }
