@@ -28,8 +28,8 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
-ol, ul, p {/*li*/
-	list-style: none; overflow:hidden;
+ol, ul {
+	list-style: none;
 }
 blockquote, q {
 	quotes: none;
@@ -45,8 +45,8 @@ table {
 }
 /* General Commands */
 .clear{clear:both;}
-.left{float:left; overflow:visible;}
-.right{float:right; overflow:hidden;}
+.left{float:left;}
+.right{float:right;}
 .twtr-ft,.hidden,.twtr-hd{display:none;}
 .block{display:block;}
 .inline{display:inline}
@@ -59,20 +59,17 @@ url('../fonts/MuseoSans_500-webfont.woff') format('woff'),
 url('../fonts/MuseoSans_500-webfont.ttf') format('truetype');
 }
 /* General Types */
-body{font-family:'Museo';}
-a{text-decoration:none; outline:none; cursor:pointer;color:#2C3F58; font-size:10pt;}
+a{text-decoration:none; outline:none; cursor:pointer;color:#757575; font-size:11pt;}
 a:hover{text-decoration:none}
-p{color:#757575; font-size:10pt; line-height:20px;}
+p{color:#757575; font-size:10pt; line-height:22px;}
 br{height:0px;}
 input{outline:none;}
 select{outline:none;}
 img{outline:none;}
 h1{font-size:24px;}
-h1 a{font-size:24px;}
 h2{font-size:11.4pt; color:#1c6e23}
-h3{font-size:11pt; }
-h4{font-size:13px; }
+h3{font-size:11pt}
+h4{font-size:13px; line-height:20px;}
 h5{font-size:12px;}
 h6{font-size:11px;}
-
 /* End General Types */
