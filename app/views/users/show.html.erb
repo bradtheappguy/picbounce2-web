@@ -4,7 +4,9 @@
   </div>
 
   <div class="left">
-    <%= render :partial => "/shared/feed/message_input"%>
+    <% if  current_user && @user == current_user %>
+      <%= render :partial => "/shared/feed/message_input"%>
+    <% end %>
     <ul id="posts">
       loading...
     </ul><!--posts-->
