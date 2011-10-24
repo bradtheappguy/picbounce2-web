@@ -81,11 +81,11 @@ window._post_comment = _.template('
 window._post_list = _.template('
     <% for (i in posts) { %>
         <li class="left">
-         <% if (posts[i].post.ptype == "photo"){ %>
-            <%= _photo({ photo: posts[i].post}) %>
-        <%}else{%>
-            <%= _message({ message: posts[i].post}) %>
-        <%}%>
+           <% if (posts[i].item.ptype == "photo"){ %>
+              <%= _photo({ photo: posts[i].item}) %>
+          <%}else{%>
+              <%= _message({ message: posts[i].item}) %>
+          <%}%>
         <li>
    <%}%>
   
