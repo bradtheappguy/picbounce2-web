@@ -2,6 +2,10 @@ class User < ActiveRecord::Base
   include Sluggable
   include Rails.application.routes.url_helpers
   
+  
+  
+  after_initialize :default_values
+  
   acts_as_api
   
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable, :token_authenticatable, :validatable
@@ -262,7 +266,8 @@ class User < ActiveRecord::Base
   end
 
   def followed_by?(user)
-    user.followers.include? self if user
+      user.followers.include? self 
+   
   end
   
   private
@@ -289,5 +294,11 @@ class User < ActiveRecord::Base
     (services.count == 0)
   end
   
+  
+  
+    def default_values
+      self.verified ||= false
+      self.twitter_cross_post ||= false
+    end
 end
 
