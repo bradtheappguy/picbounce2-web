@@ -1,9 +1,9 @@
+extends 'api/base'
 attributes(  :ptype, 
               :code, 
               :comments_count, 
               :view_count, 
               :caption, 
-              :created,
               :deleted,
               :filter_name,
               :twitter_cross_post,

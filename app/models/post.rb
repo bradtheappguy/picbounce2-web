@@ -14,7 +14,7 @@ require 'aws/s3'
 class Post < ActiveRecord::Base  
   
   def created
-    created_at.to_i
+    created_at.to_f
   end
 
   

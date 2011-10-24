@@ -98,13 +98,16 @@ class User < ActiveRecord::Base
     #end
   end
 
+  def created
+    created_at.to_f
+  end
   
   def posts_after(timestamp,limit=10)
-    Post.find(:all, :conditions => ["user_id = ? and created_at > ?", self.id, Time.at(timestamp.to_i) ], :order => 'created_at asc', :limit => limit)
+    Post.find(:all, :conditions => ["user_id = ? and created_at > ?", self.id, Time.at(timestamp) ], :order => 'created_at asc', :limit => limit)
   end
   
   def posts_before(timestamp,limit=10)
-    Post.find(:all, :conditions => ["user_id = ? and created_at < ?", self.id, Time.at(timestamp.to_i) ], :order => 'created_at desc', :limit => limit)
+    Post.find(:all, :conditions => ["user_id = ? and created_at < ?", self.id, Time.at(timestamp) ], :order => 'created_at desc', :limit => limit)
   end
 
   def posts_with_offset(skip,limit)

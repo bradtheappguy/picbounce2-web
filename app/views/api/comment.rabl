@@ -1,1 +1,0 @@
-child (     @comment      ) { extends 'api/comment_attr'}
