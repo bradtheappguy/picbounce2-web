@@ -177,22 +177,6 @@ ActiveRecord::Schema.define(:version => 20111023223417) do
     t.datetime "updated_at"
   end
 
-  create_table "temp_latest_facebook_data", :id => false, :force => true do |t|
-    t.string "facebook_user_id"
-    t.string "facebook_access_token"
-  end
-
-  add_index "temp_latest_facebook_data", ["facebook_user_id"], :name => "idx3"
-
-  create_table "temp_latest_twitter_data", :id => false, :force => true do |t|
-    t.string "twitter_screen_name"
-    t.string "twitter_oauth_token"
-    t.string "twitter_oauth_secret"
-    t.string "twitter_avatar_url"
-  end
-
-  add_index "temp_latest_twitter_data", ["twitter_screen_name"], :name => "idx7"
-
   create_table "user_filters", :force => true do |t|
     t.integer  "user_id"
     t.integer  "filter_id"
