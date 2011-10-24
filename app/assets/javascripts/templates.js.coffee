@@ -14,7 +14,7 @@ window._photo = _.template('
     </div>
 
     <p class="left post_titles"><%=photo.caption%></p>
-    <a href="/posts/<%= photo.code %>" ><img src="<%= photo.media_url %>" with="100" height="100" /></a>
+    <a href="/posts/<%= photo.id %>" ><img src="<%= photo.media_url %>" with="100" height="100" /></a>
   </div>
 
   <div class="comments">
@@ -42,7 +42,7 @@ window._message = _.template('
       <small class="left"><span class="timestamp"><%=message.created%></span></small>
       <br class="clear"/>
       <p><%=message.caption%></p>
-      <a href="javascript:deletePost(\'<%- message.code%>\')" >delete </a>
+      <a href="javascript:deletePost(\'<%- message.id%>\')" >delete </a>
 
     
   </div>

@@ -95,7 +95,7 @@ class User < ActiveRecord::Base
     if twitter_avatar_url
       return twitter_avatar_url
     else
-      return "/images/empty_avatar_large.png"
+      return root_url+"images/empty_avatar_large.png"
     end
     #services.each do |service|  
     #  return service.image if service.image
