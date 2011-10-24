@@ -5,7 +5,7 @@ renderUsersAsAList = (@users != nil)
 renderCommentsAsAList = (@comments != nil)
 
 if renderPostsAsAList 
-  child(renderPostsAsAList =>:list) do 
+  child(renderPostsAsAList =>:posts) do 
     extends 'api/list'
   end
 end

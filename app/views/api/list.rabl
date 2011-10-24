@@ -1,30 +1,28 @@
 code :url do
   request.url
 end
-code :next do
-  list = @posts || @users || @comments 
+if (@posts && @posts.first) || (@users && @users.first) || (@comments && @comments.first)
+  code :next do
+    list = @posts || @users || @comments 
 
-  nextURL = request.url.gsub(/[?&]after=\d+\.\d+/,"")
-  isReversedOrder = (nextURL.length < request.url.length)
-  nextURL = nextURL.gsub(/[?&]before=\d+\.\d+/,"")
-  
-  
-  if !isReversedOrder
-      timestamp = list.last.created unless !list || !list.last
-  else
-      timestamp = list.first.created unless !list || !list.first
-  end 
+    nextURL = request.url.gsub(/[?&]after=\d+\.\d+/,"")
+    isReversedOrder = (nextURL.length < request.url.length)
+    nextURL = nextURL.gsub(/[?&]before=\d+\.\d+/,"")
 
-  if (nextURL.include?('?') == false)
-      nextURL = nextURL + "?before=#{timestamp}"
+
+    if !isReversedOrder
+        timestamp = list.last.created unless !list || !list.last
     else
-      nextURL = nextURL + "&before=#{timestamp}"
-    end
-    if @posts || @users || @comments 
-      nextURL  
-    else
-      nil
-    end
+        timestamp = list.first.created unless !list || !list.first
+    end 
+
+    if (nextURL.include?('?') == false)
+        nextURL = nextURL + "?before=#{timestamp}"
+      else
+        nextURL = nextURL + "&before=#{timestamp}"
+      end
+      nextURL
+  end
 end
 
 code :previous do
