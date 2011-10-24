@@ -23,7 +23,7 @@ class Post < ActiveRecord::Base
   acts_as_api
 
   has_many :flags 
-  has_many :comments
+  has_many :comments, :order => 'created_at desc'
   belongs_to :user
   has_many :authentications
 

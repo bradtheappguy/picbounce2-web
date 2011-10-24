@@ -44,7 +44,7 @@ class Api::PostsController < ApplicationController
                           :user => current_user
     })
     @post.save 
-    render 'api/post'
+    render 'api/response'
   end
   
   def create_comment
@@ -53,7 +53,7 @@ class Api::PostsController < ApplicationController
     @comment.user = current_user
     post = Post.find_by_code(params[:id])
     post.comments << @comment
-    render 'api/comment'
+    render 'api/response'
   end
   
   def create_flag
@@ -63,7 +63,7 @@ class Api::PostsController < ApplicationController
     raise FourOhFour if @post.nil?
     
     if Flag.find_or_create_by_post_id_and_user_id(@post.id, current_user.id)
-      render 'api/post'
+      render 'api/response'
     else
       render :status => 500, :nothing => true
     end
@@ -89,7 +89,7 @@ class Api::PostsController < ApplicationController
       
     end
     @post.save
-    render 'api/post'
+    render 'api/response'
   end
   
   def destroy_flag
