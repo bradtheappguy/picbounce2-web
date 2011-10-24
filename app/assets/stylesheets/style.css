@@ -81,3 +81,13 @@ h2{ font-family:'Museo';}
 .black{color:#333333!important}
 .twitter{background:url(/images/skin/twitter.png) no-repeat; height:36px; width:117px; padding-top:0!important; margin-top:-10px; overflow:visible;}
 .twitter:hover{background-position:0 -37px}
+
+#dropdown{width:110px; padding-top:15px; position:absolute}
+#dropdown ul{background-color:#fff;border:1px solid #c0c0c0;}
+#dropdown li{height:30px;}
+#dropdown li a{margin:1px; color:#242d42; padding:7px 10px!important; font-family:'Museo'}
+#dropdown li a:hover{background-color:#e9e9ea;color:#6a7b7c}
+
+#header .aligned_center>span.right:hover #dropdown{display:block!important}
+
+#header a {color:white}

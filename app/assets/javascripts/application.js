@@ -1,10 +1,14 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
-//= require underscore
-//= require templates
 //= require jquery
+//= require jquery-ui
 //= require jquery.cuteTime
 //= require jquery_ujs
+//= require jquery.iframe-transport
+//= require jquery.fileupload-ui
+//= require jquery.fileupload
+//= require underscore
+//= require templates
 
 
 $(document).ready(function () {
@@ -205,7 +209,7 @@ function deleteUserFollower(user_id){
 /*global $ */
 
 
-/*
+
    $(function () {
     'use strict';
 
@@ -235,4 +239,3 @@ function deleteUserFollower(user_id){
 
   });
 
-*/
