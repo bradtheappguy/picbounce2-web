@@ -462,6 +462,9 @@ end
    private
     def default_values
       self.ptype ||= "photo"
+      self.deleted ||= false
+      self.twitter_cross_post ||= false
+      self.view_count ||= 0
     end
 end
 
