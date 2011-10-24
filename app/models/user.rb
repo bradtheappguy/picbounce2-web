@@ -37,6 +37,15 @@ class User < ActiveRecord::Base
   end
   
   
+  def screen_name
+    self.slug
+  end
+  
+  def followers_count
+    self.followed_by_count
+  end
+  
+  
   before_save :ensure_authentication_token
 
   
@@ -293,6 +302,7 @@ class User < ActiveRecord::Base
   def servicesempty?
     (services.count == 0)
   end
+  
   
   
   
