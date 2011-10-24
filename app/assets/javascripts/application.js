@@ -111,7 +111,7 @@ function getUserPosts(user_id,divId){
       
     },
     success: function( data ) {
-      $("#"+divId).html(_post_list({posts:data.response.posts}));
+      $("#"+divId).html(_post_list({posts:data.response.posts.items}));
       postProcessFeeds();
     },
     error: function(jqXHR, textStatus, errorThrown){
@@ -130,7 +130,7 @@ function getUserFeed(user_id,divId){
       
     },
     success: function( data ) {
-      $("#"+divId).html(_post_list({posts:data.response.posts}));
+      $("#"+divId).html(_post_list({posts:data.response.posts.items}));
       postProcessFeeds();
     },
     error: function(jqXHR, textStatus, errorThrown){
