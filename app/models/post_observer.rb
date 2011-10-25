@@ -2,7 +2,7 @@ class PostObserver < ActiveRecord::Observer
   observe :post
   
   def after_create(photo)
-     message = "#{photo.user.name} posted a "+photo.ptype+"."
+     message = "#{photo.user.name} posted a "+photo.media_type+"."
     notify_followers(message)
   end
 

@@ -55,7 +55,7 @@
       <div class="left" id="view_left"> 
         <a id="mobile_dl" href="/download?mobile" ></a>
         
-        <img src="<%= @photo.post_url(:big) || @photo.post_url %>" id="main_photo" alt="@photo.caption" name="photo" />
+        <img src="<%= @photo.post_url(:big) || @photo.post_url %>" id="main_photo" alt="@photo.text" name="photo" />
         
               
         </div>
@@ -63,7 +63,7 @@
         <div class="right">
         <ul id="caption_list">
          <li> 
-	<span id="caption">"<%=twitter_auto_link(@photo.caption) %>"</span>
+	<span id="caption">"<%=twitter_auto_link(@photo.text) %>"</span>
 		 </li>
 		<li> 
             <p id="name">

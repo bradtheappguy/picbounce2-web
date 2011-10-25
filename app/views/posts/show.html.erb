@@ -11,7 +11,7 @@
   <div class="left">
     <div class="main_pic_container">
       <div>
-        <img width="600" src="<%= @photo.post_url(:big) || @photo.post_url %>"  alt="<%=@photo.caption%>" />
+        <img width="600" src="<%= @photo.post_url(:big) || @photo.post_url %>"  alt="<%=@photo.text%>" />
       </div>
     </div>
 
@@ -30,7 +30,7 @@
         <small class="left"><span class="timestamp"><%=@photo.created_at%></span></small>
         <h3 class="right"><%=@photo.view_count%> views</h3>
         <br class="clear"/>
-        <p><%=@photo.caption%></p>
+        <p><%=@photo.text%></p>
       </div>
     </div>
     <br class="clear"/>	

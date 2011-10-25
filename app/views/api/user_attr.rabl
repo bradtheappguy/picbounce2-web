@@ -3,15 +3,15 @@ attributes(
           :id, 
           :avatar,
           :verified,
-          :facebook_cross_post_pages,
-          :twitter_cross_post,
-          :facebook_like_target,
+          :tw_crosspost,
+          :fb_crosspost_pages,
+          :fb_like_target,
           :charity_name,
           :charity_link,
           :charity_pic,
           :name,
           :screen_name,
-          :followers_count,
+          :follower_count,
           :post_count)
 node(:is_following)    { |user| user.is_following?(current_user) }
 node(:followed_by)     { |user| user.followed_by?(current_user) }

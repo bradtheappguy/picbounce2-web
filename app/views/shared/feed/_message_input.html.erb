@@ -12,10 +12,10 @@
                                  :onchange =>'onfileuploadchange(this)',
                                  :form => {:style => 'display: inline;'} %>    
     
-    <input type="button" onclick="postMedia($('#caption').val(),$('#uuid').val(),$('#ptype').val())" value="Post" class="cyan_curve block right" id="upload-button">
+    <input type="button" onclick="postMedia($('#caption').val(),$('#uuid').val(),$('#media_type').val())" value="Post" class="cyan_curve block right" id="upload-button">
     <iframe name="s3callback"src="/posts/callback" with="0" heigth="0" ></iframe><br/>
     <input type="hidden" id="uuid" />
-    <input type="hidden" id="ptype" />
+    <input type="hidden" id="media_type" />
   </div>
   <div id="uploaded_pic"></div>
 </div>
@@ -29,7 +29,7 @@
     if (window.s3callback.uuid != null){
       if (window.s3callback.uuid != $('#uuid').val()){
         $('#uuid').val(window.s3callback.uuid);
-        $('#ptype').val('photo');
+        $('#media_type').val('photo');
         $('#uploaded_pic').html(_upload_pic_thumb({src:window.s3callback.url}))
       }
     }

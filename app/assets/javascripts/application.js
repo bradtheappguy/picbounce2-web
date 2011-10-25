@@ -30,12 +30,12 @@ function postProcessFeeds(){
 }
 
 
-function postComment(postId,caption){
+function postComment(postId,text){
   var request = $.ajax({
     url: "/api/posts/"+postId+"/comments",
     type: "POST",
     data: {
-      caption : caption
+      text : text
     },
     dataType: "json",
     success: function( data ) {
@@ -48,17 +48,17 @@ function postComment(postId,caption){
 
 }
 
-function postMedia(caption,uuid,ptype){
-  if (ptype == 'photo'){
+function postMedia(text,uuid,media_type){
+  if (media_type == 'photo'){
     var data = {
-      caption : caption,
+      text : text,
       uuid : uuid,
-      ptype: "photo"
+      media_type: "photo"
     };
   }else{
     var data = {
-      caption : caption,
-      ptype: "message"
+      text : text,
+      media_type: "message"
     }
   }
   var request = $.ajax({
@@ -76,12 +76,12 @@ function postMedia(caption,uuid,ptype){
 
 }
 
-function postComment(postId,caption){
+function postComment(postId,text){
   var request = $.ajax({
     url: "/api/posts/"+postId+"/comments",
     type: "POST",
     data: {
-      caption : caption
+      text : text
     },
     dataType: "json",
     success: function( data ) {
@@ -206,7 +206,7 @@ function postUserFollower(user_id){
 }
 function deleteUserFollower(user_id){
   var request = $.ajax({
-    url: "/api/users/"+user_id+"/followers/me",
+    url: "/api/users/"+user_id+"/followers",
     type: "DELETE",
     dataType: "json",
     success: function( data ) {

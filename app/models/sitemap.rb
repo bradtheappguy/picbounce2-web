@@ -27,7 +27,7 @@ class Sitemap
             xml.changefreq freq
             xml.tag!('image:image') do
             xml.tag!('image:loc',photo.post_url(:big))
-            xml.tag!('image:caption',photo.caption)
+            xml.tag!('image:caption',photo.text)
           end #do
         end #if
        end #for

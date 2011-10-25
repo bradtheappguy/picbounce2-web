@@ -1,3 +1,3 @@
 extends 'api/base'
-node  (     :caption    ) {|c| c.text}
+attributes (:text)
 child (     :user       ) { extends 'api/user_attr'}

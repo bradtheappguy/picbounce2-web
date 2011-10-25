@@ -30,7 +30,7 @@ class PostsController < ApplicationController
     @photo = Post.create({ :photo => params[:media],
                            :code => code,
 	                         :twitter_screen_name => "Picbounce",
-	                         :caption => params[:message]
+	                         :text => params[:message]
     })
     render :text => "<mediaurl>http://picbounce.com/#{code}</mediaurl>"
  end

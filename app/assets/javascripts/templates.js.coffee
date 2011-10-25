@@ -13,7 +13,7 @@ window._photo = _.template('
       <small class="left"><span class="timestamp"><%=photo.created%></span></small>
     </div>
 
-    <p class="left post_titles"><%=photo.caption%></p>
+    <p class="left post_titles"><%=photo.text%></p>
     <a href="/posts/<%= photo.id %>" ><img src="<%= photo.media_url %>" with="100" height="100" /></a>
   </div>
 
@@ -41,7 +41,7 @@ window._message = _.template('
       </h3>
       <small class="left"><span class="timestamp"><%=message.created%></span></small>
       <br class="clear"/>
-      <p><%=message.caption%></p>
+      <p><%=message.text%></p>
       <a href="javascript:deletePost(\'<%- message.id%>\')" >delete </a>
 
     
@@ -73,7 +73,7 @@ window._post_comment = _.template('
     </h3>
     <small class="left"><span class="timestamp"><%=comment.created_at%></span></small>
     <br class="clear"/>
-    <p ><%=comment.caption%></p>
+    <p ><%=comment.text%></p>
   </div>
 
 ')
@@ -81,7 +81,7 @@ window._post_comment = _.template('
 window._post_list = _.template('
     <% for (i in posts) { %>
         <li class="left">
-           <% if (posts[i].item.ptype == "photo"){ %>
+           <% if (posts[i].item.media_type == "photo"){ %>
               <%= _photo({ photo: posts[i].item}) %>
           <%}else{%>
               <%= _message({ message: posts[i].item}) %>
