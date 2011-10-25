@@ -3,7 +3,7 @@
     <ul id="posts">
       <% for photo in @recent_photos %>
         <li class="left">
-          <% case photo.ptype %>
+          <% case photo.media_type %>
           <%  when "photo" %>
             <%= render :partial => "/shared/feed/photo",:locals => { :photo => photo } %>
           <%  when "message" %>

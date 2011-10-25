@@ -29,11 +29,12 @@ class Api::PostsController < ApplicationController
     @post = Post.create({:photo => params[:photo],
                           :key => params[:key],
                           :code => code,
-                          :ptype => params[:ptype],
+                          :uuid => params[:uuid],
+                          :media_type => params[:media_type],
                           :twitter_oauth_token =>  params[:twitter_oauth_token],
                           :twitter_oauth_secret => params[:twitter_oauth_secret],
                           :facebook_access_token => (params[:facebook_access_token]?(params[:facebook_access_token].split('&')[0]):nil),  #this split is there to fix a big in iPhone Client version 1.2
-                          :caption => params[:caption],
+                          :text => params[:text],
                           :user_agent => request.user_agent,
                           :device_type => params[:system_model],
                           :os_version =>  params[:system_version],
@@ -49,7 +50,7 @@ class Api::PostsController < ApplicationController
   
   def create_comment
     @comment = Comment.new
-    @comment.text = params[:caption]
+    @comment.text = params[:text]
     @comment.user = current_user
     post = Post.find_by_code(params[:id])
     post.comments << @comment

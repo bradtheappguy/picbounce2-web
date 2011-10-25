@@ -14,7 +14,7 @@
 
     <% if @photo %>
       <meta property="og:title" content="Via.me photo by <%=@twitter_screen_name%>" />
-      <meta property="og:description" content="<%= @photo.caption %>" />
+      <meta property="og:description" content="<%= @photo.text %>" />
       <meta property="og:image" content="<%= @photo.post_url(:big) || @photo.post_url %>" />
     <% end %>
 

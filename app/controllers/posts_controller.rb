@@ -4,6 +4,8 @@ class PostsController < ApplicationController
   
   before_filter :authorize, :only => {:edit, :create}
   before_filter :current_user
+  
+  layout :choose_layout
 
   #TODO timezone support
   def show
@@ -28,10 +30,22 @@ class PostsController < ApplicationController
     @photo = Post.create({ :photo => params[:media],
                            :code => code,
 	                         :twitter_screen_name => "Picbounce",
-	                         :caption => params[:message]
+	                         :text => params[:message]
     })
     render :text => "<mediaurl>http://picbounce.com/#{code}</mediaurl>"
  end
+ 
+  def callback
+  end
   
-
+  def choose_layout
+   
+ 
+   # or you could do
+   case action_name
+    when 'callback': nil
+    else 'application'
+   end
+ end
+  
 end

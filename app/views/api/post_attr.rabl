@@ -1,12 +1,12 @@
 extends 'api/base'
-attributes(  :ptype, 
-              :comments_count, 
+attributes(   :media_type, 
+              :comment_count, 
               :view_count, 
-              :caption, 
+              :text, 
               :deleted,
               :filter_name,
-              :twitter_cross_post,
-              :facebook_cross_post_pages )
+              :tw_crosspost,
+              :fb_crosspost_pages )
 attribute :code => :id
 node(         :media_url)    {|post| post.post_url(:big)}
 child(        :user)         { extends 'api/user_attr' }

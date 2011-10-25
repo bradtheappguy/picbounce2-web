@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111024184027) do
+ActiveRecord::Schema.define(:version => 20111025220852) do
 
   create_table "apn_devices", :force => true do |t|
     t.string   "token",              :null => false
@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(:version => 20111024184027) do
     t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "caption"
+    t.string   "text"
     t.string   "twitter_screen_name"
     t.integer  "view_count"
     t.string   "user_agent"
@@ -139,9 +139,9 @@ ActiveRecord::Schema.define(:version => 20111024184027) do
     t.integer  "user_id"
     t.string   "migrated"
     t.string   "image"
-    t.string   "ptype"
-    t.boolean  "twitter_cross_post"
-    t.string   "facebook_cross_post_pages"
+    t.string   "media_type"
+    t.boolean  "tw_crosspost"
+    t.string   "fb_crosspost_pages"
   end
 
   add_index "posts", ["code"], :name => "index_photos_on_code"
@@ -177,6 +177,22 @@ ActiveRecord::Schema.define(:version => 20111024184027) do
     t.datetime "updated_at"
   end
 
+  create_table "temp_latest_facebook_data", :id => false, :force => true do |t|
+    t.string "facebook_user_id"
+    t.string "facebook_access_token"
+  end
+
+  add_index "temp_latest_facebook_data", ["facebook_user_id"], :name => "idx3"
+
+  create_table "temp_latest_twitter_data", :id => false, :force => true do |t|
+    t.string "twitter_screen_name"
+    t.string "twitter_oauth_token"
+    t.string "twitter_oauth_secret"
+    t.string "twitter_avatar_url"
+  end
+
+  add_index "temp_latest_twitter_data", ["twitter_screen_name"], :name => "idx7"
+
   create_table "user_filters", :force => true do |t|
     t.integer  "user_id"
     t.integer  "filter_id"
@@ -196,12 +212,12 @@ ActiveRecord::Schema.define(:version => 20111024184027) do
     t.string   "twitter_avatar_url"
     t.string   "facebook_access_token"
     t.string   "facebook_user_id"
-    t.string   "email",                                    :default => "", :null => false
-    t.string   "encrypted_password",        :limit => 128, :default => "", :null => false
+    t.string   "email",                                :default => "", :null => false
+    t.string   "encrypted_password",    :limit => 128, :default => "", :null => false
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                            :default => 0
+    t.integer  "sign_in_count",                        :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -211,9 +227,9 @@ ActiveRecord::Schema.define(:version => 20111024184027) do
     t.string   "charity_name"
     t.string   "charity_link"
     t.string   "charity_pic"
-    t.boolean  "twitter_cross_post"
-    t.string   "facebook_cross_post_pages"
-    t.string   "facebook_like_target"
+    t.boolean  "tw_crosspost"
+    t.string   "fb_crosspost_pages"
+    t.string   "fb_like_target"
     t.boolean  "verified"
   end
 

@@ -9,7 +9,7 @@
     <small class="left"><span class="timestamp"><%=photo.created_at%></span></small>
   </div>
  
-  <p class="left post_titles"><%=photo.caption%></p>
+  <p class="left post_titles"><%=photo.text%></p>
   <%= link_to image_tag(photo.post_url(:big), :size => "100x100"), photo %>
 </div>
 

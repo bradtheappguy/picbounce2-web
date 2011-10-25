@@ -9,11 +9,14 @@ module D2S3
       access_key_id   = D2S3::S3Config.access_key_id
       key             = options[:key] || ''
       content_type    = options[:content_type] || '' # Defaults to binary/octet-stream if blank
-      redirect        = options[:redirect] || '/'
+      redirect        = options[:redirect] || '/posts/callback'
       acl             = options[:acl] || 'public-read'
       expiration_date = (options[:expiration_date] || 10.hours).from_now.utc.strftime('%Y-%m-%dT%H:%M:%S.000Z')
       max_filesize    = options[:max_filesize] || 1.megabyte
-      submit_button   = options[:submit_button] || '<input type="submit" value="Upload">'
+      submit_button   = options[:submit_button] || ''
+      onchange   = options[:onchange] || ''
+      iframe = options[:iframe] || 's3callback'
+      filename = options[:filename] || 'test'
       
       options[:form] ||= {}
       options[:form][:id] ||= 'upload-form'
@@ -34,27 +37,18 @@ module D2S3
         signature = b64_hmac_sha1(D2S3::S3Config.secret_access_key, policy)
         out = ""
         out << %(
-
-          <form action="http://#{bucket}.s3.amazonaws.com/aaa.json" method="put" enctype="multipart/form-data" id="#{options[:form][:id]}" class="#{options[:form][:class]}" style="#{options[:form][:style]}">
-          <div class="fileupload-buttonbar">
-          <input type="hidden" name="key" value="#{key}/${filename}">
+          <form name="s3upload" action="http://#{bucket}.s3.amazonaws.com/" target="#{iframe}" method="post" enctype="multipart/form-data" id="#{options[:form][:id]}" class="#{options[:form][:class]}" style="#{options[:form][:style]}">
+          <input type="hidden" id="s3filename" name="key" value="test">
           <input type="hidden" name="AWSAccessKeyId" value="#{access_key_id}">
           <input type="hidden" name="acl" value="#{acl}">
           <input type="hidden" name="success_action_redirect" value="#{redirect}">
           <input type="hidden" name="policy" value="#{policy}">
           <input type="hidden" name="signature" value="#{signature}">
-          <label class="fileinput-button">
-                <span>Add files...</span>
-                <input type="file" name="files[]" multiple>
-            </label>
-          <button type="submit" class="start">Start upload</button>
-          <button type="reset" class="cancel">Cancel upload</button>
-          <button type="button" class="delete">Delete files</button>
-          </div>
+          <input name="file" onchange="#{onchange}" type="file">#{submit_button}
           </form>
         )
       end
     end
   end
-  
+
   ActionView::Base.send(:include, D2S3::ViewHelpers)

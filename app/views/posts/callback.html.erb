@@ -1,0 +1,11 @@
+<%if params[:key]%>
+<script>
+  window.uuid = "<%=params[:key]%>".substring("<%=params[:key]%>".lastIndexOf("/")+1,"<%=params[:key]%>".lastIndexOf("."));
+  window.extension = "<%=params[:key]%>".substring("<%=params[:key]%>".lastIndexOf('.')+1);
+  window.url = "http://<%=params[:bucket]%>.s3.amazonaws.com/<%=params[:key]%>" ;
+</script>
+<%else%>
+<script>
+  window.uuid = null;
+</script>
+<%end%>

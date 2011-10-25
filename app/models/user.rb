@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
     self.slug
   end
   
-  def followers_count
+  def follower_count
     self.followed_by_count
   end
   
@@ -308,7 +308,7 @@ class User < ActiveRecord::Base
   
     def default_values
       self.verified ||= false
-      self.twitter_cross_post ||= false
+      self.tw_crosspost ||= false
     end
 end
 
