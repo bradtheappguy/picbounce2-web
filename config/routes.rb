@@ -44,7 +44,7 @@ Trunk::Application.routes.draw do
   match 'api/posts/:id/comments'    => 'api/posts#create_comment',   :via => :post
   match 'api/posts/:id/flags'       => 'api/posts#create_flag',      :via => :post
   
-  match 'api/users/:id/followers/:follower_id'     => 'api/users#destroy_follower',   :via => :delete
+  match 'api/users/:id/followers'     => 'api/users#destroy_follower',   :via => :delete
   match 'api/posts/:id'                            => 'api/posts#destroy',            :via => :delete
   match 'api/posts/:id/flags'                      => 'api/posts#destroy_flag',       :via => :delete
   
@@ -54,7 +54,8 @@ Trunk::Application.routes.draw do
 
  #WEB_APP
   
-  match '/settings' => 'users#edit', :via => :get 
+  match '/settings' => 'users#edit', :via => :get
+  
   match 'users/:id/feed'      => 'users/feed#show', :as => 'user_feed'
   match 'users/:id'           => 'users', :action => 'show', :as => 'profile', :via => :get
   match 'users/:id'           => 'users', :action => 'show', :as => 'user',    :via => :get

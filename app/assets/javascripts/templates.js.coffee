@@ -95,3 +95,7 @@ window._post_list = _.template('
 window._loading = _.template('
   <span id="<%=id%>">loading...</span>
 ');
+
+window._upload_pic_thumb = _.template('
+  <img src="<%=src%>" width="50"/>
+');
