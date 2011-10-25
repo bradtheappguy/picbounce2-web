@@ -1,0 +1,12 @@
+<%if params[:key]%>
+<script>
+  window.uuid = "<%=params[:key]%>".substring("<%=params[:key]%>".lastIndexOf("/")+1,"<%=params[:key]%>".lastIndexOf("."));
+  window.extension = "<%=params[:key]%>".substring("<%=params[:key]%>".lastIndexOf('.')+1);
+</script>
+<img src="http://<%=params[:bucket]%>.s3.amazonaws.com/<%=params[:key]%>" width="50" />
+<%else%>
+<script>
+  window.uuid = null;
+</script>
+ready
+<%end%>

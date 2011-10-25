@@ -29,6 +29,7 @@ class Api::PostsController < ApplicationController
     @post = Post.create({:photo => params[:photo],
                           :key => params[:key],
                           :code => code,
+                          :uuid => params[:uuid],
                           :ptype => params[:ptype],
                           :twitter_oauth_token =>  params[:twitter_oauth_token],
                           :twitter_oauth_secret => params[:twitter_oauth_secret],

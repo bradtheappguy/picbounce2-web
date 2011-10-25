@@ -46,7 +46,7 @@ class Post < ActiveRecord::Base
   attr_accessor :twitter_oauth_secret
   attr_accessor :facebook_access_token
   
-  before_create :load_from_aws, :set_uuid, :process_photos
+  before_create :load_from_aws, :process_photos
   after_create :trigger_uploads
   
   before_update :trigger_deletes
@@ -70,14 +70,13 @@ class Post < ActiveRecord::Base
   
   # The filesystem path used to store the result of the image magick resizing before uploading
   def photo_temp_path(style)
-    "tmp/#{self.uuid}-#{style}.jpg" 
+    "tmp/#{self.code}-#{style}.jpg" 
   end
   
-  
-  def set_uuid
-    self.uuid = rand(2**128).to_s(16)
-    true
+  def self.new_uuid
+    rand(2**128).to_s(16)
   end
+
   def flagged?(user)
     return false unless user
     found = false
@@ -104,7 +103,13 @@ class Post < ActiveRecord::Base
                  :big   => '-resize "600x600>" -auto-orient' }  
 
       styles.each_pair do |style, options|
+        puts self.photo.path
+        puts photo_temp_path(style)
+        
         cmd = "convert #{self.photo.path} #{options} #{photo_temp_path(style)}"
+        
+        puts `echo $PATH`
+        
         puts cmd
         exit_status = system(cmd)
         #raise "Image Resizing Failed #{exit_status} #{cmd}" if !exit_status
@@ -447,9 +452,9 @@ end
 
   def load_from_aws
     if (ptype == "photo")
-      puts key
+      puts uuid
       open("tmp/#{code}.jpg", 'wb') do |file|
-        file << open("http://s3.amazonaws.com/com.picbounce.incoming/#{key}").read
+        file << open("http://s3.amazonaws.com/com.picbounce.incoming/photos/#{uuid}.jpg").read
         puts file.path
         self.photo = file
       end

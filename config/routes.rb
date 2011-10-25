@@ -53,7 +53,6 @@ Trunk::Application.routes.draw do
   
 
  #WEB_APP
-  resources :posts 
   
   match '/settings' => 'users#edit', :via => :get 
   match 'users/:id/feed'      => 'users/feed#show', :as => 'user_feed'
@@ -65,6 +64,8 @@ Trunk::Application.routes.draw do
   match '/:id' => 'posts#show', :via => :get, :as => 'photo'
   match '/:id' => 'posts#edit', :via => :post 
   match '/:id' => 'posts#destroy', :via => :delete
+  match '/posts/callback' => 'posts#callback', :via => :get
+  resources :posts 
 
   
   root :to => "users/feed#show"
