@@ -1,6 +1,6 @@
 <h1 class="left"><%= link_to user.name, user %></h1>
-<a href="javascript:postUserFollower('<%=user.name%>')" class="follow_btn right"></a>
-<br class="clear"/>
+
+
 <ul id="slider">
   <li><a href="#"><img class="arrow" src="/images/skin/left_arrow.png"/></a></li>
   <% for p in user.posts_with_offset(0,3)  %>
@@ -9,6 +9,5 @@
   <% end %>
   <li><a href="#"><img class="arrow" src="/images/skin/right_arrow.png"/></a></li>
 </ul>
-<br class="clear"/>
 <h2>Follow Me</h2>
-<div class="social_links"></div>
+<div class="social_links"><a href="javascript:postUserFollower('<%=user.name%>')" class="follow_btn left"></a></div>

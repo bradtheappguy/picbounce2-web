@@ -3,7 +3,7 @@
     <%= render :partial => "/shared/sidebar/profile_box_small",:locals => { :user => @user } %>
   </div>
 
-  <div class="left">
+  <div class="center">
     <% if  current_user && @user == current_user %>
       <%= render :partial => "/shared/feed/message_input"%>
     <% end %>
