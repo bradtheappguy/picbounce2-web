@@ -73,7 +73,7 @@ class Api::UsersController < ApplicationController
   
   
   def create_follower
-    user = User.find_by_twitter_screen_name(params[:id])
+    user = User.find_by_slug_or_id(params[:id])
     user.followers << current_user
     render 'api/response'
   end
@@ -84,7 +84,7 @@ class Api::UsersController < ApplicationController
   
   #DELETE
   def destroy_follower
-    @user = User.find_by_twitter_screen_name(params[:id])
+    @user = User.find_by_slug_or_id(params[:id])
     @user.followers.delete(current_user)
     render 'api/response'
   end
