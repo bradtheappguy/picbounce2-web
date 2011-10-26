@@ -62,6 +62,11 @@ class Api::UsersController < ApplicationController
   
   #POST
   def edit
+    if params[:id] != "me" || params[:id] != current_user.id
+      #TODO: error handling
+      render :text => '500', :status => 500
+    end
+    
     @user = current_user
     @user.twitter_avatar_url = params[:avatar] unless !params.key?(:avatar)
     @user.name = params[:name] unless !params.key?(:name)

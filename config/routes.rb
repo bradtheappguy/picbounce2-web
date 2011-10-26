@@ -38,7 +38,7 @@ Trunk::Application.routes.draw do
   match 'api/posts/:id'             => 'api/posts#show',             :via => :get
   match 'api/posts/:id/comments'    => 'api/posts#comments',         :via => :get
   
-  match 'api/users'                 => 'api/users#edit',             :via => :post
+  match 'api/users/:id'             => 'api/users#edit',             :via => :put
   match 'api/users/:id/followers'   => 'api/users#create_follower',  :via => :post
   match 'api/posts'                 => 'api/posts#create',           :via => :post
   match 'api/posts/:id/comments'    => 'api/posts#create_comment',   :via => :post
