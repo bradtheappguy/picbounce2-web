@@ -68,6 +68,8 @@ class Api::UsersController < ApplicationController
   
   
   def create_follower
+    raise if @user = current_user
+    
     user = User.find_by_slug_or_id(params[:id])
     user.followers << current_user
     render 'api/response'
@@ -79,6 +81,8 @@ class Api::UsersController < ApplicationController
   
   #DELETE
   def destroy_follower
+    raise if @user = current_user
+    
     @user = User.find_by_slug_or_id(params[:id])
     @user.followers.delete(current_user)
     render 'api/response'
