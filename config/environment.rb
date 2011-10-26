@@ -3,7 +3,7 @@ DEFAULT_PAPERCLIP_OPTIONS = {}
 DEVISE_MAILER_FROM       = "contant@picbounce.com"
 LIVE_PERSONS_EMAIL       = 'contant@picbounce.com'
 
-FACEBOOK_APP_PERMISSIONS = "email,offline_access,publish_stream,read_stream,user_photos,friends_photos"
+FACEBOOK_APP_PERMISSIONS = "email,offline_access,publish_stream,read_stream,user_photos,friends_photos,manage_pages"
 
 DEFAULT_FB_SHARE_IMAGE   = "http://localhost:3000/images/missing.png"
 DEFAULT_FB_POST_NAME     = "PicBounce"
