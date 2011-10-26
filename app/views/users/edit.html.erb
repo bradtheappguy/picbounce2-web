@@ -51,8 +51,8 @@
     <ul class="general" id="general" style="display:none">
       <li>
         <h2 class="left">Username</h2>
-        <input id="screen_name_input" type="text" class="hideme left" value="<%=current_user.screen_name%>"/>
-        <h3 id="screen_name_label" class="showme left"><%=current_user.screen_name%></h3>
+        <input id="screen_name_input" type="text" class="hideme left" value="<%=current_user.avatar%>"/>
+        <h3 id="screen_name_label" class="showme left"><%=current_user.avatar%></h3>
         <a href="#" class="right hideme cancel">Cancel</a>
         <a href="javascript:editUser($('#screen_name_input').val(),null,null,null);$('#screen_name_label').html($('#screen_name_input').val())" class="right green hideme">Save</a>
         <a href="#" class="right showme edit">Edit</a>

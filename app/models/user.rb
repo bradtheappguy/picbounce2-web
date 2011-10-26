@@ -82,16 +82,6 @@ class User < ActiveRecord::Base
     self.inverse_followings.count
   end
 
-  
-  def badges_count
-    0
-  end
-
-  
-  def last_location
-    "San Francsico"
-  end
-  
  
   
   def avatar 

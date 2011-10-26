@@ -63,7 +63,7 @@ class Api::UsersController < ApplicationController
   #POST
   def edit
     @user = current_user
-    @user.slug = params[:screen_name] unless !params.key?(:screen_name)
+    @user.twitter_avatar_url = params[:avatar] unless !params.key?(:avatar)
     @user.name = params[:name] unless !params.key?(:name)
     @user.fb_crosspost_pages = params[:fb_crosspost_pages] unless !params.key?(:fb_crosspost_pages)
     @user.tw_crosspost = params[:tw_crosspost] unless !params.key?(:tw_crosspost)

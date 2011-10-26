@@ -49,11 +49,11 @@ function postComment(postId,text){
 
 
 
-function editUser(screen_name,name,tw_crosspost,fb_crosspost_pages){
+function editUser(avatar,name,tw_crosspost,fb_crosspost_pages){
   
   data = {};
-  if (screen_name !=null){
-    data['screen_name'] = screen_name;
+  if (avatar !=null){
+    data['avatar'] = avatar;
   }
   if (name !=null){
     data['name'] = name;
