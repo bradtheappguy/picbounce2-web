@@ -270,7 +270,6 @@ class User < ActiveRecord::Base
 
   def followed_by?(user)
       user.followers.include? self 
-   
   end
   
   private
