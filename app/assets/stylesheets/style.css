@@ -33,6 +33,7 @@ h2{ font-family:'Museo';}
 .comment_container textarea{height:50px; font-size:10pt; color:#666; width:430px; border:none; resize:none; padding:4px 7px; font-family:'Museo'; overflow:visible;}
 .comment_container textarea:focus{outline:none}
 .fileupload-buttonbar{background:#F3F3F3; height:23px; padding:4px 0; width:442px; height:60px;}
+#footer_comment{height:20px;}
 .cyan_curve, .start, .cancel, .delete {cursor: pointer; background-color:#E0F0F3; border:1px solid #CFCFCF; margin:8px 0 0 5px; 
 padding:4px 9px; text-shadow: 0px 1px 0px #ffffff;
 filter: dropshadow(color=#ffffff, offx=0, offy=1); 
@@ -58,8 +59,7 @@ background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0.48, 
 .comments li h3.left{margin-right:20px}
 .post_titles {width:345px; float:left;}
 .comments li .post_details{width:330px; margin-top:0px;}
-.social_links{height:34px;/*-webkit-box-shadow:inset 0px 0px 7x 3px #d0d1d2;-moz-box-shadow:inset 0px 0px 7px 3px #d0d1d2;box-shadow:inset 0px 0px 7px 3px #d0d1d2; -webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px; background:#f2f3f5*/ 
-}
+.social_links{height:34px;}
 .follow_right{-webkit-box-shadow:0px 0px 1px 1px #d0d1d2;-moz-box-shadow:0px 0px 1px 1px #d0d1d2;box-shadow:0px 0px 1px 1px #d0d1d2;height:188px; -webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px; background:#f2f3f5; padding:15px}
 .follow_right h1,.follow_right h2{color:#687a7b; font-family:'Museo'; padding:0 0 12px 0; text-shadow: 1px 1px 0px #fff;}
 .follow_right h1{font-size:20pt; margin-bottom:10px; width:280px;}
@@ -84,7 +84,7 @@ background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0.48, 
 #posts .details{width:300px; float:left; font-family:'Museo'; padding-top:20px; margin-left:20px;}
 .two_columns>.left:first-child #posts .details{width:445px}
 .details h3, .details a {color:#313d57; margin-right:12px;}
-#posts{margin:0 0 0 0; width:450px;}
+#posts{margin:0; width:450px;}
 #posts #comments li h3{font-size:12pt; color:#212b40;}
 #posts #comments li small{font-size:9pt;}
 #posts #comments li p{color:#333333; font-size:9pt;}
