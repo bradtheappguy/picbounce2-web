@@ -1,1 +1,1 @@
-node  (     :created    ) {|object| object.created}
+attributes  (     :created )
