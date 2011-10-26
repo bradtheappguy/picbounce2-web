@@ -52,6 +52,7 @@ class Api::UsersController < ApplicationController
     else
       @posts = @user.posts.limit(limit).all
     end
+    
     render '/api/response'
   end
   

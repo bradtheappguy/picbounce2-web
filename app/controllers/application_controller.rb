@@ -22,6 +22,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_split_group
   before_filter :configure_default_url
+  before_filter :expose_current_user
   
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
@@ -121,5 +122,7 @@ end
      render 'api/response.rabl'
    end
 
-  
+    def expose_current_user
+        @current_user = current_user
+    end
  end
