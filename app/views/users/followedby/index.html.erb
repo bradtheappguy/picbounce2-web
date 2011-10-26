@@ -1,8 +1,0 @@
-<h1> Followed By <%= @followedby.count %> People</h1>
-<br />
-<br />
-<div>
-  <%  @followedby.each do |follower| %>
-    <%= link_to follower.name, profile_path(follower.id)  %><br />
-  <% end %>
-</div>
