@@ -66,8 +66,8 @@ function editUser(avatar,name,tw_crosspost,fb_crosspost_pages){
   }
   
   var request = $.ajax({
-    url: "/api/users/",
-    type: "POST",
+    url: "/api/users/me",
+    type: "PUT",
     data: data,
     dataType: "json",
     success: function( data ) {

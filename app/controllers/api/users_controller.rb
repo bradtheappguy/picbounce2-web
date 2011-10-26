@@ -63,9 +63,10 @@ class Api::UsersController < ApplicationController
   
   #POST
   def edit
-    if params[:id] != "me" || params[:id] != current_user.id
+    if params[:id] != "me" && params[:id] != current_user.id
       #TODO: error handling
       render :text => '500', :status => 500
+      return
     end
     
     @user = current_user
