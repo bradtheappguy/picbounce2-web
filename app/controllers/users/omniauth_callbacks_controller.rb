@@ -15,7 +15,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     puts "signing IN"
     return false unless preexisting_authorization_token.user
     sign_in(:user, preexisting_authorization_token.user)
-    redirect_to "/users/auth/picbounce?auth_token=#{current_user.authentication_token}" 
+    redirect_to "/users/auth/picbounce?auth_token=#{current_user.authentication_token}&user_id=#{current_user.id}" 
   end
 
 
@@ -42,7 +42,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => omniauth_data['provider']
       puts flash[:notice]
       sign_in(:user, user)
-      redirect_to "/users/auth/picbounce?auth_token=#{user.authentication_token}"
+      redirect_to "/users/auth/picbounce?auth_token=#{user.authentication_token}&user_id=#{current_user.id}"
     else
       session[:omniauth] = omniauth_data.except('extra')
       signin_and_redirect_for_access_token
@@ -65,7 +65,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       msg = "Account connected"
       puts msg
       flash[:notice] = msg
-      redirect_to "/users/auth/picbounce?auth_token=#{current_user.authentication_token}"
+      redirect_to "/users/auth/picbounce?auth_token=#{current_user.authentication_token}&user_id=#{current_user.id}"
     end
   end
 
