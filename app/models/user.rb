@@ -92,13 +92,7 @@ class User < ActiveRecord::Base
     "San Francsico"
   end
   
-  def is_following?(user)
-    true
-  end
-  
-  def follows?(user)
-    true
-  end
+ 
   
   def avatar 
     if twitter_avatar_url

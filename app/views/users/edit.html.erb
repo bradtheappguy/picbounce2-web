@@ -50,45 +50,19 @@
     </div>
     <ul class="general" id="general" style="display:none">
       <li>
-        <h2 class="left">User Name</h2>
-        <input type="text" class="hideme left" value="<%=current_user.display_name%>"/>
-        <h3 class="showme left"><%=current_user.display_name%></h3>
+        <h2 class="left">Username</h2>
+        <input type="text" class="hideme left" value="<%=current_user.screen_name%>"/>
+        <h3 class="showme left"><%=current_user.screen_name%></h3>
         <a href="#" class="right hideme cancel">Cancel</a>
         <a href="#" class="right green hideme">Save</a>
         <a href="#" class="right showme edit">Edit</a>
         <br class="clear"/>
       </li>
       <li>
-        <h2 class="left">First Name</h2>
+        <h2 class="left">Name</h2>
         <input type="text" class="hideme left" value="<%=current_user.display_name%>"/>
         <h3 class="showme left"><%=current_user.display_name%></h3>
         <a href="#" class="hideme right cancel">Cancel</a>
-        <a href="#" class="green right hideme">Save</a>
-        <a href="#" class="showme edit right">Edit</a>
-        <br class="clear"/>
-      </li>
-      <li>
-        <h2 class="left">Last Name</h2>
-        <input type="text" class="hideme left" value="<%=current_user.display_name%>"/>
-        <h3 class="showme left"><%=current_user.display_name%></h3>
-        <a href="#" class="hideme right cancel">Cancel</a>
-        <a href="#" class="green right hideme">Save</a>
-        <a href="#" class="showme edit right">Edit</a>
-        <br class="clear"/>
-      </li>
-      <li>
-        <span class="left password_title">
-          <h2>Password</h2>
-          <h2 class="hideme">New</h2>
-          <h2 class="hideme">Confirm New</h2>
-        </span>
-        <h3 class="showme right"></h3>
-        <span class="left hideme password_inputs">
-          <input type="password" class="block"/>
-          <input type="password" class="block"/>
-          <input type="password" class="block"/>
-        </span>
-        <a href="#" class="hideme cancel right">Cancel</a>
         <a href="#" class="green right hideme">Save</a>
         <a href="#" class="showme edit right">Edit</a>
         <br class="clear"/>

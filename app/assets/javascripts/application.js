@@ -22,7 +22,6 @@ function uuid() {
 
 
 
-
 function postProcessFeeds(){
   if ($('.timestamp') != null){
     $('.timestamp').cuteTime();
@@ -37,6 +36,39 @@ function postComment(postId,text){
     data: {
       text : text
     },
+    dataType: "json",
+    success: function( data ) {
+      alert("worked!");
+    },
+    error: function(jqXHR, textStatus, errorThrown){
+      alert("somesthing went terribly wrong.")
+    }
+  });
+
+}
+
+
+
+function editUser(screen_name,name,tw_crosspost,fb_crosspost_pages){
+  
+  data = {};
+  if (screen_name !=null){
+    data['screen_name'] = screen_name;
+  }
+  if (name !=null){
+    data['name'] = name;
+  }
+  if (tw_crosspost !=null){
+    data['tw_crosspost'] = tw_crosspost;
+  }
+  if (fb_crosspost_pages !=null){
+    data['fb_crosspost_pages'] = fb_crosspost_pages;
+  }
+  
+  var request = $.ajax({
+    url: "/api/users/",
+    type: "POST",
+    data: data,
     dataType: "json",
     success: function( data ) {
       alert("worked!");
