@@ -91,7 +91,9 @@
       </li>
       <li>
         <h2 class="left">Facebook</h2><BR/>
-            <%= current_user.fb_service.nickname %>
+            <%= current_user.fb_service.nickname %><br/>
+            <input type="radio" name="fb_follow" checked />Subscribe<BR/>
+            <input type="radio" name="fb_follow" />Like/send<BR/>
       </li>
     </ul>
   </div>
@@ -128,17 +130,13 @@ else
 	var rel=$(this).attr('rel');
 	$('#general').hide();
 		$('#sharing').hide();
+		$('#services').hide();
 			$('#graph').hide();
 			$('#'+rel).show();
 });
 
 </script>
 <script type="text/javascript">
-var i=0;
-$('.add_page').click(function() {i++;
-	$('.sharing_options').append('<li id="appended_'+i+'" style="display:none" class="no_chkbox appended"><span class="inline"><input type="text" name="input_'+i+'"/><a id="save_'+i+'" class="green">Save</a><a id="cancel_'+i+'" class="red" onclick="remove('+i+')">Cancel</a></span></li>');
-	$("#appended_"+i).fadeIn();
-});
 function remove(rel){
 	$("#save_"+rel).closest('li').fadeOut(200).remove();
 }

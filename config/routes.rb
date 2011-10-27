@@ -34,6 +34,8 @@ Trunk::Application.routes.draw do
   
   match '/settings' => 'users#edit', :via => :get
   
+  match '/terms' => 'static#terms', :via => :get
+  
   match 'users/:id/feed'      => 'users/feed#show', :as => 'user_feed'
   match 'users/:id'           => 'users', :action => 'show', :as => 'profile', :via => :get
   match 'users/:id'           => 'users', :action => 'show', :as => 'user',    :via => :get
