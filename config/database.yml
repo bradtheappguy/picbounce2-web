@@ -12,7 +12,7 @@ staging:
   
 development:
   host: localhost
-  user: postgres
+  user: ruth
   adapter: postgresql
   encoding: unicode
   database: picbounce_development

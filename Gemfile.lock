@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/plataformatec/devise
-  revision: fac02b58bc34bc941cd34c28b884bfe74a9e3ce5
+  revision: d5256364238d10c06d18f1a35f04ae7a200919f5
   branch: master
   specs:
     devise (1.5.0.dev)
@@ -129,7 +129,7 @@ GEM
       activesupport (>= 2.2.0)
       crack (>= 0.1.6)
     hashie (1.0.0)
-    heroku (2.9.0)
+    heroku (2.11.0)
       launchy (>= 0.3.2)
       rest-client (~> 1.6.1)
       rubyzip
@@ -199,7 +199,7 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (~> 0.14.6)
-    rake (0.9.2)
+    rake (0.9.2.2)
     rbx-require-relative (0.0.5)
     rcov (0.9.9)
     rdoc (3.9.4)
