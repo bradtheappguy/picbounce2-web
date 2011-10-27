@@ -26,7 +26,7 @@ Trunk::Application.routes.draw do
   
   
 
-  match 'users/auth/:provider/sign_out' => 'users#omniauth_signout'
+  match 'users/auth/:provider/sign_out' => 'users#omniauth_signout' 
   
   
 
