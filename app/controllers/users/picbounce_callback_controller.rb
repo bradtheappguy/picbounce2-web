@@ -2,9 +2,9 @@ class Users::PicbounceCallbackController < ApplicationController
   def picbounce_callback
     raise if !current_user
     if !params[:auth_token]
-      redirect_to "/users/auth/picbounce?auth_token=#{current_user.authentication_token}" 
+      redirect_to "/users/auth/picbounce?auth_token=#{current_user.authentication_token}&user_id=#{current_user.id}" 
     else
-      redirect_to "/"
+      redirect_to "/users/me"
     end
   end
   

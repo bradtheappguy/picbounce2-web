@@ -14,4 +14,10 @@ attributes(
           :follower_count,
           :post_count)
 node(:is_following)    { |user| user.following?(@current_user) }
-node(:followed_by)     { |user| user.followed_by?(@current_user) }
+node(:followed_by)     { |user| 
+  if user
+    false
+  else
+    user.followed_by?(@current_user) 
+  end
+}

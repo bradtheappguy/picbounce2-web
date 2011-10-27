@@ -1,5 +1,5 @@
 class Api::PostsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:user,:user_feed,:user_posts,:post,:post_comments]
+  before_filter :authenticate_user!, :except => [:show,:comments]
   
   #GET
   def show
