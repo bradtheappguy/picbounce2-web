@@ -15,4 +15,19 @@ class UsersController < ApplicationController
     
   end
   
+    def omniauth_signout
+      if params[:provider] == "twitter"
+        raise "Sorry, you can't sign out of twitter"
+      end
+      if params[:provider] && current_user 
+        s = Service.find_by_provider_and_user_id(params[:provider], current_user.id)
+        s.delete() unless !s
+        if params[:next]
+          redirect_to params[:next]
+        else
+          redirect_to '/'
+        end
+      end
+    end
+  
 end

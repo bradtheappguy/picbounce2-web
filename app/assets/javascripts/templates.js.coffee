@@ -99,3 +99,7 @@ window._loading = _.template('
 window._upload_pic_thumb = _.template('
   <img src="<%=src%>" width="50"/>
 ');
+
+window._fb_page = _.template('
+  <div><input type="checkbox" /><%= page.name %> </div>
+')

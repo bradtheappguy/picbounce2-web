@@ -77,6 +77,14 @@ class User < ActiveRecord::Base
     self.followings.count
   end
 
+  
+  def fb_service
+    services.find_by_provider("facebook")
+  end
+  
+  def tw_service
+    services.find_by_provider("twitter")
+  end
    
   def following_count
     self.inverse_followings.count
@@ -261,6 +269,8 @@ class User < ActiveRecord::Base
   def followed_by?(user)
       user.followers.include? self 
   end
+  
+  
   
   private
 

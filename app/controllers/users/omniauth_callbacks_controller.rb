@@ -52,10 +52,13 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
 
   def omniauthorize_additional_account
-    return false if current_user.nil?
+    return false if current_user.nil? 
 
     #todo signin not necessary, may mess up last sign in dates
     if preexisting_authorization_token && preexisting_authorization_token != current_user
+      raise "This " +  omniauth_data['provider'] + " account is already linked to another ViaMe account. If you also own that ViaMe account, you need to login with it and modify your "+ omniauth_data['provider'] + " settings there first."
+      
+      
       flash[:alert] = "You have created two accounts and they can't be merged automatically. Email #{LIVE_PERSONS_EMAIL} for help."
       signin_and_redirect_for_access_token
     else
@@ -83,4 +86,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def valid_provider?(provider)
     !User.omniauth_providers.index(provider).nil?
   end
+  
+
 end

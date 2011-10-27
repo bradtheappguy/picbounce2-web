@@ -6,30 +6,6 @@ Trunk::Application.routes.draw do
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks", :registrations => 'registrations'}
   match 'users/auth/picbounce' => 'users/picbounce_callback#picbounce_callback', :via => :get
   
-# 
-#  match 'users/:id/feed/:service_id' => 'users/feed#external', :as => 'user_external_feed'
-#  match 'users/:id/filters' => 'users/filters#index',:via =>:get
-#  match 'users/:id/follows' => 'users/follows#index', :as => 'user_follows'
-#  match 'users/:id/followed-by' => 'users/followedby#index', :as => 'user_followedby'
-#  match 'users/:id/device' => 'users/device#create', :via => :post
-#
-#
-# 
-#  
-#  match 'recent/:id' => 'posts#recent', :via => :get
-#  match 'admin' => 'admin#index', :via => :get
-#  match 'admin/generateSitemap' => 'admin#generateSitemap', :via => :get
-#  
-#  match 'download' => 'application#download', :via => :get
-#  match 'Download' => 'application#download', :via => :get
-#  match 'appstore' => 'application#appstore', :via => :get
-#  
-#  match 'tweetie' => 'posts#tweetie', :via => :post
-#  
-#  match 'filters/index' => 'filters#index', :via => :get
-#  match 'filters/current_version' => 'filters#current_version', :via => :get
-
-  
   
 #API  
   match 'api/users/:id'             => 'api/users#show',             :via => :get
@@ -49,6 +25,8 @@ Trunk::Application.routes.draw do
   match 'api/posts/:id/flags'                      => 'api/posts#destroy_flag',       :via => :delete
   
   
+
+  match 'users/auth/:provider/sign_out' => 'users#omniauth_signout'
   
   
 
@@ -67,7 +45,6 @@ Trunk::Application.routes.draw do
   match '/:id' => 'posts#destroy', :via => :delete
   match '/posts/callback' => 'posts#callback', :via => :get
   resources :posts 
-
   
   root :to => "users/feed#show"
 

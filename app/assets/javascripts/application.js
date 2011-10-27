@@ -22,6 +22,30 @@ function uuid() {
 
 
 
+function loadFacebookPages(access_token,divId){
+  var done = false
+  var list = [];
+  var request = $.ajax({
+    url: "https://graph.facebook.com/fql?callback=?&access_token="+access_token+"&q="+encodeURI("select page_id, type, name, page_url,pic_small from page where page_id in ( select page_id,type from page_admin where uid=me() and type!='APPLICATION')"),
+    type: "GET",
+    dataType: "json",
+    success: function( result ) {
+      if (result.data != null){
+        for (i in result.data){
+          $("#"+divId).append(_fb_page({page:result.data[i]}));
+        }
+      }else{
+        alert(result.error.message);
+      }
+    },
+    error: function(jqXHR, textStatus, errorThrown){
+      alert("somesthing went terribly wrong.");
+    }
+  });
+    return list;
+      
+  }
+
 function postProcessFeeds(){
   if ($('.timestamp') != null){
     $('.timestamp').cuteTime();
