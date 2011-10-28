@@ -1,6 +1,8 @@
 <div class="avatar">
   <%= link_to image_tag(user.avatar, :size => "125x125"), @user %>
-  <a href="javascript:postUserFollower('<%=user.screen_name%>',this)" class="follow_btn"></a><%=  user.following?(current_user) %><a href="javascript:deleteUserFollower('<%=user.screen_name%>',this)" > unfollow</a>
+  <a href="javascript:postUserFollower('<%=user.screen_name%>',this)" 
+     class="follow_btn"></a><%=  user.following?(current_user) %>
+  <a class="follow_btn_text" href="javascript:deleteUserFollower('<%=user.screen_name%>',this)" > unfollow <small>on</small> via.me</a>
 </div><!--avatar-->
 <h2 class="cyan">Follow Me</h2>
 

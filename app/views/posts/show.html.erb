@@ -16,33 +16,33 @@
     </div>
 
     <div id="post_details_container">
-      <%if @photo.flagged?(current_user)%>
-        <a href="javascript:deleteFlag('<%=@photo.code%>')">unflag</a>
-      <%else%>
-        <a href="javascript:postFlag('<%=@photo.code%>')">flag</a>
-      <%end%>
-           
       <div class="profile_pic left">
         <%= link_to image_tag(@photo.user.avatar, :size => "50x50"), @photo.user %>
       </div>
       <div class="left post_details">
         <h3 class="left"><%= link_to @photo.user.display_name, @photo.user %></h3>
         <small class="left"><span class="timestamp"><%=@photo.created_at%></span></small>
-        <h3 class="right"><%=@photo.view_count%> views</h3>
-        <br class="clear"/>
-        <p><%=@photo.text%></p>
-      </div>
+        <small class="right"><%=@photo.view_count%> views</small>
+        <!--<p><%=@photo.text%></p>--> 
+      </div>  
     </div>
-    <br class="clear"/>	
+      <div class="right flag_social">
+        <div class="flag_btn">
+            <%if @photo.flagged?(current_user)%>
+             <a href="javascript:deleteFlag('<%=@photo.code%>')">unflag</a>
+            <%else%>
+             <a href="javascript:postFlag('<%=@photo.code%>')">flag</a>
+            <%end%>
+        </div>
+      </div>
     <%= render :partial => "/shared/feed/comment_input", :locals => {:post => @photo }%>
 
-    <br class="clear"/><br class="clear"/>
     <div id="comments">
       <ul>
         <% for comment in @photo.comments %>
           <li class="left">
             <%= render :partial => "/shared/feed/post_comment",:locals => { :comment => comment } %>
-            <br class="clear"/><BR>
+          
           </li>
         <%end%>
       </ul>
