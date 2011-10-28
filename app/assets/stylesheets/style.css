@@ -2,8 +2,8 @@
 /* CSS Document */
 .cyan{color:#769193;}
 h2{ font-family:'Museo';}
-#header{background:url(/images/skin/top_pattern.png) repeat-x center center; height:44px;}
-.logo{margin:5px 0 0 0;}
+#header{background:transparent url(/images/skin/top_pattern.png) repeat-x center center; height:44px;}
+.logo{margin:5px 0 0 16px;}
 .aligned_center{width:960px; margin:0 auto; overflow:visible;}
 #header .aligned_center a{padding-top:0px; display:block}
 #header .aligned_center>span.right{margin-top:13px}
@@ -14,9 +14,10 @@ h2{ font-family:'Museo';}
 .two_columns>.left{width:612px; /*margin-left:54px;*/}
 .two_columns>.right{width:302px}
 .three_columns>.left{width:160px; margin:0 0 0 0}/*486px*/
-.three_columns>.center{width:453px; margin:0}
+.three_columns>.center{width:453px; margin:0 0 0 10px}
 .three_columns>.right{width:290px; margin-right:20px}
 #main{min-height: 100%; height: auto !important; height: 100%; margin: 27px auto -90px;}
+.username {margin:0 0 24px -7px; color:#384767;}
 .main_pic_container{background-color:#cbcbcb;-webkit-border-radius: 2px;-moz-border-radius: 2px;border-radius: 2px; padding:1px 1px; margin:0 0 20px 0px}
 .main_pic_container div{background-color:#fff;-webkit-border-radius: 2px;-moz-border-radius: 2px;border-radius: 2px; padding:5px;}
 .profile_pic, .profile_pic_post  {/*border:#cbcbcb 1px solid; padding:0px;*/ width:50px; height:50px; background-color:#fff} 
@@ -30,14 +31,19 @@ h2{ font-family:'Museo';}
 .post_details p, p{color:#999; font-size:8.5pt}
 .flag_social{width:600px;}
 .flag_btn a{display:block; width:50px; margin:5px 0 5px 340px; font-size:10px;}
-.three_columns>.center #comment_container{width:440px; margin:0 0 10px -8px;}
-.three_columns>.center #comment_container textarea{width:435px}
-.comment_container{border:1px solid #bebebe; height:85px; width:435px; margin:0 0 0 15px; overflow:hidden;}
+.three_columns>.center #comment_container{width:450px; height:70px; margin:0 0 10px -8px;}
+/*.three_columns>.center #comment_container textarea{width:357px}*/
+#caption{border:none; margin:0 0 0 5px; width:369px;}
+.comment_container{height:85px; width:435px; margin:0 0 0 15px; overflow:hidden;}
+.textarea_border{height:70px; width:450px; border:1px solid #ccc; position:relative; margin:0; -webkit-border-radius: 5px;-moz-border-radius: 5px; border-radius: 5px;}
 .comment_container textarea{height:50px; font-size:10pt; color:#666; width:430px; border:none; resize:none; padding:4px 7px; font-family:'Museo'; overflow:visible;}
 .comment_container textarea:focus{outline:none}
 .fileupload-buttonbar{background:#F3F3F3; height:23px; padding:4px 0; width:442px; height:60px;}
-#footer_comment{height:50px;}
-.upload{height:25px; width:31px; margin:0;background:transparent url(/images/skin/viame_sprites.png) -150px -61px no-repeat; z-index:0; position:absolute;}
+#footer_comment{height:20px;}
+#uploaded_pic{position:absolute; display:block; margin:-2.97em 0 0 24.2em; height:54px; width:54px; border:1px solid #ccc; -webkit-border-radius: 2px;-moz-border-radius: 2px; border-radius: 2px;}
+#uploaded_pic_ico, #uploaded_pic_ico:hover{position:absolute; height:26px; width:30px; margin:.9em 0 0 .755em; background:url(/images/skin/viame_sprites.png) -150px -61px no-repeat; position:absolute; z-index:500;}
+#uploaded_pic_bg{position:absolute; height:50px; width:50px; margin:2px; background:#e2e1e1;}
+#uploaded_pic_bg:hover{background:#e8edf0; cursor:pointer;}
 #upload-form{display:none;}
 .cyan_curve, .start, .cancel, .delete, .post{cursor: pointer; background-color:#E0F0F3; border:1px solid #CFCFCF; margin:5px 0 0 5px; 
 padding:5px 9px 4px 9px; text-shadow: 0px 1px 0px #ffffff; filter: dropshadow(color=#ffffff, offx=0, offy=1); 
@@ -57,6 +63,7 @@ background-image: -moz-linear-gradient(bottom, rgb(247,247,247) 48%, rgb(217,215
 background-image: -webkit-linear-gradient(bottom, rgb(247,247,247) 48%, rgb(217,215,215) 100%);
 background-image: -ms-linear-gradient(bottom, rgb(247,247,247) 48%, rgb(217,215,215) 100%);
 background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0.48, rgb(247,247,247)),color-stop(1, rgb(217,215,215)));}
+#upload-button{margin:7px 6px 0 0; width:56px;}
 .fileinput-button{font-size: 9pt; width:430px; display: block; margin:0 10px;}
 .comments li,.three_columns>.left:first-child ul li{ width:408px; margin-left:-35px; background-color:#f4f2f2; border-bottom:1px solid #d8d8d8; padding:7px 7px; border-top:1px solid #fff; }
 .three_columns>.left:first-child ul li:first-child,#comments li:first-child{border-top:none; }
@@ -67,10 +74,11 @@ background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0.48, 
 .follow_right{-webkit-box-shadow:0px 0px 1px 1px #d0d1d2;-moz-box-shadow:0px 0px 1px 1px #d0d1d2;box-shadow:0px 0px 1px 1px #d0d1d2;height:188px; -webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px; background:#f2f3f5; margin:2px 0 25px 0; padding:15px}
 .follow_right h1,.follow_right h2{color:#687a7b; font-family:'Museo'; padding:0 0 12px 0; text-shadow: 1px 1px 0px #fff;}
 .follow_right h1{font-size:20pt; margin-bottom:10px; width:280px;}
-.follow_right h2{font-size:11pt; margin-top:30px; padding-top: 30px;}
-.follow_btn_text{display:block;font-size:13px;margin:-2.8em 0 0 0.52em; color:#474848; text-shadow: 0px 1px 0px rgba(255,255,255,0.5); position:absolute; z-index:100;}
+.follow_right h2{font-size:11pt; margin-top:34px; padding-top: 30px;}
+.follow_btn_text{display:block; font-size:13px; margin:-2.8em 0 0 0.51em; color:#474848; text-shadow: 0px 1px 0px rgba(255,255,255,0.5); position:absolute; z-index:100;}
 .follow_btn_text small {font-size:8pt;}
-.follow_btn, .follow_btn:hover{display:block; height:25px; width:123px; border:1px solid #b6bda5;
+.follow_right .social_links .follow_viame, .follow_right .social_links .follow_viame:hover {width:101px; height:17px;}
+.follow_btn, .follow_btn:hover,.follow_right .follow_viame, .follow_right .follow_viame:hover {display:block; height:25px; width:123px; border:1px solid #b6bda5;
  /*background:transparent url(/images/skin/viame_sprites.png) -33px 0px no-repeat; z-index:0; position:absolute;*/
 text-shadow: 0px 1px 0px #ffffff; filter: dropshadow(color=#ffffff, offx=0, offy=1); 
 -webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px; font-size:9pt; font-family:'Helvetica'; color:#999;
@@ -115,6 +123,7 @@ background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, rgb
 .details p{font-size:12px; padding-top:5px;}
 .details img{border:1px solid #dbdbdb; float:left; display:block; margin:8px 0 8px}
 #posts #comments{width:470px;}
+#comment_input{border:1px solid #ccc; -webkit-border-radius: 5px;-moz-border-radius: 5px; border-radius: 5px;}
 #posts li:second-child {margin:10px 0 0 10px;}
 .two_columns>.left:first-child #posts #comments{width:610px}
 #posts #comments li .post_details{width:370px; padding:10px 0 0 10px}
