@@ -1,5 +1,11 @@
-<div style="padding:3px;" id="comment_container">
-  <textarea id="caption" style="width:100%;"></textarea>
+<div id="comment_container">
+  <div class="textarea_border">
+    <textarea id="caption"></textarea>
+      <div id="uploaded_pic">
+      <div id="uploaded_pic_ico"></div>
+      <div id="uploaded_pic_bg"></div>
+      </div>
+  </div>
   <div id="footer_comment">  
     
   <%=raw s3_http_upload_tag    :key => 'photos', 
@@ -17,11 +23,7 @@
     <input type="hidden" id="uuid" />
     <input type="hidden" id="media_type" />
   </div>
-  <div id="uploaded_pic"></div>
 </div>
-<br/>
-<br/>
-<br/>
 <script>
   var intInterval = 0;
   intInterval=window.setInterval('checkIfReady()', 500);
