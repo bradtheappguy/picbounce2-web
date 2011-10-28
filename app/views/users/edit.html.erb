@@ -85,12 +85,16 @@
     <ul class="services" id="services" style="display:none">
       <li>
         <h2 class="left">Twitter</h2><BR/>
+         <%if current_user.tw_service %>
             <%= current_user.tw_service.nickname %>
+        <%end%>
        
       </li>
       <li>
         <h2 class="left">Facebook</h2><BR/>
+         <%if current_user.fb_service %>
             <%= current_user.fb_service.nickname %><br/>
+        <%end%>
             <input type="radio" name="fb_follow" checked />Subscribe<BR/>
             <input type="radio" name="fb_follow" />Like/send<BR/>
       </li>
